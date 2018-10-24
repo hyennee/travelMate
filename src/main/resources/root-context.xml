@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 데이터베이스 접속에 관련된 클래스들을 bean으로 등록 -->
+	
+	<!-- sqlSessionTemplate를 bean 으로 등록 -->
+	<!-- 빈은 아이디가 있어야함 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	<!-- new SqlSessionTemplate(sqlSession) 이랑 같은 의미 -->
+	
+	<!-- 마이바티스수업때한것과 동일하게 경로 설정해주는것 -->
+	<!-- ref = reference -> 객체의 주소를 보관 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- dataSource정의 -->
+	<!-- 라이브러리없어어 에러 -> pom으로 이동 -->
+	<!-- destroy-method 메소드 다 동작하면 자동으로 close해라 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+		<property name="username" value="mybatis"/>
+		<property name="password" value="mybatis"/>
+		<property name="defaultAutoCommit" value="false"/>
+	</bean>
+	<!-- BasicDataSource dataSource = new BasicDataSource(); 와 같은 의미 -->
+	<!-- SqlSessionFactoryBean sqlSession = new SqlSessionFactoryBean();
+	sqlSession.setConfigLocation("classpath:mybatis-config.xml"); -->
+	<!-- sqlSession.setDataSource(dataSource); -->
+	
+	<!-- SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSession); -->
+	
+	<!-- 다해도 에러 -> mybatis-config가없어서 만들어줘야함 -->
+	
+		
+</beans>

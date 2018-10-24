@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="Member">
+	<!-- type = com.kh.mb.member.model.vo.Member -->
+<!-- 	<resultMap type="com.kh.travelMate.member.model.vo.Member" id="memberResultSet">
+	resultSet에서 mid라는 값을 가져와서 담아준다 MID 
+	primary key만 id로 하고 나머지는 result
+	앞에꺼는 vo껄로 뒤에꺼는 db껄로 작성해야함
+		<id property="mid" column="MID"/>
+		<result property="userId" column="USER_ID"></result>
+		<result property="userPwd" column="USER_PWD"></result>
+		<result property="userName" column="USER_NAME"></result>
+		<result property="email" column="EMAIL"></result>
+		<result property="birthday" column="BIRTHDAY"></result>
+		<result property="gender" column="GENDER"></result>
+		<result property="phone" column="PHONE"></result>
+		<result property="address" column="ADDRESS"></result>
+		<result property="enrollDate" column="ENROLL_DATE"></result>
+		<result property="modifyDate" column="MODIFY_DATE"></result>
+		<result property="status" column="STATUS"></result>
+	</resultMap>
+	
+	로그인 정보 조회용 쿼리문
+	<select id="loginCheck" resultMap="memberResultSet" parameterType="Member">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_ID = #{userId}
+		AND USER_PWD = #{userPwd}
+		AND STATUS = 'Y'	
+	</select> -->
+
+</mapper> 
+
+

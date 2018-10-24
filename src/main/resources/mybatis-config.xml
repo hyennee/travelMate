@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- XML문서의 유효성 체크를 위해 필요한 부분 -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- typealies 랑 mapper만 하고// db관련된건 root-context에다가 한다 -->
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.kh.travelMate.member.model.vo.Member" alias="Member"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mappers/member-mapper.xml"/>
+	</mappers>
+</configuration> 
+  
