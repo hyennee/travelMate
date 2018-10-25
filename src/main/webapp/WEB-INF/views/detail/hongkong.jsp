@@ -528,7 +528,7 @@
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2014112741/gje1qb/홍콩_더 로비_TT이진영(3).JPG" alt="홍콩의 애프터눈 티, 그리고 차찬탱" width="522">                           
                              </div>
-                            <strong class="title">홍콩의 애프터눈 티, 그리고 차찬탱</strong>
+                            <strong class="title">홍콩의 애프터눈 티, 그리고 차찬탱ㅇ</strong>
                             <span class="description">
 홍콩이 영국의 문화권 아래 있었던 건 누구나 아는 사실! 아직도 곳곳에 남아 있는 영국 문화. 
 그 대표적인 것이 애프터눈 티(Afternoon Tea)와 차찬탱(茶餐廳)...</span>
