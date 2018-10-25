@@ -49,6 +49,10 @@
     margin-bottom: 12px;
     letter-spacing: -1px;
 }
+
+a{
+	text-decoration:none;
+}
 </style>
 </head>
 <body>
