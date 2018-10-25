@@ -485,34 +485,34 @@
 	<br><br><br><br>
 	<div class="outer">
 		<div class="visualArea new">
-		<div class="visualIn" style="background-image:url('/travelMate/resources/images/detail/taipei.jpg');">
-            <h2 class="cityName">타이페이</h2>
+		<div class="visualIn" style="background-image:url('/travelMate/resources/images/detail/hongkong.jpg');">
+            <h2 class="cityName">홍콩</h2>
             <span class="cover"></span>
-            <ul class="weather">
-                <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/110_new.png" alt="흐림"></span>
-                    <span class="date">10/24 (목)</span>
-                    <span class="degree">21~24˚C</span>
+			<ul class="weather">
+                 <li>
+                    <span class="ico"><img src="/travelMate/resources/images/detail/101_new.png" alt="구름조금"></span>
+                    <span class="date">10/25 (목)</span>
+                    <span class="degree">24~28˚C</span>
                 </li>
                 <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/110_new.png" alt="흐림"></span>
-                    <span class="date">10/25 (금)</span>
+                    <span class="ico"><img src="/travelMate/resources/images/detail/101_new.png" alt="구름조금"></span>
+                    <span class="date">10/26 (금)</span>
+                    <span class="degree">24~28˚C</span>
+                </li>
+                <li>
+                    <span class="ico"><img src="/travelMate/resources/images/detail/201_new.png" alt="흐림"></span>
+                    <span class="date">10/27 (토)</span>
                     <span class="degree">22~26˚C</span>
                 </li>
                 <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/300_new.png" alt="비"></span>
-                    <span class="date">10/26 (토)</span>
-                    <span class="degree">22~27˚C</span>
+                    <span class="ico"><img src="/travelMate/resources/images/detail/101_new.png" alt="구름조금"></span>
+                    <span class="date">10/28 (일)</span>
+                    <span class="degree">22~26˚C</span>
                 </li>
                 <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/300_new.png" alt="비"></span>
-                    <span class="date">10/27 (일)</span>
-                    <span class="degree">21~22˚C</span>
-                </li>
-                <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/110_new.png" alt="흐림"></span>
-                    <span class="date">10/28 (월)</span>
-                    <span class="degree">17~24˚C</span>
+                    <span class="ico"><img src="/travelMate/resources/images/detail/101_new.png" alt="구름조금"></span>
+                    <span class="date">10/29 (월)</span>
+                    <span class="degree">21~27˚C</span>
                 </li>
             </ul>
         </div>  
@@ -520,17 +520,18 @@
     
     <div id="subWrap" class="cityMain">
         <div id="menu01" class="container" style="margin-left:-100px;">
-            <h3>핵심만 콕콕, 타이페이 추천일정 및 테마</h3>
+            <h3>핵심만 콕콕, 홍콩 추천일정 및 테마</h3>
             <div class="newListArea theme">
                 <ul>
                    <li>
                       <a href="/dest/content/theme/11?contentID=1000021124101">
                             <div class="thumb">
-                                <img src="//ttcfd.hanatour.com/@cms_600/2014062372/gjdn9q/국립고궁박물관.jpg" alt="고궁박물원" width="522">                            
+                                <img src="//ttcfd.hanatour.com/@cms_600/2014112741/gje1qb/홍콩_더 로비_TT이진영(3).JPG" alt="홍콩의 애프터눈 티, 그리고 차찬탱" width="522">                           
                              </div>
-                            <strong class="title">고궁박물원</strong>
+                            <strong class="title">홍콩의 애프터눈 티, 그리고 차찬탱</strong>
                             <span class="description">
-		인기리에 방영됐던 '꽃보다 할배' 타이완편에 나와 주목받은 고궁박물원. 타이베이 여행에서 누구나 필수로 들르는 곳으로, 소장 유물의 개수만 하더라도 69만...</span>
+홍콩이 영국의 문화권 아래 있었던 건 누구나 아는 사실! 아직도 곳곳에 남아 있는 영국 문화. 
+그 대표적인 것이 애프터눈 티(Afternoon Tea)와 차찬탱(茶餐廳)...</span>
                             <span class="cover"></span>
                         </a>
                     </li>
@@ -538,10 +539,12 @@
                     <li>
                         <a href="/dest/content/theme/11?contentID=1000021160101">
                             <div class="thumb">
-                                <img src="//ttcfd.hanatour.com/@cms_600/2015081277/gjex2p/타이베이_핑시선 지우펀_TTS(1).jpg" alt="지우펀" width="522">                            </div>
-                            <strong class="title">지우펀</strong>
-                            <span class="description">지우펀 九份
-타이완 북부의 신베이 시에 위치한 마을인 지우펀은 아홉 가구밖에 없는 작은 산골 마을에 '언제 어디서든 아홉 가구의 물건을 함께 구입하여 아홉...</span>
+                              <img src="//ttcfd.hanatour.com/@cms_600/2017061292/gjfglj/홍콩_미드레벨에스컬레이터_박우아_20170220 (5).JPG" alt="홍콩 3박 4일 자유여행" width="522">                          
+                                </div>
+                            <strong class="title">홍콩 3박 4일 자유여행</strong>
+                            <span class="description">미슐랭이 인정하는 홍콩의 맛과 럭셔리한 쇼핑부터 황홀한 야경까지. 
+홍콩의 낮과 밤을 모두 즐기는 건 물론! 
+마카오도 구석구석 돌아볼 수 있는 알찬 3박 4일...</span>
                             <span class="cover"></span>
                         </a>
                     </li>
@@ -549,9 +552,15 @@
                     <li>
                         <a href="/dest/content/theme/11?contentID=1000021190101">
                             <div class="thumb">
-                                <img src="//ttcfd.hanatour.com/@cms_600/2014062340/gjdj6x/(국립 중정기념당&amp;융캉제 주변)_딘타이펑_TT.jpg" alt="타이베이(타이페이) 음식" width="522" style="margin-top: 0px;">                            </div>
-                            <strong class="title">타이베이(타이페이) 음식</strong>
-                            <span class="description">타이완 여행을 식도락 여행으로 간다면? 생각만 해도 정말 기분 좋은 여행이 될 것! 먹거리 가득한 타이베이 시내에서는 다양한 종류의 타이완 음식을 맛볼 수 ...</span>
+                                <img src="//ttcfd.hanatour.com/@cms_600/2017060919/gjfgka/홍콩_허유산1_유미선.JPG" alt="홍콩 디저트 맛집" width="522">
+                             </div>
+                            <strong class="title">홍콩 디저트 맛집</strong>
+                            <span class="description">망고 디저트 전문점 
+홍콩 전역 어디에서나 
+각종 달콤한 디저트 모음
+
+유명 체인점으로 망고와 과일을 이용한 음료와 디저트를 맛볼 수 있다. 
+더위에 지칠 때...</span>
                             <span class="cover"></span>
                         </a>
                     </li>
@@ -559,9 +568,11 @@
                     <li>
                         <a href="/dest/content/theme/11?contentID=1000021192101">
                             <div class="thumb">
-                                <img src="//ttcfd.hanatour.com/@cms_600/2015051579/gjeus3/IMGP4877.JPG" alt="타이베이(타이페이) 마사지" width="522">                            </div>
-                            <strong class="title">타이베이(타이페이) 마사지</strong>
-                            <span class="description">타이완 정부에서 인정한 마사지 중의원인 자화당. 발바닥을 지나가는 혈을 찾아 여행 중 쌓인 피로를 풀어주는데 탁월하다. 2인 이상이라면 픽업서비스까지 된다...</span>
+                                <img src="//ttcfd.hanatour.com/@cms_600/2017060958/gjfgle/홍콩_하버시티_유미선(1).JPG" alt="홍콩 쇼핑몰, 쇼핑거리" width="522">                          
+                                 </div>
+                            <strong class="title">홍콩 쇼핑몰, 쇼핑거리</strong>
+                            <span class="description">유명한 대형 쇼핑몰부터 구경하는 재미가 있는 재래시장까지! 명품관부터 짝퉁 거리까지!
+각양각색 쇼핑 천국 홍콩답게 거리 곳곳마다 쇼핑지로 가득하다.</span>
                             <span class="cover"></span>
                         </a>
                     </li>

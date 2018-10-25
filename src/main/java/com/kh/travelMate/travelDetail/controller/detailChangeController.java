@@ -19,4 +19,8 @@ public class detailChangeController {
 		return "detail/hanoi";
 	}
 	
+	@RequestMapping("hongkong.me")
+	public String showHongkongView() {
+		return "detail/hongkong";
+	}
 }

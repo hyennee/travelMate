@@ -194,7 +194,7 @@ a{
 			<div class="section">
 				<strong class="title">중국</strong>
 				<ul>
-					<li><a href="/dest/city/1"><img src="/travelMate/resources/images/flag/HK.jpg" alt="홍콩">홍콩</a></li>
+					<li><a href="hongkong.me"><img src="/travelMate/resources/images/flag/HK.jpg" alt="홍콩">홍콩</a></li>
 					<li><a href="/dest/city/8"><img src="/travelMate/resources/images/flag/MO.jpg" alt="마카오">마카오</a></li>
 					<li><a href="/dest/city/12"><img src="/travelMate/resources/images/flag/CN.jpg" alt="북경">북경</a></li>
 					<li><a href="/dest/city/13"><img src="/travelMate/resources/images/flag/CN.jpg" alt="상해">상해</a></li>
