@@ -47,6 +47,9 @@
 				<li>
 					<a href="serviceCenter.me">고객센터</a>
 				</li>
+				<li>
+					<a href="myPage.me">마이페이지</a>
+				</li>
 			</ul>
 		</div>
 </body>
