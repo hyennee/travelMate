@@ -10,7 +10,7 @@
 	<!-- resultSet에서 mid라는 값을 가져와서 담아준다 MID 
 	primary key만 id로 하고 나머지는 result
 	앞에꺼는 vo껄로 뒤에꺼는 db껄로 작성해야함 -->
-		<id property="mid" column="MID"/>
+		<!-- <id property="mid" column="MID"/>
 		<result property="userId" column="USER_ID"></result>
 		<result property="userPwd" column="USER_PWD"></result>
 		<result property="userName" column="USER_NAME"></result>
@@ -21,16 +21,38 @@
 		<result property="address" column="ADDRESS"></result>
 		<result property="enrollDate" column="ENROLL_DATE"></result>
 		<result property="modifyDate" column="MODIFY_DATE"></result>
-		<result property="status" column="STATUS"></result>
+		<result property="status" column="STATUS"></result> -->
+		
+		<id property="userNo" column="USER_NO"/>
+		<result property="email" column="EMAIL"/>
+		<result property="userPwd" column="USER_PWD"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="nickName" column="NICK_NAME"/>
+		<result property="phone" column="PHONE"/>
+		<result property="birthDay" column="BIRTHDAY"/>
+		<result property="gender" column="GENDER"/>
+		<result property="enrollDate" column="ENROLL_DATE"/>
+		<result property="modifyDate" column="MODIFY_DATE"/>
+		<result property="userType" column="USER_TYPE"/>
+		<result property="bankName" column="BANK_NAME"/>
+		<result property="accountNo" column="ACCOUNT_NO"/>
+		<result property="cyberMoney" column="CYBERMONEY"/>
+		<result property="updateCybermoneyDate" column="UPDATE_CYBERMONEY_DATE"/>
+		
 	</resultMap>
 	
 	<!-- 	로그인 정보 조회용 쿼리문 -->
 	<select id="loginCheck" resultMap="memberResultSet" parameterType="Member">
-		SELECT *
+		<!-- SELECT *
 		FROM MEMBER
 		WHERE USER_ID = #{userId}
 		AND USER_PWD = #{userPwd}
-		AND STATUS = 'Y'	
+		AND STATUS = 'Y'	 -->
+		SELECT *
+		FROM MEMBER
+		WHERE EMAIL = #{email}
+		AND USER_PWD = #{userPwd}
+		AND USER_TYPE = 'U'
 	</select> 
 
 </mapper> 

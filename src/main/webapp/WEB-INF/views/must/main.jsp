@@ -57,12 +57,6 @@ a{
 </head>
 <body>
 
-
-		<!-- 로그인 상단메뉴 추가 -->
-		<jsp:include page="loginMenubar.jsp"/>
-		<!-- 로그인 상단메뉴 추가 -->
-
-
 		<jsp:include page="header.jsp"/>
 	<div class="outer">
 		<div id="page" class="page">

@@ -135,9 +135,7 @@ nav #memberMenuUl>li:first-child {
 </style>
 </head>
 <body>
-	<!-- 로그인 상단메뉴 추가 -->
-	<jsp:include page="../must/loginMenubar.jsp" />
-	<!-- 로그인 상단메뉴 추가 -->
+
 	<jsp:include page="../must/header.jsp" />
 	<div class="outer">
 		<div id="page" class="page">
@@ -149,7 +147,7 @@ nav #memberMenuUl>li:first-child {
 
 							<div class="inputLoginForm">
 								<label for="ex_input">아이디(이메일 주소)</label> 
-								<input type="text" id="ex_input" name="userId" maxlength="100">
+								<input type="text" id="ex_input" name="email" maxlength="100">
 							</div>
 
 							<div class="inputLoginForm">
