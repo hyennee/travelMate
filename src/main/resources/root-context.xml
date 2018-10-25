@@ -27,8 +27,8 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
-		<property name="username" value="mybatis"/>
-		<property name="password" value="mybatis"/>
+		<property name="username" value="travelmate"/>
+		<property name="password" value="travelmate"/>
 		<property name="defaultAutoCommit" value="false"/>
 	</bean>
 	<!-- BasicDataSource dataSource = new BasicDataSource(); 와 같은 의미 -->

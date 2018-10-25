@@ -20,7 +20,12 @@
 </head>
 
 <body>
-<div id="header" class="header">
+
+		<!-- 로그인 상단메뉴 추가 -->
+		<jsp:include page="loginMenubar.jsp"/>
+		<!-- 로그인 상단메뉴 추가 -->
+		<div id="header" class="header">
+		
 			<div id="logo">
 				<a href="/travelMate/index.jsp"><img src="/travelMate/resources/images/logo.png" alt="LOGO" width="170px;"></a>
 			</div>
