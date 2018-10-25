@@ -34,7 +34,8 @@ public class pageChangeController {
 		/*return "others/serviceCenter";*/
 		/*return "board/serviceCenter/noticeDetail";*/
 		/*return "board/serviceCenter/questionList";*/
-		return "board/serviceCenter/questionDetail";
+		/*return "board/serviceCenter/questionDetail";*/
+		return "board/serviceCenter/questionInsertForm";
 	}
 	
 	@RequestMapping("memberJoinView.me")
