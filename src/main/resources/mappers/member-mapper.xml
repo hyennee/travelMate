@@ -6,10 +6,10 @@
   
 <mapper namespace="Member">
 	<!-- type = com.kh.mb.member.model.vo.Member -->
-<!-- 	<resultMap type="com.kh.travelMate.member.model.vo.Member" id="memberResultSet">
-	resultSet에서 mid라는 값을 가져와서 담아준다 MID 
+	<resultMap type="com.kh.travelMate.member.model.vo.Member" id="memberResultSet">
+	<!-- resultSet에서 mid라는 값을 가져와서 담아준다 MID 
 	primary key만 id로 하고 나머지는 result
-	앞에꺼는 vo껄로 뒤에꺼는 db껄로 작성해야함
+	앞에꺼는 vo껄로 뒤에꺼는 db껄로 작성해야함 -->
 		<id property="mid" column="MID"/>
 		<result property="userId" column="USER_ID"></result>
 		<result property="userPwd" column="USER_PWD"></result>
@@ -24,14 +24,14 @@
 		<result property="status" column="STATUS"></result>
 	</resultMap>
 	
-	로그인 정보 조회용 쿼리문
+	<!-- 	로그인 정보 조회용 쿼리문 -->
 	<select id="loginCheck" resultMap="memberResultSet" parameterType="Member">
 		SELECT *
 		FROM MEMBER
 		WHERE USER_ID = #{userId}
 		AND USER_PWD = #{userPwd}
 		AND STATUS = 'Y'	
-	</select> -->
+	</select> 
 
 </mapper> 
 

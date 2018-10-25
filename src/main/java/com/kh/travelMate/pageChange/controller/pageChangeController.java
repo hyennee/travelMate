@@ -34,4 +34,14 @@ public class pageChangeController {
 		return "others/nothing";
 	}
 	
+	@RequestMapping("memberJoinView.me")
+	public String memberJoinView() {
+		return "member/memberJoin";
+	}
+	
+	@RequestMapping("loginView.me")
+	public String loginView() {
+		return "member/login";
+	}
+	
 }
