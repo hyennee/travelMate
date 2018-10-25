@@ -55,6 +55,28 @@
 		AND USER_TYPE = 'U'
 	</select> 
 
+	<!-- 회원가입용 쿼리문 -->
+	<insert id = "insertMember" parameterType="Member">
+		INSERT INTO MEMBER
+		VALUES(SEQ_USER_NO.NEXTVAL, #{email}, #{userPwd}, #{userName}, 
+				#{nickName}, #{phone}, #{birthDay}, #{gender}, 
+				SYSDATE, SYSDATE, DEFAULT, NULL, NULL, 0, SYSDATE)
+	</insert>
+	
+	<!-- 암호화된 비밀번호 조회용 쿼리문-->
+	<select id="selectPwd" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT USER_PWD
+		FROM MEMBER
+		WHERE EMAIL = #{email}
+	</select>
+	
+	<!-- 암호화 후 로그인용 쿼리문 -->
+	<select id="selectLoginUser" resultMap="memberResultSet" parameterType="Member">
+		SELECT *
+		FROM MEMBER
+		WHERE EMAIL = #{email}
+	</select>
+	
 </mapper> 
 
 
