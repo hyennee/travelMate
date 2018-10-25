@@ -22,7 +22,7 @@
 <body>
 <div id="header" class="header">
 			<div id="logo">
-				<a href="/travelMate/index.jsp"><img src="/travelMate/resources/images/123123.png" alt="LOGO" width="170px;"></a>
+				<a href="/travelMate/index.jsp"><img src="/travelMate/resources/images/logo.png" alt="LOGO" width="170px;"></a>
 			</div>
 			<!-- <form action="/test/index.jsp" method="post" class="searchbar">
 				<input type="text" value="Search" onFocus="this.select();" onMouseUp="return false;">
