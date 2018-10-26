@@ -6,35 +6,35 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.notice-list
+	.question-list
 	{
 		text-align:center;
 		font-size:15px;
 		border-collapse:collapse;
 	}
-	.notice-list>tbody>tr>th
+	.question-list>tbody>tr>th
 	{
 		border-top:2px solid lightgray;
 		border-bottom:1px solid lightgray;
 	}
-	.notice-list>tbody>tr>th:nth-child(1)
+	.question-list>tbody>tr>th:nth-child(1)
 	{
 		border-top:none;
 	}
-	.notice-list>tbody>tr>td
+	.question-list>tbody>tr>td
 	{
 		border-top:1px solid lightgray;
 		border-bottom:1px solid lightgray;
 	}
-	.notice-list>tbody>tr:nth-child(2)
+	.question-list>tbody>tr:nth-child(2)
 	{
 		border-top:2px solid lightgray;
 	}
-	.notice-list th
+	.question-list th
 	{
 		height:40px;
 	}
-	.notice-list td
+	.question-list td
 	{
 		height:40px;
 	}
@@ -50,15 +50,19 @@
 	{
 		cursor:pointer;
 	}
+	.pointer:hover
+	{
+		cursor:pointer;
+	}
 </style>
 </head>
 <body>
 	<jsp:include page="../../must/header.jsp"/>
 	<div class="full-container">
-		<div style="width:960px; height:600px; margin:auto; background:white;" align="center">
+		<div style="width:960px;margin:auto; background:white;" align="center">
 		<br>
-			<div style="margin:auto; width:800px; height:100px;">
-				<table class="notice-list" style="width:800px; margin:auto;">
+			<div style="margin:auto; width:800px;">
+				<table class="question-list" style="width:800px; margin:auto;">
 					<thead>
 						<tr>
 							<th style="border-left:2px solid lightgray; border-right:2px solid lightgray; border-top:3px solid violet;">문의</th>
@@ -107,7 +111,7 @@
 				<br>
 				<div class="page-container" style="margin:auto; width:800px;" align="center">
 					<div style="float:right;">
-						<button style="background:skyblue; color:white; border:1px solid skyblue; border-radius:5px; height:30px;">문의하기</button>
+						<button type="button" class="pointer" style="background:skyblue; color:white; border:1px solid skyblue; border-radius:5px; height:30px;">문의하기</button>
 					</div>
 					<div>
 						<button type="button" class="page-button"><</button>&nbsp;

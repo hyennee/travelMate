@@ -73,6 +73,11 @@
 	<jsp:include page="../../must/header.jsp"/>
 	<div class="full-container" style="background:#EC983E;">
 		<div style="margin:auto; width:960px; background:white;">
+			<br>
+			<div style="width:800px; margin:auto;">
+				<span style="color:#B4B4FF; font-size:16px; font-weight:bold;">자주 묻는 질문</span>
+			</div>
+			<hr style="border:2px solid lightgray; width:800px;">
 			<div class="page-container" style="margin:auto; width:960px;">
 				<div class="FAQ-container" style="margin:auto; width:800px;">
 					<button class="accordion">Section 1</button>

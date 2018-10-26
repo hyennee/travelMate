@@ -51,9 +51,9 @@
 <body>
 	<jsp:include page="../../must/header.jsp"/>
 	<div class="full-container">
-		<div style="width:960px; height:600px; margin:auto; background:white;" align="center">
+		<div style="width:960px; margin:auto; background:white;" align="center">
 		<br>
-			<div style="margin:auto; width:800px; height:100px;">
+			<div style="margin:auto; width:800px;">
 				<table class="notice-list" style="width:800px; margin:auto;">
 					<thead>
 						<tr>
