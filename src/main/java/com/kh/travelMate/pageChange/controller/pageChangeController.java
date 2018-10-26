@@ -31,11 +31,7 @@ public class pageChangeController {
 	
 	@RequestMapping("serviceCenter.me")
 	public String serviceCenterView() {
-		/*return "others/serviceCenter";*/
-		/*return "board/serviceCenter/noticeDetail";*/
-		/*return "board/serviceCenter/questionList";*/
-		/*return "board/serviceCenter/questionDetail";*/
-		return "board/serviceCenter/questionInsertForm";
+		return "board/serviceCenter/serviceCenter";
 	}
 	
 	@RequestMapping("memberJoinView.me")
@@ -48,4 +44,9 @@ public class pageChangeController {
 		return "member/login";
 	}
 	
+	@RequestMapping("selectList.bo")
+	public String faqView()
+	{
+		return "board/serviceCenter/faq";
+	}
 }
