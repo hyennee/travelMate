@@ -88,7 +88,7 @@ td:first-child {
 				<div id="joinArea">
 					<div id="joinForm">
 						<form action="insertMember.me" method="post">
-							<br> <br> <span
+							<br> <br> <br> <span
 								style="text-align: left; font-weight: bold; font-size: 24px; color: black">회원가입</span>
 							<br> <span
 								style="text-align: left; font-weight: bold; font-size: 12px; color: #999">회원가입을
