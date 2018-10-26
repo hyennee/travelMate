@@ -1,7 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-4.3.xsd 
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
@@ -40,5 +46,39 @@
 	
 	<!-- 다해도 에러 -> mybatis-config가없어서 만들어줘야함 -->
 	
-		
+	<!-- 트랜잭션 매니저 bean 등록(setter를 통한 의존성 주입 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource"> <!-- db접속에 관한 트랜잭션 매니저를 생성함 -->
+			</property>
+	</bean>
+	<!-- 어노테이션으로 트랜젝션 매니저를 설정하기 위해 추가해야 하는 설정 -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager"/>
+	<tx:advice id="txAdvice"
+		transaction-manager="transactionManager">
+			<tx:attributes>
+				<tx:method name="select*" read-only="true"
+				rollback-for="Exception"/><!-- 트랜젝션에 대한 설정들을 해줌. select한 결과는 읽기전용, 익셉션이 발생한 것에 대해서만 롤백처리를 하고, select라고
+				 시작하는 메소드에 대해 적용시킴-->
+				<tx:method name="insert*" rollback-for="Exception"
+				propagation="REQUIRED" isolation="SERIALIZABLE" />
+				<tx:method name="update*" rollback-for="Exception"
+				propagation="REQUIRED" isolation="SERIALIZABLE" />
+				<tx:method name="delete*" rollback-for="Exception"
+				propagation="REQUIRED" isolation="SERIALIZABLE" />
+			</tx:attributes> <!-- crud에 대해 각각 트랜잭션 설정을 해놓은 것 -->
+		</tx:advice>	
+		<!-- 여기까지가 트랜잭션 설정 객체인 txAdvice객체를 생성한것임 각 횡단 관심사에 따라 어드바이스를 만들어 놓고. -->
+	
+	<!-- AOP를 이용하여 위의 txAdvice를 적용시키기 위한 내용 -->
+	<!-- advice 객체가 weaving될 시점(pointcut을 등록하는 것임) -->
+	<aop:config proxy-target-class="true"> <!-- 자동으로 proxy를 생성해주겠다. AOP Schema 추가해야 빨간줄 없어짐! -->
+		<aop:pointcut id="serviceMethod"
+			expression="execution(* com.kh.travelMate..*ServiceImpl.*(..))" /> <!-- 모든리턴타입에 대해서 com.kh.tsp 하위에 있는 *로 시작하고 ServiceImpl로 이름이 끝나는 클래스 밑의 모든 
+			메소드 매개변수 타입은 어떤것이든 상관없다. 클래스 밑에 있는 메소드들을 서비스 메소드라는 것으로 pointcut으로 만든 것임 -->
+		<aop:advisor id="transactionAdvisor"
+			pointcut-ref="serviceMethod" advice-ref="txAdvice" /> <!-- 이 포인트 컷에 동작시킬 advice는 advice-ref="txAdvice" 임 -->
+	</aop:config>
+	<!-- aop 에 트랜잭션 설정 처리해준 다음 어디에 트랜잭션을 해줄건지 설정하면 트랜잭션 처리는 끝 -->
 </beans>
