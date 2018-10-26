@@ -173,8 +173,8 @@ a{
 			<div class="section first">
 				<strong class="title">동남아</strong>
 				<ul>
-					<li first=""><a href="taipei.me"><img src="/travelMate/resources/images/flag/TW.jpg" alt="타이페이">타이페이</a></li>
-					<li first=""><a href="hanoi.me"><img src="/travelMate/resources/images/flag/VN.jpg" alt="하노이">하노이</a></li>
+					<li first=""><a href="taipei.bo"><img src="/travelMate/resources/images/flag/TW.jpg" alt="타이페이">타이페이</a></li>
+					<li first=""><a href="hanoi.bo"><img src="/travelMate/resources/images/flag/VN.jpg" alt="하노이">하노이</a></li>
 					<li first=""><a href="/dest/city/17"><img src="/travelMate/resources/images/flag/PH.jpg" alt="세부">세부</a></li>
 					<li first=""><a href="/dest/city/48"><img src="/travelMate/resources/images/flag/VN.jpg" alt="호치민">호치민</a></li>
 					<li first=""><a href="/dest/city/19"><img src="/travelMate/resources/images/flag/MY.jpg" alt="코타 키나발루">코타 키나발루</a></li>
@@ -194,7 +194,7 @@ a{
 			<div class="section">
 				<strong class="title">중국</strong>
 				<ul>
-					<li><a href="hongkong.me"><img src="/travelMate/resources/images/flag/HK.jpg" alt="홍콩">홍콩</a></li>
+					<li><a href="hongkong.bo"><img src="/travelMate/resources/images/flag/HK.jpg" alt="홍콩">홍콩</a></li>
 					<li><a href="/dest/city/8"><img src="/travelMate/resources/images/flag/MO.jpg" alt="마카오">마카오</a></li>
 					<li><a href="/dest/city/12"><img src="/travelMate/resources/images/flag/CN.jpg" alt="북경">북경</a></li>
 					<li><a href="/dest/city/13"><img src="/travelMate/resources/images/flag/CN.jpg" alt="상해">상해</a></li>

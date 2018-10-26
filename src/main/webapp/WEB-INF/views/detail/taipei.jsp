@@ -524,7 +524,7 @@
             <div class="newListArea theme">
                 <ul>
                    <li>
-                      <a href="/dest/content/theme/11?contentID=1000021124101">
+                      <a href="detailTaipei1.bo">
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2014062372/gjdn9q/국립고궁박물관.jpg" alt="고궁박물원" width="522">                            
                              </div>
@@ -536,7 +536,7 @@
                     </li>
                     
                     <li>
-                        <a href="/dest/content/theme/11?contentID=1000021160101">
+                        <a href="detailTaipei2.bo">
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2015081277/gjex2p/타이베이_핑시선 지우펀_TTS(1).jpg" alt="지우펀" width="522">                            </div>
                             <strong class="title">지우펀</strong>
@@ -547,7 +547,7 @@
                     </li>
                     
                     <li>
-                        <a href="/dest/content/theme/11?contentID=1000021190101">
+                        <a href="detailTaipei3.bo">
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2014062340/gjdj6x/(국립 중정기념당&amp;융캉제 주변)_딘타이펑_TT.jpg" alt="타이베이(타이페이) 음식" width="522" style="margin-top: 0px;">                            </div>
                             <strong class="title">타이베이(타이페이) 음식</strong>
@@ -557,7 +557,7 @@
                     </li>
                                     
                     <li>
-                        <a href="/dest/content/theme/11?contentID=1000021192101">
+                        <a href="detailTaipei4.bo">
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2015051579/gjeus3/IMGP4877.JPG" alt="타이베이(타이페이) 마사지" width="522">                            </div>
                             <strong class="title">타이베이(타이페이) 마사지</strong>
