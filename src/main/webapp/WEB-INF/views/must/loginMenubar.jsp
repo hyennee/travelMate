@@ -50,7 +50,7 @@
 			<div id="afterLoginMenu">
 				<nav>
 					<ul class="loginMenuBarUl">
-						<li class="loginMenuBarLi"><a href="#"><img
+						<li class="loginMenuBarLi"><a href="mypage.me"><img
 								src="/travelMate/resources/images/mypage.png" alt="Img"
 								height="14px" width="56px"></a></li>
 
