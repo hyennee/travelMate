@@ -524,7 +524,7 @@
             <div class="newListArea theme">
                 <ul>
                    <li>
-                      <a href="/dest/content/theme/11?contentID=1000021124101">
+                      <a href="detailHanoi1.bo">
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2017101126/gjfhme/하노이_호치민 묘소_TTB(1).JPG" alt="하노이, 하롱베이 추천일정" width="522">                           
                              </div>
@@ -537,7 +537,7 @@
                     </li>
                     
                     <li>
-                        <a href="/dest/content/theme/11?contentID=1000021160101">
+                        <a href="detailHanoi2.bo">
                             <div class="thumb">
                                <img src="//ttcfd.hanatour.com/@cms_600/2017101636/gjfhwh/하노이_퍼 틴_TTB(3).JPG" alt="여행이 맛있는 베트남" width="522"><img src="//ttcfd.hanatour.com/@cms_600/2017101636/gjfhwh/하노이_퍼 틴_TTB(3).JPG" alt="여행이 맛있는 베트남" width="522">                           
                                 </div>
@@ -549,7 +549,7 @@
                     </li>
                     
                     <li>
-                        <a href="/dest/content/theme/11?contentID=1000021190101">
+                        <a href="detailHanoi3.bo">
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2017101960/gjfi0z/하롱베이_하롱팔래스 (1).jpg" alt="하롱베이" width="522">
                              </div>
@@ -561,7 +561,7 @@
                     </li>
                                     
                     <li>
-                        <a href="/dest/content/theme/11?contentID=1000021192101">
+                        <a href="detailHanoi4.bo">
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2017101626/gjfhwp/하노이_롯데마트_TTB(3).JPG" alt="하노이 쇼핑 리스트" width="522">                          
                                  </div>
