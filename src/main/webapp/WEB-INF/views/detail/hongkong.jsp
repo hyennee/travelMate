@@ -524,7 +524,7 @@
             <div class="newListArea theme">
                 <ul>
                    <li>
-                      <a href="/dest/content/theme/11?contentID=1000021124101">
+                      <a href="detailHongkong1.me">
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2014112741/gje1qb/홍콩_더 로비_TT이진영(3).JPG" alt="홍콩의 애프터눈 티, 그리고 차찬탱" width="522">                           
                              </div>
@@ -537,7 +537,7 @@
                     </li>
                     
                     <li>
-                        <a href="/dest/content/theme/11?contentID=1000021160101">
+                        <a href="detailHongkong2.me">
                             <div class="thumb">
                               <img src="//ttcfd.hanatour.com/@cms_600/2017061292/gjfglj/홍콩_미드레벨에스컬레이터_박우아_20170220 (5).JPG" alt="홍콩 3박 4일 자유여행" width="522">                          
                                 </div>
@@ -550,7 +550,7 @@
                     </li>
                     
                     <li>
-                        <a href="/dest/content/theme/11?contentID=1000021190101">
+                        <a href="detailHongkong3.me">
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2017060919/gjfgka/홍콩_허유산1_유미선.JPG" alt="홍콩 디저트 맛집" width="522">
                              </div>
@@ -566,7 +566,7 @@
                     </li>
                                     
                     <li>
-                        <a href="/dest/content/theme/11?contentID=1000021192101">
+                       <a href="detailHongkong4.me">
                             <div class="thumb">
                                 <img src="//ttcfd.hanatour.com/@cms_600/2017060958/gjfgle/홍콩_하버시티_유미선(1).JPG" alt="홍콩 쇼핑몰, 쇼핑거리" width="522">                          
                                  </div>
