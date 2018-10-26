@@ -16,7 +16,7 @@ public class pageChangeController {
 	
 	@RequestMapping("openConsult.me")
 	public String openConsultView() {
-		return "others/blog";
+		return /*"others/blog";*/ "others/openconsulting";
 	}
 	
 	@RequestMapping("directConsult.me")
