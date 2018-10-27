@@ -49,4 +49,8 @@ public class pageChangeController {
 	{
 		return "board/serviceCenter/faq";
 	}
+	@RequestMapping("mypage.me")
+	public String mypageView() {
+		return "mypage/mypagemain";
+	}
 }
