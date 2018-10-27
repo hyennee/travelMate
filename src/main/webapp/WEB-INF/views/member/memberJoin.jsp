@@ -16,7 +16,7 @@
 	width: 100%;
 	padding: 0 0 200px 0;
 	margin: auto;
-	background: #edefea;
+	background: /* #edefea; */ white;
 }
 
 #joinForm {
@@ -59,7 +59,7 @@ td:first-child {
  	background-color: #ec983e; /* Green */
     border: none;
     color: white;
-    padding: 14px 28px;
+    padding: 12px 22px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -111,20 +111,20 @@ td:first-child {
 									<tr>
 										<td>이름<span style="color: red">*</span></td>
 										<td colspan="2"><input type="text" name="userName"
-											id="userName"></td>
+											id="userName" style="width:187px; height: 18px;" placeholder="이름"></td>
 
 									</tr>
 									<tr>
 										<td>아이디<span style="color: red">*</span></td>
-										<td><input type="text" name="email" id="email"><br><span
-											style="font-size: 12px; font-weight: lighter; color: #999">※아이디는
+										<td><input type="text" name="email" id="email" style="width:187px; height: 18px;" placeholder="이메일"><br><span
+											style="font-size: 12px; font-weight: lighter; color: #999" >※아이디는
 												이메일 주소로 입력해주시기 바랍니다.</span></td>
 										<td><span>ajax로 실시간 중복확인</span></td>
 									</tr>
 									
 									<tr>
 										<td>닉네임<span style="color: red">*</span></td>
-										<td><input type="text" name="nickName" id="nickName"></td>
+										<td><input type="text" name="nickName" id="nickName" style="width:187px; height: 18px;" placeholder="닉네임"></td>
 										<td><span>ajax로 실시간 중복확인</span></td>
 									</tr>
 									<!-- <tr>
@@ -133,11 +133,11 @@ td:first-child {
 									<tr>
 										<td rowspan="2">비밀번호<span style="color: red">*</span></td>
 										<td><input type="password" name="userPwd"
-											placeholder="비밀번호" style="height: 20px;"><br><span
+											placeholder="비밀번호" style="width:187px; height: 18px;"><br><span
 											style="font-size: 12px; font-weight: lighter; color: #999">※8~16자의
 												영문(소문자)과 숫자만 사용할 수 있습니다.</span></td>
 										<td><input type="password" name="userPwd2"
-											placeholder="비밀번호 확인" style="height: 20px;"><br>&nbsp;</td>
+											placeholder="비밀번호 확인" style="width:187px; height: 18px;"><br>&nbsp;</td>
 									</tr>
 									<tr>
 										<td colspan="2">OK</td>
@@ -145,17 +145,17 @@ td:first-child {
 									<tr>
 										<td>생년월일<span style="color: red">*</span></td>
 										<td colspan="2"><select name="birth1"
-											style="height: 22px; width: 60px;">
+											style="height: 24px; width: 60px;">
 												<c:forEach var="i" begin="0" end="${2018-1900 }">
 													<c:set var="yearOption" value="${2018-i}" />
 													<option value="${yearOption }">${yearOption }</option>
 												</c:forEach>
-										</select> <select name="birth2" style="height: 22px; width: 60px;">
+										</select> <select name="birth2" style="height: 24px; width: 60px;">
 												<c:forEach var="i" begin="1" end="12">
 													<c:set var="monthOption" value="${i}" />
 													<option value="${monthOption}">${monthOption}</option>
 												</c:forEach>
-										</select> <select name="birth3" style="height: 22px; width: 60px;">
+										</select> <select name="birth3" style="height: 24px; width: 60px;">
 												<c:forEach var="i" begin="1" end="31">
 													<c:set var="dayOption" value="${i}" />
 													<option value="${dayOption}">${dayOption}</option>
@@ -172,7 +172,7 @@ td:first-child {
 									<tr>
 										<td>휴대전화<span style="color: red">*</span></td>
 										<td colspan="2"><select name="phoneNum1"
-											style="height: 22px; width: 60px;">
+											style="height: 24px; width: 60px;">
 												<option value="010" selected>010</option>
 												<option value="011">011</option>
 												<option value="016">016</option>
@@ -180,8 +180,8 @@ td:first-child {
 												<option value="018">018</option>
 												<option value="019">019</option>
 										</select> <input type="text" name="phoneNum2" placeholder=""
-											style="width: 60px"> <input type="text"
-											name="phoneNum3" placeholder="" style="width: 60px;">
+											style="width: 56px; height:18px;"> <input type="text"
+											name="phoneNum3" placeholder="" style="width: 56px; height:18px;">
 										</td>
 									</tr>
 								</table>
@@ -386,7 +386,7 @@ td:first-child {
 							<div class="btnArea">
 
 							<button type="submit" class="goJoinBtn" id="joinBtn">회원가입</button>
-							&nbsp;&nbsp;
+							&nbsp;
 							<button type="reset" class="goJoinBtn" id="cancelJoinBtn">가입취소</button>
 							
 							</div>
@@ -397,5 +397,11 @@ td:first-child {
 		</div>
 	</div>
 	<jsp:include page="../must/footer.jsp" />
+	<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+	<script>
+		$('#cancelJoinBtn').click(function(){
+			window.location.href = '${contextPath}/index.jsp';
+		})
+	</script>
 </body>
 </html>

@@ -17,6 +17,7 @@
 	padding: 0 0 200px 0;
 	margin: auto;
 	background: #edefea;
+	background:white; 
 }
 
 #openQnAForm {
@@ -25,15 +26,16 @@
 	
 }
 
-#openQuestion {
+#openQuestion, #openAnswer {
 	width: 100%;
 	padding: 0 0 20px 0;
 	border: solid 1px #999;
 	/* margin: auto; */
 	text-indent: 30px;
+    
 }
 
-#questionUl>li {
+#questionUl>li, #answerUl>li {
 	display: inline; /*  세로나열을 가로나열로 변경 */
 	border-left: 1px solid #999; /* 각 메뉴의 왼쪽에 "|" 표시(분류 표시) */
 	font: bold 13px Dotum; /* 폰트 설정 - 12px의 돋움체 굵은 글씨로 표시 */
@@ -43,22 +45,22 @@
 	/* 각 메뉴 간격 */
 }
 
-#questionUl>li:first-child {
+#questionUl>li:first-child, #answerUl>li:first-child {
 	border-left: none;
 }
 
-#questionUl {
+#questionUl, #answerUl {
 	padding: 0;
 }
 
-#questioncon3 {
+#questioncon3, #answercon3 {
 	text-align: left;
 	margin-left: 10px;
 	margin-top: 50px;
-	margin-bottom:50px;
+	margin-bottom: 50px;
 }
 
-#questioncon3 p {
+#questioncon3 p, #answercon3 p {
 	font-size: 14px;
 }
 
@@ -70,21 +72,19 @@
 
 #qBottom {
 	/* display:inline; */
-	position:relative;
-	margin:auto;
-	border-top: 1px solid #999; 
-	width:100%;
-	
-	
+	position: relative;
+	margin: auto;
+	border-top: 1px solid #999;
+	width: 100%;
 }
 
 .btnAnswer {
 	float: right;
-	margin-right: 60px;
+	margin-right: 40px;
 	background-color: #ec983e;
 	border: none;
 	color: white;
-	padding: 14px 28px;
+	padding: 12px 22px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -94,9 +94,6 @@
 	cursor: pointer;
 	font-weight: bold;
 	border-radius: 4px;
-	
-	
-	
 }
 
 .btnAnswer:hover {
@@ -105,6 +102,87 @@
 	font-weight: bold;
 	border-radius: 4px;
 }
+
+#btnList {
+	float: right;
+	margin-right: 40px;
+	margin-top: 25px; background-color : #ec983e;
+	border: none;
+	color: white;
+	padding: 12px 22px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 4px;
+	background-color: #ec983e;
+}
+
+#btnList:hover {
+	color: #ec983e;
+	background-color: white;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+#btnAdd {
+	float: right;
+	margin-right: 74%;
+	background-color: #ec983e;
+	border: none;
+	color: white;
+	padding: 4px 8px;
+	text-align: center;
+	text-decoration: none;
+	position: relative;
+	font-size: 14px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+#btnAdd:hover {
+	color: #ec983e;
+	background-color: white;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+#btnSelect {
+	float: right;
+	margin-right: 40px;
+	border: none;
+	color: white;
+	padding: 12px 22px;
+	text-align: center;
+	text-decoration: none;
+	display: inline;
+	font-size: 14px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	font-weight: bold;
+	background-color: #ff6666;
+	position:relative;
+	border-radius: 4px;
+
+
+}
+
+#btnSelect:hover{
+	color: #ff6666;
+	background-color: white;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+
 </style>
 <body>
 	<%-- <c:if test="${!empty sessionScope.loginUser }"> --%>
@@ -136,7 +214,7 @@
 									<li><img
 										src="/travelMate/resources/images/flag/member.png"
 										width="20px;"
-										style="border-radius: 100%; vertical-align:bottom;" />&nbsp;&nbsp;<span>감자</span></li>
+										style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>감자</span></li>
 									<li><span>일반회원</span></li>
 									<li><span>2018.11.22</span></li>
 									<li><span>77</span></li>
@@ -156,12 +234,12 @@
 								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
 								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
 								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
-								
+
 							</div>
 
-							
+
 							<!-- 질문 버튼 부분 div -->
-							<div id="qBottom" >
+							<div id="qBottom">
 
 								<!-- 답변 불가능일 경우 -->
 								<!-- <p style="margin-top:43px;">
@@ -170,52 +248,98 @@
 							</p> -->
 
 								<!-- 답변 가능한 경우 -->
-
-								 
-									<p style="margin-top:20px;"> 답변을 하실 수 있습니다. 
+								<p style="margin-top: 20px;">
+									답변을 하실 수 있습니다.
 									<button class="btnAnswer" onclick="#">답변하기</button>
-									</p>
-								
+								</p>
+
 							</div>
 						</div>
 
-						<div id="openAnswer"></div>
+						<br>
+						<!-- 오픈컨설팅 답변 div 1 -->
+						<div class="AnswerArea">
+							<div id="openAnswer">
+
+								<div id="answercon1">
+									<h3>
+										고구마님 답변
+										<button id="btnAdd" style="font-size: 12px;">+관심추가</button>
+									</h3>
+								</div>
+								<!-- 오픈컨설팅 답변 작성자 관련 정보 div -->
+								<div id="answercon2">
+									<ul id="answerUl">
+										<li><img
+											src="/travelMate/resources/images/flag/member.png"
+											width="20px;"
+											style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>고구마</span></li>
+										<li><span>컨설턴트</span></li>
+										<li><span>2018.11.24 13:00</span></li>
+
+									</ul>
+								</div>
+
+								<hr style="width: 95%">
+								<!-- 오픈컨설팅 답변 내용 div -->
+								<div id="answercon3" style="font-style: normal">
+									<p>인천-뉴욕-보고타 로 발권했구요</p>
+									<p>인천-뉴욕JFK 구간은 아시아나항공 뉴욕JFK-보고타 구간은 델타항공을 탑승했습니다.</p>
+									<p>이 구간은 비싼편이고 좀 더 저렴하게 가고 싶다면 미국 본토까지 중국경유하는 항공편으로 들어가서</p>
+									<p>마이애미에서 보고타까지 스피릿항공을 이용하는게 좀 더 저렴할거라 생각됩니다.</p>
+								
+								<button id="btnSelect">채택하기</button>
+								</div>
+								
+							</div>
 
 
+							<br>
+							<!-- 오픈컨설팅 답변 div 2 -for문으로 반복시킴 -->
+							<div id="openAnswer">
 
+								<div id="answercon1">
+									<h3>
+										옥수수님 답변
+										<button id="btnAdd" style="font-size: 12px;">+관심추가</button>
+									</h3>
+								</div>
+								<!-- 오픈컨설팅 답변 작성자 관련 정보 div -->
+								<div id="answercon2">
+									<ul id="answerUl">
+										<li><img
+											src="/travelMate/resources/images/flag/member.png"
+											width="20px;"
+											style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>옥수수</span></li>
+										<li><span>컨설턴트</span></li>
+										<li><span>2018.11.22 13:06</span></li>
 
+									</ul>
+								</div>
 
+								<hr style="width: 95%">
+								<!-- 오픈컨설팅 답변 내용 div -->
+								<div id="answercon3" style="font-style: normal">
+									<p>인천-뉴욕-보고타 로 발권했구요</p>
+									<p>인천-뉴욕JFK 구간은 아시아나항공 뉴욕JFK-보고타 구간은 델타항공을 탑승했습니다.</p>
+									<p>이 구간은 비싼편이고 좀 더 저렴하게 가고 싶다면 미국 본토까지 중국경유하는 항공편으로 들어가서</p>
+									<p>마이애미에서 보고타까지 스피릿항공을 이용하는게 좀 더 저렴할거라 생각됩니다.</p>
+								
+								<button id="btnSelect">채택하기</button>
+								</div>
 
+								
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+							</div>
+						</div>
+						<!-- 목록버튼 -->
+						<button id="btnList">목록</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<jsp:include page="../must/footer.jsp" />
 	<%-- 	</c:if> --%>
 

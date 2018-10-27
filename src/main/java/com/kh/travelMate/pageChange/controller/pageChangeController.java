@@ -54,5 +54,16 @@ public class pageChangeController {
 	public String mypageView() {
 		return "mypage/mypagemain";
 	}
+	
+	@RequestMapping("searchPasswordView.me")
+	public String searchPasswordView(){
+		return "member/searchPassword";
+	}
+	
+	@RequestMapping("searchIdView.me")
+	public String searchIdView(){
+		return "member/searchId";
+	}
+
 
 }
