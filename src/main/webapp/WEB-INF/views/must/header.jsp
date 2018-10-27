@@ -33,9 +33,6 @@
 				<input type="text" value="Search" onFocus="this.select();" onMouseUp="return false;">
 				<input type="submit" value="Go">
 			</form> -->
-			<button class="searchbar">
-				회원가입/로그인
-			</button>
 			<ul id="navigation">
 				<li>
 					<a href="travelInfo.me">여행정보</a>
@@ -52,9 +49,7 @@
 				<li>
 					<a href="serviceCenter.me">고객센터</a>
 				</li>
-				<li>
-					<a href="myPage.me">마이페이지</a>
-				</li>
+
 			</ul>
 		</div>
 </body>

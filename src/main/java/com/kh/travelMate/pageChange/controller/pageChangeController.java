@@ -26,7 +26,7 @@ public class pageChangeController {
 	
 	@RequestMapping("applyConsult.me")
 	public String applyConsultnView() {
-		return "others/contact";
+		return "others/applyConsult";
 	}
 	
 	@RequestMapping("serviceCenter.me")
@@ -49,8 +49,10 @@ public class pageChangeController {
 	{
 		return "board/serviceCenter/faq";
 	}
+
 	@RequestMapping("mypage.me")
 	public String mypageView() {
 		return "mypage/mypagemain";
 	}
+
 }

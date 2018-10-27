@@ -526,7 +526,8 @@
                    <li>
                       <a href="detailHanoi1.bo">
                             <div class="thumb">
-                                <img src="//ttcfd.hanatour.com/@cms_600/2017101126/gjfhme/하노이_호치민 묘소_TTB(1).JPG" alt="하노이, 하롱베이 추천일정" width="522">                           
+                            	<img src="//ttcfd.hanatour.com/@cms_600/2017101636/gjfhwh/하노이_퍼 틴_TTB(3).JPG" alt="여행이 맛있는 베트남" width="522">
+                                                           
                              </div>
                             <strong class="title">하노이 푸드트립 3박 5일</strong>
                             <span class="description">
@@ -539,7 +540,7 @@
                     <li>
                         <a href="detailHanoi2.bo">
                             <div class="thumb">
-                               <img src="//ttcfd.hanatour.com/@cms_600/2017101636/gjfhwh/하노이_퍼 틴_TTB(3).JPG" alt="여행이 맛있는 베트남" width="522"><img src="//ttcfd.hanatour.com/@cms_600/2017101636/gjfhwh/하노이_퍼 틴_TTB(3).JPG" alt="여행이 맛있는 베트남" width="522">                           
+                             	<img src="//ttcfd.hanatour.com/@cms_600/2017101126/gjfhme/하노이_호치민 묘소_TTB(1).JPG" alt="하노이, 하롱베이 추천일정" width="522">                           
                                 </div>
                             <strong class="title">하노이, 하롱베이 추천일정</strong>
                             <span class="description">베트남의 과거와 현재를 만날 수 있는 천 년의 도시, 하노이로 떠나 보자. 

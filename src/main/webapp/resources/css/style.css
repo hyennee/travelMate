@@ -110,14 +110,14 @@ p a:hover {
 #navigation {
 	display: inline-block;
 	list-style: none;
-	width: 650px;
+	width: 740px;
 	margin: 0;
 	padding: 0;
 }
 #navigation li {
 	float: left;
 	height: 60px;
-	width: 120px;
+	width: 140px;
 	text-align: center;
 }
 #navigation li a {
