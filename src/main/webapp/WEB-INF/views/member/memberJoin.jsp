@@ -14,7 +14,7 @@
 <style>
 #joinArea {
 	width: 100%;
-	height: 1200px;
+	padding: 0 0 200px 0;
 	margin: auto;
 	background: #edefea;
 }
