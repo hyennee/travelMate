@@ -15,6 +15,7 @@
 	float: right;
 }
 
+
 .loginMenuBarLi {
 	margin-right: 10px;
 	display: inline; /*  세로나열을 가로나열로 변경 */
@@ -22,7 +23,9 @@
 	border-right: none;
 	border-left: none; /* 메뉴 분류중 제일 왼쪽의 "|"는 삭제*/
 	float: right;
+
 }
+
 </style>
 </head>
 <body>

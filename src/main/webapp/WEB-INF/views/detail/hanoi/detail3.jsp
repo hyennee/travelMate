@@ -35,135 +35,141 @@ ul{
 	<br>
 	<div class="outer">
 	<div id="real_spotContent" class="new_des_markup_content">
-				<h1 class="new_des_title">홍콩 디저트 맛집</h1>
+				<h1 class="new_des_title">하롱베이</h1>
+								<div style="text-align:center;">
+								<strong style="text-align:center; width:960px;">파란 하늘 아래, 바다의 숲이라 불리는 베트남 최고의 경승지 하롱베이. 유네스코 세계 자연 유산에 등록된 아름다운 여행지다. <br>
+하롱(下龍)의 지명 유래는 '하늘에서 내려온 용이 베트남을 지켜 내고, 용이 내뿜은 여의주가 땅에 떨어져 오늘날 기암의 모습이 되었다'고 한다. <br>
+영롱한 비취색 바다 위에 2,000여 개의 크고 작은 섬들이 파도를 막아 마치 잔잔한 호수 같다.<br></strong></div>
 								<div class="new_des_content">
-									<h2>허유산</h2>
-					<strong>망고 디저트 전문점</strong> <br>
-<strong>홍콩 전역 어디에서나</strong> <br>
-<strong>각종 달콤한 디저트 모음</strong><br>
-<br><br>
-유명 체인점으로 망고와 과일을 이용한 음료와 디저트를 맛볼 수 있다. <br>
-더위에 지칠 때쯤 찾아가면 좋은 곳. 양도 많아서 넉넉히 즐길 수 있다. <br>
-세트 메뉴도 판매하며 시즌별로 구성도 달라진다.<br>
-									<h2>허니문 디저트</h2>
-					<strong>홍콩 전역에 있는 디저트 체인점</strong> <br>
-<strong>망고팬케이크로 유명</strong> <br>
-<strong>홍콩 여행 필수 코스</strong> <br>
+									<h2>하롱 팰리스 호텔</h2>
+					<strong>전 객실 레지던스형</strong><br>
+대부분의 투숙객들이 한국인이라고 해도 과언이 아닌 하롱 팰리스 호텔. <br>
+단체 여행자들이 주로 묵는 곳이지만 깔끔하게 묵고 싶은 개별 여행자들에게도 추천한다. <br>
+넓은 객실과 깨끗한 욕조, 조식 뷔페, 수영장 등 호텔에서 즐길 수 있는 시설은 충분하다. <br>
+시내의 중심부에 위치해 찾아가기 쉽다.<br>
 <br>
-홍콩 전지역에 11개의 지점이 있는 디저트 전문점. <br>
-1995년 설립된 곳으로 홍콩 젊은이들에게 큰 인기이다. <br>
-홍콩 뿐만 아니라 중국 본토 심천, 상해, 광저우 등에도 허니문 디저트가 있다. <br>
 <br>
-팬케이크와 푸딩이 노란 그릇에 담겨 나오는 것이 인상적. <br>
-중국식 디저트, 차가운 두부 푸딩, 죽과 비슷한 느낌의 사고Sago, 두리안으로 만든 푸딩과 팬케이크 등이 있다. <br>
-다양한 종류가 있으나 대체로 달달한편이며, 가장 추천하는 메뉴는 ‘망고 포멜로 &amp; 사고’로 아이스크림을 곁들인 것. <br>
-또한 호두와 아몬드로 맛을 낸 것도 있으니 한 번 먹어볼 것. 계절별로 새로운 메뉴를 내놓고 있다.<br>			
-									<h2>이슌 밀크 컴퍼니</h2>
-					<strong>매일 매일 신선한 우유로 달콤한 디저트를</strong> <br>
-<strong>우유 푸딩으로 유명</strong> <br>
-<strong>현지인들이 사랑하는 디저트 맛집</strong> <br>
+<strong>호텔 바로 뒤편에 큰 재래시장 위치</strong><br>
+호텔이 시내 중심가에 있어 바로 앞에서 현지인들의 삶을 느껴볼 수 있다. <br>
+슈퍼도 멀지 않고, 바로 뒤편에 큰 재래시장이 있어 산책겸 둘러보기 좋다.<br>				
+									<h2>하롱 드림 호텔</h2>
+					<strong>작지만 모든 시설을 갖춘 실속 있는 호텔</strong><br>
+야외 수영장, 피트니스센터, 마사지까지 모든 부대시설을 갖추고 있다. <br>
+또한 커넥팅 룸을 보유하고 있어 가족 여행 시 객실을 연결해서 편리하게 사용할 수 있다.<br>
 <br>
-디저트가 발달한 홍콩에서도 특히나 유명한 곳. <br>
-이슌 밀크 컴퍼니는 사실 마카오가 본점이지만 홍콩에 여러 지점을 내고 운영하고 있다. <br>
-간판도 따로 크게 없고 매장도 화려하지 않지만 언제나 사람들로 북적인다.<br>
 <br>
-우유 푸딩이 주메뉴로 달콤하고 부드러운 맛이 일품. <br>
-외국인부터 현지인까지 고루 방문하고 있다. <br>
-밀크 푸딩 하나에 HK$23 정도. 망고 푸딩도 베스트 메뉴이다.<br>		
-									<h2>타이 청 베이커리</h2>
-					<strong>에그타르트로 유명한 곳</strong><br>
-<strong>60여 년의 역사를 가진 곳</strong> <br>
-<strong>명성만큼 뛰어난 맛, 착한 가격</strong> <br>
+<strong>커넥팅 룸으로 가족들이 함께</strong><br>
+두 방을 연결해서 하나의 공간처럼 쓸 수 있는 커넥팅 룸을 보유하고 있다. <br>
+일반 객실의 경우 성인 2명, 아동 1명으로 인원이 제한되어 있으므로, 여러 가족이 갈 경우 커넥팅 룸으로 객실 2개를 예약하면 서로 오가기 편리하다. <br>
+부모님을 모시고 간다면 더욱 추천!<br>
 <br>
-타이 청 베이커리! 홍콩의 유명 디저트인 에그타르트 전문점 중에서도 언제나 상위에 링크되어 있다. <br>
-바삭하고 따끈한 타르트에 달콤한 커스터드 크림이 말랑말랑하게 얹혀 있다. <br>
-방금 갓 구운 따끈한 타르트 하나를 입에 쏙 넣어 보자. <br>
-달걀의 맛이 다른 곳에 비해 좀 향이 강하지만, 달콤 부드러운 맛으로는 타이 청 베이커리가 일품. <br>
-옛 홍콩 총독을 맡았던 영국인 총독이 이 맛을 잊지 못해 주문해서 먹었을 정도라고 하니. 당연히 먹어 봐야 하는 건 기본.<br>		
-									<h2>고디바</h2>
-					<strong>초콜릿계의 명품</strong> <br>
-<strong>깊고 진한 초콜릿</strong> <br>
-<strong>선물용으로 안성맞춤</strong> <br>
 <br>
-고디바 하면 정말 진한 맛의 초콜릿으로 유명하다. <br>
-홍콩의 고디바에서는 일반 초콜릿만 구입할 수 있는 게 아니라, 초콜릿 음료까지 마실 수 있어 더욱 좋다.<br>
-여행이 지친 몸을 달달한 초콜릿 음료를 마시는 걸로 회복해 보자. <br>
-가격은 저렴하진 않지만 (HK$39) 그 진한 맛에 감동할 수 있다. <br>
-IFC MALL 에 위치하여 찾기도 쉽다.<br>				
-									<h2>제니 베이커리</h2>
-					<strong>홍콩 기념품 하면 제니 쿠키</strong><br>
-<strong>마약처럼 중독되는 달콤한 그 맛</strong> <br>
-<strong>선물용으로 딱!</strong> <br>
+<strong>하롱 파크가 바로 눈앞에</strong><br>
+하롱 드림 호텔 주변으로 많은 호텔들이 있지만, 합리적인 가격에 하롱 파크 전경까지 감상할 수 있는 호텔은 이곳 만한 곳이 없다.<br>			
+									<h2>빈펄 하롱베이 리조트</h2>
+					<strong>하롱베이를 바라보며 즐기는 여유로움</strong><br>
+빈펄 하롱베이 리조트는 작은 섬에 위치해 있어 시내의 번잡스러움 없이 여유로움을 즐길 수 있다. <br>
+야외 수영장에서 바라보는 하롱베이는 마치 진짜 해변가에 와 있는 듯한 기분을 들게 한다. <br>
+주변에 다른 편의 시설이 아무것도 없어 리조트 안에서 모든 걸 해결해야 하지만 부족함을 느낄 겨를이 없다.<br>
 <br>
-줄을 서서 사는 건 기본! 그 맛에 중독되어 마약 쿠키라는 무서운 애칭이 있는 제니 베이커리.<br>
-9가지 종류로 판매하고 있으며, 그 중에 4Mix 버터 쿠키, 8Mix 넛츠 쿠키, 파인애플 롤이 가장 인기가 많다. 미리 품절되는 경우도 많은 편. <br>
-현금 결제만 가능하니, 대량으로 구매하고 싶으면 넉넉히 환전해 가자. 쿠키통도 예뻐 홍콩 선물로도 그만이다.<br>			
-									<h2>행복한 한 입, 홍콩의 대표 디저트</h2>
-					홍콩은 먹을 게 무궁무진한데, 특히 간단히 먹을 수 있는 디저트 종류가 어마어마하다. <br>
-유명 에그 타르트부터 달달한 망고까지. 식사 전·후로 꼭 챙겨야 할 홍콩의 베스트 디저트!<br>
 <br>
-▶ 망고 디저트 Mango Dessert<br>
-<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017020204/gjfe83/부드러운크림가득.jpg" title="허니문 디저트" data-org="//ttcfd.hanatour.com/@cms_800/2017020204/gjfe83/부드러운크림가득.jpg"></div>
-<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017060919/gjfgka/홍콩_허유산1_유미선.JPG" title="허유산" data-org="//ttcfd.hanatour.com/@cms_800/2017060919/gjfgka/홍콩_허유산1_유미선.JPG"></div>
-시원하게 즐기는 망고 아이스크림과 주스, 달달하게 즐기는 망고 팬케이크까지. <br>
-망고 천국답게 시내 곳곳에서 만날 수 있다.<br>
+<strong>리조트 투숙객 전용 유람선을 타고 떠나는 여행</strong><br>
+리조트에서만 놀기 심심하다면, 투숙객만 이용할 수 있는 전용 유람선을 타고 떠나 보자. <br>
+최소 5인이 모이면 하롱베이 유람선 투어를 즐길 수 있다. 사설 유람선 투어보다 규모는 작을지 몰라도 가볍게 풍경을 감상하기 좋다. <br>
+전용 유람선 서비스는 유료로 운영되고 있다.<br>
+<br>
+<br>
+<strong>어린이 수영장, 키즈 클럽 보유로 가족 여행객에게 편리</strong><br>
+레스토랑에는 어린이 메뉴가 있고, 어린이 수영장과 키즈 클럽(놀이터) 시설이 잘 되어 있어 아이들이 안전하게 놀 수 있다. <br>
+바닷가, 야외 수영장, 놀이터를 오가며 놀다 보면 지루할 틈이 없을 것.<br>					
+									<h2>로열 로터스 호텔 하롱</h2>
+					<strong>시내에 위치하였지만 조용한 환경</strong><br>
+사실 베트남 어느 숙소를 가더라도 경적과 오토바이 소리로 인해 예민한 사람이라면 잠을 설치기 마련이다. <br>
+로열 로터스 호텔 하롱은 시내에 위치해 있지만 주변이 크게 발달하지 않아 밤에도 조용한 편이다.<br>
+<br>
+<br>
+<strong>수영장, 스파, 피트니스센터 등 모든 시설을 갖춘 곳</strong><br>
+소위 말하는 호텔 놀이를 즐기고 싶다면 이곳을 찾아 보자. 저렴한 가격 대비 높은 성급과 깨끗한 객실을 갖추고 있는 곳이다. <br>
+객실부터 스파나 내부 레스토랑까지 가격대가 높지 않아 부담 없이 이용하기 좋다.<br>				
+									<h2>노보텔 하롱베이</h2>
+					<strong>하롱베이 해변가 중심에 위치</strong><br>
+시내 지역(Bãi Cháy)과 해변가 지역(Hòn Gai)을 모두 아우르는 위치의 호텔을 찾고 있다면 노보텔 하롱베이를 추천한다. <br>
+바로 앞에 야자수가 가득한 하롱 해변(Bãi tắm Hạ Long)이 위치해 있다.<br>
+<br>
+<br>
+<strong>여행자 거리 시작점에 위치하여 찾아가기 좋은 호텔</strong><br>
+하롱베이 여행자 거리 시작 부근에 위치하여 본격적인 하롱베이 여행을 시작하기 좋다. <br>
+호텔 주변으로 다양한 현지 여행사가 자리해 있고, 하롱베이에서 가장 핫한 하롱 파크가 불과 도보 5분 거리.<br>
+밤에 바라보는 하롱 파크의 모습은 그 어떤 풍경보다 선명하게 기억에 남을 것이다.<br>
+<br>
+<br>
+<strong>노보텔 브랜드에 비해 저렴한 가격</strong><br>
+하롱베이 인근의 호텔들 중에 노보텔이 가장 네임 밸류가 높은 편.<br>
+믿을 수 있는 서비스와 객실 수준에 비해 가격대는 저렴한 편이다.<br>
+브랜드 호텔 체인을 선호하는 편이라면 고민할 것 없이 노보텔을 선택해 보자.<br>					
+									<h2>주요 여행지</h2>
+					<strong>▶ 티똡 섬(티톱 섬) Đảo Ti Tốp</strong><br>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101643/gjfhxg/하롱베이_티토프섬_TTB(1).JPG" title="하롱베이_띠똡 섬" data-org="//ttcfd.hanatour.com/@cms_800/2017101643/gjfhxg/하롱베이_티토프섬_TTB(1).JPG"></div>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101655/gjfhxi/하롱베이_티토프섬_TTB(2)-수정.jpg" title="하롱베이_띠똡 섬" data-org="//ttcfd.hanatour.com/@cms_800/2017101655/gjfhxi/하롱베이_티토프섬_TTB(2)-수정.jpg"></div>
+섬 꼭대기에 오르면 하롱베이를 한눈에 볼 수 있는 전망대가 있다. 비취색 바다와 수많은 거대 기암을 볼 수 있는 뷰 포인트! <br>
+섬에는 인공 해변이 조성되어 있어 물놀이를 즐기는 여행자들도 많다. <br>
+이곳은 구소련 우주 비행사 게르만 티토프(Gherman Titov)가 하롱베이의 풍광에 감탄을 하자, <br>
+베트남 정부에서 그의 조각상을 세우고 이름을 붙여 주었다.<br>
+<br>
+<br>
+<strong>▶ 보혼 섬 Đảo Bồ Hòn</strong><br>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101672/gjfhxa/하롱베이_보혼섬(동굴)_TTB(3).JPG" title="하롱베이_보혼 섬" data-org="//ttcfd.hanatour.com/@cms_800/2017101672/gjfhxa/하롱베이_보혼섬(동굴)_TTB(3).JPG"></div>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101631/gjfhx9/하롱베이_보혼섬(동굴)_TTB(4).JPG" title="하롱베이_보혼 섬" data-org="//ttcfd.hanatour.com/@cms_800/2017101631/gjfhx9/하롱베이_보혼섬(동굴)_TTB(4).JPG"></div>
+보혼 섬에 위치한 석회 동굴인 항 승솟(Hang Sửng Sốt)은 베트남어로 '놀랍다'는 뜻을 갖고 있는 신비롭고 거대한 동굴. <br>
+총 3개의 동굴로 이루어져 있으며, 바다에 있어서 동굴이지만 덥고 습한 것이 특징이다. <br>
+내부의 천장은 마치 손으로 꾹꾹 누른 듯한 물결 모양을 하고 있는데, 이를 통해 하롱베이가 과거에 용식 작용을 받은 곳임을 알 수 있다. <br>
+동굴 속 특별한 모양의 종유석과 석순을 찾아보는 것도 재미다.<br>
+<br>
+<br>
+<strong>▶ 기암</strong><br>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101665/gjfhxo/하롱베이_기암(향로바위)_TTB(2).JPG" title="하롱베이" data-org="//ttcfd.hanatour.com/@cms_800/2017101665/gjfhxo/하롱베이_기암(향로바위)_TTB(2).JPG"></div>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101631/gjfhxn/하롱베이_기암(키스바위)_TTB(2).JPG" title="하롱베이" data-org="//ttcfd.hanatour.com/@cms_800/2017101631/gjfhxn/하롱베이_기암(키스바위)_TTB(2).JPG"></div>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101602/gjfhxm/하롱베이_기암(사람얼굴바위)_TTB.JPG" title="하롱베이" data-org="//ttcfd.hanatour.com/@cms_800/2017101602/gjfhxm/하롱베이_기암(사람얼굴바위)_TTB.JPG"></div>
+약 2,000여 개의 거대 기암들이 솟아 있는 하롱베이는 석회암 봉우리로 탑카르스트 지형에 속한다. <br>
+수억 년전 바닷속에 있었던 거대 군락이 바다 위로 솟구치면서 지금의 모습이 만들어졌다. 물에 용해된 기암 안에는 동굴이 자리하고 있다. <br>
+하롱베이의 주요 포인트는 20만동 화폐에 그려져 있는 향로 바위, 서로 사랑을 나누는 키스 바위, 얼굴 바위 등 저마다의 모습을 드러내고 있다. <br>
+특별한 포토 존에서 멋진 사진도 남기자.<br>
+<br>
+<br>
+<br>
+<strong>▶ 향루원(원숭이 섬)</strong><br>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101671/gjfhxf/하롱베이_원숭이섬_TTB(1).JPG" title="하롱베이_원숭이 섬" data-org="//ttcfd.hanatour.com/@cms_800/2017101671/gjfhxf/하롱베이_원숭이섬_TTB(1).JPG"></div>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101621/gjfhxb/하롱베이_원숭이섬_TTB(3)-원숭이크롭.JPG" title="하롱베이_원숭이 섬" data-org="//ttcfd.hanatour.com/@cms_800/2017101621/gjfhxb/하롱베이_원숭이섬_TTB(3)-원숭이크롭.JPG"></div>
+작은 배와 카누를 타고 들어갈 수 있는 이곳은 사방이 기암으로 가려진 거대한 웅덩이 같은 곳이다. <br>
+그래서 다른 곳보다 수심이 깊고 고요하다. 특히 많은 원숭이들이 서식하고 있어 원숭이 섬으로도 불린다.<br>
+<br>
+<br>
+<br>
+<strong>▶ 더우고 섬 Đảo Đầu Gỗ</strong><br>
+더우고 섬 안에 있는 석회 동굴인 항 더우고(Hang Đầu Gỗ)에는 종유석과 석순으로 가득하다. <br>
+말뚝 섬을 뜻하는 이곳은, 베트남의 역사적인 장소다. <br>
+베트남의 영웅 쩐흥다오(Trần Hưng Đạo)가 몽골 제국의 침입을 받았을 때, 하롱베이의 지형을 이용해서 적군을 공격했다. <br>
+해안선에 말뚝을 박아 만조 때 적군의 배를 육지 쪽으로 유인하고, 썰물 때 공격을 하여 큰 승리를 거두었다. <br>
+더우고 섬은 그때 말뚝을 숨긴 장소라고 한다.<br>
+<br>
+<br>
+<br>
+하롱베이 찾아가는법 <br>
+<ul>
+<li>하롱베이로 들어가는 길은 일반 시외버스보다는 투어 상품을 이용하는 편이 쉽다. 시간은 약 3시간 30분 정도 소요된다. </li>
+<li>픽업 서비스+식사+입장료+숙박 등 옵션별로 구성되어 있으니 일정과 코스에 맞춰서 선택하면 된다.</li>
+</ul>				
+									<h2>하롱 파크</h2>
+					<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101663/gjfhxu/하롱베이_하롱파크_TTB(4).JPG" title="하롱 파크" data-org="//ttcfd.hanatour.com/@cms_800/2017101663/gjfhxu/하롱베이_하롱파크_TTB(4).JPG"></div>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101622/gjfhxv/하롱베이_하롱파크_TTB(9).JPG" title="하롱 파크" data-org="//ttcfd.hanatour.com/@cms_800/2017101622/gjfhxv/하롱베이_하롱파크_TTB(9).JPG"></div>
+<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017101695/gjfhxs/하롱베이_하롱파크_TTB(8).JPG" title="하롱 파크" data-org="//ttcfd.hanatour.com/@cms_800/2017101695/gjfhxs/하롱베이_하롱파크_TTB(8).JPG"></div>
+일본에서 투자한 테마 공원으로, 시내에서 머무는 여행객들에게 볼거리를 제공한다. <br>
+특히 이곳은 세계에서 가장 많은 인원이 탑승할 수 있는 2층 케이블카로 유명하며, <br>
+이외에 대관람차, 놀이기구, 아케이드 존 등 즐길 거리가 다양하다. 하롱베이의 야경을 감상하기 좋은 장소다.<br>
 <br>
 <ul>
-<li>대표 브랜드</li>
-<li>허유산 Hui Lau Shan</li>
-<li>허니문 디저트 Honeymoon Desert</li>
-</ul>
-<br>
-<br>
-<br>
-▶ 쿠키 Cookie<br>
-<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2015112337/gjf3hn/홍콩_제니베이커리_TTS(3).jpg" title="제니 베이커리" data-org="//ttcfd.hanatour.com/@cms_800/2015112337/gjf3hn/홍콩_제니베이커리_TTS(3).jpg"></div>
-<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017060951/gjfgkb/홍콩_쇼핑(쿠키)_유미선.JPG" title="기화병가" data-org="//ttcfd.hanatour.com/@cms_800/2017060951/gjfgkb/홍콩_쇼핑(쿠키)_유미선.JPG"></div>
-버터가 가득 들어간 고소한 홍콩의 쿠키. 커피와 차를 함께 즐기면 더욱 좋다. <br>
-다양한 맛과 모양으로 홍콩 기념품으로도 빠지지 않는 제품.<br>
-<br>
-<ul>
-<li>대표 브랜드</li>
-<li>제니 베이커리 Jenny Bakery</li>
-<li>미스터 리치 베이커리 Mr.Rich Bakery</li>
-<li>기화병가 奇華餅家</li>
-</ul>
-<br>
-<br>
-<br>
-▶ 에그 타르트 Egg Tarte<br>
-<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017060929/gjfgkd/홍콩_한주쿠코보4_유미선.JPG" title="한주쿠코보" data-org="//ttcfd.hanatour.com/@cms_800/2017060929/gjfgkd/홍콩_한주쿠코보4_유미선.JPG"></div>
-<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2014062338/gjdomj/타이청 베이커리.jpg" title="타이청 베이커리" data-org="//ttcfd.hanatour.com/@cms_800/2014062338/gjdomj/타이청 베이커리.jpg"></div>
-홍콩의 베스트 디저트, 에그 타르트! 바삭한 파이와 촉촉한 커스터드 크림이 가득. <br>
-최근에는 치즈, 녹차, 초콜릿 등 다양한 맛이 있어 골라먹는 재미도 쏠쏠~<br>
-<br>
-<ul>
-<li>대표 브랜드</li>
-<li>타이청 베이커리 Tai Cheung Bakery</li>
-<li>한주쿠 코보 Hanjuku kobo</li>
-</ul>
-<br>
-<br>
-<br>
-▶ 파인애플 번 Fineapple Bun<br>
-<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017060980/gjfgke/홍콩_스타벅스4_유미선.JPG" title="스타벅스" data-org="//ttcfd.hanatour.com/@cms_800/2017060980/gjfgke/홍콩_스타벅스4_유미선.JPG"></div>
-<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2017060971/gjfgkf/홍콩_마카오레스토랑2_유미선.JPG" title="마카오레스토랑" data-org="//ttcfd.hanatour.com/@cms_800/2017060971/gjfgkf/홍콩_마카오레스토랑2_유미선.JPG"></div>
-에그 타르트만큼 놓치면 아쉬운 파인애플 번. 파인애플처럼 표면이 울퉁불퉁하며,<br>
-빵 안에 두꺼운 버터가 들어가 있어 고소한 맛을 낸다. 밀크티와 커피랑도 무척 잘 어울린다.<br>
-<br>
-<br>
-<br>
-▶ 우유 푸딩 Milk Pudding<br>
-<div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2014062348/gjdoev/이순밀크컴퍼니(코즈웨이베이점).jpg" title="이순밀크컴퍼니(코즈웨이베이점)" data-org="//ttcfd.hanatour.com/@cms_800/2014062348/gjdoev/이순밀크컴퍼니(코즈웨이베이점).jpg"></div>
-말랑말랑 그리고 부들부들 우유의 고소한 맛이 응축된 우유 푸딩. <br>
-아이들과 함께 맛보면 좋은 디저트.<br>
-<br>
-<ul>
-<li>대표 브랜드</li>
-<li>이순 밀크 컴퍼니 Yee Shun Milk Company</li>
-<li>호주 우유 공사 Australia Dairy Co.</li>
+<li>운영시간 : 평일 15:00~22:30, 주말 08:00~22:30</li>
 </ul>					
-
 
 			</div>
 			</div>
