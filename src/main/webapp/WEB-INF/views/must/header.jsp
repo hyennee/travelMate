@@ -38,7 +38,7 @@
 					<a href="travelInfo.me">여행정보</a>
 				</li>
 				<li >
-					<a href="openConsult.me">오픈컨설팅</a>
+					<a href="openConsult.bo">오픈컨설팅</a>
 				</li>
 				<li>
 					<a href="directConsult.me">다이렉트컨설팅</a>

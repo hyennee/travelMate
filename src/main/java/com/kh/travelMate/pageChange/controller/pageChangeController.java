@@ -14,9 +14,9 @@ public class pageChangeController {
 		return "others/about";
 	}
 	
-	@RequestMapping("openConsult.me")
+	@RequestMapping("openConsult.bo")
 	public String openConsultView() {
-		return /*"others/blog";*/ "others/openconsulting";
+		return /*"others/blog";*/ "board/openconsulting";
 	}
 	
 	@RequestMapping("directConsult.me")
@@ -49,5 +49,10 @@ public class pageChangeController {
 	{
 		return "board/serviceCenter/faq";
 	}
-	
+
+	@RequestMapping("mypage.me")
+	public String mypageView() {
+		return "mypage/mypagemain";
+	}
+
 }
