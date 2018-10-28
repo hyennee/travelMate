@@ -21,7 +21,7 @@ public class pageChangeController {
 	
 	@RequestMapping("directConsult.me")
 	public String directConsultView() {
-		return "others/contact";
+		return "board/insertDirectForm";
 	}
 	
 	@RequestMapping("applyConsult.me")
@@ -64,6 +64,4 @@ public class pageChangeController {
 	public String searchIdView(){
 		return "member/searchId";
 	}
-
-
 }
