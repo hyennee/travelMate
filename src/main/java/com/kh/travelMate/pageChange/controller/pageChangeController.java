@@ -64,4 +64,10 @@ public class pageChangeController {
 	public String searchIdView(){
 		return "member/searchId";
 	}
+	
+	@RequestMapping("goMapView.map")
+	public String goMapView()
+	{
+		return "others/mapExample";
+	}
 }

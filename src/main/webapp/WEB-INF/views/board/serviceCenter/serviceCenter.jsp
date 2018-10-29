@@ -88,6 +88,7 @@
 <body>
 	<jsp:include page="../../must/header.jsp"/>
 	<div class="full-container" align="center">
+	<br><br><br>
 		<div style="width:960px; margin:auto; background:white;">
 			<div class="image-div" style="width:960px; height:200px;">
 				<span style="opacity:1; font-size:20px; font-weight:bold; color:orangered;">트래블메이트 고객센터는<br>여행자님의 아름다운 하루를 위해 최선을 다하겠습니다.</span>
@@ -189,6 +190,11 @@
 			<br>
 		</div>
 	</div>
+	<br>
+	<div align="center">
+		<button type="button" onclick="location.href='goMapView.map'">지도</button>
+	</div>
+	<br>
 	<jsp:include page="../../must/footer.jsp"/>
 </body>
 </html>
