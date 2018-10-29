@@ -68,19 +68,12 @@ ul.sub li:hover {
 	background: #fc972a;
 }
 
-#jb-sidebar-left {
-	width: 160px;
-	padding: 20px;
-	margin-right: 20px;
-	margin-bottom: 20px;
-	float: left;
-	margin-left: -100px;
-}
+
 
 </style>
 </head>
 <body>
-	<div class="side-menu" id="jb-sidebar-left">
+	<div class="side-menu" >
 		<ul id="navi">
 			<li class="group">
 
