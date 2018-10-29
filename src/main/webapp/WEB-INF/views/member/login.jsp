@@ -152,7 +152,7 @@ nav #memberMenuUl>li:first-child {
 
 							<div class="inputLoginForm">
 								<label for="ex_input2">패스워드</label> 
-								<input type="password" id="ex_input2" name="userPwd" maxlength="100">
+								<input type="password" id="ex_input2" name="password" maxlength="100">
 							</div>
 							<br>
 							<button id="loginBtn">로그인</button>

@@ -50,7 +50,7 @@ public class MemberServiceImpl implements MemberService{
 		String encPassword = md.selectEncPassword(sqlSession, m);
 		
 		//2. 조회해온 암호화 된 비밀번호와 평문 비밀번호를 비교해본다.
-		if(!passwordEncoder.matches(m.getUserPwd(), encPassword)){
+		if(!passwordEncoder.matches(m.getPassword(), encPassword)){
 			//두개의 비밀번호가 같지 않으면 exception발생시킴
 			throw new LoginException("로그인 실패!");
 		}else {

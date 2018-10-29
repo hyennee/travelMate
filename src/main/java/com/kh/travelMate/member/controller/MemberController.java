@@ -76,14 +76,14 @@ public class MemberController {
 	
 	@RequestMapping("insertMember.me")
 	public String insertMember(Model model, Member m, HttpServletRequest request) {
-		String encPassword = passwordEncoder.encode(m.getUserPwd());
-		m.setUserPwd(encPassword);
+		String encPassword = passwordEncoder.encode(m.getPassword());
+		m.setPassword(encPassword);
 		
 		String birth1 = request.getParameter("birth1");
 		String birth2 = request.getParameter("birth2");
 		String birth3 = request.getParameter("birth3");
-		String birthDay = birth1 + birth2 + birth3;
-		m.setBirthDay(birthDay);
+		String birthday = birth1 + birth2 + birth3;
+		m.setBirthday(birthday);
 		
 		String phoneNum1 = request.getParameter("phoneNum1");
 		String phoneNum2 = request.getParameter("phoneNum2");

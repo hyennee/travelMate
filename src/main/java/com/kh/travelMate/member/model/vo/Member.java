@@ -7,312 +7,289 @@ import java.sql.Date;
 
 public class Member implements java.io.Serializable{
 	
-	private int userNo;	 //회원번호
+	private int userNo;	  //회원번호
 	private String email;    //이메일
-	private String userPwd;  //비밀번호
+	private String password;  //비밀번호
 	private String userName; //이름
 	private String nickName; //닉네임
 	private String phone;	 //연락처
-	private String birthDay; //생년월일
+	private String birthday; //생년월일
 	private String gender;	 //성별
-	private Date enrollDate; //가입일
-	private Date modifyDate; //수정일
-	private String userType; //회원유형
-	private String bankName; //은행이름
-	private String accountNo;//계좌번호
+	private Date enroll_date; //가입일
+	private Date modify_date; //수정일
+	private String userType; //회원유형 '비관리자'
+	private String bankNo;//계좌번호
 	private int cyberMoney;  //사이버머니
-	private Date updateCybermoneyDate; //사이버머니변경일자
+	private Date cm_modify_date; //사이버머니변경일자
+	private String bank; //은행이름
+	private String user_type_level; //구분 '일반회원'
+	
+	
+	
 	
 	public Member() {}
 
-	public Member(int userNo, String email, String userPwd, String userName, String nickName, String phone,
-			String birthDay, String gender, Date enrollDate, Date modifyDate, String userType, String bankName,
-			String accountNo, int cyberMoney, Date updateCybermoneyDate) {
+
+
+
+	public Member(int userNo, String email, String password, String userName, String nickName, String phone,
+			String birthday, String gender, Date enroll_date, Date modify_date, String userType, String bankNo,
+			int cyberMoney, Date cm_modify_date, String bank, String user_type_level) {
 		super();
 		this.userNo = userNo;
 		this.email = email;
-		this.userPwd = userPwd;
+		this.password = password;
 		this.userName = userName;
 		this.nickName = nickName;
 		this.phone = phone;
-		this.birthDay = birthDay;
+		this.birthday = birthday;
 		this.gender = gender;
-		this.enrollDate = enrollDate;
-		this.modifyDate = modifyDate;
+		this.enroll_date = enroll_date;
+		this.modify_date = modify_date;
 		this.userType = userType;
-		this.bankName = bankName;
-		this.accountNo = accountNo;
+		this.bankNo = bankNo;
 		this.cyberMoney = cyberMoney;
-		this.updateCybermoneyDate = updateCybermoneyDate;
+		this.cm_modify_date = cm_modify_date;
+		this.bank = bank;
+		this.user_type_level = user_type_level;
 	}
+
+
+
 
 	public int getUserNo() {
 		return userNo;
 	}
 
+
+
+
 	public String getEmail() {
 		return email;
 	}
 
-	public String getUserPwd() {
-		return userPwd;
+
+
+
+	public String getPassword() {
+		return password;
 	}
+
+
+
 
 	public String getUserName() {
 		return userName;
 	}
+
+
+
 
 	public String getNickName() {
 		return nickName;
 	}
 
+
+
+
 	public String getPhone() {
 		return phone;
 	}
 
-	public String getBirthDay() {
-		return birthDay;
-	}
 
-	public String getGender() {
-		return gender;
-	}
 
-	public Date getEnrollDate() {
-		return enrollDate;
-	}
-
-	public Date getModifyDate() {
-		return modifyDate;
-	}
-
-	public String getUserType() {
-		return userType;
-	}
-
-	public String getBankName() {
-		return bankName;
-	}
-
-	public String getAccountNo() {
-		return accountNo;
-	}
-
-	public int getCyberMoney() {
-		return cyberMoney;
-	}
-
-	public Date getUpdateCybermoneyDate() {
-		return updateCybermoneyDate;
-	}
-
-	public void setUserNp(int userNo) {
-		this.userNo = userNo;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public void setBirthDay(String birthDay) {
-		this.birthDay = birthDay;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public void setEnrollDate(Date enrollDate) {
-		this.enrollDate = enrollDate;
-	}
-
-	public void setModifyDate(Date modifyDate) {
-		this.modifyDate = modifyDate;
-	}
-
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
-	}
-
-	public void setAccountNo(String accountNo) {
-		this.accountNo = accountNo;
-	}
-
-	public void setCyberMoney(int cyberMoney) {
-		this.cyberMoney = cyberMoney;
-	}
-
-	public void setUpdateCybermoneyDate(Date updateCybermoneyDate) {
-		this.updateCybermoneyDate = updateCybermoneyDate;
-	}
-
-	@Override
-	public String toString() {
-		return "Member [userNo=" + userNo + ", email=" + email + ", userPwd=" + userPwd + ", userName=" + userName
-				+ ", nickName=" + nickName + ", phone=" + phone + ", birthDay=" + birthDay + ", gender=" + gender
-				+ ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", userType=" + userType + ", bankName="
-				+ bankName + ", accountNo=" + accountNo + ", cyberMoney=" + cyberMoney + ", updateCybermoneyDate="
-				+ updateCybermoneyDate + "]";
-	}
-	
-	
-	/*private int mid;
-	private String userId;
-	private String userPwd;
-	private String userName;
-	private String email;
-	private String birthday;
-	private String gender;
-	private String phone;
-	private String address;
-	private Date enrollDate;
-	private Date modifyDate;
-	private String status;
-	
-	//기본생성자는 필수!!없으면 에러
-	public Member() {}
-
-	public Member(int mid, String userId, String userPwd, String userName, String email, String birthday, String gender,
-			String phone, String address, Date enrollDate, Date modifyDate, String status) {
-		super();
-		this.mid = mid;
-		this.userId = userId;
-		this.userPwd = userPwd;
-		this.userName = userName;
-		this.email = email;
-		this.birthday = birthday;
-		this.gender = gender;
-		this.phone = phone;
-		this.address = address;
-		this.enrollDate = enrollDate;
-		this.modifyDate = modifyDate;
-		this.status = status;
-	}
-
-	public int getMid() {
-		return mid;
-	}
-
-	public void setMid(int mid) {
-		this.mid = mid;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	//세터개터도 필수!! 에러는 안나오지만 null 값이 나옴
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public String getUserPwd() {
-		return userPwd;
-	}
-
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
+
+
 
 	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+
+
+
+	public Date getEnroll_date() {
+		return enroll_date;
 	}
 
-	public String getPhone() {
-		return phone;
+
+
+
+	public Date getModify_date() {
+		return modify_date;
 	}
+
+
+
+
+	public String getUserType() {
+		return userType;
+	}
+
+
+
+
+	public String getBankNo() {
+		return bankNo;
+	}
+
+
+
+
+	public int getCyberMoney() {
+		return cyberMoney;
+	}
+
+
+
+
+	public Date getCm_modify_date() {
+		return cm_modify_date;
+	}
+
+
+
+
+	public String getBank() {
+		return bank;
+	}
+
+
+
+
+	public String getUser_type_level() {
+		return user_type_level;
+	}
+
+
+
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+
+
 
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-	public String getAddress() {
-		return address;
+
+
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
-	public Date getEnrollDate() {
-		return enrollDate;
+
+
+
+	public void setEnroll_date(Date enroll_date) {
+		this.enroll_date = enroll_date;
 	}
 
-	public void setEnrollDate(Date enrollDate) {
-		this.enrollDate = enrollDate;
+
+
+
+	public void setModify_date(Date modify_date) {
+		this.modify_date = modify_date;
 	}
 
-	public Date getModifyDate() {
-		return modifyDate;
+
+
+
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
-	public void setModifyDate(Date modifyDate) {
-		this.modifyDate = modifyDate;
+
+
+
+	public void setBankNo(String bankNo) {
+		this.bankNo = bankNo;
 	}
 
-	public String getStatus() {
-		return status;
+
+
+
+	public void setCyberMoney(int cyberMoney) {
+		this.cyberMoney = cyberMoney;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+
+
+
+	public void setCm_modify_date(Date cm_modify_date) {
+		this.cm_modify_date = cm_modify_date;
 	}
+
+
+
+
+	public void setBank(String bank) {
+		this.bank = bank;
+	}
+
+
+
+
+	public void setUser_type_level(String user_type_level) {
+		this.user_type_level = user_type_level;
+	}
+
+
+
 
 	@Override
 	public String toString() {
-		return "Member [mid=" + mid + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
-				+ ", email=" + email + ", birthday=" + birthday + ", gender=" + gender + ", phone=" + phone
-				+ ", address=" + address + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", status="
-				+ status + "]";
+		return "Member [userNo=" + userNo + ", email=" + email + ", password=" + password + ", userName=" + userName
+				+ ", nickName=" + nickName + ", phone=" + phone + ", birthday=" + birthday + ", gender=" + gender
+				+ ", enroll_date=" + enroll_date + ", modify_date=" + modify_date + ", userType=" + userType
+				+ ", bankNo=" + bankNo + ", cyberMoney=" + cyberMoney + ", cm_modify_date=" + cm_modify_date + ", bank="
+				+ bank + ", user_type_level=" + user_type_level + "]";
 	}
-	*/
+
+	
 	
 }
