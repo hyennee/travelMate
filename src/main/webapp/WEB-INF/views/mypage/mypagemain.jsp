@@ -31,31 +31,31 @@
     <title>CSS</title>
     <style>
       #jb-container {
-        width: 940px;
+        width: 90%;
         margin: 0px auto;
         padding: 20px;
-        border: 1px solid #bcbcbc;
+        border: 0px solid #bcbcbc;
       }
       #jb-header {
         padding: 20px;
         margin-bottom: 20px;
-        border: 1px solid #bcbcbc;
+        border: 0px solid #bcbcbc;
       }
       #jb-sidebar-left {
-        width: 160px;
         padding: 20px;
         margin-right: 20px;
         margin-bottom: 20px;
         float: left;
-        border: 1px solid #bcbcbc;
+        border: 0px solid #bcbcbc;
       }
       #jb-content {
-        width: 450px;
-        padding: 20px;
-        margin-bottom: 20px;
+        width: 73%;
+        padding: 50px;
+        margin : 0px auto;
         float: left;
         border: 1px solid #bcbcbc;
       }
+      /* 
       #jb-sidebar-right {
         width: 160px;
         padding: 20px;
@@ -63,39 +63,54 @@
         float: right;
         border: 1px solid #bcbcbc;
       }
+       */
       #jb-footer {
         clear: both;
         padding: 20px;
-        border: 1px solid #bcbcbc;
+        border: 0px solid #bcbcbc;
       }
     </style>
   </head>
   <body>
+	<jsp:include page="../must/header.jsp" />
     <div id="jb-container">
       <div id="jb-header">
-	<jsp:include page="../must/header.jsp" />
         <h1>3-Column Layout</h1>
       </div>
       <div id="jb-sidebar-left">
 	<jsp:include page="sidemenu.jsp" />
-        <h2>Sidebar</h2>
-        <ul>
-          <li>Lorem</li>
-          <li>Ipsum</li>
-          <li>Dolor</li>
-        </ul>
       </div>
       <div id="jb-content">
         <h2>Content</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis nulla. Phasellus lacinia tempus mauris eu laoreet. Proin gravida velit dictum dui consequat malesuada. Aenean et nibh eu purus scelerisque aliquet nec non justo. Aliquam vitae aliquet ipsum. Etiam condimentum varius purus ut ultricies. Mauris id odio pretium, sollicitudin sapien eget, adipiscing risus.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis nulla. Phasellus lacinia tempus mauris eu laoreet. Proin gravida velit dictum dui consequat malesuada. Aenean et nibh eu purus scelerisque aliquet nec non justo. Aliquam vitae aliquet ipsum. Etiam condimentum varius purus ut ultricies. Mauris id odio pretium, sollicitudin sapien eget, adipiscing risus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus officia illum nam fugit aliquam quod aliquid ducimus libero non quos similique dignissimos voluptas dicta commodi quasi ipsam odit rerum! Sunt.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+<br />
+<br />
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur asperiores dignissimos cumque autem sequi omnis. Ipsam excepturi animi accusantium numquam provident ab sit ad hic pariatur quo quasi nulla ea.</p>
+
       </div>
       
       <div id="jb-footer">
-	<jsp:include page="../must/footer.jsp" />
         <p>Copyright</p>
       </div>
     </div>
+	<jsp:include page="../must/footer.jsp" />
   </body>
 </html>
 
