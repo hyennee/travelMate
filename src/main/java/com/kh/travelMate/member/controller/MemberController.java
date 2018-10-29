@@ -79,21 +79,26 @@ public class MemberController {
 		String encPassword = passwordEncoder.encode(m.getPassword());
 		m.setPassword(encPassword);
 		
+	
 		String birth1 = request.getParameter("birth1");
 		String birth2 = request.getParameter("birth2");
 		String birth3 = request.getParameter("birth3");
-		String zero = String.valueOf(0);
-		String birth22 = "";
-		String birth33 = "";
+
+	
+		for(int i = 1; i <= 9; i++) {
+			if(birth2.equals(String.valueOf(i))){
+			birth2 = String.format("%02d", Integer.parseInt(birth2));
+			}	
+			}
+			
 		
-		if(Integer.parseInt(birth2) >= 1 || Integer.parseInt(birth2) <= 9) {
-			birth22 = zero + birth2;
+		for(int i = 1; i <= 9; i++) {
+			if(birth3.equals(String.valueOf(i))){
+				birth3 = String.format("%02d", Integer.parseInt(birth3));
+			}
 		}
-		if(Integer.parseInt(birth3) >= 1 || Integer.parseInt(birth3) <= 9) {
-			birth33 = zero + birth3;
-		}
-		
-		String birthday = (birth1 + birth22 + birth33).substring(2);
+	
+		String birthday = (birth1 + birth2 + birth3).substring(2);
 		
 		System.out.println(birthday);
 		
