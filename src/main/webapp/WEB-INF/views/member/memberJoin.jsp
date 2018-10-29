@@ -132,11 +132,11 @@ td:first-child {
 									</tr> -->
 									<tr>
 										<td rowspan="2">비밀번호<span style="color: red">*</span></td>
-										<td><input type="password" name="userPwd"
+										<td><input type="password" name="password"
 											placeholder="비밀번호" style="width:187px; height: 18px;"><br><span
 											style="font-size: 12px; font-weight: lighter; color: #999">※8~16자의
 												영문(소문자)과 숫자만 사용할 수 있습니다.</span></td>
-										<td><input type="password" name="userPwd2"
+										<td><input type="password" name="password2"
 											placeholder="비밀번호 확인" style="width:187px; height: 18px;"><br>&nbsp;</td>
 									</tr>
 									<tr>
