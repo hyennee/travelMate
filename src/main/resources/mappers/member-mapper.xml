@@ -25,19 +25,20 @@
 		
 		<id property="userNo" column="USER_NO"/>
 		<result property="email" column="EMAIL"/>
-		<result property="userPwd" column="USER_PWD"/>
+		<result property="password" column="PASSWORD"/>
 		<result property="userName" column="USER_NAME"/>
 		<result property="nickName" column="NICK_NAME"/>
 		<result property="phone" column="PHONE"/>
-		<result property="birthDay" column="BIRTHDAY"/>
+		<result property="birthday" column="BIRTHDAY"/>
 		<result property="gender" column="GENDER"/>
-		<result property="enrollDate" column="ENROLL_DATE"/>
-		<result property="modifyDate" column="MODIFY_DATE"/>
+		<result property="enroll_date" column="ENROLL_DATE"/>
+		<result property="modify_date" column="MODIFY_DATE"/>
 		<result property="userType" column="USER_TYPE"/>
-		<result property="bankName" column="BANK_NAME"/>
-		<result property="accountNo" column="ACCOUNT_NO"/>
+		<result property="bankNo" column="BANK_NO"/>
 		<result property="cyberMoney" column="CYBERMONEY"/>
-		<result property="updateCybermoneyDate" column="UPDATE_CYBERMONEY_DATE"/>
+		<result property="cm_modify_date" column="CM_MODIFY_DATE"/>
+		<result property="bank" column="BANK"/>
+		<result property="user_type_level" column="USER_TYPE_LEVEL"/>
 		
 	</resultMap>
 	
@@ -51,21 +52,22 @@
 		SELECT *
 		FROM MEMBER
 		WHERE EMAIL = #{email}
-		AND USER_PWD = #{userPwd}
-		AND USER_TYPE = 'U'
+		AND USER_PWD = #{password}
+		AND USER_TYPE = '비관리자'
+		AND USER_TYPE_LEVEL = '일반회원'
 	</select> 
 
 	<!-- 회원가입용 쿼리문 -->
 	<insert id = "insertMember" parameterType="Member">
 		INSERT INTO MEMBER
-		VALUES(SEQ_USER_NO.NEXTVAL, #{email}, #{userPwd}, #{userName}, 
-				#{nickName}, #{phone}, #{birthDay}, #{gender}, 
-				SYSDATE, SYSDATE, DEFAULT, NULL, NULL, 0, SYSDATE)
+		VALUES(SEQ_USER_NO.NEXTVAL, #{email}, #{password}, #{userName}, 
+				#{nickName}, #{phone}, #{birthday}, #{gender}, 
+				SYSDATE, SYSDATE, DEFAULT, NULL, 0, SYSDATE, NULL, DEFAULT)
 	</insert>
 	
 	<!-- 암호화된 비밀번호 조회용 쿼리문-->
 	<select id="selectPwd" resultType="java.lang.String" parameterType="java.lang.String">
-		SELECT USER_PWD
+		SELECT PASSWORD
 		FROM MEMBER
 		WHERE EMAIL = #{email}
 	</select>
