@@ -64,44 +64,21 @@ ul.sub li a {
 ul.sub li:hover {
 	background: #fc972a;
 }
-/* 드롭다운메뉴 */
-ul.sub-sub{
-	display: block;
-	width: 100%;
-	height: 100%;
-	text-decoration: none;
-	font-family:'Jua', sans-serif;
-	color: #000;
-	font-size:14px;
-	background: #fc972a;
-	
-}
-ul.sub-sub li:hover{
-background: #9bcdf7;
-font-family:'Jua', sans-serif;
-}
-ul.sub ul.sub-sub{display:none;}
-ul.sub li:hover > ul.sub-sub{display:block;} 
-.getMyContractButton{
-	background:transparent;
-	border-style:none;
-	font-size:16px;
-}
-.getMyContractButton:hover{
-	color:black;
-}
-.lookcont:active{
-outline:none;
-cursor:pointer;
-}
-.lookcont:hover{
-outline:none;
-cursor:pointer;
-}
+
+
+
+#jb-sidebar-left {
+        width: 160px;
+        padding: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        float: left;
+        margin-left:-100px;
+      }
 </style>
 </head>
 <body>
-				<div class="side-menu">
+				<div class="side-menu" id="jb-sidebar-left">
 					<ul id="navi">
 						<li class="group">
 							
