@@ -75,13 +75,13 @@
 	<jsp:include page="../must/header.jsp" />
     <div id="jb-container">
       <div id="jb-header">
-        <h1>3-Column Layout</h1>
+        <h1>헤더</h1>
       </div>
       <div id="jb-sidebar-left">
 	<jsp:include page="sidemenu.jsp" />
       </div>
       <div id="jb-content">
-        <h2>Content</h2>
+        <h2>나의 계정</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis nulla. Phasellus lacinia tempus mauris eu laoreet. Proin gravida velit dictum dui consequat malesuada. Aenean et nibh eu purus scelerisque aliquet nec non justo. Aliquam vitae aliquet ipsum. Etiam condimentum varius purus ut ultricies. Mauris id odio pretium, sollicitudin sapien eget, adipiscing risus.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis nulla. Phasellus lacinia tempus mauris eu laoreet. Proin gravida velit dictum dui consequat malesuada. Aenean et nibh eu purus scelerisque aliquet nec non justo. Aliquam vitae aliquet ipsum. Etiam condimentum varius purus ut ultricies. Mauris id odio pretium, sollicitudin sapien eget, adipiscing risus.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus officia illum nam fugit aliquam quod aliquid ducimus libero non quos similique dignissimos voluptas dicta commodi quasi ipsam odit rerum! Sunt.</p>
