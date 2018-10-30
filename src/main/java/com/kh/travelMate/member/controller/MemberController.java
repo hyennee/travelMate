@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -25,6 +25,7 @@ public class MemberController {
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	
+	//메인페이지로
 	@RequestMapping("goMain.me")
 	public String goMain() {
 		return "must/main"; //메인페이지로 포워드함
@@ -49,6 +50,7 @@ public class MemberController {
 		
 	}*/
 	
+	//로그인
 	@RequestMapping("login.me")
 	public String loginCheck(Member m, Model model) {
 		
@@ -58,7 +60,13 @@ public class MemberController {
 			//모든 작업이 성공일때
 			model.addAttribute("loginUser", loginUser);
 			
-			System.out.println(loginUser);
+			//관리자일 때 관리자 페이지로 리턴
+			if(loginUser.getUser_type().equals("ADMIN")) {
+				System.out.println("loginUser" + loginUser);
+				return "admin/adminIndex";
+			}
+			
+			System.out.println("loginUser : " + loginUser);
 			
 			return "redirect:goMain.me";
 		} catch (LoginException e) {
@@ -71,7 +79,7 @@ public class MemberController {
 	}
 	
 	
-	
+	//로그아웃
 	@RequestMapping("logout.me")
 	public String logout(SessionStatus status) {
 		status.setComplete();
@@ -129,12 +137,13 @@ public class MemberController {
 		}
 	}
 	
+	//아이디 중복체크
 	@ResponseBody
 	@RequestMapping("selectDuplChkId.me")
-	public String selectDuplChkId(@ModelAttribute("m") Member m, Model model) {
-		String email = m.getEmail();
+	public String selectDuplChkId(/*@ModelAttribute("m")*/@RequestParam(value="chkIdVal")String email, Member m, Model model) {
+		
 		System.out.println(email);
-		int result = ms.selectDuplChkId(m);
+		int result = ms.selectDuplChkId(email);
 		
 		return String.valueOf(result);
 	}
