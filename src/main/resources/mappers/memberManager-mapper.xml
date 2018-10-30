@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="MemberManage">
+	<resultMap type="com.kh.travelMate.admin.model.vo.MemberManage" id="membermanageResultSet">
+		<id property="user_no" column="USER_NO"></id>
+		<result property="email" column="EMAIL"></result>
+		<result property="password" column="PASSWORD"></result>
+		<result property="user_name" column="USER_NAME"></result>
+		<result property="nick_name" column="NICK_NAME"></result>
+		<result property="phone" column="PHONE"></result>	
+		<result property="birthday" column="BIRTHDAY"></result>	
+		<result property="gender" column="GENDER"></result>
+		<result property="enroll_date" column="ENROLL_DATE"></result>
+		<result property="modify_date" column="MODIFY_DATE"></result>		
+		<result property="user_type" column="USER_TYPE"></result>
+		<result property="bank_no" column="BANK_NO"></result>
+		<result property="cybermoney" column="CYBERMONEY"></result>
+		<result property="cm_modify_date" column="CM_MODIFY_DATE"></result>
+		<result property="bank" column="BANK"></result>
+		<result property="user_type_level" column="USER_TYPE_LEVEL"></result>
+	</resultMap>
+	
+	<!-- 모든 회원 목록을 조회해 오는 쿼리문 -->
+	<select id="selectAllMember" parameterType="MemberManage" resultMap="membermanageResultSet">
+		SELECT *
+		FROM MEMBER
+	</select>
+	
+</mapper>  
