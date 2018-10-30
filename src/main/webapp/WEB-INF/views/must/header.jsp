@@ -47,7 +47,7 @@
 					<a href="applyConsult.me">회원컨설팅신청</a>
 				</li>
 				<li>
-					<a href="serviceCenter.bo">고객센터</a>
+					<a href="selectServiceCenter.bo">고객센터</a>
 				</li>
 
 			</ul>

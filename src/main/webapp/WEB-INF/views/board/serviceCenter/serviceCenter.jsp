@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,8 +88,7 @@
 </head>
 <body>
 	<jsp:include page="../../must/header.jsp"/>
-	<div class="full-container" align="center">
-	<br><br><br>
+	<div id="contents" class="full-container" align="center">
 		<div style="width:960px; margin:auto; background:white;">
 			<div class="image-div" style="width:960px; height:200px;">
 				<span style="opacity:1; font-size:20px; font-weight:bold; color:orangered;">트래블메이트 고객센터는<br>여행자님의 아름다운 하루를 위해 최선을 다하겠습니다.</span>
@@ -117,24 +117,14 @@
 							<th>작성자</th>
 							<th>작성일</th>
 						</tr>
+						<c:forEach var="notice" items="${ noticeList }">
 						<tr>
-							<td>1</td>
-							<td>TravelMate가 오픈했습니다!</td>
-							<td>TravelMaker</td>
-							<td>2018.10.22</td>
+							<td><c:out value="${ notice.rowNum }"/></td>
+							<td><c:out value="${ notice.title }"/></td>
+							<td><c:out value="${ notice.nickName }"/></td>
+							<td><c:out value="${ notice.boardDate }"/></td>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td>TravelMate가 오픈했습니다!</td>
-							<td>TravelMaker</td>
-							<td>2018.10.22</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>TravelMate가 오픈했습니다!</td>
-							<td>TravelMaker</td>
-							<td>2018.10.22</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>			
 			</div>
@@ -160,30 +150,22 @@
 							<th>작성자</th>
 							<th>작성일</th>
 						</tr>
+						<c:forEach var="question" items="${ questionList }">
 						<tr>
-							<td>1</td>
-							<td>문의1</td>
-							<td>X</td>
-							<td>접수</td>
-							<td>와칸다포에버</td>
-							<td>2018.10.22</td>
+							<td><c:out value="${ question.rowNum }"/></td>
+							<td><c:out value="${ question.title }"/></td>
+							<td>이미지</td>
+							<%-- <c:if test="${ questionList.상태 eq '접수' }">
+								<td><img src="${ contextPath }/resources/images/이미지"></td>
+							</c:if>
+							<c:if test="${ questionList.상태 eq '답변완료' }">
+								<td><img src="${ contextPath }/resources/images/이미지"></td>
+							</c:if> --%>
+							<td>상태</td>
+							<td><c:out value="${ question.nickName }"/></td>
+							<td><c:out value="${ question.boardDate }"/></td>
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>문의2</td>
-							<td>O</td>
-							<td>답변완료</td>
-							<td>신비의 땅 아프리카</td>
-							<td>2018.10.22</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>문의3</td>
-							<td>O</td>
-							<td>답변완료</td>
-							<td>성지 전북 익산</td>
-							<td>2018.10.22</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

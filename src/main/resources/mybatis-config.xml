@@ -14,9 +14,11 @@
     </settings> -->
 	<typeAliases>
 		<typeAlias type="com.kh.travelMate.member.model.vo.Member" alias="Member"/>
+		<typeAlias type="com.kh.travelMate.board.model.vo.Board" alias="Board"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/board-mapper.xml"/>
 	</mappers>
 	
 	
