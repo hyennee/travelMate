@@ -29,9 +29,9 @@ public class pageChangeController {
 		return "others/applyConsult";
 	}
 	
-	@RequestMapping("serviceCenter.me")
+	@RequestMapping("serviceCenter.bo")
 	public String serviceCenterView() {
-		return "board/serviceCenter/serviceCenter";
+		return "selectSCList.bo";
 	}
 	
 	@RequestMapping("memberJoinView.me")
