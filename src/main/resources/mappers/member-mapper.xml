@@ -73,7 +73,7 @@
 	</select>
 	
 	<!-- 암호화 후 로그인용 쿼리문 -->
-	<select id="selectLoginUser" resultType="java.lang.String" parameterType="Member">
+	<select id="selectLoginUser" resultType="Member" parameterType="Member"> <!-- resultMap="memberResultSet"도 가능 --> <!-- resultType="java.lang.String" 오류! -->
 		SELECT *
 		FROM MEMBER
 		WHERE EMAIL = #{email}
