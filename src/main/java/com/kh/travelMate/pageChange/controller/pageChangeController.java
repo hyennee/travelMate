@@ -31,7 +31,7 @@ public class pageChangeController {
 	
 	@RequestMapping("serviceCenter.bo")
 	public String serviceCenterView() {
-		return "selectSCList.bo";
+		return "selectServiceCenter.bo";
 	}
 	
 	@RequestMapping("memberJoinView.me")

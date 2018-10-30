@@ -10,10 +10,11 @@ public class Board implements Serializable
 	 */
 	private static final long serialVersionUID = 3839253641079080139L;
 	
-	private int rowNum;				//글 번호
 	private int boardNo;			//게시글 ID
+	private int rowNum;				//글 번호
 	private int write;				//게시글 작성자(JOIN)의 멤버 ID
 	private String writer;			//게시글 작성자
+	private String category;
 	private String title;			//제목
 	private String content;			//내용
 	private Date boardDate;			//작성일자
@@ -23,13 +24,14 @@ public class Board implements Serializable
 	
 	public Board() {}
 
-	public Board(int rowNum, int boardNo, int write, String writer, String title, String content, Date boardDate,
-			String status, int boardLevel, int refNo) {
+	public Board(int rowNum, int boardNo, int write, String writer, String category, String title, String content,
+			Date boardDate, String status, int boardLevel, int refNo) {
 		super();
 		this.rowNum = rowNum;
 		this.boardNo = boardNo;
 		this.write = write;
 		this.writer = writer;
+		this.category = category;
 		this.title = title;
 		this.content = content;
 		this.boardDate = boardDate;
@@ -68,6 +70,14 @@ public class Board implements Serializable
 
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getTitle() {
@@ -118,10 +128,14 @@ public class Board implements Serializable
 		this.refNo = refNo;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
 		return "Board [rowNum=" + rowNum + ", boardNo=" + boardNo + ", write=" + write + ", writer=" + writer
-				+ ", title=" + title + ", content=" + content + ", boardDate=" + boardDate + ", status=" + status
-				+ ", boardLevel=" + boardLevel + ", refNo=" + refNo + "]";
+				+ ", category=" + category + ", title=" + title + ", content=" + content + ", boardDate=" + boardDate
+				+ ", status=" + status + ", boardLevel=" + boardLevel + ", refNo=" + refNo + "]";
 	}
 }

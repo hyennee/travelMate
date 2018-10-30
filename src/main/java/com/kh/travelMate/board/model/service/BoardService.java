@@ -6,4 +6,6 @@ import com.kh.travelMate.board.model.vo.Board;
 
 public interface BoardService
 {
+
+	ArrayList<Board> selectBoardList(Board b);
 }
