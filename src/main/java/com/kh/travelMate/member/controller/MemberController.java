@@ -57,6 +57,9 @@ public class MemberController {
 			
 			//모든 작업이 성공일때
 			model.addAttribute("loginUser", loginUser);
+			
+			System.out.println(loginUser);
+			
 			return "redirect:goMain.me";
 		} catch (LoginException e) {
 			
@@ -129,8 +132,8 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping("selectDuplChkId.me")
 	public String selectDuplChkId(@ModelAttribute("m") Member m, Model model) {
-		
-		System.out.println("m");
+		String email = m.getEmail();
+		System.out.println(email);
 		int result = ms.selectDuplChkId(m);
 		
 		return String.valueOf(result);
