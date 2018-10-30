@@ -87,8 +87,8 @@ td:first-child {
 		<div id="page" class="page">
 			<div id="contents">
 				<div id="joinArea">
-					<div id="joinForm">
 						<form action="insertMember.me" method="post">
+					<div id="joinForm">
 							<br> <br> <br> <span
 								style="text-align: left; font-weight: bold; font-size: 24px; color: black">회원가입</span>
 							<br> <span
@@ -397,9 +397,8 @@ td:first-child {
 							>회원가입</button>
 						&nbsp;
 						<button type="reset" class="goJoinBtn" id="cancelJoinBtn">가입취소</button>
-					</form>
 					</div>
-					
+				</form>
 				</div>
 			</div>
 		</div>

@@ -18,8 +18,7 @@
 </head>
 <body>
 	<jsp:include page="../must/header.jsp" />
-	<br><br><br>
-	<div class="full-container">
+	<div id="contents" class="full-container">
 		<div style="width: 960px; margin: auto; background: white;">
 			<br>
 			<div style="width: 900px; margin: auto;">
