@@ -20,19 +20,7 @@ public class MemberServiceImpl implements MemberService{
 	private BCryptPasswordEncoder passwordEncoder;
 	@Autowired
 	private DataSourceTransactionManager transactionManager;
-	
-/*	//로그인 메소드
-	@Override
-	public Member loginCheck(Member m) throws LoginException {
-		
-		Member loginUser = md.loginCheck(sqlSession, m);
-		
-		return loginUser;
-	}*/
-	
-	
-	
-	
+
 
 	//회원가입용 메소드
 	@Override
@@ -61,13 +49,21 @@ public class MemberServiceImpl implements MemberService{
 		return loginUser;
 	}
 
-	@Override
+	/*@Override
 	public int selectDuplChkId(Member m) {
 		
 		return md.selectDuplChkId(sqlSession, m);
+	}*/
+
+	
+	//아이디 중복체크용 메소드
+	@Override
+	public int selectDuplChkId(String string) {
+		
+		return md.selectDuplChkId(sqlSession, string);
 	}
 
-	//아이디 중복체크용 메소드
+	
 	
 
 	

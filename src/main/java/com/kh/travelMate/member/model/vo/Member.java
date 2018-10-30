@@ -7,19 +7,19 @@ import java.sql.Date;
 
 public class Member implements java.io.Serializable{
 	
-	private int userNo;	  //회원번호
+	private int user_no;	  //회원번호
 	private String email;    //이메일
 	private String password;  //비밀번호
-	private String userName; //이름
-	private String nickName; //닉네임
+	private String user_name; //이름
+	private String nick_name; //닉네임
 	private String phone;	 //연락처
 	private String birthday; //생년월일
 	private String gender;	 //성별
 	private Date enroll_date; //가입일
 	private Date modify_date; //수정일
-	private String userType; //회원유형 '비관리자'
-	private String bankNo;//계좌번호
-	private int cyberMoney;  //사이버머니
+	private String user_type; //회원유형 '비관리자'
+	private String bank_no;//계좌번호
+	private int cybermoney;  //사이버머니
 	private Date cm_modify_date; //사이버머니변경일자
 	private String bank; //은행이름
 	private String user_type_level; //구분 '일반회원'
@@ -32,23 +32,23 @@ public class Member implements java.io.Serializable{
 
 
 
-	public Member(int userNo, String email, String password, String userName, String nickName, String phone,
-			String birthday, String gender, Date enroll_date, Date modify_date, String userType, String bankNo,
-			int cyberMoney, Date cm_modify_date, String bank, String user_type_level) {
+	public Member(int user_no, String email, String password, String user_name, String nick_name, String phone,
+			String birthday, String gender, Date enroll_date, Date modify_date, String user_type, String bank_no,
+			int cybermoney, Date cm_modify_date, String bank, String user_type_level) {
 		super();
-		this.userNo = userNo;
+		this.user_no = user_no;
 		this.email = email;
 		this.password = password;
-		this.userName = userName;
-		this.nickName = nickName;
+		this.user_name = user_name;
+		this.nick_name = nick_name;
 		this.phone = phone;
 		this.birthday = birthday;
 		this.gender = gender;
 		this.enroll_date = enroll_date;
 		this.modify_date = modify_date;
-		this.userType = userType;
-		this.bankNo = bankNo;
-		this.cyberMoney = cyberMoney;
+		this.user_type = user_type;
+		this.bank_no = bank_no;
+		this.cybermoney = cybermoney;
 		this.cm_modify_date = cm_modify_date;
 		this.bank = bank;
 		this.user_type_level = user_type_level;
@@ -57,8 +57,8 @@ public class Member implements java.io.Serializable{
 
 
 
-	public int getUserNo() {
-		return userNo;
+	public int getUser_no() {
+		return user_no;
 	}
 
 
@@ -78,15 +78,15 @@ public class Member implements java.io.Serializable{
 
 
 
-	public String getUserName() {
-		return userName;
+	public String getUser_name() {
+		return user_name;
 	}
 
 
 
 
-	public String getNickName() {
-		return nickName;
+	public String getNick_name() {
+		return nick_name;
 	}
 
 
@@ -127,22 +127,22 @@ public class Member implements java.io.Serializable{
 
 
 
-	public String getUserType() {
-		return userType;
+	public String getUser_type() {
+		return user_type;
 	}
 
 
 
 
-	public String getBankNo() {
-		return bankNo;
+	public String getBank_no() {
+		return bank_no;
 	}
 
 
 
 
-	public int getCyberMoney() {
-		return cyberMoney;
+	public int getCybermoney() {
+		return cybermoney;
 	}
 
 
@@ -169,8 +169,8 @@ public class Member implements java.io.Serializable{
 
 
 
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
 	}
 
 
@@ -190,15 +190,15 @@ public class Member implements java.io.Serializable{
 
 
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
 
 
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
 	}
 
 
@@ -239,22 +239,22 @@ public class Member implements java.io.Serializable{
 
 
 
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setUser_type(String user_type) {
+		this.user_type = user_type;
 	}
 
 
 
 
-	public void setBankNo(String bankNo) {
-		this.bankNo = bankNo;
+	public void setBank_no(String bank_no) {
+		this.bank_no = bank_no;
 	}
 
 
 
 
-	public void setCyberMoney(int cyberMoney) {
-		this.cyberMoney = cyberMoney;
+	public void setCybermoney(int cybermoney) {
+		this.cybermoney = cybermoney;
 	}
 
 
@@ -283,13 +283,17 @@ public class Member implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "Member [userNo=" + userNo + ", email=" + email + ", password=" + password + ", userName=" + userName
-				+ ", nickName=" + nickName + ", phone=" + phone + ", birthday=" + birthday + ", gender=" + gender
-				+ ", enroll_date=" + enroll_date + ", modify_date=" + modify_date + ", userType=" + userType
-				+ ", bankNo=" + bankNo + ", cyberMoney=" + cyberMoney + ", cm_modify_date=" + cm_modify_date + ", bank="
-				+ bank + ", user_type_level=" + user_type_level + "]";
+		return "Member [user_no=" + user_no + ", email=" + email + ", password=" + password + ", user_name=" + user_name
+				+ ", nick_name=" + nick_name + ", phone=" + phone + ", birthday=" + birthday + ", gender=" + gender
+				+ ", enroll_date=" + enroll_date + ", modify_date=" + modify_date + ", user_type=" + user_type
+				+ ", bank_no=" + bank_no + ", cybermoney=" + cybermoney + ", cm_modify_date=" + cm_modify_date
+				+ ", bank=" + bank + ", user_type_level=" + user_type_level + "]";
 	}
 
+
+	
+
+	
 	
 	
 }
