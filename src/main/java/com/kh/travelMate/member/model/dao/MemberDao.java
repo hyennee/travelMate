@@ -19,10 +19,8 @@ public interface MemberDao {
 
 	Member selectMember(SqlSessionTemplate sqlSession, Member m);
 
-	int selectDuplChkId(SqlSessionTemplate sqlSession, Member m);
+	int selectDuplChkId(SqlSessionTemplate sqlSession, String string);
 
-	//아이디 중복체크 조회용 메소드
-	
 
 
 

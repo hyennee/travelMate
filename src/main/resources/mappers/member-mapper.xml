@@ -23,19 +23,19 @@
 		<result property="modifyDate" column="MODIFY_DATE"></result>
 		<result property="status" column="STATUS"></result> -->
 		
-		<id property="userNo" column="USER_NO"/>
+		<id property="user_no" column="USER_NO"/>
 		<result property="email" column="EMAIL"/>
 		<result property="password" column="PASSWORD"/>
-		<result property="userName" column="USER_NAME"/>
-		<result property="nickName" column="NICK_NAME"/>
+		<result property="user_name" column="USER_NAME"/>
+		<result property="nick_name" column="NICK_NAME"/>
 		<result property="phone" column="PHONE"/>
 		<result property="birthday" column="BIRTHDAY"/>
 		<result property="gender" column="GENDER"/>
 		<result property="enroll_date" column="ENROLL_DATE"/>
 		<result property="modify_date" column="MODIFY_DATE"/>
-		<result property="userType" column="USER_TYPE"/>
-		<result property="bankNo" column="BANK_NO"/>
-		<result property="cyberMoney" column="CYBERMONEY"/>
+		<result property="user_type" column="USER_TYPE"/>
+		<result property="bank_no" column="BANK_NO"/>
+		<result property="cybermoney" column="CYBERMONEY"/>
 		<result property="cm_modify_date" column="CM_MODIFY_DATE"/>
 		<result property="bank" column="BANK"/>
 		<result property="user_type_level" column="USER_TYPE_LEVEL"/>
@@ -53,15 +53,13 @@
 		FROM MEMBER
 		WHERE EMAIL = #{email}
 		AND USER_PWD = #{password}
-		AND USER_TYPE = '비관리자'
-		AND USER_TYPE_LEVEL = '일반회원'
 	</select> 
 
 	<!-- 회원가입용 쿼리문 -->
 	<insert id = "insertMember" parameterType="Member">
 		INSERT INTO MEMBER
-		VALUES(SEQ_USER_NO.NEXTVAL, #{email}, #{password}, #{userName}, 
-				#{nickName}, #{phone}, #{birthday}, #{gender}, 
+		VALUES(SEQ_USER_NO.NEXTVAL, #{email}, #{password}, #{user_name}, 
+				#{nick_name}, #{phone}, #{birthday}, #{gender}, 
 				SYSDATE, SYSDATE, DEFAULT, NULL, 0, SYSDATE, NULL, DEFAULT)
 	</insert>
 	
@@ -79,7 +77,8 @@
 		WHERE EMAIL = #{email}
 	</select>
 	
-	<select id="selectDuplChkId" resultType="java.lang.Integer" parameterType="Member">
+	<!-- 아이디 중복체크용 메소드 -->
+	<select id="selectDuplChkId" resultType="java.lang.Integer" parameterType="java.lang.String">
 		SELECT COUNT(*)
 		FROM MEMBER
 		WHERE EMAIL = #{email}

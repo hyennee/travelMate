@@ -13,7 +13,7 @@ public class Board implements Serializable
 	private int boardNo;			//게시글 ID
 	private int rowNum;				//글 번호
 	private int write;				//게시글 작성자(JOIN)의 멤버 ID
-	private String writer;			//게시글 작성자
+	private String nickName;			//게시글 작성자
 	private String category;
 	private String title;			//제목
 	private String content;			//내용
@@ -24,13 +24,13 @@ public class Board implements Serializable
 	
 	public Board() {}
 
-	public Board(int rowNum, int boardNo, int write, String writer, String category, String title, String content,
+	public Board(int boardNo, int rowNum, int write, String nickName, String category, String title, String content,
 			Date boardDate, String status, int boardLevel, int refNo) {
 		super();
-		this.rowNum = rowNum;
 		this.boardNo = boardNo;
+		this.rowNum = rowNum;
 		this.write = write;
-		this.writer = writer;
+		this.nickName = nickName;
 		this.category = category;
 		this.title = title;
 		this.content = content;
@@ -38,14 +38,6 @@ public class Board implements Serializable
 		this.status = status;
 		this.boardLevel = boardLevel;
 		this.refNo = refNo;
-	}
-
-	public int getRowNum() {
-		return rowNum;
-	}
-
-	public void setRowNum(int rowNum) {
-		this.rowNum = rowNum;
 	}
 
 	public int getBoardNo() {
@@ -56,6 +48,14 @@ public class Board implements Serializable
 		this.boardNo = boardNo;
 	}
 
+	public int getRowNum() {
+		return rowNum;
+	}
+
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
+	}
+
 	public int getWrite() {
 		return write;
 	}
@@ -64,12 +64,12 @@ public class Board implements Serializable
 		this.write = write;
 	}
 
-	public String getWriter() {
-		return writer;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getCategory() {
@@ -134,7 +134,7 @@ public class Board implements Serializable
 
 	@Override
 	public String toString() {
-		return "Board [rowNum=" + rowNum + ", boardNo=" + boardNo + ", write=" + write + ", writer=" + writer
+		return "Board [boardNo=" + boardNo + ", rowNum=" + rowNum + ", write=" + write + ", nickName=" + nickName
 				+ ", category=" + category + ", title=" + title + ", content=" + content + ", boardDate=" + boardDate
 				+ ", status=" + status + ", boardLevel=" + boardLevel + ", refNo=" + refNo + "]";
 	}

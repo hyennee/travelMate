@@ -87,8 +87,8 @@ td:first-child {
 		<div id="page" class="page">
 			<div id="contents">
 				<div id="joinArea">
-					<div id="joinForm">
 						<form action="insertMember.me" method="post">
+					<div id="joinForm">
 							<br> <br> <br> <span
 								style="text-align: left; font-weight: bold; font-size: 24px; color: black">회원가입</span>
 							<br> <span
@@ -109,8 +109,8 @@ td:first-child {
 							<table style="width: 80%">
 								<tr>
 									<td>이름<span style="color: red">*</span></td>
-									<td colspan="2"><input type="text" name="userName"
-										id="userName" style="width: 187px; height: 18px;"
+									<td colspan="2"><input type="text" name="user_name"
+										id="user_name" style="width: 187px; height: 18px;"
 										placeholder="이름"></td>
 
 								</tr>
@@ -130,7 +130,7 @@ td:first-child {
 
 								<tr>
 									<td>닉네임<span style="color: red">*</span></td>
-									<td><input type="text" name="nickName" id="nickName"
+									<td><input type="text" name="nick_name" id="nick_name"
 										oninput="checkNick()" style="width: 187px; height: 18px;"
 										placeholder="닉네임"></td>
 									<td><div id="checkNick">사용 가능한 닉네임입니다.</div></td>
@@ -397,9 +397,8 @@ td:first-child {
 							>회원가입</button>
 						&nbsp;
 						<button type="reset" class="goJoinBtn" id="cancelJoinBtn">가입취소</button>
-					</form>
 					</div>
-					
+				</form>
 				</div>
 			</div>
 		</div>
@@ -423,21 +422,22 @@ td:first-child {
 	
 	//아이디 중복 체크하여, 가입버튼 비활성화.
 	function checkId(){
-		var inputval = $('#email').val();
-		console.log(inputval);
+		var chkIdVal = $('#email').val();
+		console.log(chkIdVal);
 	$.ajax({
-		data : {"inputval" : inputval
+		data : {"chkIdVal" : chkIdVal
 			},
 		url : 'selectDuplChkId.me',
 		type:'post',
 		success : function(data){
-			if(inputval == "" && data == "0"){
+			if(chkIdVal == "" && data == "0"){
 				$('.goJoinBtn').prop("disabled", true);
 				$('.goJoinBtn').css("background-color", "#aaaaaa");
 				$('#checkDuplId').html('<font color="red">아이디를 입력해주세요</font>'); 
 				idCheck = 0;
 			}else if (data == "0") {
-				$('#checkDuplId').html('<font color="blue">왜이럼 있는데... 0나와  ㅠ</font>');
+				$('.goJoinBtn').prop("disabled", false);
+				$('#checkDuplId').html('<font color="blue">사용가능한 아이디입니다.</font>');
 				/* idCheck = 1;
 				if(idCheck == 1 && pwdCheck == 1){
 				$('.goJoinBtn').prop("disabled", false);
@@ -455,6 +455,24 @@ td:first-child {
 	
 	}
 	
+	/* function checkPwd(){
+		var chkPwdVal1 = $('#password').val();
+		var chkPwdVal2 = $('#password2').val();
+		console.val(chkPwdVal1);
+		console.val(chkPwdVal2);
+	$.Ajax({
+		data : {"chkPwdVal1" : chkPwdVal1, "chkPwdVal2" : chkPwdVal2 
+		},
+		url : 'checkPwd.me',
+		type : 'post',
+		
+		success : function(data){
+			
+		}
+	
+	});
+		
+	} */
 	
 	
 	

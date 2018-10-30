@@ -19,13 +19,16 @@ public class BoardController
 	@RequestMapping("selectServiceCenter.bo")
 	public String selectServiceCenter(Board b, Model model)
 	{	
+		//System.out.println("진입");
 		String notice = "1";		//공지사항 카테고리 번호
 		String question = "2";		//문의 카테고리 번호
 		
 		b.setCategory(notice);
 		ArrayList<Board> noticeList = bs.selectBoardList(b);
+		System.out.println("noticeList : " + noticeList);
 		b.setCategory(question);
 		ArrayList<Board> questionList = bs.selectBoardList(b);
+		System.out.println("questionList : " + questionList);
 		
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("questionList", questionList);

@@ -29,11 +29,6 @@ public class pageChangeController {
 		return "others/applyConsult";
 	}
 	
-	@RequestMapping("serviceCenter.bo")
-	public String serviceCenterView() {
-		return "selectSCList.bo";
-	}
-	
 	@RequestMapping("memberJoinView.me")
 	public String memberJoinView() {
 		return "member/memberJoin";
