@@ -45,4 +45,12 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.selectOne("Member.selectLoginUser", m); //m을 리턴
 	}
 
+	@Override
+	public int selectDuplChkId(SqlSessionTemplate sqlSession, Member m) {
+		
+		return sqlSession.selectOne("Member.selectDuplChkId", m.getEmail());
+	}
+
+
+
 }

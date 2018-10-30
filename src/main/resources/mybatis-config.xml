@@ -7,11 +7,25 @@
 
 <!-- typealies 랑 mapper만 하고// db관련된건 root-context에다가 한다 -->
 <configuration>
+	<settings>
+
+        <setting name="jdbcTypeForNull" value="NULL"/>
+
+    </settings>
 	<typeAliases>
 		<typeAlias type="com.kh.travelMate.member.model.vo.Member" alias="Member"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
 	</mappers>
+	
+	
+	
 </configuration> 
+
+
+
+
+
+
   
