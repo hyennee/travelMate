@@ -73,8 +73,14 @@
 	</select>
 	
 	<!-- 암호화 후 로그인용 쿼리문 -->
-	<select id="selectLoginUser" resultMap="memberResultSet" parameterType="Member">
+	<select id="selectLoginUser" resultType="java.lang.String" parameterType="Member">
 		SELECT *
+		FROM MEMBER
+		WHERE EMAIL = #{email}
+	</select>
+	
+	<select id="selectDuplChkId" resultType="java.lang.Integer" parameterType="Member">
+		SELECT COUNT(*)
 		FROM MEMBER
 		WHERE EMAIL = #{email}
 	</select>

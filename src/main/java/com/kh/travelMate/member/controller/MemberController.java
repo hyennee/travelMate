@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -122,6 +124,16 @@ public class MemberController {
 			
 			return "must/errorPage";
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("selectDuplChkId.me")
+	public String selectDuplChkId(@ModelAttribute("m") Member m, Model model) {
+		
+		System.out.println("m");
+		int result = ms.selectDuplChkId(m);
+		
+		return String.valueOf(result);
 	}
 	
 }

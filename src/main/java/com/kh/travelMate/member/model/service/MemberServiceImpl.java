@@ -61,4 +61,15 @@ public class MemberServiceImpl implements MemberService{
 		return loginUser;
 	}
 
+	@Override
+	public int selectDuplChkId(Member m) {
+		
+		return md.selectDuplChkId(sqlSession, m);
+	}
+
+	//아이디 중복체크용 메소드
+	
+
+	
+
 }
