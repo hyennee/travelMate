@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class MemberManage implements Serializable {
+	private static final long serialVersionUID = -1484342834602516346L;
 	private int user_no;
 	private String email;
 	private String password;
