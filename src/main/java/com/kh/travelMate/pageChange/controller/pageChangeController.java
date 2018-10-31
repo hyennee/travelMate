@@ -65,4 +65,10 @@ public class pageChangeController {
 	{
 		return "others/mapExample";
 	}
+	
+	@RequestMapping("myInfo.me")
+	public String myInfo()
+	{
+		return "mypage/myInfo";
+	}
 }
