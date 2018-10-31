@@ -79,7 +79,7 @@ ul.sub li:hover {
 
 				<div class="title">계정관리</div>
 				<ul class="sub">
-					<li>나의 계정</li>
+					<li><a href="myInfo.me">나의 계정</a></li>
 					<li>정보수정</li>
 					<li>비번수정</li>
 				</ul>
