@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,15 +10,15 @@
 	.question-list
 	{
 		text-align:center;
-		font-size:15px;
+		font-size:14px;
 		border-collapse:collapse;
 	}
-	.question-list>tbody>tr>th
+	.question-list>thead>tr:nth-child(2)>th
 	{
 		border-top:2px solid lightgray;
 		border-bottom:1px solid lightgray;
 	}
-	.question-list>tbody>tr>th:nth-child(1)
+	.question-list>thead>tr:nth-child(2)>th:nth-child(1)
 	{
 		border-top:none;
 	}
@@ -26,10 +27,6 @@
 		border-top:1px solid lightgray;
 		border-bottom:1px solid lightgray;
 	}
-	.question-list>tbody>tr:nth-child(2)
-	{
-		border-top:2px solid lightgray;
-	}
 	.question-list th
 	{
 		height:40px;
@@ -37,6 +34,11 @@
 	.question-list td
 	{
 		height:40px;
+	}
+	.question-list>tbody>tr:hover
+	{
+		cursor:pointer;
+		background:lightgray;
 	}
 	.page-button
 	{
@@ -58,22 +60,19 @@
 </head>
 <body>
 	<jsp:include page="../../must/header.jsp"/>
-	<div class="full-container">
+	<div id="contents" class="full-container">
 		<div style="width:960px;margin:auto; background:white;" align="center">
-		<br>
 			<div style="margin:auto; width:800px;">
-				<table class="question-list" style="width:800px; margin:auto;">
+				<table class="list-list" style="width:800px; margin:auto;">
 					<thead>
 						<tr>
-							<th style="border-left:2px solid lightgray; border-right:2px solid lightgray; border-top:3px solid violet;">문의</th>
+							<th style="width:80px; border-left:2px solid lightgray; border-right:2px solid lightgray; border-top:3px solid violet;">문의</th>
 							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
+							<th style="width:30px;"></th>
+							<th style="width:70px;"></th>
+							<th style="width:150px;"></th>
+							<th style="width:80px;"></th>
 						</tr>
-					</thead>
-					<tbody>
 						<tr>
 							<th>번호</th>
 							<th>제목</th>
@@ -82,30 +81,26 @@
 							<th>작성자</th>
 							<th>작성일</th>
 						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="list" items="${ selectList }">
 						<tr>
-							<td>1</td>
-							<td>문의1</td>
-							<td>X</td>
-							<td>접수</td>
-							<td>와칸다포에버</td>
-							<td>2018.10.22</td>
+							<input type="hidden" name="boardNo" value="${ list.boardNo }">
+							<input type="hidden" name="category" value="${ list.category }">
+							<td><c:out value="${ list.rowNum }"/></td>
+							<td><c:out value="${ list.title }"/></td>
+							<td>이미지</td>
+							<%-- <c:if test="${ list.상태 eq '접수' }">
+								<td><img src="${ contextPath }/resources/images/이미지"></td>
+							</c:if>
+							<c:if test="${ list.상태 eq '답변완료' }">
+								<td><img src="${ contextPath }/resources/images/이미지"></td>
+							</c:if> --%>
+							<td>상태</td>
+							<td><c:out value="${ list.nickName }"/></td>
+							<td><c:out value="${ list.boardDate }"/></td>
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>문의2</td>
-							<td>O</td>
-							<td>답변완료</td>
-							<td>신비의 땅 아프리카</td>
-							<td>2018.10.22</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>문의3</td>
-							<td>O</td>
-							<td>답변완료</td>
-							<td>성지 전북 익산</td>
-							<td>2018.10.22</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 				<br>

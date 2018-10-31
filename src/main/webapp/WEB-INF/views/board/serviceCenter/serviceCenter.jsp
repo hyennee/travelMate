@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 	.image-div
 	{
@@ -24,12 +25,12 @@
 		font-size:14px;
 		border-collapse:collapse;
 	}
-	.notice-list>tbody>tr>th
+	.notice-list>thead>tr:nth-child(2)>th
 	{
 		border-top:2px solid lightgray;
 		border-bottom:1px solid lightgray;
 	}
-	.notice-list>tbody>tr>th:nth-child(1)
+	.notice-list>thead>tr:nth-child(2)>th:nth-child(1)
 	{
 		border-top:none;
 	}
@@ -46,6 +47,11 @@
 	{
 		height:40px;
 	}
+	.notice-list>tbody>tr:hover
+	{
+		cursor:pointer;
+		background:lightgray;
+	}
 	
 	/* 문의 */
 	.question-list
@@ -54,12 +60,12 @@
 		font-size:14px;
 		border-collapse:collapse;
 	}
-	.question-list>tbody>tr>th
+	.question-list>thead>tr:nth-child(2)>th
 	{
 		border-top:2px solid lightgray;
 		border-bottom:1px solid lightgray;
 	}
-	.question-list>tbody>tr>th:nth-child(1)
+	.question-list>thead>tr:nth-child(2)>th:nth-child(1)
 	{
 		border-top:none;
 	}
@@ -68,10 +74,6 @@
 		border-top:1px solid lightgray;
 		border-bottom:1px solid lightgray;
 	}
-	.question-list>tbody>tr:nth-child(2)
-	{
-		border-top:2px solid lightgray;
-	}
 	.question-list th
 	{
 		height:40px;
@@ -79,6 +81,11 @@
 	.question-list td
 	{
 		height:40px;
+	}
+	.question-list>tbody>tr:hover
+	{
+		cursor:pointer;
+		background:lightgray;
 	}
 	.pointer:hover
 	{
@@ -96,7 +103,7 @@
 		</div>
 		<div style="width:960px; height:50px; margin:auto; background:#E7E7E7; display:table-cell; vertical-align:middle;">
 			<span style="color:#646464; font-size:14px;">여행자 여러분께서 자주 물어보시는 질문에 대한 답변을 보고 싶으신가요?</span>&nbsp;&nbsp;&nbsp;
-			<button type="button" class="pointer" style="height:30px; background:white; border:1px solid violet; border-radius:5px; color:violet;" onclick="location.href='selectList.bo';">자주 묻는 질문 보기</button>
+			<button type="button" class="pointer" style="height:30px; background:white; border:1px solid violet; border-radius:5px; color:violet;" onclick="location.href='selectFAQ.bo';">자주 묻는 질문 보기</button>
 		</div>
 		<div style="width:960px; margin:auto; background:white;">
 		<br>
@@ -107,18 +114,20 @@
 							<th style="width:80px; border-left:2px solid lightgray; border-right:2px solid lightgray; border-top:3px solid violet;">공지사항</th>
 							<th></th>
 							<th style="width:150px;"></th>
-							<th style="width:80px;"><button type="button" class="pointer" style="height:25px; border:1px solid lightgray; border-radius:5px; background:white; color:green;" onclick="location.href='selectList.bo'">+ 더보기</button></th>
+							<th style="width:80px;"><button type="button" class="pointer" style="height:25px; border:1px solid lightgray; border-radius:5px; background:white; color:green;" onclick="location.href='selectList.bo?category=1'">+ 더보기</button></th>
 						</tr>
-					</thead>
-					<tbody>
 						<tr>
 							<th>번호</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
 						</tr>
+					</thead>
+					<tbody>
 						<c:forEach var="notice" items="${ noticeList }">
 						<tr>
+							<input type="hidden" name="boardNo" value="${ notice.boardNo }">
+							<input type="hidden" name="category" value="${ notice.category }">
 							<td><c:out value="${ notice.rowNum }"/></td>
 							<td><c:out value="${ notice.title }"/></td>
 							<td><c:out value="${ notice.nickName }"/></td>
@@ -138,10 +147,8 @@
 							<th style="width:30px;"></th>
 							<th style="width:70px;"></th>
 							<th style="width:150px;"></th>
-							<th style="width:80px;"><button type="button" class="pointer" style="height:25px; border:1px solid lightgray; border-radius:5px; background:white; color:green;" onclick="location.href='selectList.bo'">+ 더보기</button></th>
+							<th style="width:80px;"><button type="button" class="pointer" style="height:25px; border:1px solid lightgray; border-radius:5px; background:white; color:green;" onclick="location.href='selectList.bo?category=2'">+ 더보기</button></th>
 						</tr>
-					</thead>
-					<tbody>
 						<tr>
 							<th>번호</th>
 							<th>제목</th>
@@ -150,8 +157,12 @@
 							<th>작성자</th>
 							<th>작성일</th>
 						</tr>
+					</thead>
+					<tbody>
 						<c:forEach var="question" items="${ questionList }">
 						<tr>
+							<input type="hidden" name="boardNo" value="${ question.boardNo }">
+							<input type="hidden" name="category" value="${ question.category }">
 							<td><c:out value="${ question.rowNum }"/></td>
 							<td><c:out value="${ question.title }"/></td>
 							<td>이미지</td>
@@ -178,5 +189,26 @@
 	</div>
 	<br>
 	<jsp:include page="../../must/footer.jsp"/>
+	
+	<script>
+		$(function()
+		{
+			$(".notice-list td").click(function()
+			{
+				var boardNo = $(this).parent().children("input[name='boardNo']").val();
+				var category = $(this).parent().children("input[name='category']").val();
+				
+				location.href="selectOne.bo?boardNo=" + boardNo + "&category=" + category;
+			});
+			
+			$(".question-list td").click(function()
+			{
+				var boardNo = $(this).parent().children("input[name='boardNo']").val();
+				var category = $(this).parent().children("input[name='category']").val();
+				
+				location.href="selectOne.bo?boardNo=" + boardNo + "&category=" + category; 
+			});
+		});
+	</script>
 </body>
 </html>
