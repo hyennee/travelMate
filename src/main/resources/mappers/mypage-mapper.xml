@@ -11,6 +11,11 @@
 		WHERE USER_NO = #{user_no}
 	</select> 
 	
+	<select id="oneByOneHistory" resultType="java.util.HashMap" parameterType="int">
+		SELECT *
+		FROM BOARD 
+		WHERE WRITE = #{write}
+	</select>
 </mapper> 
 
 

@@ -21,14 +21,11 @@ public class mypageDaoImpl implements mypageDao{
 
 	@Override
 	public List<HashMap<String, Object>> oneByOneHistory(SqlSessionTemplate sqlSession, Member loginUser) {
-		
-		//return sqlSession.selectList(Mypage);
-		return null;
+		return sqlSession.selectList("Mypage.oneByOneHistory", loginUser.getUser_no());
 	}
 
 	@Override
 	public List<HashMap<String, Object>> cyberMoneyHistory(SqlSessionTemplate sqlSession, Member loginUser) {
-		System.out.println();
 		return sqlSession.selectList("Mypage.cyberMoneyHistory",loginUser.getUser_no());
 	}
 
