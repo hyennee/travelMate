@@ -47,9 +47,16 @@ public class MemberDaoImpl implements MemberDao{
 
 	//아이디 중복체크 조회용 메소드
 	@Override
-	public int selectDuplChkId(SqlSessionTemplate sqlSession, String string) {
+	public int selectDuplChkId(SqlSessionTemplate sqlSession, String email) {
 		
-	 return sqlSession.selectOne("Member.selectDuplChkId", string);
+	 return sqlSession.selectOne("Member.selectDuplChkId", email);
+	}
+
+	//닉네임 중복체크 조회용 메소드
+	@Override
+	public int selectDuplChkNick(SqlSessionTemplate sqlSession, String nick_name) {
+		
+	return sqlSession.selectOne("Member.selectDuplChkNick", nick_name);
 	}
 
 

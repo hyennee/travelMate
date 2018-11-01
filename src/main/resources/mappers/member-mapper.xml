@@ -84,6 +84,12 @@
 		WHERE EMAIL = #{email}
 	</select>
 	
+	<select id="selectDuplChkNick" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE NICK_NAME = #{nick_name}
+	</select>
+	
 </mapper> 
 
 

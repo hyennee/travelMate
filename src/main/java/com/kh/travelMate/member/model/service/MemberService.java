@@ -12,6 +12,9 @@ public interface MemberService {
 	int insertMember(Member m);
 
 	//아이디 중복체크용 메소드
-	int selectDuplChkId(String string);
+	int selectDuplChkId(String email);
+
+	//닉네임 중복체크용 메소드
+	int selectDuplChkNick(String nick_name);
 
 }

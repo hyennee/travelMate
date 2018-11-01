@@ -27,6 +27,7 @@
 table, th, td {
 	border: none;
 	border-collapse: collapse;
+	vertical-align:top;
 }
 
 th, td {
@@ -79,6 +80,7 @@ td:first-child {
 	font-weight: bold;
 	border-radius: 4px;
 }
+
 </style>
 <body>
 
@@ -106,69 +108,64 @@ td:first-child {
 								style="text-align: left; font-weight: bold; font-size: 17px; color: black">기본정보</span>
 							<hr>
 							<!-- 테이블 시작 -->
-							<table style="width: 960px; height:400px;">
-								<tr >
-									<td style="width:90px; height:35px;">이름<span style="color: red">*</span></td>
+							<table style="width: 960px; height: 280px;">
+								<tr>
+									<td style="width: 90px; height: 20px;">이름<span
+										style="color: red">*</span></td>
 									<td colspan="3"><input type="text" name="user_name"
 										id="user_name" style="width: 187px; height: 18px;"
-										placeholder="이름"></td>
-                                        
+										placeholder="이름" maxlength="8"></td>
+
 
 								</tr>
 								<tr>
-									<td style="width:90px; height:35px;">아이디<span style="color: red">*</span></td>
-									<td style="width:350px;"><input type="text" name="email" id="email"
-										oninput="checkId()" style="width: 187px; height: 18px;"
-										placeholder="이메일">
-										</td>
-									<td style="width:200px;"><button>인증번호 발송</button>
-										</td>
-									<td ><div id="checkDuplId">중복되는</div></td>
-                                    
-                                </tr>
-                                <tr>
-                                <td style="width:90px; height:35px;"></td>
-                                <td><span
+									<td style="width: 90px; height: 40px; vertical-align:top;">아이디<span
+										style="color: red">*</span></td>
+									<td style="width: 350px; vertical-align:top;"><input type="text" name="email"
+										id="email" oninput="chkValidEmail()"
+										style="width: 187px; height: 18px;" placeholder="이메일" maxlength="20"><br><span
 										style="font-size: 12px; font-weight: lighter; color: #999">※아이디는
-											이메일 주소로 입력해주시기 바랍니다.</span></td>
-                                <td></td>
-                                <td ><div id="authId">인증되었습니다.</div></td>
-                               
-                                
-                                </tr>
+											이메일 주소로 입력해주시기 바랍니다.</span>
+									</td>
+									<td style="width: 200px; vertical-align:top;"><button>인증번호 발송</button></td>
+									<td style="vertical-align:top;"><div id="checkDuplId"></div></td>
+
+								</tr>
+								<tr>
+									<td style="width: 90px; height: 20px;"></td>
+									<td style="height: 20px;"></td>
+									<td style="height: 20px;"></td>
+									<td style="height: 20px;"><div id="authId">인증되었습니다.</div></td>
+								
+								</tr>
 
 								<tr>
-									<td style="width:90px; height:35px;">닉네임<span style="color: red">*</span></td>
-									<td ><input type="text" name="nick_name" id="nick_name"
-										oninput="checkNick()" style="width: 187px; height: 18px;"
-										placeholder="닉네임"></td>
-									<td>ddd</td>
-									<td><span id="checkNick">사용 가능한 닉네임입니다.</span></td>
-                                </tr>
-								
+									<td style="width: 90px; height: 20px;">닉네임<span
+										style="color: red">*</span></td>
+									<td><input type="text" name="nick_name" id="nick_name"
+										style="width: 187px; height: 18px;" placeholder="닉네임"
+										oninput="chkValidNick()" maxlength="20" ></td>
+									<td></td>
+									<td><div id="checkNick"></div></td>
+								</tr>
+
 								<tr>
-									<td style="width:90px; height:70px;">비밀번호<span style="color: red">*</span></td>
-									<td><input type="password" name="password" id="password"
-										placeholder="비밀번호" oninput="checkPwd()"
-										style="width: 187px; height: 18px;">&nbsp; <br> </td>
-									 <td><input
-										type="password" name="password2" id="password2"
-										placeholder="비밀번호 확인" oninput="checkPwd()"
-										style="width: 187px; height: 18px;"></td>
-                                    <td><div id="checkInputPwd">ㅂㅂ</div></td></tr>
-                                    <tr>
-                                    <td style="width:90px; height:35px;">d</td>
-                                    <td><span
+									<td style="width: 90px; height: 40px; vertical-align:top;">비밀번호<span
+										style="color: red;">*</span></td>
+									<td style="vertical-align:top;"><input type="password" name="password" id="password"
+										placeholder="비밀번호" oninput="checkPwd()" maxlength="16" 
+										style="width: 187px; height: 18px;">&nbsp; <br><span
 										style="font-size: 12px; font-weight: lighter; color: #999">※8~16자의
 											영문(대문자와 소문자)과 숫자만 사용할 수 있습니다.</span></td>
-                                    <td>ㄹㄹ</td>
-                                    <td>ㄷㄷㄷ</td>
-                                    </tr>
-                                   
+									<td style="vertical-align:top;"><input type="password" name="password2" id="password2"
+										placeholder="비밀번호 확인" oninput="checkPwd()" maxlength="16" 
+										style="width: 187px; height: 18px;"></td>
+									<td style="vertical-align:top;"><div id="checkInputPwd"></div></td>
+								</tr>
 								
-
 								<tr>
-									<td style="width:90px; height:35px;">생년월일<span style="color: red">*</span></td>
+									<td style="width: 90px; height: 20px;">생년월일<span
+										style="color: red">*</span></td>
 									<td colspan="3"><select name="birth1"
 										style="height: 24px; width: 60px;">
 											<c:forEach var="i" begin="0" end="${2018-1900 }">
@@ -186,18 +183,20 @@ td:first-child {
 												<option value="${dayOption}">${dayOption}</option>
 											</c:forEach>
 									</select></td>
-                                    
+
 								</tr>
 								<tr>
-									<td style="width:90px; height:35px;">성별<span style="color: red">*</span></td>
+									<td style="width: 90px; height: 20px;">성별<span
+										style="color: red">*</span></td>
 									<td colspan="3"><input type="radio" name="gender"
 										value="M" id="male"><label for="male"> 남성 </label> <input
 										type="radio" name="gender" value="F" id="female"><label
 										for="female"> 여성 </label></td>
-                                        
+
 								</tr>
 								<tr>
-									<td style="width:90px; height:35px;">휴대전화<span style="color: red">*</span></td>
+									<td style="width: 90px; height: 20px;">휴대전화<span
+										style="color: red">*</span></td>
 									<td colspan="3"><select name="phoneNum1"
 										style="height: 24px; width: 60px;">
 											<option value="010" selected>010</option>
@@ -207,10 +206,10 @@ td:first-child {
 											<option value="018">018</option>
 											<option value="019">019</option>
 									</select> <input type="text" name="phoneNum2" placeholder=""
-										style="width: 56px; height: 18px;"> <input type="text"
+										style="width: 56px; height: 18px;" maxlength="4"> <input type="text"
 										name="phoneNum3" placeholder=""
-										style="width: 56px; height: 18px;"></td>
-                                        
+										style="width: 56px; height: 18px;" maxlength="4"></td>
+
 								</tr>
 							</table>
 
@@ -435,28 +434,28 @@ td:first-child {
 
 
 	<script>
+	
 		var idCheck = 0;
 		var pwdCheck = 0;
 		var nickCheck = 0;
 		
 		
-		//이메일 유효성 검사
+		//이메일 null값 체크 및 유효성 검사
 		function chkValidEmail() {
-			var email = document.getElementById('email').val();
-			var regEmailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-			if (regEmailExp.test(email) == false) { //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐 경우
+			var chkIdVal = $('#email').val();
+			var regEmailExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+			if (chkIdVal == "" || chkIdVal == null){
+				document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>아이디를 입력해주세요.</span>";
+			}else if(regEmailExp.test(chkIdVal) == false) { //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐 경우
 				document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>이메일 형식이 아닙니다.</span>";
-			
 			}else{
-				//작성할 것!
+				checkId(chkIdVal);
 			}
 		}
 
 		//아이디 중복 체크
-		
-		function checkId() {
-			
-			var chkIdVal = $('#email').val();
+		function checkId(chkIdVal) {
+			//유효성 검사 진행한 결과를 매개변수로 받아 ajax로 진행. 데이터 넘겨 db에 동일한 id가 있는지 체크한 후 다시 뿌리기
 			console.log(chkIdVal);
 			$.ajax({
 				data : {
@@ -465,23 +464,14 @@ td:first-child {
 				url : 'selectDuplChkId.me',
 				type : 'post',
 				success : function(data) {
-					if (chkIdVal == "" && data == "0") {
-						/* $('#joinBtn').prop("disabled", true);
-						$('#joinBtn').css("background-color", "#aaaaaa"); */
-						/* $('#checkDuplId').html(
-								'<font color="red" size="3px;">아이디를 입력해주세요</font>'); */
-						document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>아이디를 입력해주세요.</span>";
-						idCheck = 0;
-					} else if (data == "0") {
+					 if (data == "0") { //중복되는 아이디가 없으면!
 						/* $('#joinBtn').prop("disabled", false); */
-						/* $('#checkDuplId').html(
-								'<font color="blue"; size="3px;">사용가능한 아이디입니다.</font>'); */
-						document.getElementById('checkDuplId').innerHTML = "<span style='color:blue; font-size:12px'>사용가능한 아이디입니다.</span>"
+						document.getElementById('checkDuplId').innerHTML = "<span style='color:blue; font-size:12px'>사용가능한 아이디입니다. 인증을 진행해주세요.</span>"
 						idCheck = 1;
 						/* if(idCheck == 1 && pwdCheck == 1){
 						$('#joinBtn').prop("disabled", false);
 						} */
-					} else if (data == "1") {
+					} else if (data == "1") { //중복되는 아이디가 있으면!
 						/* $('#joinBtn').prop("disabled", true);
 						$('#joinBtn').css("background-color", "#aaaaaa"); */
 						/* $('#checkDuplId').html(
@@ -533,7 +523,7 @@ td:first-child {
 			if (regPwdExp.test(chkPwdVal1) == true) {
 				//비밀번호 유효성 검사를 통과하면 확인 체크
 				if (chkPwdVal1 != "" && (chkPwdVal1 == chkPwdVal2)) {
-					document.getElementById('checkInputPwd').innerHTML = "<span style='color:blue; font-size:12px'>비밀번호가 일치합니다</span>";
+					document.getElementById('checkInputPwd').innerHTML = "<span style='color:blue; font-size:12px'>비밀번호가 일치합니다.</span>";
 					pwdCheck = 1;
 				} else if (chkPwdVal1 != "" && (chkPwdVal1 != chkPwdVal2)) {
 					document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호가 일치하지 않습니다.</span>";
@@ -545,8 +535,89 @@ td:first-child {
 			return true;
 
 		}
-
-		/* function signUpCheck(){
+		
+		
+		//닉네임 null값 체크 및 유효성 검사
+		function chkValidNick(){
+			var chkNickVal = $('#nick_name').val();
+			 console.log(chkNickVal); 
+			var regNickExp = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,6}$/;
+			
+			if(chkNickVal == "" || chkNickVal == null){
+				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임을 입력해주세요."
+				
+			}else if(regNickExp.test(chkNickVal) == false){
+					document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임은 2~20자로 작성해야 합니다."
+					return false;
+				
+			}else{
+					checkNick(chkNickVal);
+				
+				}
+			}
+			
+			
+		
+			
+		
+		
+		//닉네임 중복검사
+		function checkNick(chkNickVal){
+			console.log(chkNickVal);
+			$.ajax({
+				
+				data : {
+					"chkNickVal" : chkNickVal
+					},
+				url : 'selectDuplChkNick.me',
+				type : 'post',
+				success: function(data){
+					if(data == "0"){
+						document.getElementById('checkNick').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
+						
+					}else if(data == "1"){
+						
+						document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>사용할 수 없는 닉네임입니다.</span>";
+					}
+					
+				}
+			})
+			
+			
+		}
+		
+	
+		
+		</script>
+		
+		<script>
+		//maxlength substr 함수
+		$(document).ready(function(){
+			$('input').keyup(function(){
+				if($(this).val().length > $(this).attr('maxlength')){
+					$(this).val($(this).val().substr(0, $(this).attr('maxlength')));
+				} 
+			});
+			
+			
+		});
+		
+		
+		$('#joinBtn').click(function(){
+			if($('#user_name').val() == "" || $('#user_name').val() == null){
+				alert('이름을 입력해주세요');
+				return false;
+			}
+			if($('#email').val() == "" || $('#email').val() ==null){
+				alert('아이디를 입력해주세요');
+				return false;
+			}
+		})
+		</script>
+		
+		
+		
+		<!--  function signUpCheck(){
 		 var nickname = $('#nick_name').val();
 		 var email = $('#email').val();
 		 var checkbox = $('#agree_ok').val();
@@ -554,8 +625,7 @@ td:first-child {
 			 $
 		 }
 		 
-		}  */
-	</script>
+		} -->  
 
 
 
