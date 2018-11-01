@@ -7,6 +7,10 @@ import com.kh.travelMate.member.model.vo.Member;
 
 public interface mypageService {
 
-	List<HashMap<String, Object>> myPageInfo(Member loginUser);
+	List<HashMap<String, Object>> tradeInfoHistory(Member loginUser);
+
+	List<HashMap<String, Object>> oneByOneHistory(Member loginUser);
+
+	List<HashMap<String, Object>> cyberMoneyHistory(Member loginUser);
 
 }

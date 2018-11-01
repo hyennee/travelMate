@@ -19,7 +19,9 @@ public interface MemberDao {
 
 	Member selectMember(SqlSessionTemplate sqlSession, Member m);
 
-	int selectDuplChkId(SqlSessionTemplate sqlSession, String string);
+	int selectDuplChkId(SqlSessionTemplate sqlSession, String email);
+
+	int selectDuplChkNick(SqlSessionTemplate sqlSession, String nick_name);
 
 
 

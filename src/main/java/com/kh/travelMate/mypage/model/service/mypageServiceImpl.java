@@ -2,6 +2,7 @@ package com.kh.travelMate.mypage.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -13,22 +14,44 @@ import com.kh.travelMate.mypage.model.dao.mypageDao;
 
 @Service
 public class mypageServiceImpl implements mypageService{
-
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
 	@Autowired
 	private mypageDao md;
 	
+
 	@Override
-	public List<HashMap<String, Object>> myPageInfo(Member loginUser) {
+	public List<HashMap<String, Object>> tradeInfoHistory(Member loginUser) {
+		List<HashMap<String, Object>> tradeInfo = new ArrayList<HashMap<String, Object>>();
+		
+		tradeInfo = md.tradeInfoHistory(sqlSession,loginUser);
 		
 		
-		List<HashMap<String, Object>> list = new ArrayList<HashMap<String,Object>>();
+		return tradeInfo;
+	}
+
+	@Override
+	public List<HashMap<String, Object>> oneByOneHistory(Member loginUser) {
+		List<HashMap<String, Object>> oneByOne = new ArrayList<HashMap<String, Object>>();
 		
-		list = md.myPageInfo(sqlSession,loginUser);
+		oneByOne = md.oneByOneHistory(sqlSession,loginUser);
 		
-		return list;
+		
+		return oneByOne;
+	}
+
+	@Override
+	public List<HashMap<String, Object>> cyberMoneyHistory(Member loginUser) {
+		List<HashMap<String, Object>> cyberMoney = new ArrayList<HashMap<String, Object>>();
+		
+		cyberMoney = md.cyberMoneyHistory(sqlSession,loginUser);
+		
+		System.out.println("갔다왔니 ? : " + cyberMoney);
+		
+		for(int i = 0; i < cyberMoney.size(); i++) {
+			System.out.println(cyberMoney.get(i).get("CYBERMONEY_RECORD_NO"));
+		}
+		return cyberMoney;
 	}
 
 }

@@ -9,6 +9,10 @@ import com.kh.travelMate.member.model.vo.Member;
 
 public interface mypageDao {
 
-	List<HashMap<String, Object>> myPageInfo(SqlSessionTemplate sqlSession, Member loginUser);
+	List<HashMap<String, Object>> tradeInfoHistory(SqlSessionTemplate sqlSession, Member loginUser);
+
+	List<HashMap<String, Object>> oneByOneHistory(SqlSessionTemplate sqlSession, Member loginUser);
+
+	List<HashMap<String, Object>> cyberMoneyHistory(SqlSessionTemplate sqlSession, Member loginUser);
 
 }

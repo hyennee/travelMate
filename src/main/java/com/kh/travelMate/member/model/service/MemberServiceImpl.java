@@ -58,9 +58,17 @@ public class MemberServiceImpl implements MemberService{
 	
 	//아이디 중복체크용 메소드
 	@Override
-	public int selectDuplChkId(String string) {
+	public int selectDuplChkId(String email) {
 		
-		return md.selectDuplChkId(sqlSession, string);
+		return md.selectDuplChkId(sqlSession, email);
+	}
+
+	//닉네임 중복체크용 메소드
+	@Override
+	public int selectDuplChkNick(String nick_name) {
+		
+		
+		return md.selectDuplChkNick(sqlSession, nick_name);
 	}
 
 	
