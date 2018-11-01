@@ -39,10 +39,6 @@ public class pageChangeController {
 		return "member/login";
 	}
 
-	@RequestMapping("mypage.me")
-	public String mypageView() {
-		return "mypage/mypagemain";
-	}
 	
 	@RequestMapping("searchPasswordView.me")
 	public String searchPasswordView(){
