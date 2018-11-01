@@ -63,17 +63,12 @@
 	{
 		cursor:pointer;
 	}
-	.full-container
-	{
-		background:#EC983E;
-	}
 </style>
 </head>
 <body class="body">
 	<jsp:include page="../../must/header.jsp"/>
-	<div class="full-container" style="background:#EC983E;">
+	<div id="contents" class="full-container" style="background:#EC983E;">
 		<div style="margin:auto; width:960px; background:white;">
-			<br>
 			<div style="width:800px; margin:auto;">
 				<span style="color:#B4B4FF; font-size:16px; font-weight:bold;">자주 묻는 질문</span>
 			</div>

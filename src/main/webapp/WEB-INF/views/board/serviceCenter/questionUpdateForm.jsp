@@ -57,9 +57,8 @@
 </head>
 <body>
 	<jsp:include page="../../must/header.jsp"/>
-	<div class="full-container">
+	<div id="contents" class="full-container">
 		<div style="width:960px; margin:auto; background:white;" align="center">
-		<br>
 			<div style="margin:auto; width:800px;">
 				<div class="title" style="height:40px; background:#E7E7E7; border:none; border-radius:5px;">
 					<div style="display:inline-block; border:none; border-radius:5px; margin-left:5px;">

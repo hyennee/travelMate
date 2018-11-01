@@ -38,12 +38,6 @@ public class pageChangeController {
 	public String loginView() {
 		return "member/login";
 	}
-	
-	@RequestMapping("selectList.bo")
-	public String faqView()
-	{
-		return "board/serviceCenter/faq";
-	}
 
 	@RequestMapping("mypage.me")
 	public String mypageView() {

@@ -30,9 +30,8 @@
 </head>
 <body>
 	<jsp:include page="../../must/header.jsp"/>
-	<div class="full-container">
+	<div id="contents" class="full-container">
 		<div style="width:960px; margin:auto; background:white;" align="center">
-		<br>
 			<div style="margin:auto; width:800px;">
 				<hr style="border:1.5px solid lightgray;">
 				<div class="title" style="height:35px;">

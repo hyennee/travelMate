@@ -12,7 +12,7 @@ public class Board implements Serializable
 	
 	private int boardNo;			//게시글 ID
 	private int rowNum;				//글 번호
-	private int write;				//게시글 작성자(JOIN)의 멤버 ID
+	private int writer;				//게시글 작성자(JOIN)의 멤버 ID
 	private String nickName;			//게시글 작성자
 	private String category;
 	private String title;			//제목
@@ -24,12 +24,12 @@ public class Board implements Serializable
 	
 	public Board() {}
 
-	public Board(int boardNo, int rowNum, int write, String nickName, String category, String title, String content,
+	public Board(int boardNo, int rowNum, int writer, String nickName, String category, String title, String content,
 			Date boardDate, String status, int boardLevel, int refNo) {
 		super();
 		this.boardNo = boardNo;
 		this.rowNum = rowNum;
-		this.write = write;
+		this.writer = writer;
 		this.nickName = nickName;
 		this.category = category;
 		this.title = title;
@@ -56,12 +56,12 @@ public class Board implements Serializable
 		this.rowNum = rowNum;
 	}
 
-	public int getWrite() {
-		return write;
+	public int getwriter() {
+		return writer;
 	}
 
-	public void setWrite(int write) {
-		this.write = write;
+	public void setwriter(int writer) {
+		this.writer = writer;
 	}
 
 	public String getNickName() {
@@ -134,7 +134,7 @@ public class Board implements Serializable
 
 	@Override
 	public String toString() {
-		return "Board [boardNo=" + boardNo + ", rowNum=" + rowNum + ", write=" + write + ", nickName=" + nickName
+		return "Board [boardNo=" + boardNo + ", rowNum=" + rowNum + ", writer=" + writer + ", nickName=" + nickName
 				+ ", category=" + category + ", title=" + title + ", content=" + content + ", boardDate=" + boardDate
 				+ ", status=" + status + ", boardLevel=" + boardLevel + ", refNo=" + refNo + "]";
 	}
