@@ -32,23 +32,6 @@ public class MemberController {
 	}
 
 	
-/*	@RequestMapping("login.me")
-	public String loginCheck(Member m, Model model) {
-		
-		try {
-			Member loginUser = ms.loginCheck(m);
-			
-			model.addAttribute("loginUser", loginUser);
-			
-			return "redirect:goMain.me";
-			
-		} catch (LoginException e) {
-			model.addAttribute("msg", e.getMessage());
-			return "must/errorPage";
-		}
-		
-		
-	}*/
 	
 	//로그인
 	@RequestMapping("login.me")
@@ -137,13 +120,25 @@ public class MemberController {
 		}
 	}
 	
-	//아이디 중복체크
+	//아이디(이메일형식) 유효성 검사 후 중복체크
 	@ResponseBody
 	@RequestMapping("selectDuplChkId.me")
 	public String selectDuplChkId(/*@ModelAttribute("m")*/@RequestParam(value="chkIdVal")String email, Member m, Model model) {
 		
 		System.out.println(email);
 		int result = ms.selectDuplChkId(email);
+		
+		return String.valueOf(result);
+	}
+	
+	//닉네임 유효성 검사 후 중복체크
+	@ResponseBody
+	@RequestMapping("selectDuplChkNick.me")
+	public String selectDuplChkNick(@RequestParam(value="chkNickVal")String nick_name, Member m, Model model) {
+		
+		System.out.println(nick_name);
+		
+		int result = ms.selectDuplChkNick(nick_name);
 		
 		return String.valueOf(result);
 	}
