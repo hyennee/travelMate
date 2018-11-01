@@ -62,13 +62,17 @@ td {
 
 .section {
 	border: 1px solid #bcbcbc;
-	width: 40%;
+	width: 100%;
 	display: inline-block;
 }
 
 a {
 	text-decoration: none;
 	color: black;
+}
+.tdsection{
+	width:49%;
+	display:inline-block;
 }
 </style>
 </head>
@@ -85,14 +89,15 @@ a {
 			<h2>나의 페이지</h2>
 			<hr />
 			<div class="section">
-				<table>
+				<table align="center">
 					<tr>
-						<td>
+						<td class="tdsection" style="vertical-align:top; ">
+						<p>내계정</p>
 							<table align="center">
 								<tr>
 									<td>이름</td>
-									<td colspan="2"><c:out
-											value="${ sessionScope.loginUser.user_name }"></c:out></td>
+									<td colspan="2">
+									<c:out value="${ sessionScope.loginUser.user_name }"></c:out></td>
 								</tr>
 								<tr>
 									<td>연락처</td>
@@ -113,31 +118,34 @@ a {
 
 							</table>
 						</td>
-						<td>
+						<td class="tdsection">
 							<p>사이버머니 내역</p>
-							<table>
+							<table align="center">
 								<tr>
 									<th>no</th>
 									<th>구분</th>
 									<th>금액</th>
 									<th>내역일시</th>
-									<th>잔여액</th>
 								</tr>
-								<tr>
-									<td></td>
-									<td>충전</td>
-									<td>30000 원</td>
-									<td>18/10/22</td>
-									<td>40000 원</td>
+								
+								<c:forEach var="size" items="${ cyberMoney }" >
+									
+								
+									<tr>
+										<td>${ size.CYBERMONEY_RECORD_NO }</td>
+										<td>${ size.CHANGE_REASON }</td>
+										<td>${ size.CHANGE_MONEY }원</td>
+										<td>${ size.RECORD_DATE }</td>
 
 								</tr>
+								</c:forEach>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td class="tdsection">
 							<p>1:1문의내역</p>
-							<table>
+							<table align="center">
 								<tr>
 									<th>no</th>
 									<th>제목</th>
@@ -152,9 +160,9 @@ a {
 								</tr>
 							</table>
 						</td>
-						<td>
+						<td class="tdsection">
 							<p>거래내역</p>
-							<table>
+							<table align="center">
 								<tr>
 									<th>no</th>
 									<th>컨설팅제목</th>

@@ -4,85 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   
-<mapper namespace="Member">
-	<!-- type = com.kh.mb.member.model.vo.Member -->
-	<resultMap type="com.kh.travelMate.member.model.vo.Member" id="memberResultSet">
-	<!-- resultSet에서 mid라는 값을 가져와서 담아준다 MID 
-	primary key만 id로 하고 나머지는 result
-	앞에꺼는 vo껄로 뒤에꺼는 db껄로 작성해야함 -->
-		<!-- <id property="mid" column="MID"/>
-		<result property="userId" column="USER_ID"></result>
-		<result property="userPwd" column="USER_PWD"></result>
-		<result property="userName" column="USER_NAME"></result>
-		<result property="email" column="EMAIL"></result>
-		<result property="birthday" column="BIRTHDAY"></result>
-		<result property="gender" column="GENDER"></result>
-		<result property="phone" column="PHONE"></result>
-		<result property="address" column="ADDRESS"></result>
-		<result property="enrollDate" column="ENROLL_DATE"></result>
-		<result property="modifyDate" column="MODIFY_DATE"></result>
-		<result property="status" column="STATUS"></result> -->
-		
-		<id property="user_no" column="USER_NO"/>
-		<result property="email" column="EMAIL"/>
-		<result property="password" column="PASSWORD"/>
-		<result property="user_name" column="USER_NAME"/>
-		<result property="nick_name" column="NICK_NAME"/>
-		<result property="phone" column="PHONE"/>
-		<result property="birthday" column="BIRTHDAY"/>
-		<result property="gender" column="GENDER"/>
-		<result property="enroll_date" column="ENROLL_DATE"/>
-		<result property="modify_date" column="MODIFY_DATE"/>
-		<result property="user_type" column="USER_TYPE"/>
-		<result property="bank_no" column="BANK_NO"/>
-		<result property="cybermoney" column="CYBERMONEY"/>
-		<result property="cm_modify_date" column="CM_MODIFY_DATE"/>
-		<result property="bank" column="BANK"/>
-		<result property="user_type_level" column="USER_TYPE_LEVEL"/>
-		
-	</resultMap>
-	
-	<!-- 	로그인 정보 조회용 쿼리문 -->
-	<select id="loginCheck" resultMap="memberResultSet" parameterType="Member">
-		<!-- SELECT *
-		FROM MEMBER
-		WHERE USER_ID = #{userId}
-		AND USER_PWD = #{userPwd}
-		AND STATUS = 'Y'	 -->
-		SELECT *
-		FROM MEMBER
-		WHERE EMAIL = #{email}
-		AND USER_PWD = #{password}
+<mapper namespace="Mypage">
+	<select id="cyberMoneyHistory" resultType="java.util.HashMap" parameterType="int">
+		SELECT * 
+		FROM CYBERMONEY_RECORD 
+		WHERE USER_NO = #{user_no}
 	</select> 
-
-	<!-- 회원가입용 쿼리문 -->
-	<insert id = "insertMember" parameterType="Member">
-		INSERT INTO MEMBER
-		VALUES(SEQ_USER_NO.NEXTVAL, #{email}, #{password}, #{user_name}, 
-				#{nick_name}, #{phone}, #{birthday}, #{gender}, 
-				SYSDATE, SYSDATE, DEFAULT, NULL, 0, SYSDATE, NULL, DEFAULT)
-	</insert>
-	
-	<!-- 암호화된 비밀번호 조회용 쿼리문-->
-	<select id="selectPwd" resultType="java.lang.String" parameterType="java.lang.String">
-		SELECT PASSWORD
-		FROM MEMBER
-		WHERE EMAIL = #{email}
-	</select>
-	
-	<!-- 암호화 후 로그인용 쿼리문 -->
-	<select id="selectLoginUser" resultType="Member" parameterType="Member"> <!-- resultMap="memberResultSet"도 가능 --> <!-- resultType="java.lang.String" 오류! -->
-		SELECT *
-		FROM MEMBER
-		WHERE EMAIL = #{email}
-	</select>
-	
-	<!-- 아이디 중복체크용 메소드 -->
-	<select id="selectDuplChkId" resultType="java.lang.Integer" parameterType="java.lang.String">
-		SELECT COUNT(*)
-		FROM MEMBER
-		WHERE EMAIL = #{email}
-	</select>
 	
 </mapper> 
 
