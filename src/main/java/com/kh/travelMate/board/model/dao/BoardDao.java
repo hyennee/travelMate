@@ -17,4 +17,8 @@ public interface BoardDao
 	Board selectOne(SqlSessionTemplate sqlSession, Board b);
 
 	int getListCount(SqlSessionTemplate sqlSession, Board b) throws BoardListException;
+
+	int insertBoard(SqlSessionTemplate sqlSession, Board b);
+
+	int updateBoard(SqlSessionTemplate sqlSession, Board b);
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kh.travelMate.board.model.exception.BoardListException;
 import com.kh.travelMate.board.model.service.BoardService;
 import com.kh.travelMate.board.model.vo.Board;
+import com.kh.travelMate.board.model.vo.BoardStatus;
 import com.kh.travelMate.board.model.vo.PageInfo;
 import com.kh.travelMate.common.Pagination;
 
@@ -47,7 +48,16 @@ public class BoardController
 		
 		model.addAttribute("selectOne", selectOne);
 		
-		return "board/serviceCenter/noticeDetail";
+		if(b.getCategory().equals("1"))
+		{
+			return "board/serviceCenter/noticeDetail";
+		}
+		else if(b.getCategory().equals("2"))
+		{
+			return "board/serviceCenter/questionDetail";
+		}
+		
+		return null;
 	}
 	
 	@RequestMapping("selectFAQ.bo")
@@ -92,5 +102,37 @@ public class BoardController
 		}
 		
 		return null;
+	}
+	
+	@RequestMapping("goInsertForm.bo")
+	public String showInsertForm()
+	{	
+		return "board/serviceCenter/questionInsertForm";
+	}
+	
+	@RequestMapping("insert.bo")
+	public String insertBoard(Board b, Model model)
+	{
+		bs.insertBoard(b);
+		
+		return "redirect:selectList.bo?category=" + b.getCategory();
+	}
+	
+	@RequestMapping("goUpdateForm.bo")
+	public String showUpdateForm(Board b, Model model)
+	{	
+		Board selectOne = bs.selectOne(b);
+		
+		model.addAttribute("selectOne", selectOne);		
+		
+		return "board/serviceCenter/questionUpdateForm";
+	}
+	
+	@RequestMapping("update.bo")
+	public String updateBoard(Board b, Model model)
+	{
+		bs.updateBoard(b);
+		
+		return "redirect:selectOne.bo?boardNo=" + b.getBoardNo() + "&category=" + b.getCategory();
 	}
 }

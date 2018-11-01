@@ -8,7 +8,7 @@
 	<!-- type = com.kh.mb.member.model.vo.Member -->
 	<resultMap type="Board" id="boardResultSet">
 		<id property="boardNo" column="BOARD_NO"/>
-		<result property="rowNum" column="RO1"/>
+		<result property="rowNum" column="ROWNUM"/>
 		<result property="writer" column="WRITER"/>
 		<result property="nickName" column="NICK_NAME"/>
 		<result property="category" column="CATEGORY"/>
@@ -20,27 +20,31 @@
 		<result property="refNo" column="REF_NO"/>	
 	</resultMap>
 	
+	<resultMap type="BoardStatus" id="boardStatusResultSet">
+		<id property="boardStatusNo" column="BOARD_STATUS_NO"/>
+		<result property="boardNo" column="BOARD_NO"/>
+		<result property="status" column="STATUS"/>
+	</resultMap>
+	
 	<select id="serviceCenterList" resultMap="boardResultSet" parameterType="Board">
-		SELECT RO2, RO1, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO
-		FROM (SELECT ROWNUM "RO2", RO1, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO
-				FROM (SELECT ROWNUM "RO1", B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO
-					  FROM BOARD B
-					  JOIN MEMBER M ON(B.WRITER = M.USER_NO)
-					  WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category}
-		              ORDER BY B.BOARD_NO DESC)
-		        ORDER BY RO1 DESC)
-		WHERE RO2 <![CDATA[<]]>= 5
-		ORDER BY RO2 ASC
+		SELECT ROWNUM, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO
+		FROM (SELECT B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO
+		      FROM BOARD B
+		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
+		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category}
+		      ORDER BY B.BOARD_NO DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 5
+		ORDER BY ROWNUM ASC
 	</select>
 	
 	<select id="boardList" resultMap="boardResultSet" parameterType="Board">
-		SELECT RO1, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO
-		FROM (SELECT ROWNUM "RO1", B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO
-			  FROM BOARD B
-			  JOIN MEMBER M ON(B.WRITER = M.USER_NO)
-			  WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category}
-	             ORDER BY B.BOARD_NO DESC)
-	    ORDER BY RO1 DESC
+	    SELECT ROWNUM, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO
+		FROM (SELECT B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO
+		      FROM BOARD B
+		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
+		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category}
+		      ORDER BY B.BOARD_NO DESC)
+		ORDER BY ROWNUM ASC
 	</select>
 	
 	<select id="selectOne" resultMap="boardResultSet" parameterType="board">
@@ -58,4 +62,20 @@
 		AND CATEGORY = #{category}
 		AND BOARD_LEVEL = 1
 	</select>
-</mapper> 
+	
+	<insert id="insertBoard" parameterType="Board">
+		INSERT INTO BOARD
+		VALUES(SEQ_BOARD_NO.NEXTVAL, #{writer}, #{category}, #{title}, #{content}, SYSDATE, DEFAULT, 1, NULL)
+	</insert>
+	
+	<update id="updateBoard" parameterType="Board">
+		UPDATE BOARD
+		SET TITLE = #{title}, CONTENT = #{content}, BOARD_DATE = SYSDATE
+		WHERE BOARD_NO = #{boardNo} AND STATUS = 'Y' AND CATEGORY = #{category}
+	</update>
+	
+	<insert id="insertBoardStatus" parameterType="_int">
+		INSERT INTO BOARD_STATUS
+		VALUES(BOARD_STATUS_NO.NEXTVAL, #{boardNo}, DEFAULT)
+	</insert>
+</mapper>

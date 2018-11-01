@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+
+<jsp:useBean id="toDay" class="java.util.Date" />
+<fmt:formatDate value='${toDay}' pattern='yyyy-MM-dd HH:mm:ss' var="nowDate"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,31 +62,35 @@
 </style>
 </head>
 <body>
+	<c:if test="${ !empty loginUser }">
 	<jsp:include page="../../must/header.jsp"/>
 	<div id="contents" class="full-container">
 		<div style="width:960px; margin:auto; background:white;" align="center">
+		<form action="update.bo" method="post">
 			<div style="margin:auto; width:800px;">
+				<input type="hidden" name="boardNo" value="${ selectOne.boardNo }">
+				<input type="hidden" name="category" value="${ selectOne.category }">
 				<div class="title" style="height:40px; background:#E7E7E7; border:none; border-radius:5px;">
 					<div style="display:inline-block; border:none; border-radius:5px; margin-left:5px;">
 						<label style="font-size:14px; height:35px;">img</label>
 						<label style="font-size:14px; height:35px;">제    목</label>
 					</div>
 					<div style="display:inline-block;">
-						<input type="text" name="title" style="width:700px; height:25px; border:none; border-radius:5px;">
+						<input type="text" name="title" style="width:700px; height:25px; border:none; border-radius:5px;" value="${ selectOne.title }">
 					</div>
 				</div>
 				<hr style="border:1px dotted lightgray;">
 				<div class="title" style="height:20px;">
-					<span style="font-weight:bold; font-size:14px;">TravelMaker</span>
+					<input type="hidden" name="writer" value="${ loginUser.getUser_no() }">
+					<span style="font-weight:bold; font-size:14px;">${ loginUser.getNick_name() }</span>
 					<span>&nbsp;|&nbsp;</span>
-					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:25px; height:25px;">&nbsp; 2018-10-25</span>
+					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:25px; height:25px;">&nbsp; ${ nowDate }</span>
 				</div>
 				<hr>
 				<div class="fr-view" style="width:800px; margin:auto;">
 					<!-- Create a tag that we will use as the editable area. -->
 				    <!-- You can use a div tag as well. -->
-				    <textarea>
-				    </textarea>
+				    <textarea name="content">${ selectOne.content }</textarea>
 				</div>
 				<hr>
 				<div>
@@ -89,11 +99,17 @@
 				</div>
 				<br>
 			</div>
+		</form>
 		</div>
 		<br>
 	</div>
 	<br>
 	<jsp:include page="../../must/footer.jsp"/>
+	</c:if>
+	<c:if test="${ empty loginUser }">
+		<c:set var="msg" value="로그인이 필요한 서비스입니다." scope="request"/>
+		<jsp:forward page="../../must/errorPage.jsp"/>
+	</c:if>
 	
 	<!-- Initialize the editor. -->
     <script>

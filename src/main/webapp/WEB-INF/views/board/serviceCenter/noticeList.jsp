@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 	.notice-list
 	{
@@ -13,12 +14,12 @@
 		font-size:15px;
 		border-collapse:collapse;
 	}
-	.notice-list>tbody>tr>th
+	.notice-list>thead>tr:nth-child(2)>th
 	{
 		border-top:2px solid lightgray;
 		border-bottom:1px solid lightgray;
 	}
-	.notice-list>tbody>tr>th:nth-child(1)
+	.notice-list>thead>tr:nth-child(2)>th:nth-child(1)
 	{
 		border-top:none;
 	}
@@ -56,9 +57,15 @@
 		height:25px;
 		opacity:0.5;
 	}
+	.notice-list>tbody>tr:hover
+	{
+		cursor:pointer;
+		background:lightgray;
+	}
 </style>
 </head>
 <body>
+	<c:if test="${ !empty loginUser }">
 	<jsp:include page="../../must/header.jsp"/>
 	<div id="contents" class="full-container">
 		<div style="width:960px; margin:auto; background:white;" align="center">
@@ -140,5 +147,23 @@
 	</div>
 	<br>
 	<jsp:include page="../../must/footer.jsp"/>
+	</c:if>
+	<c:if test="${ empty loginUser }">
+		<c:set var="msg" value="로그인이 필요한 서비스입니다." scope="request"/>
+		<jsp:forward page="../../must/errorPage.jsp"/>
+	</c:if>
+	
+	<script>
+		$(function()
+		{
+			$(".notice-list td").click(function()
+			{
+				var boardNo = $(this).parent().children("input[name='boardNo']").val();
+				var category = $(this).parent().children("input[name='category']").val();
+				
+				location.href="selectOne.bo?boardNo=" + boardNo + "&category=" + category;
+			});
+		});
+	</script>
 </body>
 </html>
