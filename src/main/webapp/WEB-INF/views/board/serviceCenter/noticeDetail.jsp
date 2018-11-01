@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +19,14 @@
 		width:800px;
 		text-align:left;
 	}
+	.pointer:hover
+	{
+		cursor:pointer;
+	}
 </style>
 </head>
 <body>
+	<c:if test="${ !empty loginUser }">
 	<jsp:include page="../../must/header.jsp"/>
 	<div id="contents" class="full-container">
 		<div style="width:960px; margin:auto; background:white;" align="center">
@@ -42,7 +48,7 @@
 				</div>
 				<hr>
 				<div class="content">
-					<button type="button" style="background:lightgray; border:none; border-radius:5px; height:35px;">목록으로</button>
+					<button type="button" class="pointer" style="background:lightgray; border:none; border-radius:5px; height:35px;" onclick="location.href='selectList.bo?category=1'">목록으로</button>
 				</div>
 				<br>
 			</div>
@@ -50,5 +56,10 @@
 		<br>
 	</div>
 	<jsp:include page="../../must/footer.jsp"/>
+	</c:if>
+	<c:if test="${ empty loginUser }">
+		<c:set var="msg" value="로그인이 필요한 서비스입니다." scope="request"/>
+		<jsp:forward page="../../must/errorPage.jsp"/>
+	</c:if>
 </body>
 </html>

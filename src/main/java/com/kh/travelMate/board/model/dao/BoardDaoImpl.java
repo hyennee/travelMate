@@ -54,11 +54,23 @@ public class BoardDaoImpl implements BoardDao
 	{
 		int result = sqlSession.selectOne("Board.selectListCount", b);
 		
-		if(result <= 0)
+		/*if(result <= 0)
 		{
 			throw new BoardListException("게시글 수 조회 실패");
-		}
+		}*/
 		
 		return result;
+	}
+
+	@Override
+	public int insertBoard(SqlSessionTemplate sqlSession, Board b)
+	{
+		return sqlSession.insert("Board.insertBoard", b);
+	}
+
+	@Override
+	public int updateBoard(SqlSessionTemplate sqlSession, Board b)
+	{
+		return sqlSession.update("Board.updateBoard", b);
 	}
 }

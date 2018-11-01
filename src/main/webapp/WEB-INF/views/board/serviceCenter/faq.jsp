@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,6 +67,7 @@
 </style>
 </head>
 <body class="body">
+	<c:if test="${ !empty loginUser }">
 	<jsp:include page="../../must/header.jsp"/>
 	<div id="contents" class="full-container" style="background:#EC983E;">
 		<div style="margin:auto; width:960px; background:white;">
@@ -123,6 +125,11 @@
 		<br>
 	</div>
 	<jsp:include page="../../must/footer.jsp"/>
+	</c:if>
+	<c:if test="${ empty loginUser }">
+		<c:set var="msg" value="로그인이 필요한 서비스입니다." scope="request"/>
+		<jsp:forward page="../../must/errorPage.jsp"/>
+	</c:if>
 	
 	<script>
 		var acc = document.getElementsByClassName("accordion");

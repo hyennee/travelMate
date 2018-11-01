@@ -94,101 +94,107 @@
 </style>
 </head>
 <body>
-	<jsp:include page="../../must/header.jsp"/>
-	<div id="contents" class="full-container" align="center">
-		<div style="width:960px; margin:auto; background:white;">
-			<div class="image-div" style="width:960px; height:200px;">
-				<span style="opacity:1; font-size:20px; font-weight:bold; color:orangered;">트래블메이트 고객센터는<br>여행자님의 아름다운 하루를 위해 최선을 다하겠습니다.</span>
+	<c:if test="${ !empty loginUser }">
+		<jsp:include page="../../must/header.jsp"/>
+		<div id="contents" class="full-container" align="center">
+			<div style="width:960px; margin:auto; background:white;">
+				<div class="image-div" style="width:960px; height:200px;">
+					<span style="opacity:1; font-size:20px; font-weight:bold; color:orangered;">트래블메이트 고객센터는<br>여행자님의 아름다운 하루를 위해 최선을 다하겠습니다.</span>
+				</div>
 			</div>
-		</div>
-		<div style="width:960px; height:50px; margin:auto; background:#E7E7E7; display:table-cell; vertical-align:middle;">
-			<span style="color:#646464; font-size:14px;">여행자 여러분께서 자주 물어보시는 질문에 대한 답변을 보고 싶으신가요?</span>&nbsp;&nbsp;&nbsp;
-			<button type="button" class="pointer" style="height:30px; background:white; border:1px solid violet; border-radius:5px; color:violet;" onclick="location.href='selectFAQ.bo';">자주 묻는 질문 보기</button>
-		</div>
-		<div style="width:960px; margin:auto; background:white;">
-		<br>
-			<div style="width:900px;">
-				<table class="notice-list" style="width:100%; margin:auto;">
-					<thead>
-						<tr>
-							<th style="width:80px; border-left:2px solid lightgray; border-right:2px solid lightgray; border-top:3px solid violet;">공지사항</th>
-							<th></th>
-							<th style="width:150px;"></th>
-							<th style="width:80px;"><button type="button" class="pointer" style="height:25px; border:1px solid lightgray; border-radius:5px; background:white; color:green;" onclick="location.href='selectList.bo?category=1'">+ 더보기</button></th>
-						</tr>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="notice" items="${ noticeList }">
-						<tr>
-							<input type="hidden" name="boardNo" value="${ notice.boardNo }">
-							<input type="hidden" name="category" value="${ notice.category }">
-							<td><c:out value="${ notice.rowNum }"/></td>
-							<td><c:out value="${ notice.title }"/></td>
-							<td><c:out value="${ notice.nickName }"/></td>
-							<td><c:out value="${ notice.boardDate }"/></td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>			
+			<div style="width:960px; height:50px; margin:auto; background:#E7E7E7; display:table-cell; vertical-align:middle;">
+				<span style="color:#646464; font-size:14px;">여행자 여러분께서 자주 물어보시는 질문에 대한 답변을 보고 싶으신가요?</span>&nbsp;&nbsp;&nbsp;
+				<button type="button" class="pointer" style="height:30px; background:white; border:1px solid violet; border-radius:5px; color:violet;" onclick="location.href='selectFAQ.bo';">자주 묻는 질문 보기</button>
 			</div>
-			<br><br>
-			<div style="width:900px;">
-				<table class="question-list" style="width:100%; margin:auto;">
-					<thead>
-						<tr>
-							<th style="width:80px; border-left:2px solid lightgray; border-right:2px solid lightgray; border-top:3px solid violet;">문의</th>
-							<th></th>
-							<th style="width:30px;"></th>
-							<th style="width:70px;"></th>
-							<th style="width:150px;"></th>
-							<th style="width:80px;"><button type="button" class="pointer" style="height:25px; border:1px solid lightgray; border-radius:5px; background:white; color:green;" onclick="location.href='selectList.bo?category=2'">+ 더보기</button></th>
-						</tr>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th></th>
-							<th>상태</th>
-							<th>작성자</th>
-							<th>작성일</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="question" items="${ questionList }">
-						<tr>
-							<input type="hidden" name="boardNo" value="${ question.boardNo }">
-							<input type="hidden" name="category" value="${ question.category }">
-							<td><c:out value="${ question.rowNum }"/></td>
-							<td><c:out value="${ question.title }"/></td>
-							<td>이미지</td>
-							<%-- <c:if test="${ questionList.상태 eq '접수' }">
-								<td><img src="${ contextPath }/resources/images/이미지"></td>
-							</c:if>
-							<c:if test="${ questionList.상태 eq '답변완료' }">
-								<td><img src="${ contextPath }/resources/images/이미지"></td>
-							</c:if> --%>
-							<td>상태</td>
-							<td><c:out value="${ question.nickName }"/></td>
-							<td><c:out value="${ question.boardDate }"/></td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
+			<div style="width:960px; margin:auto; background:white;">
 			<br>
+				<div style="width:900px;">
+					<table class="notice-list" style="width:100%; margin:auto;">
+						<thead>
+							<tr>
+								<th style="width:80px; border-left:2px solid lightgray; border-right:2px solid lightgray; border-top:3px solid violet;">공지사항</th>
+								<th></th>
+								<th style="width:150px;"></th>
+								<th style="width:80px;"><button type="button" class="pointer" style="height:25px; border:1px solid lightgray; border-radius:5px; background:white; color:green;" onclick="location.href='selectList.bo?category=1'">+ 더보기</button></th>
+							</tr>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="notice" items="${ noticeList }">
+							<tr>
+								<input type="hidden" name="boardNo" value="${ notice.boardNo }">
+								<input type="hidden" name="category" value="${ notice.category }">
+								<td><c:out value="${ notice.rowNum }"/></td>
+								<td><c:out value="${ notice.title }"/></td>
+								<td><c:out value="${ notice.nickName }"/></td>
+								<td><c:out value="${ notice.boardDate }"/></td>
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>			
+				</div>
+				<br><br>
+				<div style="width:900px;">
+					<table class="question-list" style="width:100%; margin:auto;">
+						<thead>
+							<tr>
+								<th style="width:80px; border-left:2px solid lightgray; border-right:2px solid lightgray; border-top:3px solid violet;">문의</th>
+								<th></th>
+								<th style="width:30px;"></th>
+								<th style="width:70px;"></th>
+								<th style="width:150px;"></th>
+								<th style="width:80px;"><button type="button" class="pointer" style="height:25px; border:1px solid lightgray; border-radius:5px; background:white; color:green;" onclick="location.href='selectList.bo?category=2'">+ 더보기</button></th>
+							</tr>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th></th>
+								<th>상태</th>
+								<th>작성자</th>
+								<th>작성일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="question" items="${ questionList }">
+							<tr>
+								<input type="hidden" name="boardNo" value="${ question.boardNo }">
+								<input type="hidden" name="category" value="${ question.category }">
+								<td><c:out value="${ question.rowNum }"/></td>
+								<td><c:out value="${ question.title }"/></td>
+								<td>이미지</td>
+								<%-- <c:if test="${ questionList.상태 eq '접수' }">
+									<td><img src="${ contextPath }/resources/images/이미지"></td>
+								</c:if>
+								<c:if test="${ questionList.상태 eq '답변완료' }">
+									<td><img src="${ contextPath }/resources/images/이미지"></td>
+								</c:if> --%>
+								<td>상태</td>
+								<td><c:out value="${ question.nickName }"/></td>
+								<td><c:out value="${ question.boardDate }"/></td>
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				<br>
+			</div>
 		</div>
-	</div>
-	<br>
-	<div align="center">
-		<button type="button" onclick="location.href='goMapView.map'">지도</button>
-	</div>
-	<br>
-	<jsp:include page="../../must/footer.jsp"/>
+		<br>
+		<div align="center">
+			<button type="button" onclick="location.href='goMapView.map'">지도</button>
+		</div>
+		<br>
+		<jsp:include page="../../must/footer.jsp"/>
+	</c:if>
+	<c:if test="${ empty loginUser }">
+		<c:set var="msg" value="로그인이 필요한 서비스입니다." scope="request"/>
+		<jsp:forward page="../../must/errorPage.jsp"/>
+	</c:if>
 	
 	<script>
 		$(function()

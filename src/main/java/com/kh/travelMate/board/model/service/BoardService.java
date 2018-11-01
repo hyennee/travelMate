@@ -15,4 +15,8 @@ public interface BoardService
 	Board selectOne(Board b);
 
 	int getListCount(Board b) throws BoardListException;
+
+	int insertBoard(Board b);
+
+	int updateBoard(Board b);
 }

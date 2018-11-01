@@ -55,4 +55,20 @@ public class BoardServiceImpl implements BoardService
 		
 		return listCount;
 	}
+
+	@Override
+	public int insertBoard(Board b)
+	{
+		int result = bd.insertBoard(sqlSession, b);
+		
+		return result;
+	}
+
+	@Override
+	public int updateBoard(Board b)
+	{
+		int result = bd.updateBoard(sqlSession, b);
+		
+		return result;
+	}
 }
