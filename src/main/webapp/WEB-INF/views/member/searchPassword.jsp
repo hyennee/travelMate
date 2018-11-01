@@ -44,7 +44,7 @@ td:first-child {
 
 .goSearchPwd {
 	/* 	float:right; */
-	background-color: #ec983e; /* Green */
+	background: #6bc6b3;
 	border: none;
 	color: white;
 	padding: 12px 22px;
@@ -62,7 +62,7 @@ td:first-child {
 }
 
 .goSearchPwd:hover {
-	color: #ec983e;
+	color: #6bc6b3;
 	background-color: white;
 	font-weight: bold;
 	border-radius: 4px;

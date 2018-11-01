@@ -56,7 +56,7 @@ public class MemberController {
 			
 			model.addAttribute("msg", e.getMessage());
 			
-			return "must/errorPage";
+			return "member/reLogin";
 		}
 		
 	}
@@ -112,6 +112,7 @@ public class MemberController {
 		int result = ms.insertMember(m);
 		
 		if(result > 0) {
+			System.out.println("m객체 : " + m);
 			return "redirect:goMain.me";
 		}else {
 			model.addAttribute("msg", "회원 가입 실패!");

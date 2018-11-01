@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
 table, th, td {
 	border: none;
 	border-collapse: collapse;
-	vertical-align:top;
+	vertical-align: top;
 }
 
 th, td {
@@ -42,6 +42,8 @@ td:first-child {
 .scroll {
 	border: 1px solid #b3b3b3;
 	padding: 15px 20px;
+	width:840px;
+	margin-left:40px;
 	height: 90px;
 	overflow: auto;
 	font-size: 11px;
@@ -58,7 +60,7 @@ td:first-child {
 
 .goJoinBtn {
 	/* 	float:right; */
-	background-color: #ec983e; /* Green */
+	background-color: #6bc6b3;
 	border: none;
 	color: white;
 	padding: 12px 22px;
@@ -75,12 +77,11 @@ td:first-child {
 }
 
 .goJoinBtn:hover {
-	color: #ec983e;
+	color: #6bc6b3;
 	background-color: white;
 	font-weight: bold;
 	border-radius: 4px;
 }
-
 </style>
 <body>
 
@@ -89,7 +90,7 @@ td:first-child {
 		<div id="page" class="page">
 			<div id="contents">
 				<div id="joinArea">
-					<form action="insertMember.me" method="post">
+					<form action="insertMember.me" method="post" id="insertJoin">
 						<div id="joinForm">
 							<br> <br> <br> <span
 								style="text-align: left; font-weight: bold; font-size: 24px; color: black">회원가입</span>
@@ -110,25 +111,28 @@ td:first-child {
 							<!-- 테이블 시작 -->
 							<table style="width: 960px; height: 280px;">
 								<tr>
-									<td style="width: 90px; height: 20px;">이름<span
+									<td style="width: 90px; height: 28px; vertical-align: top;">이름<span
 										style="color: red">*</span></td>
-									<td colspan="3"><input type="text" name="user_name"
-										id="user_name" style="width: 187px; height: 18px;"
-										placeholder="이름" maxlength="8"></td>
-
+									<td><input type="text" name="user_name" id="user_name"
+										style="width: 187px; height: 18px;" placeholder="이름"
+										maxlength="8" oninput="chkValidName()"></td>
+									<td></td>
+									<td><div id="checkName"></div></td>
 
 								</tr>
 								<tr>
-									<td style="width: 90px; height: 40px; vertical-align:top;">아이디<span
+									<td style="width: 90px; height: 40px; vertical-align: top;">아이디<span
 										style="color: red">*</span></td>
-									<td style="width: 350px; vertical-align:top;"><input type="text" name="email"
-										id="email" oninput="chkValidEmail()"
-										style="width: 187px; height: 18px;" placeholder="이메일" maxlength="20"><br><span
+									<td style="width: 350px; vertical-align: top;"><input
+										type="text" name="email" id="email" oninput="chkValidEmail()"
+										style="width: 187px; height: 18px;" placeholder="이메일"
+										maxlength="20"><br>
+									<span
 										style="font-size: 12px; font-weight: lighter; color: #999">※아이디는
-											이메일 주소로 입력해주시기 바랍니다.</span>
-									</td>
-									<td style="width: 200px; vertical-align:top;"><button>인증번호 발송</button></td>
-									<td style="vertical-align:top;"><div id="checkDuplId"></div></td>
+											이메일 주소로 입력해주시기 바랍니다.</span></td>
+									<td style="width: 200px; vertical-align: top;"><button>인증번호
+											발송</button></td>
+									<td style="vertical-align: top;"><div id="checkDuplId"></div></td>
 
 								</tr>
 								<tr>
@@ -136,7 +140,7 @@ td:first-child {
 									<td style="height: 20px;"></td>
 									<td style="height: 20px;"></td>
 									<td style="height: 20px;"><div id="authId">인증되었습니다.</div></td>
-								
+
 								</tr>
 
 								<tr>
@@ -144,40 +148,48 @@ td:first-child {
 										style="color: red">*</span></td>
 									<td><input type="text" name="nick_name" id="nick_name"
 										style="width: 187px; height: 18px;" placeholder="닉네임"
-										oninput="chkValidNick()" maxlength="20" ></td>
+										oninput="chkValidNick()" maxlength="20"></td>
 									<td></td>
 									<td><div id="checkNick"></div></td>
 								</tr>
 
 								<tr>
-									<td style="width: 90px; height: 40px; vertical-align:top;">비밀번호<span
+									<td style="width: 90px; height: 40px; vertical-align: top;">비밀번호<span
 										style="color: red;">*</span></td>
-									<td style="vertical-align:top;"><input type="password" name="password" id="password"
-										placeholder="비밀번호" oninput="checkPwd()" maxlength="16" 
-										style="width: 187px; height: 18px;">&nbsp; <br><span
+									<td style="vertical-align: top;"><input type="password"
+										name="password" id="password" placeholder="비밀번호"
+										oninput="checkPwd()" maxlength="16"
+										style="width: 187px; height: 18px;">&nbsp; <br>
+									<span
 										style="font-size: 12px; font-weight: lighter; color: #999">※8~16자의
 											영문(대문자와 소문자)과 숫자만 사용할 수 있습니다.</span></td>
-									<td style="vertical-align:top;"><input type="password" name="password2" id="password2"
-										placeholder="비밀번호 확인" oninput="checkPwd()" maxlength="16" 
+									<td style="vertical-align: top;"><input type="password"
+										name="password2" id="password2" placeholder="비밀번호 확인"
+										oninput="checkPwd()" maxlength="16"
 										style="width: 187px; height: 18px;"></td>
-									<td style="vertical-align:top;"><div id="checkInputPwd"></div></td>
+									<td style="vertical-align: top;"><div id="checkInputPwd"></div></td>
 								</tr>
-								
+
 								<tr>
 									<td style="width: 90px; height: 20px;">생년월일<span
 										style="color: red">*</span></td>
-									<td colspan="3"><select name="birth1"
+									<td colspan="3"><select name="birth1" id="birth1"
 										style="height: 24px; width: 60px;">
+											<option value="---" selected>---</option>
 											<c:forEach var="i" begin="0" end="${2018-1900 }">
 												<c:set var="yearOption" value="${2018-i}" />
 												<option value="${yearOption }">${yearOption }</option>
 											</c:forEach>
-									</select> <select name="birth2" style="height: 24px; width: 60px;">
+									</select> <select name="birth2" id="birth2"
+										style="height: 24px; width: 60px;">
+											<option value="---" selected>---</option>
 											<c:forEach var="i" begin="1" end="12">
 												<c:set var="monthOption" value="${i}" />
 												<option value="${monthOption}">${monthOption}</option>
 											</c:forEach>
-									</select> <select name="birth3" style="height: 24px; width: 60px;">
+									</select> <select name="birth3" id="birth3"
+										style="height: 24px; width: 60px;">
+											<option value="---" selected>---</option>
 											<c:forEach var="i" begin="1" end="31">
 												<c:set var="dayOption" value="${i}" />
 												<option value="${dayOption}">${dayOption}</option>
@@ -197,19 +209,22 @@ td:first-child {
 								<tr>
 									<td style="width: 90px; height: 20px;">휴대전화<span
 										style="color: red">*</span></td>
-									<td colspan="3"><select name="phoneNum1"
+									<td><select name="phoneNum1" id="phoneNum1"
 										style="height: 24px; width: 60px;">
-											<option value="010" selected>010</option>
+											<option value="---" selected>---</option>
+											<option value="010">010</option>
 											<option value="011">011</option>
 											<option value="016">016</option>
 											<option value="017">017</option>
 											<option value="018">018</option>
 											<option value="019">019</option>
-									</select> <input type="text" name="phoneNum2" placeholder=""
-										style="width: 56px; height: 18px;" maxlength="4"> <input type="text"
-										name="phoneNum3" placeholder=""
-										style="width: 56px; height: 18px;" maxlength="4"></td>
-
+									</select> <input type="text" name="phoneNum2" id="phoneNum2"
+										placeholder="" style="width: 56px; height: 18px;"
+										maxlength="4" oninput="checkPhone()"> <input type="text" name="phoneNum3"
+										id="phoneNum3" placeholder=""
+										style="width: 56px; height: 18px;" maxlength="4" oninput="checkPhone()"></td>
+									<td></td>
+									<td><div id="checkPhone"></div></td>
 								</tr>
 							</table>
 
@@ -217,7 +232,8 @@ td:first-child {
 							<br>
 							<hr>
 						</div>
-						<br> <span
+						<br> &nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;<span
 							style="text-align: left; font-weight: bold; font-size: 15px; color: gray">개인정보관련안내</span>
 						<br> <br>
 						<div class="scroll">
@@ -302,12 +318,15 @@ td:first-child {
 							(http://icic.sppo.go.kr/02-3480-3600)<br> 4.경찰청 사이버테러대응센터
 							(www.ctrc.go.kr/02-392-0330)<br>
 						</div>
-
 						<p class="check">
-							<small>+ 개인정보 취급방침에 동의 하십니까?</small> <input type="checkbox"
-								class="checkbox" id="agree_ok" name="privacy_ok"><small>동의함</small>
+							<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;
+							+ 개인정보 취급방침에 동의 하십니까?</small> <input type="checkbox"
+								class="checkbox" id="privacy_ok" name="privacy_ok"><label
+								for="privacy_ok">동의함</label>
 						</p>
-						<br> <span
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp; <span
 							style="text-align: left; font-weight: bold; font-size: 15px; color: gray">이용약관</span>
 						<br> <br>
 						<div class="scroll">
@@ -405,14 +424,17 @@ td:first-child {
 							[부칙]<br> <br> (시행일) 본 약관은 2018년 11월 22일부터 시행합니다.<br>
 						</div>
 						<p class="check">
-							<small>+ 이용약관에 동의 하십니까?</small> <input type="checkbox"
-								class="checkbox" id="agree_ok" name="agree_ok"><small>동의함</small>
+							<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;+ 이용약관에 동의 하십니까?</small> <input type="checkbox"
+								class="checkbox" id="agree_ok" name="agree_ok"><label
+								for="agree_ok">동의함</label>
 						</p>
 						<br> <br>
 
 						<div class="btnArea">
 
-							<button type="submit" class="goJoinBtn" id="joinBtn">회원가입</button>
+							<button type="button" class="goJoinBtn" id="joinBtn"
+								onclick="join_confirm()">회원가입</button>
 							&nbsp;
 							<button type="reset" class="goJoinBtn" id="cancelJoinBtn">가입취소</button>
 						</div>
@@ -428,27 +450,38 @@ td:first-child {
 		$('#cancelJoinBtn').click(function() {
 			window.location.href = '${contextPath}/index.jsp';
 		})
-
-		//아이디와 비밀번호가 맞지 않을 경우 가입버튼 비활성화를 위한 변수 설정
 	</script>
 
 
 	<script>
-	
-		var idCheck = 0;
-		var pwdCheck = 0;
-		var nickCheck = 0;
-		
-		
+		//이름 유효성 검사
+		function chkValidName() {
+			var chkNameVal = $('#user_name').val();
+			var regNameExp = /^[가-힣]+$/;
+			if (chkNameVal == "" || chkNameVal == null) {
+				document.getElementById('checkName').innerHTML = "<span style='color:red; font-size:12px'>이름을 입력해주십시오.</span>";
+				return false;
+			}
+
+			if (chkNameVal != "" && regNameExp.test(chkNameVal) == false) {
+				document.getElementById('checkName').innerHTML = "<span style='color:red; font-size:12px'>이름의 형식에 알맞지 않습니다.</span>";
+				return false;
+			} else {
+				document.getElementById('checkName').innerHTML = "<span style='color:red; font-size:12px'>　</span>";
+
+			}
+
+		}
+
 		//이메일 null값 체크 및 유효성 검사
 		function chkValidEmail() {
 			var chkIdVal = $('#email').val();
 			var regEmailExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-			if (chkIdVal == "" || chkIdVal == null){
+			if (chkIdVal == "" || chkIdVal == null) {
 				document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>아이디를 입력해주세요.</span>";
-			}else if(regEmailExp.test(chkIdVal) == false) { //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐 경우
+			} else if (regEmailExp.test(chkIdVal) == false) { //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐 경우
 				document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>이메일 형식이 아닙니다.</span>";
-			}else{
+			} else {
 				checkId(chkIdVal);
 			}
 		}
@@ -457,35 +490,28 @@ td:first-child {
 		function checkId(chkIdVal) {
 			//유효성 검사 진행한 결과를 매개변수로 받아 ajax로 진행. 데이터 넘겨 db에 동일한 id가 있는지 체크한 후 다시 뿌리기
 			console.log(chkIdVal);
-			$.ajax({
-				data : {
-					"chkIdVal" : chkIdVal
-				},
-				url : 'selectDuplChkId.me',
-				type : 'post',
-				success : function(data) {
-					 if (data == "0") { //중복되는 아이디가 없으면!
-						/* $('#joinBtn').prop("disabled", false); */
-						document.getElementById('checkDuplId').innerHTML = "<span style='color:blue; font-size:12px'>사용가능한 아이디입니다. 인증을 진행해주세요.</span>"
-						idCheck = 1;
-						/* if(idCheck == 1 && pwdCheck == 1){
-						$('#joinBtn').prop("disabled", false);
-						} */
-					} else if (data == "1") { //중복되는 아이디가 있으면!
-						/* $('#joinBtn').prop("disabled", true);
-						$('#joinBtn').css("background-color", "#aaaaaa"); */
-						/* $('#checkDuplId').html(
-								'<font color="red" size="3px;">사용 불가능한 아이디입니다.</font>'); */
-						document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>사용 불가능한 아이디입니다.</span>"
+			$
+					.ajax({
+						data : {
+							"chkIdVal" : chkIdVal
+						},
+						url : 'selectDuplChkId.me',
+						type : 'post',
+						success : function(data) {
+							if (data == "0") { //중복되는 아이디가 없으면!
 
-						idCheck = 0;
-					}
-				}
-			});
+								document.getElementById('checkDuplId').innerHTML = "<span style='color:blue; font-size:12px'>사용 가능한 아이디입니다. 인증을 진행해주십시오.</span>"
+
+							} else if (data == "1") { //중복되는 아이디가 있으면!
+
+								document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>사용 불가능한 아이디입니다.</span>"
+
+							}
+						}
+					});
 
 		}
 
-		
 		//비밀번호 확인 체크 및 유효성 검사
 		function checkPwd() {
 			var chkPwdVal1 = $('#password').val();
@@ -499,20 +525,19 @@ td:first-child {
 			//비밀번호 공백 체크
 			if (chkPwdVal1 == ""
 					&& ((chkPwdVal1 == chkPwdVal2) || (chkPwdVal1 != chkPwdVal2))) {
-				/* document.getElementById('joinBtn').setAttribute("disabled", true);
-				document.getElementById('joinBtn').style.backgroundColor="#aaaaaa"; */
-				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호를 입력해주세요.</span>";
+
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호를 입력해주십시오.</span>";
 				pwdCheck = 0;
 				return false;
 			}
 
 			//비밀번호 유효성 검사
 			if (regPwdExp.test(chkPwdVal1) == false) {
-				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 영문(소문자와 대문자)과 숫자 조합으로 8자~16자로 입력해주세요.</span>";
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 영문(소문자와 대문자)과 숫자 조합으로 8자~16자로 입력해주십시오.</span>";
 				return false;
 			}
 			if (checkNumber < 0 || checkEnglish < 0) {
-				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 숫자와 영문자를 혼용해서 입력해주세요.</span>";
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 숫자와 영문자를 혼용해서 입력해주십시오.</span>";
 				return false;
 			}
 			if (/(\w)\1\1\1/.test(chkPwdVal1) == true) {
@@ -524,108 +549,200 @@ td:first-child {
 				//비밀번호 유효성 검사를 통과하면 확인 체크
 				if (chkPwdVal1 != "" && (chkPwdVal1 == chkPwdVal2)) {
 					document.getElementById('checkInputPwd').innerHTML = "<span style='color:blue; font-size:12px'>비밀번호가 일치합니다.</span>";
-					pwdCheck = 1;
+
 				} else if (chkPwdVal1 != "" && (chkPwdVal1 != chkPwdVal2)) {
 					document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호가 일치하지 않습니다.</span>";
-					pwdCheck = 0;
+
 				}
 
 			}
-			
+
 			return true;
 
 		}
-		
-		
+
 		//닉네임 null값 체크 및 유효성 검사
-		function chkValidNick(){
+		function chkValidNick() {
 			var chkNickVal = $('#nick_name').val();
-			 console.log(chkNickVal); 
+			console.log(chkNickVal);
 			var regNickExp = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,6}$/;
-			
-			if(chkNickVal == "" || chkNickVal == null){
-				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임을 입력해주세요."
-				
-			}else if(regNickExp.test(chkNickVal) == false){
-					document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임은 2~20자로 작성해야 합니다."
-					return false;
-				
-			}else{
-					checkNick(chkNickVal);
-				
-				}
+
+			if (chkNickVal == "" || chkNickVal == null) {
+				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임을 입력해주십시오."
+				return false;
+			} else if (regNickExp.test(chkNickVal) == false) {
+				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임은 2~20자로 작성해야 합니다."
+				return false;
+
+			} else {
+				checkNick(chkNickVal);
+
 			}
-			
-			
-		
-			
-		
-		
+		}
+
 		//닉네임 중복검사
-		function checkNick(chkNickVal){
+		function checkNick(chkNickVal) {
 			console.log(chkNickVal);
 			$.ajax({
-				
-				data : {
-					"chkNickVal" : chkNickVal
-					},
-				url : 'selectDuplChkNick.me',
-				type : 'post',
-				success: function(data){
-					if(data == "0"){
-						document.getElementById('checkNick').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
-						
-					}else if(data == "1"){
-						
-						document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>사용할 수 없는 닉네임입니다.</span>";
-					}
-					
-				}
-			})
+						data : {
+							"chkNickVal" : chkNickVal
+						},
+						url : 'selectDuplChkNick.me',
+						type : 'post',
+						success : function(data) {
+							if (data == "0") {
+								document.getElementById('checkNick').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
+
+							} else if (data == "1") {
+
+								document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>사용할 수 없는 닉네임입니다.</span>";
+							}
+
+						}
+					})
+
+		}
+		 
+		//휴대폰 번호 유효성 검사
+		function checkPhone(){
+			var chkPhoneVal2 = $('#phoneNum2').val();
+			var chkPhoneVal3 = $('#phoneNum3').val();
+			var regPhoneExp2 = /^\d{3,4}$/;
+			var regPhoneExp3 = /^\d{4}$/;
 			
+			if(regPhoneExp2.test(chkPhoneVal2) == false || regPhoneExp3.test(chkPhoneVal3) == false){
+				document.getElementById('checkPhone').innerHTML = "<span style='color:red; font-size:12px'>휴대폰 번호 형식에 맞지 않습니다.</span>";
+				return false;
+			}else{
+				document.getElementById('checkPhone').innerHTML = "<span style='color:red; font-size:12px'>　</span>";
+			}
 			
 		}
 		
-	
-		
-		</script>
-		
-		<script>
+	</script>
+
+	<script>
 		//maxlength substr 함수
-		$(document).ready(function(){
-			$('input').keyup(function(){
-				if($(this).val().length > $(this).attr('maxlength')){
-					$(this).val($(this).val().substr(0, $(this).attr('maxlength')));
-				} 
-			});
-			
-			
-		});
-		
-		
-		$('#joinBtn').click(function(){
-			if($('#user_name').val() == "" || $('#user_name').val() == null){
-				alert('이름을 입력해주세요');
-				return false;
+		$(document).ready(function() {
+							$('input').keyup(function() {
+								if ($(this).val().length > $(this).attr('maxlength')) {
+									$(this).val($(this).val().substr(0,$(this).attr('maxlength')));
+										}
+									});
+
+						});
+	</script>
+
+	<script>
+		function join_confirm() {
+
+			if (confirm('정말 가입하시겠습니까?')) {
+				//yes 클릭했을 때
+
+				
+				//이름
+				if ($('#user_name').val() == ""
+						|| $('#user_name').val() == null) {
+					alert('이름을 입력해주십시오.');
+					$('#user_name').focus();
+					return false;
+				}
+
+				//아이디
+				if ($('#email').val() == "" || $('#email').val() == null) {
+					alert('아이디를 입력해주십시오.');
+					$('#email').focus();
+					return false;
+				}
+
+				//닉네임
+				if ($('#nick_name').val() == ""
+						|| ($('#nick_name').val() == null)) {
+					alert('닉네임을 입력해주십시오.');
+					$('#nick_name').focus();
+					return false;
+				}
+				if ($('#password').val() == ""
+						|| ($('#nick_name').val() == null)) {
+					alert('비밀번호를 입력해주십시오.');
+					$('#password').focus();
+					return false;
+				}
+				if ($('#password2').val() == ""
+						|| ($('#nick_name').val() == null)) {
+					alert('비밀번호 확인을 해주십시오.');
+					$('#password2').focus();
+					return false;
+				}
+
+				//생년월일 
+				if ($('#birth1').val() == "---") {
+					alert('생년월일을 확인해주십시오.');
+					$('#birth1').focus();
+					return false;
+				}
+				if ($('#birth2').val() == "---") {
+					alert('생년월일을 확인해주십시오.');
+					$('#birth2').focus();
+					return false;
+				}
+				if ($('#birth3').val() == "---") {
+					alert('생년월일을 확인해주십시오.');
+					$('#birth3').focus();
+					return false;
+				}
+				//성별
+
+				if (!$('input[name="gender"]:checked').val()) {
+					alert('성별을 선택해주십시오.');
+					$('input[name="gender"]').focus();
+					return false;
+				}
+
+				//휴대폰 번호
+				if ($('#phoneNum1').val() == "---") {
+					alert('휴대폰 번호를 확인해주십시오.');
+					$('#phoneNum1').focus();
+					return false;
+				}
+				if ($('#phoneNum2').val() == ""
+						&& $('#phoneNum2').val() == null) {
+					alert('휴대폰 번호를 입력해주십시오.');
+					$('#phoneNum2').focus();
+					return false;
+				}
+				if ($('#phoneNum3').val() == ""
+						&& $('#phoneNum3').val() == null) {
+					alert('휴대폰 번호를 입력해주십시오.');
+					$('#phoneNum3').focus();
+					return false;
+				}
+
+				//약관 체크 여부
+				if (!$('input[name="agree_ok"]:checked').val()) {
+					alert('약관에 동의해주십시오.');
+					$('input[name="agree_ok"]').focus();
+					return false;
+				}
+
+				if (!$('input[name="privacy_ok"]:checked').val()) {
+					alert('약관에 동의해주십시오.');
+					$('input[name="privacy_ok"]').focus();
+					return false;
+				}
+
+				$('#insertJoin').submit();
+
+				alert('축하합니다. 가입이 완료되었습니다.');
+
+			} else {
+				alert('회원가입이 취소되었습니다.');
+				/* window.location.href = '${contextPath}/index.jsp'; */
+
 			}
-			if($('#email').val() == "" || $('#email').val() ==null){
-				alert('아이디를 입력해주세요');
-				return false;
-			}
-		})
-		</script>
-		
-		
-		
-		<!--  function signUpCheck(){
-		 var nickname = $('#nick_name').val();
-		 var email = $('#email').val();
-		 var checkbox = $('#agree_ok').val();
-		 if(nickname == "" || email == ""){
-			 $
-		 }
-		 
-		} -->  
+		}
+	</script>
+
 
 
 
