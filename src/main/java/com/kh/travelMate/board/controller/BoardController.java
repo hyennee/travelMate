@@ -8,10 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kh.travelMate.board.model.exception.BoardDetailException;
 import com.kh.travelMate.board.model.exception.BoardListException;
 import com.kh.travelMate.board.model.service.BoardService;
 import com.kh.travelMate.board.model.vo.Board;
-import com.kh.travelMate.board.model.vo.BoardStatus;
 import com.kh.travelMate.board.model.vo.PageInfo;
 import com.kh.travelMate.common.Pagination;
 
@@ -45,7 +45,6 @@ public class BoardController
 	public String selectOneNotice(Board b, Model model)
 	{
 		Board selectOne = bs.selectOne(b);
-		
 		model.addAttribute("selectOne", selectOne);
 		
 		if(b.getCategory().equals("1"))
@@ -56,7 +55,6 @@ public class BoardController
 		{
 			return "board/serviceCenter/questionDetail";
 		}
-		
 		return null;
 	}
 	
@@ -122,9 +120,9 @@ public class BoardController
 	public String showUpdateForm(Board b, Model model)
 	{	
 		Board selectOne = bs.selectOne(b);
-		
-		model.addAttribute("selectOne", selectOne);		
-		
+			
+		model.addAttribute("selectOne", selectOne);
+			
 		return "board/serviceCenter/questionUpdateForm";
 	}
 	
@@ -134,5 +132,13 @@ public class BoardController
 		bs.updateBoard(b);
 		
 		return "redirect:selectOne.bo?boardNo=" + b.getBoardNo() + "&category=" + b.getCategory();
+	}
+	
+	@RequestMapping("delete.bo")
+	public String deleteBoard(Board b, Model model)
+	{
+		bs.deleteBoard(b);
+		
+		return "redirect:selectList.bo?category=" + b.getCategory();
 	}
 }

@@ -84,7 +84,7 @@
 					<input type="hidden" name="writer" value="${ loginUser.getUser_no() }">
 					<span style="font-weight:bold; font-size:14px;">${ loginUser.getNick_name() }</span>
 					<span>&nbsp;|&nbsp;</span>
-					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:25px; height:25px;">&nbsp; ${ nowDate }</span>
+					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:14px; height:14px;">&nbsp; ${ nowDate }</span>
 				</div>
 				<hr>
 				<div class="fr-view" style="width:800px; margin:auto;">

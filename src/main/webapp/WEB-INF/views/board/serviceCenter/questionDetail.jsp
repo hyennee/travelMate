@@ -55,7 +55,7 @@
 					<span style="font-weight:bold; font-size:14px;">${ selectOne.nickName }</span>
 					<%-- <input type="hidden" name="nickName" value="${ selectOne.nickName }"> --%>
 					<span>&nbsp;|&nbsp;</span>
-					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:25px; height:25px;">&nbsp; ${ selectOne.boardDate }</span>
+					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:14px; height:14px;">&nbsp; ${ selectOne.boardDate }</span>
 				</div>
 				<hr>
 				<div class="content">
@@ -70,7 +70,7 @@
 				<hr>
 				<div class="content">
 					<button type="button" class="pointer" style="background:lightgray; border:none; border-radius:5px; height:35px;" onclick="location.href='selectList.bo?category=2'">목록으로</button>
-					<button type="button" class="pointer" style="float:right; background:lightgray; border:none; border-radius:5px; height:35px;" onclick="location.href='selectList.bo?boardNo=${ selectOne.boardNo }'">삭제</button>
+					<button type="button" class="pointer" style="float:right; background:lightgray; border:none; border-radius:5px; height:35px;" onclick="location.href='delete.bo?boardNo=${ selectOne.boardNo }&category=${ selectOne.category }'">삭제</button>
 					<button type="submit" class="pointer" style="float:right; background:lightgray; border:none; border-radius:5px; height:35px; margin-right:5px;">수정</button>
 				</div>
 				<br>

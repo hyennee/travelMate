@@ -15,13 +15,12 @@
 	<typeAliases>
 		<typeAlias type="com.kh.travelMate.member.model.vo.Member" alias="Member"/>
     	<typeAlias type="com.kh.travelMate.board.model.vo.Board" alias="Board"/>
-    	<typeAlias type="com.kh.travelMate.board.model.vo.BoardStatus" alias="BoardStatus"/>
 		<typeAlias type="com.kh.travelMate.admin.model.vo.MemberManage" alias="MemberManage"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/memberManager-mapper.xml"/>
-    <mapper resource="mappers/board-mapper.xml"/>
+    	<mapper resource="mappers/board-mapper.xml"/>
 		<mapper resource="mappers/mypage-mapper.xml"/>
 	</mappers>
 	

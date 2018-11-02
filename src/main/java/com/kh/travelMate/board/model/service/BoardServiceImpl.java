@@ -71,4 +71,12 @@ public class BoardServiceImpl implements BoardService
 		
 		return result;
 	}
+
+	@Override
+	public int deleteBoard(Board b)
+	{
+		int result = bd.deleteBoard(sqlSession, b);
+		
+		return result;
+	}
 }

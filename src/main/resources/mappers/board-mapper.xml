@@ -17,20 +17,17 @@
 		<result property="boardDate" column="BOARD_DATE"/>
 		<result property="status" column="STATUS"/>
 		<result property="boardLevel" column="BOARD_LEVEL"/>
-		<result property="refNo" column="REF_NO"/>	
-	</resultMap>
-	
-	<resultMap type="BoardStatus" id="boardStatusResultSet">
-		<id property="boardStatusNo" column="BOARD_STATUS_NO"/>
-		<result property="boardNo" column="BOARD_NO"/>
-		<result property="status" column="STATUS"/>
+		<result property="refNo" column="REF_NO"/>
+		<result property="boardStatus" column="BOARD_STATUS"/>
+		
 	</resultMap>
 	
 	<select id="serviceCenterList" resultMap="boardResultSet" parameterType="Board">
-		SELECT ROWNUM, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO
-		FROM (SELECT B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO
+		SELECT ROWNUM, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO, BOARD_STATUS
+		FROM (SELECT B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS "STATUS", B.BOARD_LEVEL, B.REF_NO, S.STATUS "BOARD_STATUS"
 		      FROM BOARD B
 		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
+		      JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
 		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category}
 		      ORDER BY B.BOARD_NO DESC)
 		WHERE ROWNUM <![CDATA[<]]>= 5
@@ -38,10 +35,11 @@
 	</select>
 	
 	<select id="boardList" resultMap="boardResultSet" parameterType="Board">
-	    SELECT ROWNUM, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO
-		FROM (SELECT B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO
+	    SELECT ROWNUM, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO, BOARD_STATUS
+		FROM (SELECT B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS "STATUS", B.BOARD_LEVEL, B.REF_NO, S.STATUS "BOARD_STATUS"
 		      FROM BOARD B
 		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
+		      JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
 		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category}
 		      ORDER BY B.BOARD_NO DESC)
 		ORDER BY ROWNUM ASC
@@ -74,8 +72,9 @@
 		WHERE BOARD_NO = #{boardNo} AND STATUS = 'Y' AND CATEGORY = #{category}
 	</update>
 	
-	<insert id="insertBoardStatus" parameterType="_int">
-		INSERT INTO BOARD_STATUS
-		VALUES(BOARD_STATUS_NO.NEXTVAL, #{boardNo}, DEFAULT)
-	</insert>
+	<update id="deleteBoard" parameterType="Board">
+		UPDATE BOARD
+		SET STATUS = 'N'
+		WHERE BOARD_NO = #{boardNo} AND STATUS = 'Y' AND CATEGORY = #{category}
+	</update>
 </mapper>
