@@ -152,12 +152,15 @@ a {
 									<th>작성자</th>
 									<th>작성일시</th>
 								</tr>
+								<c:forEach var="size" items="${ oneByOne }" >
 								<tr>
-									<td>1</td>
-									<td>왜 결제 안됨?</td>
-									<td>신혜원</td>
-									<td>18/10/22</td>
+									<td>${ size.BOARD_NO}</td>
+									<td>${ size.TITLE}</td>
+									<td>${ size.WRITE}</td>
+									<td>${ size.BOARD_DATE}</td>
+									
 								</tr>
+								</c:forEach>
 							</table>
 						</td>
 						<td class="tdsection">
@@ -167,14 +170,19 @@ a {
 									<th>no</th>
 									<th>컨설팅제목</th>
 									<th>컨설턴트</th>
-									<th>작성일시</th>
+									<th>여행시작일자</th>
+									<th>여행종료일자</th>
 								</tr>
-								<tr>
-									<td>1</td>
-									<td>뉴질랜드 남섬 캠퍼밴 여행 13박 14일</td>
-									<td>야반도주(김멋지,신혜원)</td>
-									<td>18/10/28</td>
-								</tr>
+								<c:forEach var="size" items="${ tradeInfo }" >
+									<tr>
+										
+										<td>${ size.CONSULT_REQUEST_NO }</td>
+										<td>${ size.TRAVEL_PURPOSE }</td>
+										<td>${ size.CONSULT_USER_NO }</td>
+										<td>${ size.TRAVEL_START_DATE}</td>
+										<td>${ size.TRAVEL_END_DATE }</td>
+									</tr>
+								</c:forEach>
 							</table>
 						</td>
 					</tr>
@@ -184,71 +192,11 @@ a {
 		</div>
 
 		<div id="jb-footer">
-			<p>Copyright</p>
 		</div>
 
 	</div>
 
-	<script>
-		$(function() {
-			showPersonalInfo1()
-			showPersonalInfo2();
-			showPersonalInfo3();
-			 
 
-		});
-
-		function showPersonalInfo1() {
-			$.ajax({
-				url : "selectMyInfoMain1.mp",
-				data : {
-					loginUser : sessionScope.loginUser					
-				},
-				type : "post",
-
-				success : function(data) {
-
-				},
-				error : function() {
-					console.log("서버 전송 실패");
-				}
-			})
-		}
-		
-		function showPersonalInfo2() {
-			$.ajax({
-				url : "selectMyInfoMain2.mp",
-				data : {
-					loginUser : sessionScope.loginUser					
-				},
-				type : "post",
-
-				success : function(data) {
-
-				},
-				error : function() {
-					console.log("서버 전송 실패");
-				}
-			})
-		}
-		
-		function showPersonalInfo3() {
-			$.ajax({
-				url : "selectMyInfoMain3.mp",
-				data : {
-					loginUser : sessionScope.loginUser					
-				},
-				type : "post",
-
-				success : function(data) {
-
-				},
-				error : function() {
-					console.log("서버 전송 실패");
-				}
-			})
-		}
-	</script>
 
 	<jsp:include page="../must/footer.jsp" />
 </body>

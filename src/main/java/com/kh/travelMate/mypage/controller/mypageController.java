@@ -35,6 +35,7 @@ public class mypageController {
 		//request.setAttribute("cyberMoney", cyberMoney);
 		model.addAttribute("cyberMoney", cyberMoney);
 		model.addAttribute("oneByOne", oneByOne);
+		model.addAttribute("tradeInfo", tradeInfo);
 		
 		return "mypage/mypagemain";
 	}
