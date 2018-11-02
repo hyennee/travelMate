@@ -21,11 +21,12 @@ public class Board implements Serializable
 	private String status;			//상태
 	private int boardLevel;			//게시글 레벨
 	private int refNo;				//참조 게시글번호
+	private String boardStatus;		//게시글 답변 여부
 	
 	public Board() {}
 
 	public Board(int boardNo, int rowNum, int writer, String nickName, String category, String title, String content,
-			Date boardDate, String status, int boardLevel, int refNo) {
+			Date boardDate, String status, int boardLevel, int refNo, String boardStatus) {
 		super();
 		this.boardNo = boardNo;
 		this.rowNum = rowNum;
@@ -38,6 +39,7 @@ public class Board implements Serializable
 		this.status = status;
 		this.boardLevel = boardLevel;
 		this.refNo = refNo;
+		this.boardStatus = boardStatus;
 	}
 
 	public int getBoardNo() {
@@ -56,11 +58,11 @@ public class Board implements Serializable
 		this.rowNum = rowNum;
 	}
 
-	public int getwriter() {
+	public int getWriter() {
 		return writer;
 	}
 
-	public void setwriter(int writer) {
+	public void setWriter(int writer) {
 		this.writer = writer;
 	}
 
@@ -128,6 +130,14 @@ public class Board implements Serializable
 		this.refNo = refNo;
 	}
 
+	public String getBoardStatus() {
+		return boardStatus;
+	}
+
+	public void setBoardStatus(String boardStatus) {
+		this.boardStatus = boardStatus;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -136,6 +146,7 @@ public class Board implements Serializable
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", rowNum=" + rowNum + ", writer=" + writer + ", nickName=" + nickName
 				+ ", category=" + category + ", title=" + title + ", content=" + content + ", boardDate=" + boardDate
-				+ ", status=" + status + ", boardLevel=" + boardLevel + ", refNo=" + refNo + "]";
+				+ ", status=" + status + ", boardLevel=" + boardLevel + ", refNo=" + refNo + ", boardStatus="
+				+ boardStatus + "]";
 	}
 }

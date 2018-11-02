@@ -166,14 +166,18 @@
 								<input type="hidden" name="category" value="${ question.category }">
 								<td><c:out value="${ question.rowNum }"/></td>
 								<td><c:out value="${ question.title }"/></td>
-								<td>이미지</td>
-								<%-- <c:if test="${ questionList.상태 eq '접수' }">
-									<td><img src="${ contextPath }/resources/images/이미지"></td>
+								<c:if test="${ question.boardStatus eq 'N' }">
+									<td><img src="${ contextPath }/resources/images/go_in_icon.png" style="width:16px; height:16px;"></td>
 								</c:if>
-								<c:if test="${ questionList.상태 eq '답변완료' }">
-									<td><img src="${ contextPath }/resources/images/이미지"></td>
-								</c:if> --%>
-								<td>상태</td>
+								<c:if test="${ question.boardStatus eq 'Y' }">
+									<td><img src="${ contextPath }/resources/images/check_icon.png" style="width:16px; height:16px;"></td>
+								</c:if>
+								<c:if test="${ question.boardStatus eq 'N' }">
+									<td>접수</td>
+								</c:if>
+								<c:if test="${ question.boardStatus eq 'Y' }">
+									<td>답변완료</td>
+								</c:if>
 								<td><c:out value="${ question.nickName }"/></td>
 								<td><c:out value="${ question.boardDate }"/></td>
 							</tr>

@@ -21,4 +21,6 @@ public interface BoardDao
 	int insertBoard(SqlSessionTemplate sqlSession, Board b);
 
 	int updateBoard(SqlSessionTemplate sqlSession, Board b);
+
+	int deleteBoard(SqlSessionTemplate sqlSession, Board b);
 }
