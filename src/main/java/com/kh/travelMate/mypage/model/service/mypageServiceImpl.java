@@ -26,6 +26,12 @@ public class mypageServiceImpl implements mypageService{
 		
 		tradeInfo = md.tradeInfoHistory(sqlSession,loginUser);
 		
+		System.out.println("ms.tradeInfo갔다왔니 ? : " + tradeInfo);
+		
+		for(int i = 0; i < tradeInfo.size(); i++) {
+			System.out.println(tradeInfo.get(i).get("tradeInfoHistory"));
+		}
+		
 		
 		return tradeInfo;
 	}
@@ -35,6 +41,9 @@ public class mypageServiceImpl implements mypageService{
 		List<HashMap<String, Object>> oneByOne = new ArrayList<HashMap<String, Object>>();
 		
 		oneByOne = md.oneByOneHistory(sqlSession,loginUser);
+		
+		System.out.println("oneByOne갔다왔니 ? : " + oneByOne);
+		
 		for(int i = 0; i < oneByOne.size(); i++) {
 			System.out.println(oneByOne.get(i).get("oneByOneHistory"));
 		}
@@ -48,7 +57,7 @@ public class mypageServiceImpl implements mypageService{
 		
 		cyberMoney = md.cyberMoneyHistory(sqlSession,loginUser);
 		
-		System.out.println("갔다왔니 ? : " + cyberMoney);
+		System.out.println("ms.cyberMoney갔다왔니 ? : " + cyberMoney);
 		
 		for(int i = 0; i < cyberMoney.size(); i++) {
 			System.out.println(cyberMoney.get(i).get("CYBERMONEY_RECORD_NO"));

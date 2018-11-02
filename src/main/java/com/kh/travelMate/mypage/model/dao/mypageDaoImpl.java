@@ -16,7 +16,7 @@ public class mypageDaoImpl implements mypageDao{
 	public List<HashMap<String, Object>> tradeInfoHistory(SqlSessionTemplate sqlSession, Member loginUser) {
 		
 		//return sqlSession.selectList(Mypage);
-		return null;
+		return sqlSession.selectList("Mypage.tradeInfoHistory", loginUser.getUser_no());
 	}
 
 	@Override
