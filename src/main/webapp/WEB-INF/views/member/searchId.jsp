@@ -56,7 +56,7 @@ td:first-child {
 }
 .goSearchId{
 /* 	float:right; */
- 	background-color: #ec983e; /* Green */
+ 	background-color: #6bc6b3;
     border: none;
     color: white;
     padding: 12px 22px;
@@ -73,7 +73,7 @@ td:first-child {
 }
 
 .goSearchId:hover{
-	color:#ec983e;
+	color:#6bc6b3;
 	background-color:white;
 	font-weight:bold;
 	border-radius:4px;

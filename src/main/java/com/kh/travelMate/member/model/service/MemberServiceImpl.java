@@ -40,7 +40,7 @@ public class MemberServiceImpl implements MemberService{
 		//2. 조회해온 암호화 된 비밀번호와 평문 비밀번호를 비교해본다.
 		if(!passwordEncoder.matches(m.getPassword(), encPassword)){
 			//두개의 비밀번호가 같지 않으면 exception발생시킴
-			throw new LoginException("로그인 실패!");
+			throw new LoginException("죄송합니다. 로그인에 실패했습니다.\r\n 아이디(ID)와 비밀번호를 확인하고 다시 로그인해주세요.");
 		}else {
 			//두개가 일치하는지 비교 일치하면 회원 정보를 조회해온다
 			loginUser = md.selectMember(sqlSession, m);

@@ -18,14 +18,13 @@
 	width: 100%;
 	height: 800px;
 	margin: auto;
-
 }
 
 #loginForm {
 	width: 300px;
 	height: 400px;
 	margin-top: 124px;
-	background: #91d4c6; /* #a3dbcf; */
+	background: #91d4c6; /* #a3dbcf; */ 
 	display: inline-block;
 	border-radius: 4px;
 }
@@ -135,6 +134,7 @@ nav #memberMenuUl>li:first-child {
 
 #loginMsg {
 	font-size : 11px;
+	color:red;
 	font-weight:bold;
 	text-align:left;
 	padding: 0px 20px 0px 20px; 
@@ -153,7 +153,7 @@ nav #memberMenuUl>li:first-child {
 					<div id="loginForm" align="center">
 						<form action="login.me" method="post">
 							<p style="text-align: center; padding-top: 50px; font-weight: bold; font-size: 22px; color: white">로그인</p>
-							<div id="loginMsg">　<br>　</div>
+							<div id="loginMsg">${ msg }</div>
 							<div class="inputLoginForm">
 								<label for="ex_input">아이디(이메일 주소)</label> 
 								<input type="text" id="ex_input" name="email" maxlength="100">
