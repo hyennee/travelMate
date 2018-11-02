@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -144,4 +145,12 @@ public class MemberController {
 		return String.valueOf(result);
 	}
 	
+	
+	@RequestMapping(value="/authMail.me", method=RequestMethod.POST)
+	public String authMail(@RequestParam(value="email")String email, Model model) {
+	
+		System.out.println(email);
+		model.addAttribute("email", email);
+		return "member/mailAuth";
+}
 }
