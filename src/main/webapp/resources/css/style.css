@@ -121,19 +121,19 @@ p a:hover {
 	text-align: center;
 }
 #navigation li a {
-	color: #78450d;
-	display: inline-block;
-	font: 14px/24px 'OpenSans-Semibold';
-	padding: 65px 10px 0;
-	text-decoration: none;
-	text-shadow: 0 1px #fbc78e;
+    color: white;
+    display: inline-block;
+    font: 14px/24px 'OpenSans-Semibold';
+    padding: 65px 10px 0;
+    text-decoration: none;
+    text-shadow: 0 1px #6f9e85;
 }
 #navigation li:hover, #navigation li.selected {
-	background: url(../images/bg-navigation-hover.png) no-repeat center top;
+	background:  url(../images/bg-navigation-hover.png) no-repeat center top;
 }
 #navigation li a:hover, #navigation li.selected a {
-	color: #fdfdfd;
-	text-shadow: 0 1px #bf6d13;
+	color: white;
+	text-shadow: 0 1px #1d493f;
 }
 .searchbar {
 	float: right;

@@ -84,7 +84,7 @@ td:first-child {
 }
 </style>
 <body>
-
+	<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
 	<jsp:include page="../must/header.jsp" />
 	<div class="outer">
 		<div id="page" class="page">
@@ -120,6 +120,9 @@ td:first-child {
 									<td><div id="checkName"></div></td>
 
 								</tr>
+								
+								<form action="authMail.me" method="post" name="authMailForm">
+								
 								<tr>
 									<td style="width: 90px; height: 40px; vertical-align: top;">아이디<span
 										style="color: red">*</span></td>
@@ -130,11 +133,12 @@ td:first-child {
 									<span
 										style="font-size: 12px; font-weight: lighter; color: #999">※아이디는
 											이메일 주소로 입력해주시기 바랍니다.</span></td>
-									<td style="width: 200px; vertical-align: top;"><button>인증번호
-											발송</button></td>
+											
+									<td style="width: 200px; vertical-align: top;"><button type="button" id="authMail" onclick="checkAuthMail()">이메일인증</button></td>
 									<td style="vertical-align: top;"><div id="checkDuplId"></div></td>
 
 								</tr>
+								
 								<tr>
 									<td style="width: 90px; height: 20px;"></td>
 									<td style="height: 20px;"></td>
@@ -142,7 +146,8 @@ td:first-child {
 									<td style="height: 20px;"><div id="authId">인증되었습니다.</div></td>
 
 								</tr>
-
+								
+								</form>
 								<tr>
 									<td style="width: 90px; height: 20px;">닉네임<span
 										style="color: red">*</span></td>
@@ -742,7 +747,22 @@ td:first-child {
 			}
 		}
 	</script>
+<script>
 
+function checkAuthMail(){
+	
+	var pop_title = "이메일 인증"
+		var url = '${contextPath}/authMail.me?email='+email;
+		var email = $('#email').val();
+	/* var authMailForm = document.authMailForm; */
+	/* authMailForm.target = pop_title;
+	authMailForm.action = /* "mailAuth.jsp"; */ /* "authMail.me";  */
+	/* authMailForm.submit(); */
+	window.open(url, pop_title, 'width=300, height=300, top=240, left=600, toolbar=no, menubar=no, scrollbars=no, resizable=no, status=no');
+}
+
+
+</script>
 
 
 
