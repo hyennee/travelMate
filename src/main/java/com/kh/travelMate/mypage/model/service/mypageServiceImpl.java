@@ -35,7 +35,9 @@ public class mypageServiceImpl implements mypageService{
 		List<HashMap<String, Object>> oneByOne = new ArrayList<HashMap<String, Object>>();
 		
 		oneByOne = md.oneByOneHistory(sqlSession,loginUser);
-		
+		for(int i = 0; i < oneByOne.size(); i++) {
+			System.out.println(oneByOne.get(i).get("oneByOneHistory"));
+		}
 		
 		return oneByOne;
 	}
