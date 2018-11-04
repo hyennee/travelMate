@@ -86,6 +86,21 @@ public class pageChangeController {
 		return "mypage/oneByOneQnA";
 	}
 	
+	@RequestMapping("tradeHistory.me")
+	public String tradeHistory()
+	{
+		return "mypage/tradeHistory";
+	}
 	
+	@RequestMapping("consultingCustomer.me")
+	public String consultingCustomer()
+	{
+		return "mypage/consultingCustomer";
+	}
 	
+	@RequestMapping("consultingManual.me")
+	public String consultingManual()
+	{
+		return "mypage/consultingManual";
+	}
 }

@@ -88,7 +88,7 @@ ul.sub li:hover {
 			<li class="group">
 				<div class="title">서비스 관리</div>
 				<ul class="sub">
-					<li>거래내역</li>
+					<li><a href="tradeHistory.me">거래내역</a></li>
 					<li><a href="oneByOneQnA.me">1:1 문의</a></li>
 					<li><a href="Money.me">사이버머니</a></li>
 					
@@ -97,8 +97,8 @@ ul.sub li:hover {
 			<li class="group">
 				<div class="title">컨설턴트관리</div>
 				<ul class="sub">
-					<li>컨설팅 고객관리</li>
-					<li>나의 컨설턴트 매뉴얼</li>
+					<li><a href="consultingCustomer.me">컨설팅 고객관리</a></li>
+					<li><a href="consultingManual.me">나의 컨설턴트 매뉴얼</a></li>
 
 				</ul>
 			</li>

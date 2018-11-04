@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>myInfo</title>
+<title>컨설턴트페이지</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -86,37 +86,12 @@ a {
 			<jsp:include page="sidemenu.jsp" />
 		</div>
 		<div id="jb-content">
-			<h2>나의 계정</h2>
+			<h2>나의 컨설팅 메뉴얼</h2>
 			<hr />
 			<div >
-						<p>내계정</p>
+						<p>컨설팅 리스트</p>
 						
-						<form action="">
-							<table >
-								<tr>
-									<td>이름</td>
-									<td colspan="2">
-									<c:out value="${ sessionScope.loginUser.user_name }"></c:out></td>
-								</tr>
-								<tr>
-									<td>연락처</td>
-									<td><c:out value="${ sessionScope.loginUser.phone }"></c:out></td>
-									<td><button onclick="modifyInfo()">정보수정</button></td>
-								</tr>
-								<tr>
-									<td>가입일</td>
-									<td colspan="2"><c:out
-											value="${ sessionScope.loginUser.enroll_date }"></c:out></td>
-								</tr>
 
-								<tr>
-									<td>보유 적립금</td>
-									<td colspan="2"><c:out
-											value="${ sessionScope.loginUser.cybermoney }"></c:out>원</td>
-								</tr>
-
-							</table>
-						</form>
 			</div>
 			<br />
 		</div>
@@ -128,12 +103,7 @@ a {
 
 
 	<jsp:include page="../must/footer.jsp" />
-	<script>
-	 function modifyInfo(){
- 		 location.href = "<%=request.getContextPath()%>/modifyInfo.me";
- 		 
- 	 }
-	</script>
+
 </body>
 </html>
 
