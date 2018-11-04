@@ -61,4 +61,31 @@ public class pageChangeController {
 	{
 		return "mypage/myInfo";
 	}
+	
+	@RequestMapping("modifyInfo.me")
+	public String modifyInfo()
+	{
+		return "mypage/modifyInfo";
+	}
+	
+	@RequestMapping("modifyPwd.me")
+	public String modifyPwd()
+	{
+		return "mypage/modifyPwd";
+	}
+	
+	@RequestMapping("Money.me")
+	public String Money()
+	{
+		return "mypage/Money";
+	}
+	
+	@RequestMapping("oneByOneQnA.me")
+	public String oneByOneQnA()
+	{
+		return "mypage/oneByOneQnA";
+	}
+	
+	
+	
 }

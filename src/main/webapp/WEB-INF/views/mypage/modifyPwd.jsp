@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 수정</title>
 </head>
 <body>
-
+	
 </body>
 </html>

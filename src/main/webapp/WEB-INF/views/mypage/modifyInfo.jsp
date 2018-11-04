@@ -86,37 +86,44 @@ a {
 			<jsp:include page="sidemenu.jsp" />
 		</div>
 		<div id="jb-content">
-			<h2>나의 계정</h2>
+			<h2>정보 수정</h2>
 			<hr />
 			<div >
 						<p>내계정</p>
 						
+						<img src="" alt="" />
 						
 							<table >
 								<tr>
+									<td>아이디 </td>
+									<td colspan="2"><c:out value="${ sessionScope.loginUser.email }"></c:out></td>
+								</tr>
+								<tr>
 									<td>이름</td>
-									<td colspan="2">
-									<c:out value="${ sessionScope.loginUser.user_name }"></c:out></td>
+									<td><c:out value="${ sessionScope.loginUser.user_name }"></c:out></td>
 								</tr>
 								<tr>
-									<td>연락처</td>
-									<td><c:out value="${ sessionScope.loginUser.phone }"></c:out></td>
-									<td><input type="button" value="정보수정" /></td>
+									<td>연락처 <span style="color:red;">*</span></td>
+									<td><input type="text" value="<c:out value="${ sessionScope.loginUser.phone }"></c:out>" name="phone"/></td>
 								</tr>
 								<tr>
-									<td>가입일</td>
-									<td colspan="2"><c:out
-											value="${ sessionScope.loginUser.enroll_date }"></c:out></td>
+									<td>닉네임 <span style="color:red;">*</span></td>
+									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>" name="nick_name"/></td>
 								</tr>
-
 								<tr>
-									<td>보유 적립금</td>
-									<td colspan="2"><c:out
-											value="${ sessionScope.loginUser.cybermoney }"></c:out>원</td>
+									<td>비밀번호 *</td>
+									<td><button onclick="modifyPwd()">변경</button></td>
 								</tr>
-
+								<tr>
+									<td>주소</td>
+									<td><input type="text" name="adress" />&nbsp;</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><input type="button" value="우편" /></td>
+								</tr>
 							</table>
-						
+							<input type="submit" value="변경"  />
 			</div>
 			<br />
 		</div>
@@ -129,6 +136,9 @@ a {
 
 
 	<jsp:include page="../must/footer.jsp" />
+	<script>
+		
+	</script>
 </body>
 </html>
 
