@@ -56,9 +56,7 @@ tr {
 	border: 1px solid #bcbcbc;
 }
 
-td {
-	border: 1px solid #bcbcbc;
-}
+
 
 .section {
 	border: 1px solid #bcbcbc;
@@ -73,6 +71,14 @@ a {
 .tdsection{
 	width:49%;
 	display:inline-block;
+}
+td{
+	border-bottom: 1px solid lightgray;
+}
+
+.thstyle{
+	width : 200px;
+	background-color : lightgray;
 }
 </style>
 </head>
@@ -92,11 +98,11 @@ a {
 						<p>거래내역리스트</p>
 						<table>
 								<tr>
-									<th>no</th>
-									<th>컨설팅제목</th>
-									<th>컨설턴트</th>
-									<th>여행시작일자</th>
-									<th>여행종료일자</th>
+									<th class="thstyle">no</th>
+									<th style="background-color:lightgray;">컨설팅제목</th>
+									<th class="thstyle">컨설턴트</th>
+									<th class="thstyle">여행시작일자</th>
+									<th class="thstyle">여행종료일자</th>
 								</tr>
 								<c:forEach var="size" items="${ tradeInfo }" >
 									<tr>

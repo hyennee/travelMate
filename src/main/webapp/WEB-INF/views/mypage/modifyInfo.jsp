@@ -56,8 +56,10 @@ tr {
 	border: 1px solid #bcbcbc;
 }
 
-td {
-	border: 1px solid #bcbcbc;
+
+.thstyle{
+	width : 200px;
+	background-color : lightgray;
 }
 
 .section {
@@ -92,39 +94,40 @@ a {
 						<p>내계정</p>
 						
 						<img src="" alt="" />
-						<form action="">
+						<form action="modifyInfo.me" method="post">
 							<table >
 								<tr>
-									<td>아이디 </td>
-									<td colspan="2"><c:out value="${ sessionScope.loginUser.email }"></c:out></td>
+									<td class="thstyle">아이디 </td>
+									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.email }"></c:out>" name="email"/></td>
 								</tr>
 								<tr>
-									<td>이름</td>
-									<td><c:out value="${ sessionScope.loginUser.user_name }"></c:out></td>
+									<td colspan="3"><span style="color: #6c6e69; font: 12px/24px 'OpenSans';  margin: 0;">비밀번호 / 아이디 찾기에서 필요하므로 정확하게 입력 및 사용하는 이메일 주소는 반드시 기억해주십시요.</span></td>
 								</tr>
 								<tr>
-									<td>연락처 <span style="color:red;">*</span></td>
-									<td><input type="text" value="<c:out value="${ sessionScope.loginUser.phone }"></c:out>" name="phone"/></td>
+									<td class="thstyle">이름</td>
+									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.user_name }"></c:out>" name="user_name" /></td>
 								</tr>
 								<tr>
-									<td>닉네임 <span style="color:red;">*</span></td>
+									<td class="thstyle">생년월일</td>
+									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.birthday }"></c:out>" name="birthday" /></td>
+								</tr>
+								<tr>
+									<td class="thstyle">연락처 <span style="color:red;">*</span></td>
+									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.phone }"></c:out>" name="phone"/></td>
+								</tr>
+								<tr>
+									<td class="thstyle">닉네임 <span style="color:red;">*</span></td>
 									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>" name="nick_name"/></td>
 								</tr>
+								
 								<tr>
-									<td>비밀번호 </td>
-									<td><button onclick="modifyPwd()">변경</button></td>
+									<td class="thstyle">주소 <span style="color:red;">*</span></td>
+									<td><input type="text" name="adress" style=" width: 300px;"/>&nbsp;<input type="button" value="우편" /></td>
 								</tr>
-								<tr>
-									<td>주소 <span style="color:red;">*</span></td>
-									<td><input type="text" name="adress" />&nbsp;</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td><input type="button" value="우편" /></td>
-								</tr>
+							
 							</table>
-							</form>
 							<input type="submit" value="변경"  />
+							</form>
 			</div>
 			<br />
 		</div>
@@ -137,12 +140,7 @@ a {
 
 
 	<jsp:include page="../must/footer.jsp" />
-	<script>
-	 	function modifyPwd(){
- 		 location.href = "<%=request.getContextPath()%>/modifyPwd.me";
- 		 
- 	 }
-	</script>
+
 </body>
 </html>
 

@@ -56,9 +56,6 @@ tr {
 	border: 1px solid #bcbcbc;
 }
 
-td {
-	border: 1px solid #bcbcbc;
-}
 
 .section {
 	border: 1px solid #bcbcbc;
@@ -73,6 +70,14 @@ a {
 .tdsection{
 	width:49%;
 	display:inline-block;
+}
+td{
+	border-bottom: 1px solid lightgray;
+}
+
+.thstyle{
+	width : 200px;
+	background-color : lightgray;
 }
 </style>
 </head>
@@ -92,10 +97,10 @@ a {
 						<p>문의내역리스트</p>
 						<table >
 								<tr>
-									<th>no</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일시</th>
+									<th class="thstyle">no</th>
+									<th class="thstyle">제목</th>
+									<th class="thstyle">작성자</th>
+									<th class="thstyle">작성일시</th>
 								</tr>
 								<c:forEach var="size" items="${ oneByOne }" >
 								<tr>
