@@ -51,22 +51,10 @@
 		width:800px;
 		text-align:left;
 	}
-	.answer-content
-	{
-		width:800px;
-		text-align:left;
-		background:#E7E7E7;
-		border:none;
-		border-radius:5px;
-	}
-	.pointer:hover
-	{
-		cursor:pointer;
-	}
 </style>
 </head>
 <body>
-	<c:if test="${ !empty sessionScope.loginUser }">
+	<c:if test="${ !empty loginUser }">
 	<jsp:include page="../../must/header.jsp"/>
 	<div id="contents" class="full-container">
 		<div style="width:960px; margin:auto; background:white;" align="center">
@@ -76,7 +64,7 @@
 					<div style="display:inline-block; border:none; border-radius:5px; margin-left:5px;">
 						<label style="font-size:14px; height:35px;">img</label>
 						<label style="font-size:14px; height:35px;">제    목</label>
-						<input type="hidden" name="category" value="2">
+						<input type="hidden" name="category" value="3">
 					</div>
 					<div style="display:inline-block;">
 						<input type="text" name="title" style="width:700px; height:25px; border:none; border-radius:5px;">
@@ -84,8 +72,8 @@
 				</div>
 				<hr style="border:1px dotted lightgray;">
 				<div class="title" style="height:20px;">
-					<input type="hidden" name="writer" value="${ sessionScope.loginUser.getUser_no() }">
-					<span style="font-weight:bold; font-size:14px;">${ sessionScope.loginUser.getNick_name() }</span>
+					<input type="hidden" name="writer" value="${ loginUser.getUser_no() }">
+					<span style="font-weight:bold; font-size:14px;">${ loginUser.getNick_name() }</span>
 					<span>&nbsp;|&nbsp;</span>
 					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:14px; height:14px;">&nbsp; ${ nowDate }</span>
 				</div>
@@ -98,8 +86,8 @@
 				</div>
 				<hr>
 				<div>
-					<button type="button" class="pointer" style="background:#E7E7E7; border:none; border-radius:5px; height:35px;" onclick="location.href='selectList.bo?category=2'">취소</button>
-					<button type="submit" class="pointer" style="background:skyblue; border:none; border-radius:5px; height:35px; color:white; font-size:16px; font-weight:bold;"><img src="${ contextPath }/resources/images/check.png" style="width:25px; height:25px;">확인</button>
+					<button type="button" style="background:#E7E7E7; border:none; border-radius:5px; height:35px;">취소</button>
+					<button type="submit" style="background:skyblue; border:none; border-radius:5px; height:35px; color:white; font-size:16px; font-weight:bold;"><img src="${ contextPath }/resources/images/check.png" style="width:25px; height:25px;">확인</button>
 				</div>
 				<br>
 			</div>
@@ -110,7 +98,7 @@
 	<br>
 	<jsp:include page="../../must/footer.jsp"/>
 	</c:if>
-	<c:if test="${ empty sessionScope.loginUser }">
+	<c:if test="${ empty loginUser }">
 		<c:set var="msg" value="로그인이 필요한 서비스입니다." scope="request"/>
 		<jsp:forward page="../../must/errorPage.jsp"/>
 	</c:if>
@@ -121,10 +109,10 @@
     	
     	$('textarea').froalaEditor(
     	{   
-            theme : 'red',
-            imageUploadURL:'http://i.froala.com/upload',
-            fileUploadURL:'http://i.froala.com/upload'
-        });
+			theme : 'red',
+			imageUploadURL:'http://i.froala.com/upload',
+    		fileUploadURL:'http://i.froala.com/upload'
+    	});
 	</script>
 </body>
 </html>

@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kh.travelMate.board.model.exception.BoardDetailException;
 import com.kh.travelMate.board.model.exception.BoardListException;
 import com.kh.travelMate.board.model.service.BoardService;
 import com.kh.travelMate.board.model.vo.Board;
@@ -55,6 +54,10 @@ public class BoardController
 		{
 			return "board/serviceCenter/questionDetail";
 		}
+		else if(b.getCategory().equals("3"))
+		{
+			return "board/openConsulting/ocDetail";
+		}
 		return null;
 	}
 	
@@ -72,13 +75,15 @@ public class BoardController
 		try
 		{
 			int listCount = bs.getListCount(b);
-			System.out.println("listCount : " + listCount);
+			//System.out.println("listCount : " + listCount);
 			
 			PageInfo page = Pagination.getPageInfo(currentPage, listCount);
 			
 			/*------------------*/
 			
 			selectList = bs.selectBoardList(b, page);
+			
+			System.out.println("list category : " + b.getCategory());
 			
 			model.addAttribute("selectList", selectList);
 			model.addAttribute("page", page);
@@ -90,6 +95,10 @@ public class BoardController
 			else if(b.getCategory().equals("2"))
 			{
 				return "board/serviceCenter/questionList";
+			}
+			else if(b.getCategory().equals("3"))
+			{
+				return "board/openConsulting/ocList";
 			}
 		}
 		catch (BoardListException e)
@@ -108,12 +117,33 @@ public class BoardController
 		return "board/serviceCenter/questionInsertForm";
 	}
 	
+	@RequestMapping("goAnswerInsertForm.bo")
+	public String showAnswerInsertForm(Board b, Model model)
+	{
+		/*System.out.println("answer : " + b);*/
+		
+		Board selectOne = bs.selectOne(b);
+		model.addAttribute("selectOne", selectOne);
+		
+		return "board/openConsulting/ocAnswerInsertForm";
+	}
+	
 	@RequestMapping("insert.bo")
 	public String insertBoard(Board b, Model model)
 	{
+		b.setAnswerCount(0);
 		bs.insertBoard(b);
 		
 		return "redirect:selectList.bo?category=" + b.getCategory();
+	}
+	@RequestMapping("insertAnswer.bo")
+	public String insertAnswerBoard(Board b, Model model)
+	{
+		System.out.println("Answer : " + b);
+		
+		bs.insertAnswerBoard(b);
+		
+		return "redirect:selectOne.bo?boardNo=" + b.getRefNo();
 	}
 	
 	@RequestMapping("goUpdateForm.bo")
@@ -140,5 +170,11 @@ public class BoardController
 		bs.deleteBoard(b);
 		
 		return "redirect:selectList.bo?category=" + b.getCategory();
+	}
+	
+	@RequestMapping("goOCInsertForm.bo")
+	public String showOCInsertForm()
+	{	
+		return "board/openConsulting/ocInsertForm";
 	}
 }

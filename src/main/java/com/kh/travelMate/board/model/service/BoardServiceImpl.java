@@ -32,7 +32,7 @@ public class BoardServiceImpl implements BoardService
 	{
 		ArrayList<Board> list = bd.selectBoardList(sqlSession, b, page);
 		
-		if(!(b.getCategory().equals("1") || b.getCategory().equals("2")))
+		if(!(b.getCategory().equals("1") || b.getCategory().equals("2") || b.getCategory().equals("3")))
 		{
 			throw new BoardListException("존재하지 않는 게시판입니다.");
 		}
@@ -44,6 +44,8 @@ public class BoardServiceImpl implements BoardService
 	public Board selectOne(Board b)
 	{
 		Board noticeOne = bd.selectOne(sqlSession, b);
+		
+		System.out.println("selectone : " + noticeOne);
 		
 		return noticeOne;
 	}
@@ -76,6 +78,14 @@ public class BoardServiceImpl implements BoardService
 	public int deleteBoard(Board b)
 	{
 		int result = bd.deleteBoard(sqlSession, b);
+		
+		return result;
+	}
+
+	@Override
+	public int insertAnswerBoard(Board b)
+	{
+		int result = bd.insertAnswerBoard(sqlSession, b);
 		
 		return result;
 	}
