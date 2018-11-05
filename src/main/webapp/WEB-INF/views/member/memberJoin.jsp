@@ -121,7 +121,6 @@ td:first-child {
 
 								</tr>
 								
-								<form action="authMail.me" method="post" name="authMailForm">
 								
 								<tr>
 									<td style="width: 90px; height: 40px; vertical-align: top;">아이디<span
@@ -147,7 +146,7 @@ td:first-child {
 
 								</tr>
 								
-								</form>
+								
 								<tr>
 									<td style="width: 90px; height: 20px;">닉네임<span
 										style="color: red">*</span></td>
@@ -506,11 +505,13 @@ td:first-child {
 							if (data == "0") { //중복되는 아이디가 없으면!
 
 								document.getElementById('checkDuplId').innerHTML = "<span style='color:blue; font-size:12px'>사용 가능한 아이디입니다. 인증을 진행해주십시오.</span>"
-
+								$('#authMail').attr('disabled',false);  //인증버튼 활성화
 							} else if (data == "1") { //중복되는 아이디가 있으면!
 
 								document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>사용 불가능한 아이디입니다.</span>"
+								/* $('#authMail').attr('disabled',true);  //인증버튼 비활성화 */
 
+								
 							}
 						}
 					});
@@ -751,14 +752,39 @@ td:first-child {
 
 function checkAuthMail(){
 	
-	var pop_title = "이메일 인증"
-		var url = '${contextPath}/authMail.me?email='+email;
-		var email = $('#email').val();
+/* 	var pop_title = "이메일 인증"
+		var url = '${contextPath}/authMail.me?email='+email; */
+		
+		
 	/* var authMailForm = document.authMailForm; */
 	/* authMailForm.target = pop_title;
 	authMailForm.action = /* "mailAuth.jsp"; */ /* "authMail.me";  */
 	/* authMailForm.submit(); */
-	window.open(url, pop_title, 'width=300, height=300, top=240, left=600, toolbar=no, menubar=no, scrollbars=no, resizable=no, status=no');
+	
+	var pop = window.open("", "이메일 인증", 'width=300, height=300, top=240, left=600, toolbar=no, menubar=no, scrollbars=no, resizable=no, status=no');
+	var email = $('#email').val();
+	
+	$.ajax({
+		data : {"email" : email
+			},
+		url : 'authMail.me',
+		type : 'post',
+		success : function(data){
+		
+			pop.location.href="${contextPath}/WEB-INF/views/member/mailAuth.jsp"; 
+	
+		
+		}
+		
+	
+	});
+	
+
+
+
+
+
+
 }
 
 
