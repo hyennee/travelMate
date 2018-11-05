@@ -92,7 +92,7 @@ a {
 						<p>내계정</p>
 						
 						<img src="" alt="" />
-						
+						<form action="">
 							<table >
 								<tr>
 									<td>아이디 </td>
@@ -111,11 +111,11 @@ a {
 									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>" name="nick_name"/></td>
 								</tr>
 								<tr>
-									<td>비밀번호 *</td>
+									<td>비밀번호 </td>
 									<td><button onclick="modifyPwd()">변경</button></td>
 								</tr>
 								<tr>
-									<td>주소</td>
+									<td>주소 <span style="color:red;">*</span></td>
 									<td><input type="text" name="adress" />&nbsp;</td>
 								</tr>
 								<tr>
@@ -123,6 +123,7 @@ a {
 									<td><input type="button" value="우편" /></td>
 								</tr>
 							</table>
+							</form>
 							<input type="submit" value="변경"  />
 			</div>
 			<br />
@@ -137,7 +138,10 @@ a {
 
 	<jsp:include page="../must/footer.jsp" />
 	<script>
-		
+	 	function modifyPwd(){
+ 		 location.href = "<%=request.getContextPath()%>/modifyPwd.me";
+ 		 
+ 	 }
 	</script>
 </body>
 </html>
