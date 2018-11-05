@@ -186,97 +186,72 @@
 </style>
 <body>
 	<%-- <c:if test="${!empty sessionScope.loginUser }"> --%>
-	<jsp:include page="../must/header.jsp" />
+	<jsp:include page="../../must/header.jsp" />
 	<div class="outer">
 		<div id="page" class="page">
 			<div id="contents">
-
 				<div id="openConsulting">
 					<div id="openQnAForm">
-						<br> <br> <br> <span
-							style="text-align: left; font-weight: bold; font-size: 24px; color: black">오픈
-							컨설팅</span> <br> <span
-							style="text-align: left; font-weight: bold; font-size: 12px; color: #999">오픈
-							컨설팅을 의뢰하고 답할 수 있습니다.</span>
+						<span style="text-align: left; font-weight: bold; font-size: 24px; color: black">오픈컨설팅</span><br>
+						<span style="text-align: left; font-weight: bold; font-size: 12px; color: #999">오픈 컨설팅을 의뢰하고 답할 수 있습니다.</span>
 						<hr>
-						<br>
-
 						<!-- 오픈컨설팅 QnA div -->
-						<div id="openQuestion">
-
-							<!-- 오픈컨설팅 질문 제목 div -->
-							<div id="questioncon1">
-								<h3>안녕하세요, 남미여행 관련 컨설팅 의뢰합니다.</h3>
+						<form action="goAnswerInsertForm.bo" method="post">
+							<input type="hidden" name="boardNo" value="${ selectOne.boardNo }">
+							<input type="hidden" name="category" value="${ selectOne.category }">
+							<div id="openQuestion">
+								<!-- 오픈컨설팅 질문 제목 div -->
+								<div id="questioncon1">
+									<h3>${ selectOne.title }</h3>
+								</div>
+								<!-- 오픈컨설팅 질문 작성자 관련 정보 div -->
+								<div id="questioncon2">
+									<ul id="questionUl">
+										<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>${ selectOne.nickName }</span></li>
+										<input type="hidden" name="nickName" value="${ selectOne.nickName }">
+										<li><span>${ selectOne.boardDate }</span></li>
+										<input type="hidden" name="boardDate" value="${ selectOne.boardDate }">
+										<li><span>${ selectOne.answerCount }</span></li>
+										<input type="hidden" name="answerCount" value="${ selectOne.answerCount }">
+									</ul>
+								</div>
+								<hr style="width: 95%">
+								<!-- 오픈컨설팅 질문 내용 div -->
+								<div id="questioncon3">
+									${ selectOne.content }
+								</div>
+								<textarea style="display:none;" name="content">${ selectOne.content }</textarea>
+								<!-- 질문 버튼 부분 div -->
+								<div id="qBottom">
+									<!-- 답변 불가능일 경우 -->
+									<!-- <p style="margin-top:43px;">
+										<span></span>
+										<span> 답변이 완료된 컨설팅입니다. </span>
+								</p> -->
+									<!-- 답변 가능한 경우 -->
+									<p style="margin-top:20px;">
+										답변을 하실 수 있습니다.
+										<button class="btnAnswer" type="submit">답변하기</button>
+									</p>
+								</div>
 							</div>
-							<!-- 오픈컨설팅 질문 작성자 관련 정보 div -->
-							<div id="questioncon2">
-								<ul id="questionUl">
-									<li><img
-										src="/travelMate/resources/images/flag/member.png"
-										width="20px;"
-										style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>감자</span></li>
-									<li><span>일반회원</span></li>
-									<li><span>2018.11.22</span></li>
-									<li><span>77</span></li>
-								</ul>
-							</div>
-
-							<hr style="width: 95%">
-
-							<!-- 오픈컨설팅 질문 내용 div -->
-							<div id="questioncon3">
-								<p>안녕하세요 , 남미여행 관련 지식인 검색하다가 여쭤보고 싶은게 있어서 문의 드립니다 ^^</p>
-								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
-								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
-								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
-								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
-								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
-								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
-								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
-								<p>인천뉴욕보고타 가실때 어떤 항공사 이용하셨는지 티켓은어디서 구매 하셨는지 여쭤봐도 될까요?</p>
-
-							</div>
-
-
-							<!-- 질문 버튼 부분 div -->
-							<div id="qBottom">
-
-								<!-- 답변 불가능일 경우 -->
-								<!-- <p style="margin-top:43px;">
-									<span></span>
-									<span> 답변이 완료된 컨설팅입니다. </span>
-							</p> -->
-
-								<!-- 답변 가능한 경우 -->
-								<p style="margin-top: 20px;">
-									답변을 하실 수 있습니다.
-									<button class="btnAnswer" onclick="#">답변하기</button>
-								</p>
-
-							</div>
-						</div>
-
+						</form>
 						<br>
 						<!-- 오픈컨설팅 답변 div 1 -->
 						<div class="AnswerArea">
 							<div id="openAnswer">
-
 								<div id="answercon1">
 									<h3>
 										고구마님 답변
-										<button id="btnAdd" style="font-size: 12px;">+관심추가</button>
+										<button id="btnAdd" style="font-size: 12px;" type="button">+관심추가</button>
 									</h3>
 								</div>
 								<!-- 오픈컨설팅 답변 작성자 관련 정보 div -->
 								<div id="answercon2">
 									<ul id="answerUl">
-										<li><img
-											src="/travelMate/resources/images/flag/member.png"
-											width="20px;"
-											style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>고구마</span></li>
+										<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>고구마</span></li>
 										<li><span>컨설턴트</span></li>
 										<li><span>2018.11.24 13:00</span></li>
-
 									</ul>
 								</div>
 
@@ -287,33 +262,24 @@
 									<p>인천-뉴욕JFK 구간은 아시아나항공 뉴욕JFK-보고타 구간은 델타항공을 탑승했습니다.</p>
 									<p>이 구간은 비싼편이고 좀 더 저렴하게 가고 싶다면 미국 본토까지 중국경유하는 항공편으로 들어가서</p>
 									<p>마이애미에서 보고타까지 스피릿항공을 이용하는게 좀 더 저렴할거라 생각됩니다.</p>
-								
-								<button id="btnSelect">채택하기</button>
+								<button id="btnSelect" type="button">채택하기</button>
 								</div>
-								
 							</div>
-
-
 							<br>
 							<!-- 오픈컨설팅 답변 div 2 -for문으로 반복시킴 -->
 							<div id="openAnswer">
-
 								<div id="answercon1">
 									<h3>
 										옥수수님 답변
-										<button id="btnAdd" style="font-size: 12px;">+관심추가</button>
+										<button id="btnAdd" style="font-size: 12px;" type="button">+관심추가</button>
 									</h3>
 								</div>
 								<!-- 오픈컨설팅 답변 작성자 관련 정보 div -->
 								<div id="answercon2">
 									<ul id="answerUl">
-										<li><img
-											src="/travelMate/resources/images/flag/member.png"
-											width="20px;"
-											style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>옥수수</span></li>
+										<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>옥수수</span></li>
 										<li><span>컨설턴트</span></li>
 										<li><span>2018.11.22 13:06</span></li>
-
 									</ul>
 								</div>
 
@@ -324,23 +290,18 @@
 									<p>인천-뉴욕JFK 구간은 아시아나항공 뉴욕JFK-보고타 구간은 델타항공을 탑승했습니다.</p>
 									<p>이 구간은 비싼편이고 좀 더 저렴하게 가고 싶다면 미국 본토까지 중국경유하는 항공편으로 들어가서</p>
 									<p>마이애미에서 보고타까지 스피릿항공을 이용하는게 좀 더 저렴할거라 생각됩니다.</p>
-								
-								<button id="btnSelect">채택하기</button>
+								<button id="btnSelect" type="button">채택하기</button>
 								</div>
-
-								
-
 							</div>
 						</div>
 						<!-- 목록버튼 -->
-						<button id="btnList">목록</button>
+						<button id="btnList" type="button" onclick="location.href='selectList.bo?category=3'">목록</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<jsp:include page="../must/footer.jsp" />
+	<jsp:include page="../../must/footer.jsp" />
 	<%-- 	</c:if> --%>
 
 
@@ -353,7 +314,5 @@
 		window.location.href = '${contextPath}/loginView.me';
 	</script>
 	</c:if> --%>
-
-
 </body>
 </html>

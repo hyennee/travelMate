@@ -21,12 +21,13 @@ public class Board implements Serializable
 	private String status;			//상태
 	private int boardLevel;			//게시글 레벨
 	private int refNo;				//참조 게시글번호
-	private String boardStatus;		//게시글 답변 여부
+	private String boardStatus;		//문의 게시글 답변 여부
+	private int answerCount;		//오픈 컨설팅 답변 갯수
 	
 	public Board() {}
 
 	public Board(int boardNo, int rowNum, int writer, String nickName, String category, String title, String content,
-			Date boardDate, String status, int boardLevel, int refNo, String boardStatus) {
+			Date boardDate, String status, int boardLevel, int refNo, String boardStatus, int answerCount) {
 		super();
 		this.boardNo = boardNo;
 		this.rowNum = rowNum;
@@ -40,6 +41,7 @@ public class Board implements Serializable
 		this.boardLevel = boardLevel;
 		this.refNo = refNo;
 		this.boardStatus = boardStatus;
+		this.answerCount = answerCount;
 	}
 
 	public int getBoardNo() {
@@ -138,6 +140,14 @@ public class Board implements Serializable
 		this.boardStatus = boardStatus;
 	}
 
+	public int getAnswerCount() {
+		return answerCount;
+	}
+
+	public void setAnswerCount(int answerCount) {
+		this.answerCount = answerCount;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -147,6 +157,6 @@ public class Board implements Serializable
 		return "Board [boardNo=" + boardNo + ", rowNum=" + rowNum + ", writer=" + writer + ", nickName=" + nickName
 				+ ", category=" + category + ", title=" + title + ", content=" + content + ", boardDate=" + boardDate
 				+ ", status=" + status + ", boardLevel=" + boardLevel + ", refNo=" + refNo + ", boardStatus="
-				+ boardStatus + "]";
+				+ boardStatus + ", answerCount=" + answerCount + "]";
 	}
 }

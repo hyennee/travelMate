@@ -62,11 +62,13 @@
 					<span style="font-size:14px;">${ selectOne.content }</span>
 					<%-- <input type="hidden" name="content" value="${ selectOne.content }"> --%>
 				</div>
-				<br><br>
+				<%-- <br><br>
+				<c:if test="${ selectOne.boardStatus eq 'Y' }">
 				<div class="answer-content">
 					<span style="font-size:14px;">[관리자가 답변했을 경우에만 표시]</span><br>
 					<span style="font-size:14px;">답변 내용입니다.</span>
 				</div>
+				</c:if> --%>
 				<hr>
 				<div class="content">
 					<button type="button" class="pointer" style="background:lightgray; border:none; border-radius:5px; height:35px;" onclick="location.href='selectList.bo?category=2'">목록으로</button>

@@ -94,7 +94,7 @@
 </style>
 </head>
 <body>
-	<c:if test="${ !empty loginUser }">
+	<c:if test="${ !empty sessionScope.loginUser }">
 		<jsp:include page="../../must/header.jsp"/>
 		<div id="contents" class="full-container" align="center">
 			<div style="width:960px; margin:auto; background:white;">
@@ -105,6 +105,10 @@
 			<div style="width:960px; height:50px; margin:auto; background:#E7E7E7; display:table-cell; vertical-align:middle;">
 				<span style="color:#646464; font-size:14px;">여행자 여러분께서 자주 물어보시는 질문에 대한 답변을 보고 싶으신가요?</span>&nbsp;&nbsp;&nbsp;
 				<button type="button" class="pointer" style="height:30px; background:white; border:1px solid violet; border-radius:5px; color:violet;" onclick="location.href='selectFAQ.bo';">자주 묻는 질문 보기</button>
+			</div>
+			<br clear="both">
+			<div style="width:960px; height:50px; margin:auto; display:table-cell; vertical-align:middel;">
+				<button type="button" class="pointer" style="height:30px; background:white; border:1px solid violet; border-radius:5px; color:violet;" onclick="window.open('http://192.168.10.51:8008/${ sessionScope.loginUser.user_name }', '_blank', 'width=600, height=600, menubar=no, status=no, toolbar=no')">1:1 문의하기</button>
 			</div>
 			<div style="width:960px; margin:auto; background:white;">
 			<br>

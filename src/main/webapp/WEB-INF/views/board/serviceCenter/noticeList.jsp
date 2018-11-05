@@ -36,6 +36,11 @@
 	{
 		height:40px;
 	}
+	.notice-list>tbody>tr:hover
+	{
+		cursor:pointer;
+		background:lightgray;
+	}
 	.page-button
 	{
 		background:white;
@@ -57,15 +62,10 @@
 		height:25px;
 		opacity:0.5;
 	}
-	.notice-list>tbody>tr:hover
-	{
-		cursor:pointer;
-		background:lightgray;
-	}
 </style>
 </head>
 <body>
-	<c:if test="${ !empty loginUser }">
+	<c:if test="${ !empty sessionScope.loginUser }">
 	<jsp:include page="../../must/header.jsp"/>
 	<div id="contents" class="full-container">
 		<div style="width:960px; margin:auto; background:white;" align="center">

@@ -8,15 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class pageChangeController {
 	
+	@RequestMapping("openPageSample.bo")
+	public String sample()
+	{
+		return "board/openConsulting/ocDetail";
+	}
+	
 	//여행정보게시판으로 이동
 	@RequestMapping("travelInfo.me")
 	public String showMemberJoinView() {
 		return "others/about";
-	}
-	
-	@RequestMapping("openConsult.bo")
-	public String openConsultView() {
-		return /*"others/blog";*/ "board/openconsulting";
 	}
 	
 	@RequestMapping("directConsult.me")

@@ -19,6 +19,7 @@
 		<result property="boardLevel" column="BOARD_LEVEL"/>
 		<result property="refNo" column="REF_NO"/>
 		<result property="boardStatus" column="BOARD_STATUS"/>
+		<result property="answerCount" column="ANSWER_COUNT"/>
 		
 	</resultMap>
 	
@@ -64,6 +65,11 @@
 	<insert id="insertBoard" parameterType="Board">
 		INSERT INTO BOARD
 		VALUES(SEQ_BOARD_NO.NEXTVAL, #{writer}, #{category}, #{title}, #{content}, SYSDATE, DEFAULT, 1, NULL)
+	</insert>
+	
+	<insert id="insertAnswerBoard" parameterType="Board">
+		INSERT INTO BOARD
+		VALUES(SEQ_BOARD_NO.NEXTVAL, #{writer}, #{category}, #{title}, #{content}, #{boardDate}, DEFAULT, 2, #{refNo})
 	</insert>
 	
 	<update id="updateBoard" parameterType="Board">

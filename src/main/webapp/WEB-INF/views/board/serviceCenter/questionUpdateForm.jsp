@@ -59,6 +59,10 @@
 		border:none;
 		border-radius:5px;
 	}
+	.pointer:hover
+	{
+		cursor:pointer;
+	}
 </style>
 </head>
 <body>
@@ -94,8 +98,8 @@
 				</div>
 				<hr>
 				<div>
-					<button type="button" style="background:#E7E7E7; border:none; border-radius:5px; height:35px;">취소</button>
-					<button type="submit" style="background:skyblue; border:none; border-radius:5px; height:35px; color:white; font-size:16px; font-weight:bold;"><img src="${ contextPath }/resources/images/check.png" style="width:25px; height:25px;">확인</button>
+					<button type="button" class="pointer" style="background:#E7E7E7; border:none; border-radius:5px; height:35px;" onclick="location.href='selectOne.bo?boardNo=${ selectOne.boardNo }&category=${ selectOne.category }'">취소</button>
+					<button type="submit" class="pointer" style="background:skyblue; border:none; border-radius:5px; height:35px; color:white; font-size:16px; font-weight:bold;"><img src="${ contextPath }/resources/images/check.png" style="width:25px; height:25px;">확인</button>
 				</div>
 				<br>
 			</div>
@@ -113,7 +117,14 @@
 	
 	<!-- Initialize the editor. -->
     <script>
-    	$(function() { $('textarea').froalaEditor() });
+	    $(function() { $('textarea').froalaEditor() });
+		
+		$('textarea').froalaEditor(
+		{   
+			theme : 'red',
+			imageUploadURL:'http://i.froala.com/upload',
+			fileUploadURL:'http://i.froala.com/upload'
+		});
 	</script>
 </body>
 </html>
