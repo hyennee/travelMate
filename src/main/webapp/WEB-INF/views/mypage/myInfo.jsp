@@ -90,6 +90,8 @@ a {
 			<hr />
 			<div >
 						<p>내계정</p>
+						
+						<form action="">
 							<table >
 								<tr>
 									<td>이름</td>
@@ -114,7 +116,7 @@ a {
 								</tr>
 
 							</table>
-						
+						</form>
 			</div>
 			<br />
 		</div>
