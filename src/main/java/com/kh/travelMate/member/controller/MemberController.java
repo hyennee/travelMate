@@ -1,18 +1,21 @@
 package com.kh.travelMate.member.controller;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.kh.travelMate.mail.model.service.MailService;
 import com.kh.travelMate.member.model.exception.LoginException;
 import com.kh.travelMate.member.model.service.MemberService;
 import com.kh.travelMate.member.model.vo.Member;
@@ -24,6 +27,8 @@ public class MemberController {
 	private MemberService ms;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	private MailService mailService;
 	
 	
 	//메인페이지로
@@ -145,12 +150,21 @@ public class MemberController {
 		return String.valueOf(result);
 	}
 	
+	@ResponseBody
+	@RequestMapping("authMail.me")
+	public boolean authMail(HttpSession session, @RequestParam(value="email")String email) {
 	
-	@RequestMapping(value="/authMail.me", method=RequestMethod.POST)
-	public String authMail(@RequestParam(value="email")String email, Model model) {
-	
-		System.out.println(email);
-		model.addAttribute("email", email);
-		return "member/mailAuth";
+		System.out.println("email임 :" + email);
+		int randomCode = new Random().nextInt(10000000); //인증번호 7자리 1~1000000까지 랜덤으로 승인코드 발생시킴
+		String joinCode = String.valueOf(randomCode);
+		session.setAttribute("joinCode", joinCode);
+		
+		String subject = "TravelMate 회원가입 승인코드입니다.";
+		StringBuilder sb = new StringBuilder();
+		sb.append("회원가입 승인코드는 ").append(joinCode).append(" 입니다.");
+		
+		
+		/*model.addAttribute("email", email);*/
+		return mailService.send(subject, sb.toString(), "ejkim1111@gmail.com", email);
 }
 }

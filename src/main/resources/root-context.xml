@@ -52,6 +52,24 @@
 			<property name="dataSource" ref="dataSource"> <!-- db접속에 관한 트랜잭션 매니저를 생성함 -->
 			</property>
 	</bean>
+	
+	<!-- 메일보내기 -->
+   <bean id="javaMailSender" class = "org.springframework.mail.javamail.JavaMailSenderImpl">
+      <property name="host" value="smtp.gmail.com" />
+      <property name="port" value="587" />
+      <property name="username" value="ejkim1111@gmail.com" />
+      <property name="password" value="akrrmacl12" />
+      <property name="javaMailProperties">
+         <props>
+               <prop key="mail.transport.protocol">smtp</prop>
+               <prop key="mail.smtp.auth">true</prop>
+               <prop key="mail.smtp.starttls.enable">true</prop>
+               <prop key="mail.debug">true</prop>
+         </props>
+      </property>
+    </bean>
+ 
+	
 	<!-- 어노테이션으로 트랜젝션 매니저를 설정하기 위해 추가해야 하는 설정 -->
 	<tx:annotation-driven
 		transaction-manager="transactionManager"/>
