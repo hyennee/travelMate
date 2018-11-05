@@ -150,21 +150,33 @@ public class MemberController {
 		return String.valueOf(result);
 	}
 	
+	//이메일 인증
 	@ResponseBody
 	@RequestMapping("authMail.me")
-	public boolean authMail(HttpSession session, @RequestParam(value="email")String email) {
+	public boolean authMail(HttpSession session, @RequestParam(value="email")String email, Model model) {
 	
 		System.out.println("email임 :" + email);
-		int randomCode = new Random().nextInt(10000000); //인증번호 7자리 1~1000000까지 랜덤으로 승인코드 발생시킴
+		int randomCode = new Random().nextInt(1000000); //인증번호 7자리 1~1000000까지 랜덤으로 승인코드 발생시킴
 		String joinCode = String.valueOf(randomCode);
 		session.setAttribute("joinCode", joinCode);
 		
-		String subject = "TravelMate 회원가입 승인코드입니다.";
+		String subject = "안녕하세요! TravelMate 회원가입 승인 코드입니다.";
 		StringBuilder sb = new StringBuilder();
+		sb.append("\n");
+		sb.append("\n");
+		sb.append("TravleMate 회원가입 승인 코드입니다.");
+		sb.append("\n"); 
+		sb.append("\n"); 
 		sb.append("회원가입 승인코드는 ").append(joinCode).append(" 입니다.");
+		sb.append("\n");
+		sb.append("\n"); 
+		sb.append("인증을 진행해주세요.");
+		sb.append("\n");
+		sb.append("\n");
 		
-		
-		/*model.addAttribute("email", email);*/
+		model.addAttribute("joinCode", joinCode);
 		return mailService.send(subject, sb.toString(), "ejkim1111@gmail.com", email);
 }
+	
+	
 }
