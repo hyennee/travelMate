@@ -56,9 +56,6 @@ tr {
 	border: 1px solid #bcbcbc;
 }
 
-td {
-	border: 1px solid #bcbcbc;
-}
 
 .section {
 	border: 1px solid #bcbcbc;
@@ -70,9 +67,13 @@ a {
 	text-decoration: none;
 	color: black;
 }
-.tdsection{
-	width:49%;
-	display:inline-block;
+td{
+	border-bottom: 1px solid lightgray;
+}
+
+.thstyle{
+	width : 200px;
+	background-color : lightgray;
 }
 </style>
 </head>
@@ -89,27 +90,30 @@ a {
 			<h2>사이버머니</h2>
 			<hr />
 			<div >
-						<p>사이버머니</p>
+						<span>-&nbsp;&nbsp;${ sessionScope.loginUser.user_name }님의 보유적립금은 ${ sessionScope.loginUser.cybermoney }원입니다. <button onclick=""> 충전 </button></span><br />
+						<span>-&nbsp;&nbsp;적립금은 컨설트 요청할 시에 사용하실 수 있습니다.</span><br /><br /><br />
+						<form action="">
 						<table >
 								<tr>
-									<th>no</th>
-									<th>구분</th>
-									<th>금액</th>
-									<th>내역일시</th>
+									<th class="thstyle">번호</th>
+									<th class="thstyle">구분</th>
+									<th class="thstyle">금액</th>
+									<th class="thstyle">내역일시</th>
 								</tr>
 								
 								<c:forEach var="size" items="${ cyberMoney }" >
 									
 								
-									<tr>
-										<td>${ size.CYBERMONEY_RECORD_NO }</td>
+									<tr onclick="">
+										<td>${ size.CYBERMONEY_RECORD_NO } </td>
 										<td>${ size.CHANGE_REASON }</td>
 										<td>${ size.CHANGE_MONEY }원</td>
 										<td>${ size.RECORD_DATE }</td>
-
-								</tr>
+									</tr>
+								
 								</c:forEach>
 							</table>
+							</form>
 
 			</div>
 			<br />
@@ -122,7 +126,9 @@ a {
 
 
 	<jsp:include page="../must/footer.jsp" />
-
+	<script>
+	
+	</script>
 </body>
 </html>
 

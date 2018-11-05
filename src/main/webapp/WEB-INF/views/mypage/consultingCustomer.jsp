@@ -56,9 +56,7 @@ tr {
 	border: 1px solid #bcbcbc;
 }
 
-td {
-	border: 1px solid #bcbcbc;
-}
+
 
 .section {
 	border: 1px solid #bcbcbc;
@@ -73,6 +71,14 @@ a {
 .tdsection{
 	width:49%;
 	display:inline-block;
+}
+td{
+	border-bottom: 1px solid lightgray;
+}
+
+.thstyle{
+	width : 200px;
+	background-color : lightgray;
 }
 </style>
 </head>

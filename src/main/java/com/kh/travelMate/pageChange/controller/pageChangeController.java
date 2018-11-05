@@ -1,12 +1,25 @@
 package com.kh.travelMate.pageChange.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kh.travelMate.member.model.vo.Member;
+import com.kh.travelMate.mypage.model.service.mypageService;
 
 
 //페이지 이동에 관한 모든 것은 여기서 사용
 @Controller
 public class pageChangeController {
+	@Autowired
+	private mypageService ms;
 	
 	//여행정보게시판으로 이동
 	@RequestMapping("travelInfo.me")
@@ -75,20 +88,30 @@ public class pageChangeController {
 	}
 	
 	@RequestMapping("Money.me")
-	public String Money()
+	public String Money(Model model,HttpServletRequest request, HttpServletResponse response)
 	{
+		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+		List<HashMap<String,Object>> cyberMoney = ms.cyberMoneyHistory(loginUser);
+		model.addAttribute("cyberMoney", cyberMoney);
+		
 		return "mypage/Money";
 	}
 	
 	@RequestMapping("oneByOneQnA.me")
-	public String oneByOneQnA()
+	public String oneByOneQnA(Model model,HttpServletRequest request, HttpServletResponse response)
 	{
+		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+		List<HashMap<String,Object>> oneByOne = ms.oneByOneHistory(loginUser);
+		model.addAttribute("oneByOne", oneByOne);
 		return "mypage/oneByOneQnA";
 	}
 	
 	@RequestMapping("tradeHistory.me")
-	public String tradeHistory()
+	public String tradeHistory(Model model,HttpServletRequest request, HttpServletResponse response)
 	{
+		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+		List<HashMap<String,Object>> tradeInfo = ms.tradeInfoHistory(loginUser);
+		model.addAttribute("tradeInfo", tradeInfo);
 		return "mypage/tradeHistory";
 	}
 	

@@ -39,4 +39,18 @@ public class mypageController {
 		
 		return "mypage/mypagemain";
 	}
+	
+	@RequestMapping("modifyInfo.me")
+	public String modifyInfoView(Model model, Member m, HttpServletRequest request, HttpServletResponse response) {
+		
+
+		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
+		
+		
+		ms.modifyInfo();
+		
+		return "mypage/modifyInfo";
+		
+		
+	}
 }
