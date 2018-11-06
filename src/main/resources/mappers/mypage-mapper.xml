@@ -28,10 +28,10 @@
 		
 	</select>
 	
-	<update id="modifyUserInfo" >
+	<update id="modifyUserInfo" parameterType="com.kh.travelMate.member.model.vo.Member">
 		UPDATE MEMBER
-		SET BIRTHDAY = #{birthday}, PHONE=#{phone}, NICK_NAME=#{nick_name}
-		WHERE  USER_NO = #{user_no}
+		SET BIRTHDAY=#{birthday}, PHONE=#{phone}, NICK_NAME=#{nick_name}
+		WHERE  USER_NO=#{user_no}
 	</update>
 	
 </mapper> 

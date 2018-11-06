@@ -127,7 +127,9 @@ a {
 							
 							</table>
 							<input type="submit" value="변경"  />
+							<input type="hidden" value="${ sessionScope.loginUser.user_no }" name="user_no">
 							</form>
+							
 			</div>
 			<br />
 		</div>

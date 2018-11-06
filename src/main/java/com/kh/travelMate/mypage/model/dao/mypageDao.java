@@ -15,6 +15,6 @@ public interface mypageDao {
 
 	List<HashMap<String, Object>> cyberMoneyHistory(SqlSessionTemplate sqlSession, Member loginUser);
 
-	int modifyInfo(SqlSessionTemplate sqlSession, Member m);
+	int modifyInfo(SqlSessionTemplate sqlSession,Member mem);
 
 }
