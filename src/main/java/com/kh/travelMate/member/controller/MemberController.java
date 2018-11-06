@@ -1,5 +1,6 @@
 package com.kh.travelMate.member.controller;
 
+
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +11,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.travelMate.mail.model.service.MailService;
 import com.kh.travelMate.member.model.exception.LoginException;
@@ -177,6 +180,49 @@ public class MemberController {
 		model.addAttribute("joinCode", joinCode);
 		return mailService.send(subject, sb.toString(), "ejkim1111@gmail.com", email);
 }
+
+	@ResponseBody
+	@RequestMapping("selectSearchPwd.me")
+	public String selectSearchPwd(HttpServletRequest request, Member m, Model model) {
+		String user_name = request.getParameter("user_name");
+		String email = request.getParameter("email");
+		m.setUser_name(user_name);
+		m.setEmail(email);
+		
+		Member m2 = ms.selectSearchUser(m);
+		
+		return String.valueOf(m2);
+
+	}
 	
+	/*
+	//이메일 인증
+		@ResponseBody
+		@RequestMapping("sendPwd.me")
+		public boolean sendPwd(HttpSession session, @RequestParam(value="email")String email, Model model) {
+		
+			System.out.println("email임 :" + email);
+			int randomPwd = new Random().nextInt(1000000); //인증번호 7자리 1~1000000까지 랜덤으로 승인코드 발생시킴
+			String searchPwd = String.valueOf(randomPwd);
+			session.setAttribute("searchPwd", searchPwd);
+			
+			String subject = "안녕하세요! TravelMate 회원가입 승인 코드입니다.";
+			StringBuilder sb = new StringBuilder();
+			sb.append("\n");
+			sb.append("\n");
+			sb.append("TravleMate 회원가입 승인 코드입니다.");
+			sb.append("\n"); 
+			sb.append("\n"); 
+			sb.append("회원가입 승인코드는 ").append(searchPwd).append(" 입니다.");
+			sb.append("\n");
+			sb.append("\n"); 
+			sb.append("인증을 진행해주세요.");
+			sb.append("\n");
+			sb.append("\n");
+			
+			model.addAttribute("searchPwd", searchPwd);
+			return mailService.send(subject, sb.toString(), "ejkim1111@gmail.com", email);
+	}
+	*/
 	
 }

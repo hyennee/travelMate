@@ -76,8 +76,8 @@ td:first-child {
 		<div id="page" class="page">
 			<div id="contents">
 				<div id="searchPwdArea">
-					<div id="searchPwdForm">
-						<form action="selectPwd.me" method="post">
+					<div id="searchPwdForm"> <!-- action="selectSearchPwd.me" -->
+						<form  method="post" id="goSearchPwd" action="selectSearchPwd.me">
 							<br> <br> <br> <span
 								style="text-align: left; font-weight: bold; font-size: 24px; color: black">비밀번호
 								찾기</span> <br> <span
@@ -102,7 +102,7 @@ td:first-child {
 								<table style="width: 80%">
 									<tr>
 										<td style="width: 100px;">이름</td>
-										<td><input type="text" name="userName" id="userName"
+										<td><input type="text" name="user_name" id="user_name"
 											style="width:187px; height: 18px;"></td>
 
 									</tr>
@@ -122,7 +122,7 @@ td:first-child {
 
 							<div class="btnArea">
 
-								<button type="submit" class="goSearchPwd" id="searchPwd">비밀번호
+								<button type="button" class="goSearchPwd" id="searchPwdBtn" onclick="searchPwd()" >비밀번호
 									찾기</button>
 								&nbsp;
 								<button type="reset" class="goSearchPwd" id="cancelPwd">취소</button>
@@ -138,9 +138,64 @@ td:first-child {
 	
 	<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 	<script>
+/* 	
+	$('#searchPwdBtn').click(function(){
+		
+		if($('#user_name').val() == "" || $('#user_name').val() == null){
+				alert('이름을 입력해주십시오.');
+				$('#user_name').focus();
+				return false;
+			}
+			if($('#email').val() == "" || $('#email').val() == null){
+				alert('아이디를 입력해주십시오.');
+				$('#email').focus();
+				return false;
+			}
+		
+		})
+		
 		$('#cancelPwd').click(function(){
 			window.location.href = '${contextPath}/loginView.me';
-		})
+		});	 */
+
 	</script>
+	
+	<script>
+	
+	function searchPwd(){
+		var user_name = $('#user_name').val();
+		var email = $('#email').val();
+		
+	/* 	
+		 $('#goSearchPwd').submit();
+		 */
+		$.ajax({
+			data : {
+				"user_name" : user_name, "email" : email
+				},
+			url : 'selectSearchPwd.me',
+			type : 'post',
+			success : function(data){
+				if(data == null){
+					alert('입력하신 이름과 이메일 정보와 일치하는 아이디가 없습니다.');
+					$('#email').focus();
+					return false;
+				}else if(data != null){
+					alert('일치함');
+					return false;
+					
+				}
+			}
+		});
+		
+		
+		
+	}
+	
+	</script>
+	
+
+	
+	
 </body>
 </html>

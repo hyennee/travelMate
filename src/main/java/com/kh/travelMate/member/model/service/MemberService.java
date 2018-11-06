@@ -17,4 +17,9 @@ public interface MemberService {
 	//닉네임 중복체크용 메소드
 	int selectDuplChkNick(String nick_name);
 
+	//비밀번호 찾기 전 이름과 아이디로 회원정보 조회
+
+	Member selectSearchUser(Member m);
+
+
 }

@@ -152,7 +152,7 @@ td:first-child {
 									<td style="width: 350px; vertical-align: top;"><input
 										type="text" name="email" id="email" oninput="chkValidEmail()"
 										style="width: 187px; height: 18px;" placeholder="이메일"
-										maxlength="20"><br>
+										maxlength="50"><br>
 									<span
 										style="font-size: 12px; font-weight: lighter; color: #999">※아이디는
 											이메일 주소로 입력해주시기 바랍니다.</span></td>

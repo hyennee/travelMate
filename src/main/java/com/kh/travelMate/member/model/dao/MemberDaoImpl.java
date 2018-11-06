@@ -59,6 +59,14 @@ public class MemberDaoImpl implements MemberDao{
 	return sqlSession.selectOne("Member.selectDuplChkNick", nick_name);
 	}
 
+	//이메일, 이름으로 회원 조회하기!
+	@Override
+	public Member selectSearchUser(SqlSessionTemplate sqlSession, Member m) {
+		
+		return sqlSession.selectOne("Member.selectSearchUser", m);
+	}
+
+
 
 
 
