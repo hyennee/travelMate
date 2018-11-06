@@ -29,10 +29,10 @@ public class BoardController
 		
 		b.setCategory(notice);
 		ArrayList<Board> noticeList = bs.selectServiceCenterList(b);
-		System.out.println("noticeList : " + noticeList);
+		/*System.out.println("noticeList : " + noticeList);*/
 		b.setCategory(question);
 		ArrayList<Board> questionList = bs.selectServiceCenterList(b);
-		System.out.println("questionList : " + questionList);
+		/*System.out.println("questionList : " + questionList);*/
 		
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("questionList", questionList);
@@ -46,6 +46,8 @@ public class BoardController
 		Board selectOne = bs.selectOne(b);
 		model.addAttribute("selectOne", selectOne);
 		
+		System.out.println("selectOne : " + b);
+		
 		if(b.getCategory().equals("1"))
 		{
 			return "board/serviceCenter/noticeDetail";
@@ -56,6 +58,11 @@ public class BoardController
 		}
 		else if(b.getCategory().equals("3"))
 		{
+			/*System.out.println("aList : " + b);*/
+			ArrayList<Board> answerList = bs.selectAnswerBoard(b);
+			
+			model.addAttribute("answerList", answerList);
+			
 			return "board/openConsulting/ocDetail";
 		}
 		return null;
@@ -75,7 +82,7 @@ public class BoardController
 		try
 		{
 			int listCount = bs.getListCount(b);
-			//System.out.println("listCount : " + listCount);
+			System.out.println("listCount : " + listCount);
 			
 			PageInfo page = Pagination.getPageInfo(currentPage, listCount);
 			
@@ -83,7 +90,9 @@ public class BoardController
 			
 			selectList = bs.selectBoardList(b, page);
 			
-			System.out.println("list category : " + b.getCategory());
+			System.out.println("selectList : " + selectList);
+			
+			/*System.out.println("list category : " + b.getCategory());*/
 			
 			model.addAttribute("selectList", selectList);
 			model.addAttribute("page", page);
@@ -131,7 +140,6 @@ public class BoardController
 	@RequestMapping("insert.bo")
 	public String insertBoard(Board b, Model model)
 	{
-		b.setAnswerCount(0);
 		bs.insertBoard(b);
 		
 		return "redirect:selectList.bo?category=" + b.getCategory();
@@ -139,11 +147,9 @@ public class BoardController
 	@RequestMapping("insertAnswer.bo")
 	public String insertAnswerBoard(Board b, Model model)
 	{
-		System.out.println("Answer : " + b);
-		
 		bs.insertAnswerBoard(b);
 		
-		return "redirect:selectOne.bo?boardNo=" + b.getRefNo();
+		return "redirect:selectOne.bo?boardNo=" + b.getRefNo() + "&category=" + b.getCategory();
 	}
 	
 	@RequestMapping("goUpdateForm.bo")
@@ -176,5 +182,13 @@ public class BoardController
 	public String showOCInsertForm()
 	{	
 		return "board/openConsulting/ocInsertForm";
+	}
+	
+	@RequestMapping("updateContent.bo")
+	public String updateContent(Board b, Model model)
+	{
+		bs.updateContent(b);
+		
+		return "redirect:selectOne.bo?boardNo=" + b.getBoardNo() + "&category=" + b.getCategory();
 	}
 }

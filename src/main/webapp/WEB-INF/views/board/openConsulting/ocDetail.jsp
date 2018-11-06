@@ -185,7 +185,7 @@
 
 </style>
 <body>
-	<%-- <c:if test="${!empty sessionScope.loginUser }"> --%>
+	<c:if test="${!empty sessionScope.loginUser }">
 	<jsp:include page="../../must/header.jsp" />
 	<div class="outer">
 		<div id="page" class="page">
@@ -211,8 +211,6 @@
 										<input type="hidden" name="nickName" value="${ selectOne.nickName }">
 										<li><span>${ selectOne.boardDate }</span></li>
 										<input type="hidden" name="boardDate" value="${ selectOne.boardDate }">
-										<li><span>${ selectOne.answerCount }</span></li>
-										<input type="hidden" name="answerCount" value="${ selectOne.answerCount }">
 									</ul>
 								</div>
 								<hr style="width: 95%">
@@ -222,77 +220,59 @@
 								</div>
 								<textarea style="display:none;" name="content">${ selectOne.content }</textarea>
 								<!-- 질문 버튼 부분 div -->
-								<div id="qBottom">
-									<!-- 답변 불가능일 경우 -->
-									<!-- <p style="margin-top:43px;">
-										<span></span>
-										<span> 답변이 완료된 컨설팅입니다. </span>
-								</p> -->
-									<!-- 답변 가능한 경우 -->
-									<p style="margin-top:20px;">
-										답변을 하실 수 있습니다.
-										<button class="btnAnswer" type="submit">답변하기</button>
-									</p>
-								</div>
+								<c:if test="${ selectOne.nickName ne sessionScope.loginUser.getNick_name() }">
+									<div id="qBottom">
+										<p style="margin-top:20px;">
+											답변을 하실 수 있습니다.
+											<button class="btnAnswer" type="submit">답변하기</button>
+										</p>
+									</div>
+								</c:if>
 							</div>
 						</form>
 						<br>
-						<!-- 오픈컨설팅 답변 div 1 -->
 						<div class="AnswerArea">
-							<div id="openAnswer">
-								<div id="answercon1">
-									<h3>
-										고구마님 답변
-										<button id="btnAdd" style="font-size: 12px;" type="button">+관심추가</button>
-									</h3>
+							<c:forEach var="answer" items="${ answerList }">
+								<div id="openAnswer">
+									<div id="answercon1">
+										<h3>
+											${ answer.nickName }님 답변
+											<button id="btnAdd" style="font-size: 12px;" type="button">+관심추가</button>
+										</h3>
+									</div>
+									<!-- 오픈컨설팅 답변 작성자 관련 정보 div -->
+									<div id="answercon2">
+										<ul id="answerUl">
+											<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>${ answer.nickName }</span></li>
+											<li><span>${ answer.boardDate }</span></li>
+										</ul>
+									</div>
+	
+									<hr style="width: 95%">
+									<!-- 오픈컨설팅 답변 내용 div -->
+									<div id="answercon3" style="font-style: normal">
+									<c:if test="${ sessionScope.loginUser.getNick_name() ne answer.nickName }">
+										<c:if test="${ selectOne.refNo ne answer.boardNo }">
+											<p>${fn:substring(answer.content, 0, 200)}</p>
+										</c:if>
+									</c:if>
+									<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
+										<c:if test="${ selectOne.refNo eq answer.boardNo }">
+											<p>${ answer.content }</p>
+										</c:if>
+									</c:if>
+									<c:if test="${ sessionScope.loginUser.getNick_name() eq answer.nickName }">
+										<p>${ answer.content }</p>
+									</c:if>
+									<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
+										<c:if test="${ selectOne.refNo ne answer.boardNo }">
+											<button id="btnSelect" type="button" onclick="location.href='updateContent.bo?boardNo=${ selectOne.boardNo }&refNo=${ answer.boardNo }&category=${ selectOne.category }'">내용 더보기</button>
+										</c:if>
+									</c:if>
+									</div>
 								</div>
-								<!-- 오픈컨설팅 답변 작성자 관련 정보 div -->
-								<div id="answercon2">
-									<ul id="answerUl">
-										<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>고구마</span></li>
-										<li><span>컨설턴트</span></li>
-										<li><span>2018.11.24 13:00</span></li>
-									</ul>
-								</div>
-
-								<hr style="width: 95%">
-								<!-- 오픈컨설팅 답변 내용 div -->
-								<div id="answercon3" style="font-style: normal">
-									<p>인천-뉴욕-보고타 로 발권했구요</p>
-									<p>인천-뉴욕JFK 구간은 아시아나항공 뉴욕JFK-보고타 구간은 델타항공을 탑승했습니다.</p>
-									<p>이 구간은 비싼편이고 좀 더 저렴하게 가고 싶다면 미국 본토까지 중국경유하는 항공편으로 들어가서</p>
-									<p>마이애미에서 보고타까지 스피릿항공을 이용하는게 좀 더 저렴할거라 생각됩니다.</p>
-								<button id="btnSelect" type="button">채택하기</button>
-								</div>
-							</div>
 							<br>
-							<!-- 오픈컨설팅 답변 div 2 -for문으로 반복시킴 -->
-							<div id="openAnswer">
-								<div id="answercon1">
-									<h3>
-										옥수수님 답변
-										<button id="btnAdd" style="font-size: 12px;" type="button">+관심추가</button>
-									</h3>
-								</div>
-								<!-- 오픈컨설팅 답변 작성자 관련 정보 div -->
-								<div id="answercon2">
-									<ul id="answerUl">
-										<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>옥수수</span></li>
-										<li><span>컨설턴트</span></li>
-										<li><span>2018.11.22 13:06</span></li>
-									</ul>
-								</div>
-
-								<hr style="width: 95%">
-								<!-- 오픈컨설팅 답변 내용 div -->
-								<div id="answercon3" style="font-style: normal">
-									<p>인천-뉴욕-보고타 로 발권했구요</p>
-									<p>인천-뉴욕JFK 구간은 아시아나항공 뉴욕JFK-보고타 구간은 델타항공을 탑승했습니다.</p>
-									<p>이 구간은 비싼편이고 좀 더 저렴하게 가고 싶다면 미국 본토까지 중국경유하는 항공편으로 들어가서</p>
-									<p>마이애미에서 보고타까지 스피릿항공을 이용하는게 좀 더 저렴할거라 생각됩니다.</p>
-								<button id="btnSelect" type="button">채택하기</button>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 						<!-- 목록버튼 -->
 						<button id="btnList" type="button" onclick="location.href='selectList.bo?category=3'">목록</button>
@@ -302,6 +282,11 @@
 		</div>
 	</div>
 	<jsp:include page="../../must/footer.jsp" />
+	</c:if>
+	<c:if test="${ empty sessionScope.loginUser }">
+		<c:set var="msg" value="로그인이 필요한 서비스입니다." scope="request"/>
+		<jsp:forward page="../../must/errorPage.jsp"/>
+	</c:if>
 	<%-- 	</c:if> --%>
 
 

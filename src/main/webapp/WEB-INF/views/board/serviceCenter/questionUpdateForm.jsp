@@ -66,7 +66,7 @@
 </style>
 </head>
 <body>
-	<c:if test="${ !empty loginUser }">
+	<c:if test="${ !empty sessionScope.loginUser }">
 	<jsp:include page="../../must/header.jsp"/>
 	<div id="contents" class="full-container">
 		<div style="width:960px; margin:auto; background:white;" align="center">
@@ -85,8 +85,8 @@
 				</div>
 				<hr style="border:1px dotted lightgray;">
 				<div class="title" style="height:20px;">
-					<input type="hidden" name="writer" value="${ loginUser.getUser_no() }">
-					<span style="font-weight:bold; font-size:14px;">${ loginUser.getNick_name() }</span>
+					<input type="hidden" name="writer" value="${ sessionScope.loginUser.getUser_no() }">
+					<span style="font-weight:bold; font-size:14px;">${ sessionScope.loginUser.getNick_name() }</span>
 					<span>&nbsp;|&nbsp;</span>
 					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:14px; height:14px;">&nbsp; ${ nowDate }</span>
 				</div>
@@ -110,7 +110,7 @@
 	<br>
 	<jsp:include page="../../must/footer.jsp"/>
 	</c:if>
-	<c:if test="${ empty loginUser }">
+	<c:if test="${ empty sessionScope.loginUser }">
 		<c:set var="msg" value="로그인이 필요한 서비스입니다." scope="request"/>
 		<jsp:forward page="../../must/errorPage.jsp"/>
 	</c:if>

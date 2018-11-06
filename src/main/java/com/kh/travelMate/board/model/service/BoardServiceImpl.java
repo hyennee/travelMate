@@ -45,7 +45,7 @@ public class BoardServiceImpl implements BoardService
 	{
 		Board noticeOne = bd.selectOne(sqlSession, b);
 		
-		System.out.println("selectone : " + noticeOne);
+		/*System.out.println("selectone : " + noticeOne);*/
 		
 		return noticeOne;
 	}
@@ -86,6 +86,22 @@ public class BoardServiceImpl implements BoardService
 	public int insertAnswerBoard(Board b)
 	{
 		int result = bd.insertAnswerBoard(sqlSession, b);
+		
+		return result;
+	}
+
+	@Override
+	public ArrayList<Board> selectAnswerBoard(Board b)
+	{
+		ArrayList<Board> answerList = bd.selectAnswerBoard(sqlSession, b);
+		
+		return answerList;
+	}
+
+	@Override
+	public int updateContent(Board b)
+	{
+		int result = bd.updateContent(sqlSession, b);
 		
 		return result;
 	}

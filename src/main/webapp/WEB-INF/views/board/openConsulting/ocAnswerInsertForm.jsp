@@ -207,7 +207,7 @@
 
 </style>
 <body>
-	<%-- <c:if test="${!empty sessionScope.loginUser }"> --%>
+	<c:if test="${!empty sessionScope.loginUser }">
 	<jsp:include page="../../must/header.jsp" />
 	<div class="outer">
 		<div id="page" class="page">
@@ -228,7 +228,6 @@
 								<ul id="questionUl">
 									<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>${ selectOne.nickName }</span></li>
 									<li><span>${ selectOne.boardDate }</span></li>
-									<li><span>${ selectOne.answerCount }</span></li>
 								</ul>
 							</div>
 							<hr style="width: 95%">
@@ -238,23 +237,22 @@
 							</div>
 						</div>
 						<br>
-						<span style="text-align: left; font-weight: bold; font-size: 24px; color: black">답변하기</span><hr>
+						<span style="text-align:left; font-weight: bold; font-size: 24px; color: black">답변하기</span><br>
+						<span style="text-align: left; font-weight: bold; font-size: 12px; color: #999">작성하신 답변은 200글자까지만 미리보기로서 표시됩니다.</span><hr>
 						<form action="insertAnswer.bo" method="post">
-						<input type="hidden" name="boardNo" value="${ selectOne.boardNo }">
-						<input type="hidden" name="category" value="${ selectOne.category }">
-						<input type="hidden" name="writer" value="${ sessionScope.loginUser.getUser_no() }">
-						<input type="hidden" name="title" value="${ sessionScope.loginUser.getNick_name() }님 답변">
-						<input type="hidden" name="boardDate" value="${ selectOne.boardDate }">
-						<input type="hidden" name="refNo" value="${ selectOne.boardNo }">
-						<div class="fr-view" style="width:900px; margin:auto;">
-						    <textarea name="content">
-						    </textarea>
-						</div>
-						<hr>
-						<div align="center">
-							<button type="button" class="pointer" style="background:#E7E7E7; border:none; border-radius:5px; height:35px;" onclick="location.href='selectList.bo?category=${ selectOne.category }'">취소</button>
-							<button type="submit" class="pointer" style="background:skyblue; border:none; border-radius:5px; height:35px; color:white; font-size:16px; font-weight:bold;"><img src="${ contextPath }/resources/images/check.png" style="width:25px; height:25px;">확인</button>
-						</div>
+							<input type="hidden" name="boardNo" value="${ selectOne.boardNo }">
+							<input type="hidden" name="category" value="${ selectOne.category }">
+							<input type="hidden" name="writer" value="${ sessionScope.loginUser.getUser_no() }">
+							<input type="hidden" name="title" value="${ sessionScope.loginUser.getNick_name() }님 답변">
+							<input type="hidden" name="refNo" value="${ selectOne.boardNo }">
+							<div class="fr-view" style="width:900px; margin:auto;">
+							    <textarea name="content"></textarea>
+							</div>
+							<hr>
+							<div align="center">
+								<button type="button" class="pointer" style="background:#E7E7E7; border:none; border-radius:5px; height:35px;" onclick="location.href='selectOne.bo?boardNo=${ selectOne.boardNo }&category=${ selectOne.category }'">취소</button>
+								<button type="submit" class="pointer" style="background:skyblue; border:none; border-radius:5px; height:35px; color:white; font-size:16px; font-weight:bold;"><img src="${ contextPath }/resources/images/check.png" style="width:25px; height:25px;">확인</button>
+							</div>
 						</form>
 					</div>
 				</div>
@@ -262,6 +260,11 @@
 		</div>
 	</div>
 	<jsp:include page="../../must/footer.jsp" />
+	</c:if>
+	<c:if test="${ empty sessionScope.loginUser }">
+		<c:set var="msg" value="로그인이 필요한 서비스입니다."/>
+		<jsp:forward page="../../must/errorPage"/>
+	</c:if>
 	
 	<script>
     	$(function() { $('textarea').froalaEditor() });
