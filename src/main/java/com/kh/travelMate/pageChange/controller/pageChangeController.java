@@ -127,4 +127,12 @@ public class pageChangeController {
 	{
 		return "mypage/consultingManual";
 	}
+	
+	//이메일 인증 
+		@RequestMapping("mailAuthView.me")
+		public String authMailView() {
+			return "member/mailAuth";
+		}
+		
+	
 }

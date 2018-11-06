@@ -63,7 +63,7 @@ td:first-child {
 	background-color: #6bc6b3;
 	border: none;
 	color: white;
-	padding: 12px 22px;
+	padding: 11px 21px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -82,6 +82,30 @@ td:first-child {
 	font-weight: bold;
 	border-radius: 4px;
 }
+
+#authMail{
+	background-color: #6bc6b3;
+	border: none;
+	color: white;
+	padding: 6px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+#authMail:hover {
+	color: #6bc6b3;
+	background-color: white;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
 </style>
 <body>
 	<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
@@ -133,7 +157,7 @@ td:first-child {
 										style="font-size: 12px; font-weight: lighter; color: #999">※아이디는
 											이메일 주소로 입력해주시기 바랍니다.</span></td>
 											
-									<td style="width: 200px; vertical-align: top;"><button type="button" id="authMail" onclick="checkAuthMail()">이메일인증</button></td>
+									<td style="width: 200px; vertical-align: top;"><button type="button" id="authMail" onclick="checkAuthMail()">이메일 인증</button></td>
 									<td style="vertical-align: top;"><div id="checkDuplId"></div></td>
 
 								</tr>
@@ -142,7 +166,7 @@ td:first-child {
 									<td style="width: 90px; height: 20px;"></td>
 									<td style="height: 20px;"></td>
 									<td style="height: 20px;"></td>
-									<td style="height: 20px;"><div id="authId">인증되었습니다.</div></td>
+									<td style="height: 20px;"><div id="authId"></div></td>
 
 								</tr>
 								
@@ -483,8 +507,10 @@ td:first-child {
 			var regEmailExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 			if (chkIdVal == "" || chkIdVal == null) {
 				document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>아이디를 입력해주세요.</span>";
+				 $('#authMail').attr('disabled',true);
 			} else if (regEmailExp.test(chkIdVal) == false) { //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐 경우
 				document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>이메일 형식이 아닙니다.</span>";
+				 $('#authMail').attr('disabled',true);
 			} else {
 				checkId(chkIdVal);
 			}
@@ -508,8 +534,8 @@ td:first-child {
 								$('#authMail').attr('disabled',false);  //인증버튼 활성화
 							} else if (data == "1") { //중복되는 아이디가 있으면!
 
-								document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>사용 불가능한 아이디입니다.</span>"
-								/* $('#authMail').attr('disabled',true);  //인증버튼 비활성화 */
+								document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>이미 가입한 아이디입니다.</span>"
+								 $('#authMail').attr('disabled',true);  //인증버튼 비활성화 
 
 								
 							}
@@ -571,13 +597,13 @@ td:first-child {
 		function chkValidNick() {
 			var chkNickVal = $('#nick_name').val();
 			console.log(chkNickVal);
-			var regNickExp = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,6}$/;
+			var regNickExp = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,10}$/;
 
 			if (chkNickVal == "" || chkNickVal == null) {
 				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임을 입력해주십시오."
 				return false;
 			} else if (regNickExp.test(chkNickVal) == false) {
-				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임은 2~20자로 작성해야 합니다."
+				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임은 2~10자로 작성해야 합니다."
 				return false;
 
 			} else {
@@ -736,7 +762,15 @@ td:first-child {
 					$('input[name="privacy_ok"]').focus();
 					return false;
 				}
-
+				
+			    if ($('#authId').val() == ""
+					|| $('#authId').val() == null) {
+				alert('이메일 인증이 완료되지 않았습니다.\n인증을 진행해주세요.');
+				$('#authId').focus();
+					return false;
+				}
+			    
+			   
 				$('#insertJoin').submit();
 
 				alert('축하합니다. 가입이 완료되었습니다.');
@@ -752,17 +786,17 @@ td:first-child {
 
 function checkAuthMail(){
 	
-/* 	var pop_title = "이메일 인증"
-		var url = '${contextPath}/authMail.me?email='+email; */
-		
-		
-	/* var authMailForm = document.authMailForm; */
-	/* authMailForm.target = pop_title;
-	authMailForm.action = /* "mailAuth.jsp"; */ /* "authMail.me";  */
-	/* authMailForm.submit(); */
-	
-	var pop = window.open("", "이메일 인증", 'width=300, height=300, top=240, left=600, toolbar=no, menubar=no, scrollbars=no, resizable=no, status=no');
 	var email = $('#email').val();
+	
+	if(email == "" || email == null){
+		alert('이메일을 입력해주십시오.');
+		$('#email').focus();
+		return false;
+	}
+
+	/* var pop = */ 
+	window.open("mailAuthView.me", "이메일 인증", 'width=480, height=370, top=200, left=510, toolbar=no, menubar=no, scrollbars=no, resizable=no, status=no');
+
 	
 	$.ajax({
 		data : {"email" : email
@@ -770,8 +804,8 @@ function checkAuthMail(){
 		url : 'authMail.me',
 		type : 'post',
 		success : function(data){
-		
-			pop.location.href="${contextPath}/WEB-INF/views/member/mailAuth.jsp"; 
+			 console.log(data);
+			 /* pop.location.href="mailAuthView.me"; */
 	
 		
 		}
