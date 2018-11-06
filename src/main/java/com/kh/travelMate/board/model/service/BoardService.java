@@ -23,4 +23,8 @@ public interface BoardService
 	int deleteBoard(Board b);
 
 	int insertAnswerBoard(Board b);
+
+	ArrayList<Board> selectAnswerBoard(Board b);
+
+	int updateContent(Board b);
 }

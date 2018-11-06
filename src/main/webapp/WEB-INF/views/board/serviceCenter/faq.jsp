@@ -67,7 +67,7 @@
 </style>
 </head>
 <body class="body">
-	<c:if test="${ !empty loginUser }">
+	<c:if test="${ !empty sessionScope.loginUser }">
 	<jsp:include page="../../must/header.jsp"/>
 	<div id="contents" class="full-container" style="background:#EC983E;">
 		<div style="margin:auto; width:960px; background:white;">
@@ -126,7 +126,7 @@
 	</div>
 	<jsp:include page="../../must/footer.jsp"/>
 	</c:if>
-	<c:if test="${ empty loginUser }">
+	<c:if test="${ empty sessionScope.loginUser }">
 		<c:set var="msg" value="로그인이 필요한 서비스입니다." scope="request"/>
 		<jsp:forward page="../../must/errorPage.jsp"/>
 	</c:if>

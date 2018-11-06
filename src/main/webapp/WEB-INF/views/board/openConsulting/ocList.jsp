@@ -245,7 +245,7 @@
 
 </style>
 <body>
-	<%-- <c:if test="${!empty sessionScope.loginUser }"> --%>
+	<c:if test="${!empty sessionScope.loginUser }">
 	<jsp:include page="../../must/header.jsp" />
 	<div class="outer">
 		<div id="page" class="page">
@@ -257,8 +257,8 @@
 						<table class="open-list" style="width:900px; margin:auto;">
 							<thead>
 								<tr style="border-top:2px solid lightgray;">
+									<th style="width:80px;">번호</th>
 									<th>제목</th>
-									<th style="width:80px;">답변수</th>
 									<th style="width:150px;">작성자</th>
 									<th style="width:80px;">작성일</th>
 								</tr>
@@ -268,8 +268,8 @@
 								<tr>
 									<input type="hidden" name="boardNo" value="${ list.boardNo }">
 									<input type="hidden" name="category" value="${ list.category }">
+									<td><c:out value="${ list.rowNum }"/></td>
 									<td><c:out value="${ list.title }"/></td>
-									<td style="width:80px;"><c:out value="답변 ${ list.answerCount }"/></td>
 									<td style="width:150px;"><c:out value="${ list.nickName }"/></td>
 									<td style="width:80px;"><c:out value="${ list.boardDate }"/></td>
 								</tr>
@@ -329,6 +329,11 @@
 		</div>
 	</div>
 	<jsp:include page="../../must/footer.jsp" />
+	</c:if>
+	<c:if test="${ empty sessionScope.loginUser }">
+		<c:set var="msg" value="로그인이 필요한 서비스입니다." scope="request"/>
+		<jsp:forward page="../../must/errorPage.jsp"/>
+	</c:if>
 	<%-- 	</c:if> --%>
 
 
