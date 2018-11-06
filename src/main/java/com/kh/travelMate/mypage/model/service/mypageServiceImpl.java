@@ -66,14 +66,11 @@ public class mypageServiceImpl implements mypageService{
 	}
 
 	@Override
-	public int modifyInfo() {
+	public int modifyInfo(Member m) {
 		
-		//프로젝트 인서트멤버
-		//지금하는건 업데이트 멤버
-		
-		
-		md.modifyInfo();
-		return 0;
+		return md.modifyInfo(sqlSession, m);
 	}
+
+
 
 }

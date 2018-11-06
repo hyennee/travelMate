@@ -4,7 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   
+  
+  
 <mapper namespace="Mypage">
+	
+
 	<select id="cyberMoneyHistory" resultType="java.util.HashMap" parameterType="int">
 		SELECT * 
 		FROM CYBERMONEY_RECORD 
@@ -24,7 +28,11 @@
 		
 	</select>
 	
-	
+	<update id="modifyUserInfo" >
+		UPDATE MEMBER
+		SET BIRTHDAY = #{birthday}, PHONE=#{phone}, NICK_NAME=#{nick_name}
+		WHERE  USER_NO = #{user_no}
+	</update>
 	
 </mapper> 
 
