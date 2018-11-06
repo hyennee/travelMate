@@ -71,6 +71,14 @@ public class MemberServiceImpl implements MemberService{
 		return md.selectDuplChkNick(sqlSession, nick_name);
 	}
 
+	//비밀번호 찾기 회원 조회용 메소드!
+
+	@Override
+	public Member selectSearchUser(Member m) {
+		// TODO Auto-generated method stub
+		return md.selectSearchUser(sqlSession, m);
+	}
+
 	
 	
 

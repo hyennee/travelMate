@@ -19,14 +19,16 @@ public interface MemberDao {
 
 	Member selectMember(SqlSessionTemplate sqlSession, Member m);
 
+	//이메일 중복체크 메소드
 	int selectDuplChkId(SqlSessionTemplate sqlSession, String email);
 
+	//닉네임 중복체크 메소드
 	int selectDuplChkNick(SqlSessionTemplate sqlSession, String nick_name);
 
+	//이메일, 이름 일치하는 회원조회용 메소드
+	Member selectSearchUser(SqlSessionTemplate sqlSession, Member m);
 
 
-
-	
 
 	
 	
