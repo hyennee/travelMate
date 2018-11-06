@@ -1,15 +1,15 @@
 package com.kh.travelMate.admin.model.service;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kh.travelMate.admin.model.dao.MemberManageDao;
 import com.kh.travelMate.admin.model.vo.MemberManage;
+import com.kh.travelMate.admin.model.vo.PageInfo;
 
 @Service
 public class MemberManageServiceImpl implements MemberManageService {
@@ -21,8 +21,17 @@ public class MemberManageServiceImpl implements MemberManageService {
 	private DataSourceTransactionManager transactionManager;
 	
 	@Override
-	public List<MemberManage> memberList() {
-		return mmd.memberList();
+	public ArrayList<MemberManage> memberList(PageInfo page) {
+		ArrayList<MemberManage> memberList = mmd.memberList(sqlSession, page);
+		return memberList;
 	}
+
+	@Override
+	public int getListCount() {
+		
+		int listCount = mmd.getListCount(sqlSession);
+		return listCount;
+	}
+
 
 }

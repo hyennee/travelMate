@@ -1,19 +1,19 @@
 package com.kh.travelMate.admin.model.vo;
 
-public class MemberPaging {
+import java.io.Serializable;
+
+public class PageInfo implements Serializable{
+	private static final long serialVersionUID = 3059349909611787409L;
 	private int currentPage;
 	private int listCount;
 	private int limit;
 	private int maxPage;
 	private int startPage;
 	private int endPage;
-	private String searchKeyword;
-	private String searchCondition;	
 	
-	public MemberPaging() {}
+	public PageInfo() {}
 
-	public MemberPaging(int currentPage, int listCount, int limit, int maxPage, int startPage, int endPage,
-			String searchKeyword, String searchCondition) {
+	public PageInfo(int currentPage, int listCount, int limit, int maxPage, int startPage, int endPage) {
 		super();
 		this.currentPage = currentPage;
 		this.listCount = listCount;
@@ -21,8 +21,6 @@ public class MemberPaging {
 		this.maxPage = maxPage;
 		this.startPage = startPage;
 		this.endPage = endPage;
-		this.searchKeyword = searchKeyword;
-		this.searchCondition = searchCondition;
 	}
 
 	public int getCurrentPage() {
@@ -73,29 +71,9 @@ public class MemberPaging {
 		this.endPage = endPage;
 	}
 
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
-	}
-
-	public String getSearchCondition() {
-		return searchCondition;
-	}
-
-	public void setSearchCondition(String searchCondition) {
-		this.searchCondition = searchCondition;
-	}
-
 	@Override
 	public String toString() {
-		return "MemberPaging [currentPage=" + currentPage + ", listCount=" + listCount + ", limit=" + limit
-				+ ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage=" + endPage + ", searchKeyword="
-				+ searchKeyword + ", searchCondition=" + searchCondition + "]";
+		return "PageInfo [currentPage=" + currentPage + ", listCount=" + listCount + ", limit=" + limit + ", maxPage="
+				+ maxPage + ", startPage=" + startPage + ", endPage=" + endPage + "]";
 	}
-
-
-	
 }

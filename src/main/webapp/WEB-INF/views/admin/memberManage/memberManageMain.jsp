@@ -29,10 +29,11 @@
 table th {
 	text-align: center;
 }
+
 #searchCondition {
 	text-align: inline-block;
-	height:33px;
-	width:120px;
+	height: 33px;
+	width: 120px;
 }
 </style>
 </head>
@@ -49,7 +50,9 @@ table th {
 			<jsp:include page="sideMenu.jsp" />
 		</div>
 		<div class="lowerPage">
-			<h1><span class="label label-info">회원목록</span></h1>
+			<h1>
+				<span class="label label-info">회원목록</span>
+			</h1>
 			<div class="table-responsive">
 				<table class="table table-striped">
 					<thead>
@@ -85,15 +88,45 @@ table th {
 					</tbody>
 				</table>
 			</div>
-			<div class="pagingArea">Fake paging info...</div>
+			<div class="pagingArea">
+				<c:if test="${ page.currentPage <= 1 }">
+				[이전] &nbsp;
+			</c:if>
+				<c:if test="${ page.currentPage > 1}">
+					<c:url var="blistBack" value="/memberManage.admin">
+						<c:param name="currentPage" value="${ page.currentPage - 1 }" />
+					</c:url>
+					<a href="${ blistBack }">[이전]</a>
+				</c:if>
+				<c:forEach var="p" begin="${ page.startPage }" end="${ page.endPage }">
+					<c:if test="${ p eq page.currentPage }">
+						<font color="red" size="4"><b>[${ p }]</b></font>
+					</c:if>
+					<c:if test="${ p ne page.currentPage }">
+						<c:url var="blistCheck" value="/memberManage.admin">
+							<c:param name="currentPage" value="${ page }" />
+						</c:url>
+						<a href="${ blistCheck }">${ page }</a>
+					</c:if>
+				</c:forEach>
+
+				<c:if test="${ page.currentPage >= page.maxPage }">
+				&nbsp; [다음]
+			</c:if>
+				<c:if test="${ page.currentPage < page.maxPage }">
+					<c:url var="blistEnd" value="/memberManage.admin">
+						<c:param name="currentPage" value="${ pi.currentPage + 1 }" />
+					</c:url>
+					<a href="${ blistEnd }">[다음]</a>
+				</c:if>
+			</div>
 			<div class="searchArea">
 				<form class="navbar-form navbar-center">
 					<select id="searchCondition">
 						<option value="user_name">이름</option>
 						<option value="email">이메일</option>
 						<option value="phone">전화번호</option>
-					</select> 
-					<input type="text" class="form-control" placeholder="키워드...">
+					</select> <input type="text" class="form-control" placeholder="키워드...">
 					<button type="submit" class="btn btn-success">검색</button>
 				</form>
 			</div>
