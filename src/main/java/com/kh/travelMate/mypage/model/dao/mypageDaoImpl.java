@@ -29,4 +29,9 @@ public class mypageDaoImpl implements mypageDao{
 		return sqlSession.selectList("Mypage.cyberMoneyHistory",loginUser.getUser_no());
 	}
 
+	@Override
+	public int modifyInfo(SqlSessionTemplate sqlSession, Member m) {
+		return sqlSession.update("Mypage.modifyUserInfo", m);
+	}
+
 }

@@ -94,18 +94,18 @@ a {
 						<p>내계정</p>
 						
 						<img src="" alt="" />
-						<form action="modifyInfo.me" method="post">
+						<form action="modifyMyInfo.me" method="post">
 							<table >
 								<tr>
 									<td class="thstyle">아이디 </td>
-									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.email }"></c:out>" name="email"/></td>
+									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.email }"></c:out>" name="email"  readonly/></td>
 								</tr>
 								<tr>
 									<td colspan="3"><span style="color: #6c6e69; font: 12px/24px 'OpenSans';  margin: 0;">비밀번호 / 아이디 찾기에서 필요하므로 정확하게 입력 및 사용하는 이메일 주소는 반드시 기억해주십시요.</span></td>
 								</tr>
 								<tr>
 									<td class="thstyle">이름</td>
-									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.user_name }"></c:out>" name="user_name" /></td>
+									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.user_name }"></c:out>" name="user_name"  readonly/></td>
 								</tr>
 								<tr>
 									<td class="thstyle">생년월일</td>
@@ -122,7 +122,7 @@ a {
 								
 								<tr>
 									<td class="thstyle">주소 <span style="color:red;">*</span></td>
-									<td><input type="text" name="adress" style=" width: 300px;"/>&nbsp;<input type="button" value="우편" /></td>
+									<td><input type="text" name="address" style=" width: 300px;"/>&nbsp;<input type="button" value="우편" /></td>
 								</tr>
 							
 							</table>

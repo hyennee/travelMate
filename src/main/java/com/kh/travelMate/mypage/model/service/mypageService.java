@@ -13,7 +13,9 @@ public interface mypageService {
 
 	List<HashMap<String, Object>> cyberMoneyHistory(Member loginUser);
 
-	int modifyInfo();
+	int modifyInfo(Member m);
+
+
 
 
 }
