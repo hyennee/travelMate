@@ -1,11 +1,16 @@
 package com.kh.travelMate.admin.model.dao;
 
-import java.util.List;
+import java.util.ArrayList;
+
+import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.travelMate.admin.model.vo.MemberManage;
+import com.kh.travelMate.admin.model.vo.PageInfo;
 
 public interface MemberManageDao {
-	
-	List<MemberManage> memberList();
+
+	int getListCount(SqlSessionTemplate sqlSession);
+
+	ArrayList<MemberManage> memberList(SqlSessionTemplate sqlSession, PageInfo page);
 
 }
