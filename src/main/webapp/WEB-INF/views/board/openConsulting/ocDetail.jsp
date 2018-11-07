@@ -221,12 +221,19 @@
 								<textarea style="display:none;" name="content">${ selectOne.content }</textarea>
 								<!-- 질문 버튼 부분 div -->
 								<c:if test="${ selectOne.nickName ne sessionScope.loginUser.getNick_name() }">
-									<div id="qBottom">
-										<p style="margin-top:20px;">
-											답변을 하실 수 있습니다.
-											<button class="btnAnswer" type="submit">답변하기</button>
-										</p>
-									</div>
+									<c:if test="${ selectOne.refNo eq 0 }">
+										<div id="qBottom">
+											<p style="margin-top:20px;">
+												답변을 하실 수 있습니다.
+												<button class="btnAnswer" type="submit">답변하기</button>
+											</p>
+										</div>
+									</c:if>
+									<c:if test="${ selectOne.refNo ne 0 }">
+										<div id="qBottom">
+											<p style="margin-top:20px;">채택이 완료되어 답변하실 수 없습니다.</p>
+										</div>
+									</c:if>
 								</c:if>
 							</div>
 						</form>
@@ -237,7 +244,6 @@
 									<div id="answercon1">
 										<h3>
 											${ answer.nickName }님 답변
-											<button id="btnAdd" style="font-size: 12px;" type="button">+관심추가</button>
 										</h3>
 									</div>
 									<!-- 오픈컨설팅 답변 작성자 관련 정보 div -->

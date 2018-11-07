@@ -34,6 +34,12 @@ public interface MemberDao {
 	
 	
 
+	Member selectOneMember(SqlSessionTemplate sqlSession, int writer);
+
+	int updateCyberMoney(SqlSessionTemplate sqlSession, Member m);
+
+	int useCyberMoney(SqlSessionTemplate sqlSession, Member answerMember);
+
 
 
 	

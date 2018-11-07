@@ -67,6 +67,26 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
+
+	public Member selectOneMember(SqlSessionTemplate sqlSession, int writer)
+	{
+		return sqlSession.selectOne("Member.selectOneUser", writer);
+	}
+
+	@Override
+	public int updateCyberMoney(SqlSessionTemplate sqlSession, Member m)
+	{
+		return sqlSession.update("Member.updateCyberMoney", m);
+	}
+
+	@Override
+	public int useCyberMoney(SqlSessionTemplate sqlSession, Member answerMember)
+	{
+		return sqlSession.update("Member.useCyberMoney", answerMember);
+	}
+
+  
+  	@Override
 	public int updatePwd(SqlSessionTemplate sqlSession, Member m) {
 		
 		return sqlSession.update("Member.updatePwd", m);
@@ -75,6 +95,7 @@ public class MemberDaoImpl implements MemberDao{
 	
 
 	
+
 
 
 

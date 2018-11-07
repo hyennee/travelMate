@@ -10,6 +10,8 @@ import com.kh.travelMate.board.model.dao.BoardDao;
 import com.kh.travelMate.board.model.exception.BoardListException;
 import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.board.model.vo.PageInfo;
+import com.kh.travelMate.member.model.dao.MemberDao;
+import com.kh.travelMate.member.model.vo.Member;
 
 @Service
 public class BoardServiceImpl implements BoardService
@@ -18,6 +20,8 @@ public class BoardServiceImpl implements BoardService
 	private BoardDao bd;
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	@Autowired
+	private MemberDao md;
 	
 	@Override
 	public ArrayList<Board> selectServiceCenterList(Board b)
@@ -101,6 +105,22 @@ public class BoardServiceImpl implements BoardService
 	@Override
 	public int updateContent(Board b)
 	{
+		Board board = bd.selectOne(sqlSession, b);
+		
+		Member m = md.selectOneMember(sqlSession, board.getWriter());
+		/*System.out.println("Member m : " + m);*/
+		md.updateCyberMoney(sqlSession, m);
+		md.selectOneMember(sqlSession, board.getWriter());
+		/*System.out.println("Update Member m : " + m);*/
+		
+		Board answerBoard = bd.selectOneRef(sqlSession, b);
+		
+		Member answerMember = md.selectOneMember(sqlSession, answerBoard.getWriter());
+		/*System.out.println("answerMember : " + answerMember);*/
+		md.useCyberMoney(sqlSession, answerMember);
+		answerMember = md.selectOneMember(sqlSession, answerBoard.getWriter());
+		/*System.out.println("Update answerMember : " + answerMember);*/
+		
 		int result = bd.updateContent(sqlSession, b);
 		
 		return result;
