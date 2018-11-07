@@ -65,26 +65,26 @@ table th {
 							<th>전화번호</th>
 							<th>성별</th>
 							<th>가입일</th>
-							<th>기능</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="row" items="${ memberList }">
 							<tr>
-								<td><b>${ row.user_no }</b></td>
-								<td>${ row.email }</td>
-								<td>${ row.user_name }</td>
-								<td>${ row.nick_name }</td>
-								<td>${ row.phone }</td>
+								<td><b><c:out value="${ row.user_no }"></c:out></b></td>
+								<td><c:out value="${ row.email }"></c:out></td>
+								<td><c:out value="${ row.user_name }"></c:out></td>
+								<td><c:out value="${ row.nick_name }"></c:out></td>
+								<td><c:out value="${ row.phone }"></c:out></td>
 								<c:if test="${ row.gender eq 'M' }">
 									<td>남</td>
 								</c:if>
 								<c:if test="${ row.gender eq 'F' }">
 									<td>여</td>
 								</c:if>
-								<td>${ row.enroll_date }</td>
+								<td><c:out value="${ row.enroll_date }"></c:out></td>
 								<td>
-									<button type="button" class="btn btn-sm btn-success" onclick="location.href='memberManageDetail.admin?userno=${ row.user_no }'">수정</button>
+									<button type="button" class="btn btn-sm btn-success" onclick="location.href='memberManageDetail.admin?userno=${ row.user_no }'">조회</button>
 								</td>
 							</tr>
 						</c:forEach>
@@ -130,7 +130,7 @@ table th {
 							<option value="email">이메일</option>
 							<option value="phone">전화번호</option>
 						</select> <input type="text" class="form-control" placeholder="키워드...">
-						<button type="submit" class="btn btn-success">검색</button>
+						<button type="submit" class="btn btn-info">검색</button>
 					</form>
 				</div>
 			</div>

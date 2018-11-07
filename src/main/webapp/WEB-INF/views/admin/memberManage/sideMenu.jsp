@@ -28,7 +28,9 @@
 			</div>
 			<div class="panel-body">
 				<b><a
-					href="${ pageContext.request.contextPath }/admin/memberManage.admin">회원목록</a></b>
+					href="${ pageContext.request.contextPath }/admin/memberManage.admin">회원목록</a></b><br><br>
+					<b>휴면/탈퇴/불량 회원 관리</b><br><br>
+					<b>컨설턴트 회원 관리</b>
 			</div>
 		</div>
 	</div>

@@ -73,7 +73,6 @@ input {
 				<span class="label label-primary">회원상세정보</span>
 			</h2>
 			<div class="table-responsive">
-				<form action="${ pageContext.request.contextPath }/admin/memberManageModify.admin" name="memberDetail" method="POST">
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
@@ -82,33 +81,19 @@ input {
 						</tr>
 						<tr>
 							<td class="row-header">이메일</td>
-							<td><input type="email" id="email" name="email" value="${ memberDetail.email }">
-							</td>
+							<td>${ memberDetail.email }</td>
 						</tr>
 						<tr>
 							<td class="row-header">이름</td>
-							<td><input type="text" name="user_name" value="${ memberDetail.user_name }">
-							</td>
+							<td>${ memberDetail.user_name }</td>
 						</tr>
 						<tr>
 							<td class="row-header">닉네임</td>
-							<td><input type="text" name="nick_name" value="${ memberDetail.nick_name }">
-							</td>
-						</tr>
-						<tr>
-							<td class="row-header">비밀번호</td>
-							<td><input type="password" name="password">
-							</td>
-						</tr>
-						<tr>
-							<td class="row-header">비밀번호확인</td>
-							<td><input type="password" name="password2">
-							</td>
-						</tr>												
+							<td>${ memberDetail.nick_name }</td>
+						</tr>										
 						<tr>
 							<td class="row-header">전화번호</td>
-							<td><input type="tel" name="phone" value="${ memberDetail.phone }">
-							</td>
+							<td>${ memberDetail.phone }</td>
 						</tr>
 						<tr>
 							<td class="row-header">가입일</td>
@@ -129,9 +114,7 @@ input {
 						</tr>
 					</tbody>
 				</table>
-				<button type="button" class="btn btn-success" onclick="submit()">수정하기</button>
-				<button type="button" class="btn btn-danger" onclick="location.href='${ pageContext.request.contextPath }/admin/memberManage.admin'">취소하기</button>
-				</form>
+				<button type="button" class="btn btn-success" onclick="location.href='${ pageContext.request.contextPath }/admin/memberManage.admin'">목록으로 돌아가기</button>
 			</div>
 		</div>
 	</c:if>
