@@ -28,6 +28,12 @@ public interface MemberDao {
 	//이메일, 이름 일치하는 회원조회용 메소드
 	Member selectSearchUser(SqlSessionTemplate sqlSession, Member m);
 
+	Member selectOneMember(SqlSessionTemplate sqlSession, int writer);
+
+	int updateCyberMoney(SqlSessionTemplate sqlSession, Member m);
+
+	int useCyberMoney(SqlSessionTemplate sqlSession, Member answerMember);
+
 
 
 	

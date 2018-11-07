@@ -21,12 +21,12 @@
 	<h3>Google Map</h3>
 	<div id="map"></div>
 	<script>
-		function initMap()
+		/* function initMap()
 		{
-			/* 위도 경도 설정 */
+			//위도 경도 설정
 			var uluru = {lat : 37.56667, lng : 126.97806};
 			
-			/* 맵 불러오기 */
+			// 맵 불러오기 
 			var map = new google.maps.Map(document.getElementById('map'),
 			{
 				center : uluru,
@@ -34,13 +34,42 @@
 				zoom : 10
 			});
 			
-			/* 마커찍기 */
+			// 마커찍기
 			var marker = new google.maps.Marker(
 			{
 				position : uluru,
 				map : map,
 				title : "Hello!"
 			});
+		} */
+		
+		var map;
+		function initMap()
+		{
+			var latLng = new google.maps.LatLng(37.56667, 126.97806);
+			var mapOptions = 
+			{
+				zoom : 10,
+				center : latLng
+			}
+			
+			map = new google.maps.Map(document.getElementById('map'), mapOptions);
+			
+			google.maps.event.addListener(map, 'click', function(event)
+			{
+				placeMarker(event.latLng);
+			});
+		}
+		
+		function placeMarker(location)
+		{
+			var marker = new google.maps.Marker(
+			{
+				position : location,
+				map : map
+			});
+			
+			//map.setCenter(location);
 		}
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiF8Yj3g8V_IP0FHZqScTF8wrJseo6fHY&callback=initMap" async defer>

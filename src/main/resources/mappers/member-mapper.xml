@@ -90,6 +90,23 @@
 		WHERE NICK_NAME = #{nick_name}
 	</select>
 	
+	<select id="selectOneUser" resultType="Member" parameterType="_int">
+		SELECT * FROM MEMBER
+		WHERE USER_NO = #{writer}
+	</select>
+	
+	<update id="updateCyberMoney" parameterType="Member">
+		UPDATE MEMBER
+		SET CYBERMONEY = (CYBERMONEY-200)
+		WHERE USER_NO = #{user_no}
+	</update>
+	
+	<update id="useCyberMoney" parameterType="Member">
+		UPDATE MEMBER
+		SET CYBERMONEY = (CYBERMONEY+200)
+		WHERE USER_NO = #{user_no}
+	</update>
+	
 </mapper> 
 
 

@@ -29,4 +29,6 @@ public interface BoardDao
 	ArrayList<Board> selectAnswerBoard(SqlSessionTemplate sqlSession, Board b);
 
 	int updateContent(SqlSessionTemplate sqlSession, Board b);
+
+	Board selectOneRef(SqlSessionTemplate sqlSession, Board b);
 }

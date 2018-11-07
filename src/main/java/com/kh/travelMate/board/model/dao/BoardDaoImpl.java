@@ -99,4 +99,10 @@ public class BoardDaoImpl implements BoardDao
 	{
 		return sqlSession.update("Board.updateContent", b);
 	}
+
+	@Override
+	public Board selectOneRef(SqlSessionTemplate sqlSession, Board b)
+	{
+		return sqlSession.selectOne("Board.selectOneRef", b);
+	}
 }
