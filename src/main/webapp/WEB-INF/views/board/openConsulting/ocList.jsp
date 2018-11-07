@@ -291,10 +291,10 @@
 								
 								<c:forEach var="p" begin="${ page.startPage }" end="${ page.endPage }">
 									<c:if test="${ p eq page.currentPage }">
-										<button type="button" class="disable-page-button">${ p }</button>
+										<button type="button" class="disable-page-button"><c:out value="${ p }"/></button>
 									</c:if>
 									<c:if test="${ p ne page.currentPage }">
-										<button type="button" class="page-button" onclick="location.href='selectList.bo?category=2&currentPage=${ p }'">${ p }</button>
+										<button type="button" class="page-button" onclick="location.href='selectList.bo?category=2&currentPage=${ p }'"><c:out value="${ p }"/></button>
 									</c:if>
 								</c:forEach>
 								
