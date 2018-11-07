@@ -34,17 +34,17 @@
 				<hr style="border:1.5px solid lightgray;">
 				<div class="title" style="height:35px;">
 					<span style="font-size:12px; color:darkgray;">[공지사항]</span>
-					<span style="font-size:14px;">${ selectOne.title }</span>
+					<span style="font-size:14px;"><c:out value="${ selectOne.title }"/></span>
 				</div>
 				<hr style="border:1px dotted lightgray;">
 				<div class="title" style="height:20px;">
-					<span style="font-weight:bold; font-size:14px;">${ selectOne.nickName }</span>
+					<span style="font-weight:bold; font-size:14px;"><c:out value="${ selectOne.nickName }"/></span>
 					<span>&nbsp;|&nbsp;</span>
-					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:25px; height:25px;">&nbsp; ${ selectOne.boardDate }</span>
+					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:25px; height:25px;">&nbsp; <c:out value="${ selectOne.boardDate }"/></span>
 				</div>
 				<hr>
 				<div class="content">
-					<span style="font-size:14px;">${ selectOne.content }</span>
+					<span style="font-size:14px;"><c:out value="${ selectOne.content }"/></span>
 				</div>
 				<hr>
 				<div class="content">

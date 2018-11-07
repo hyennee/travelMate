@@ -214,31 +214,31 @@
 			<div id="contents">
 				<div id="openConsulting">
 					<div id="openQnAForm">
-						<span style="text-align: left; font-weight: bold; font-size: 24px; color: black">오픈컨설팅</span><br>
-						<span style="text-align: left; font-weight: bold; font-size: 12px; color: #999">오픈 컨설팅을 의뢰하고 답할 수 있습니다.</span>
+						<span style="text-align: left; font-weight: bold; font-size: 24px; color: black"><c:out value="오픈컨설팅"/></span><br>
+						<span style="text-align: left; font-weight: bold; font-size: 12px; color: #999"><c:out value="오픈 컨설팅을 의뢰하고 답할 수 있습니다."/></span>
 						<hr>
 						<!-- 오픈컨설팅 QnA div -->
 						<div id="openQuestion">
 							<!-- 오픈컨설팅 질문 제목 div -->
 							<div id="questioncon1">
-								<h3>${ selectOne.title }</h3>
+								<h3><c:out value="${ selectOne.title }"/></h3>
 							</div>
 							<!-- 오픈컨설팅 질문 작성자 관련 정보 div -->
 							<div id="questioncon2">
 								<ul id="questionUl">
-									<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span>${ selectOne.nickName }</span></li>
-									<li><span>${ selectOne.boardDate }</span></li>
+									<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span><c:out value="${ selectOne.nickName }"/></span></li>
+									<li><span><c:out value="${ selectOne.boardDate }"/></span></li>
 								</ul>
 							</div>
 							<hr style="width: 95%">
 							<!-- 오픈컨설팅 질문 내용 div -->
 							<div id="questioncon3">
-								${ selectOne.content }
+								<c:out value="${ selectOne.content }"/>
 							</div>
 						</div>
 						<br>
-						<span style="text-align:left; font-weight: bold; font-size: 24px; color: black">답변하기</span><br>
-						<span style="text-align: left; font-weight: bold; font-size: 12px; color: #999">작성하신 답변은 200글자까지만 미리보기로서 표시됩니다.</span><hr>
+						<span style="text-align:left; font-weight: bold; font-size: 24px; color: black"><c:out value="답변하기"/></span><br>
+						<span style="text-align: left; font-weight: bold; font-size: 12px; color: #999"><c:out value="작성하신 답변은 200글자까지만 미리보기로서 표시됩니다."/></span><hr>
 						<form action="insertAnswer.bo" method="post">
 							<input type="hidden" name="boardNo" value="${ selectOne.boardNo }">
 							<input type="hidden" name="category" value="${ selectOne.category }">

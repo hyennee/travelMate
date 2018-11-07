@@ -85,9 +85,9 @@
 				<hr style="border:1px dotted lightgray;">
 				<div class="title" style="height:20px;">
 					<input type="hidden" name="writer" value="${ sessionScope.loginUser.getUser_no() }">
-					<span style="font-weight:bold; font-size:14px;">${ sessionScope.loginUser.getNick_name() }</span>
+					<span style="font-weight:bold; font-size:14px;"><c:out value="${ sessionScope.loginUser.getNick_name() }"/></span>
 					<span>&nbsp;|&nbsp;</span>
-					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:14px; height:14px;">&nbsp; ${ nowDate }</span>
+					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:14px; height:14px;">&nbsp; <c:out value="${ nowDate }"/></span>
 				</div>
 				<hr>
 				<div class="fr-view" style="width:800px; margin:auto;">
