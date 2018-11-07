@@ -75,6 +75,12 @@ public class mypageServiceImpl implements mypageService{
 		return modifyInfo;
 	}
 
+	@Override
+	public int nickNameCheck(String nick_name) {
+		// TODO Auto-generated method stub
+		return md.nickNameCheck(sqlSession, nick_name);
+	}
+
 	
 
 

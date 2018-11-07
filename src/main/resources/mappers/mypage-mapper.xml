@@ -18,7 +18,7 @@
 	<select id="oneByOneHistory" resultType="java.util.HashMap" parameterType="int">
 		SELECT *
 		FROM BOARD 
-		WHERE WRITE = #{user_no}
+		WHERE WRITER = #{user_no}
 	</select>
 	
 	<select id="tradeInfoHistory" resultType="java.util.HashMap" parameterType="int">
@@ -34,6 +34,12 @@
 		WHERE  USER_NO=#{user_no}
 	</update>
 	
+	
+	<select id="nickNameCheck" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE NICK_NAME = #{nick_name}
+	</select>
 </mapper> 
 
 

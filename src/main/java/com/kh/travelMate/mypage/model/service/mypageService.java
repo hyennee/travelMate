@@ -17,6 +17,8 @@ public interface mypageService {
 
 	int modifyInfo(Member mem);
 
+	int nickNameCheck(String nick_name);
+
 
 
 

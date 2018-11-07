@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.service.mypageService;
@@ -83,5 +85,16 @@ public class mypageController {
 		return "mypage/modifyInfo";
 		
 		
+	}
+	
+	@ResponseBody
+	@RequestMapping("nickNameCheck.me")
+	public String nickNameCheck(@RequestParam(value="nick_name")String nick_name, Member m, Model model) {
+		
+		System.out.println(nick_name);
+		
+		int result = ms.nickNameCheck(nick_name);
+		
+		return String.valueOf(result);
 	}
 }

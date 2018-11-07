@@ -33,6 +33,12 @@ public class mypageDaoImpl implements mypageDao{
 	public int modifyInfo(SqlSessionTemplate sqlSession, Member mem) {
 		return sqlSession.update("Mypage.modifyUserInfo", mem);
 	}
+
+	@Override
+	public int nickNameCheck(SqlSessionTemplate sqlSession, String nick_name) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("Mypage.nickNameCheck", nick_name);
+	}
 	
 
 }

@@ -117,11 +117,12 @@ a {
 								</tr>
 								<tr>
 									<td class="thstyle">닉네임 <span style="color:red;">*</span></td>
-									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>" name="nick_name"/></td>
+									<td colspan="2"><input type="text" oninput="checkNick()" value="<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>" id="nick_name" name="nick_name"/></td>
+									<td><div id="nick_name_check"></div></td>
 								</tr>
 								
 							</table>
-							<input type="submit" value="변경"  />
+							<input type="submit" value="변경"  id="submit"/>
 							<input type="hidden" value="${ sessionScope.loginUser.user_no }" name="user_no">
 							</form>
 							
@@ -137,7 +138,53 @@ a {
 
 
 	<jsp:include page="../must/footer.jsp" />
+	<script>
+	
+	//닉네임 중복검사
+	function checkNick() {
+		console.log();
+		var nick_name = $('#nick_name').val();
+		
+		$.ajax({
+					data : {
+						"nick_name" : nick_name
+					},
+					url : 'nickNameCheck.me',
+					type : 'post',
+					success : function(data) {
+						if (data == "0") {
+							document.getElementById('current_pwd').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
+							$('#submit').attr('disabled',false);
+						} else if (data == "1") {
 
+							document.getElementById('nick_name_check').innerHTML = "<span style='color:red; font-size:12px'>사용할 수 없는 닉네임입니다. 다른 닉네임을 입력해주세요. </span>";
+// 							document.getElementById('submit').attr(disabled, true);
+							$('#submit').attr('disabled',true);
+						}
+
+					}
+				})
+
+	}
+	 
+	//휴대폰 번호 유효성 검사
+	function checkPhone(){
+		var chkPhoneVal2 = $('#phoneNum2').val();
+		var chkPhoneVal3 = $('#phoneNum3').val();
+		var regPhoneExp2 = /^\d{3,4}$/;
+		var regPhoneExp3 = /^\d{4}$/;
+		
+		if(regPhoneExp2.test(chkPhoneVal2) == false || regPhoneExp3.test(chkPhoneVal3) == false){
+			document.getElementById('checkPhone').innerHTML = "<span style='color:red; font-size:12px'>휴대폰 번호 형식에 맞지 않습니다.</span>";
+			return false;
+		}else{
+			document.getElementById('checkPhone').innerHTML = "<span style='color:red; font-size:12px'>　</span>";
+		}
+		
+	}
+	
+	
+	</script>
 </body>
 </html>
 
