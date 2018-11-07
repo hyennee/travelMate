@@ -18,8 +18,10 @@ public interface MemberService {
 	int selectDuplChkNick(String nick_name);
 
 	//비밀번호 찾기 전 이름과 아이디로 회원정보 조회
+	int selectSearchUser(Member m);
 
-	Member selectSearchUser(Member m);
+	//랜덤 비밀번호 update
+	int updatePwd(Member m);
 
 
 }

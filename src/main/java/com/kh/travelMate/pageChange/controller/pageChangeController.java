@@ -35,7 +35,8 @@ public class pageChangeController {
 	
 	@RequestMapping("directConsult.me")
 	public String directConsultView() {
-		return "board/insertDirectForm";
+		return "board/directCSList";
+		/*return "board/insertDirectForm";*/
 	}
 	
 	@RequestMapping("applyConsult.me")
@@ -134,5 +135,8 @@ public class pageChangeController {
 			return "member/mailAuth";
 		}
 		
-	
+	@RequestMapping("insertDirectForm.me")
+		public String insertDirectForm() {
+		return "board/insertDirectForm";
+	}
 }

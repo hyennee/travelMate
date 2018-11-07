@@ -2,6 +2,7 @@ package com.kh.travelMate.member.controller;
 
 
 import java.util.Random;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -183,46 +184,73 @@ public class MemberController {
 
 	@ResponseBody
 	@RequestMapping("selectSearchPwd.me")
-	public String selectSearchPwd(HttpServletRequest request, Member m, Model model) {
-		String user_name = request.getParameter("user_name");
-		String email = request.getParameter("email");
+	public String selectSearchPwd(@RequestParam(value="user_name")String user_name, @RequestParam(value="email")String email, Member m, Model model) {
+		System.out.println(user_name);
+		System.out.println(email);
+		
 		m.setUser_name(user_name);
 		m.setEmail(email);
 		
-		Member m2 = ms.selectSearchUser(m);
 		
-		return String.valueOf(m2);
+		int result = ms.selectSearchUser(m);
+		
+		return String.valueOf(result);
 
 	}
 	
-	/*
-	//이메일 인증
+	
+	// 임시 비밀번호 발급하기
 		@ResponseBody
-		@RequestMapping("sendPwd.me")
-		public boolean sendPwd(HttpSession session, @RequestParam(value="email")String email, Model model) {
+		@RequestMapping("sendPwdMail.me")
+		public boolean sendPwdMail(HttpSession session, @RequestParam(value="email")String email, Model model, Member m) {
 		
 			System.out.println("email임 :" + email);
-			int randomPwd = new Random().nextInt(1000000); //인증번호 7자리 1~1000000까지 랜덤으로 승인코드 발생시킴
-			String searchPwd = String.valueOf(randomPwd);
-			session.setAttribute("searchPwd", searchPwd);
 			
-			String subject = "안녕하세요! TravelMate 회원가입 승인 코드입니다.";
+			//임시비밀번호 생성
+			String randomPwd = "";
+			for(int i = 0; i< 5; i++) {
+				randomPwd = UUID.randomUUID().toString().replaceAll("-", ""); // -를 제거
+				randomPwd = randomPwd.substring(0, 10); //랜덤코드를 앞에서부터 10자리 잘라줌.
+				
+			}
+			
+			
+			System.out.println(randomPwd);
+			//비밀번호를 비크립트로 암호화함
+			String encPassword = passwordEncoder.encode(randomPwd);
+			
+			//사용자가 입력한 이메일과 임시 비밀번호를 member객체에 넣기
+			m.setEmail(email);
+			m.setPassword(encPassword);
+			
+			int result = ms.updatePwd(m); //member객체를 전달하기! 임시비밀번호로 업데이트!
+			/*session.setAttribute("randomPwd", randomPwd);*/
+			
+			if(result > 0) {
+				
+				
+				
+			}
+			
+			
+			String subject = "안녕하세요! TravelMate 임시 비밀번호입니다.";
 			StringBuilder sb = new StringBuilder();
 			sb.append("\n");
 			sb.append("\n");
-			sb.append("TravleMate 회원가입 승인 코드입니다.");
+			sb.append("TravleMate 임시 비밀번호입니다.");
 			sb.append("\n"); 
 			sb.append("\n"); 
-			sb.append("회원가입 승인코드는 ").append(searchPwd).append(" 입니다.");
+			sb.append("임시 비밀번호는 ").append(randomPwd).append(" 입니다.");
 			sb.append("\n");
 			sb.append("\n"); 
-			sb.append("인증을 진행해주세요.");
+			sb.append("확인 후 로그인을 진행해주세요.");
 			sb.append("\n");
 			sb.append("\n");
 			
-			model.addAttribute("searchPwd", searchPwd);
+			/*model.addAttribute("randomPwd", randomPwd);*/
 			return mailService.send(subject, sb.toString(), "ejkim1111@gmail.com", email);
-	}
-	*/
+	
+		}
+	
 	
 }
