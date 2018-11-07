@@ -40,19 +40,27 @@ public class mypageController {
 	}
 	
 	@RequestMapping("modifyMyInfo.me")
-	public String modifyInfoView(Member mem,HttpServletRequest request) {
-//		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
+	public String modifyInfoView(Member mem,HttpServletRequest request, Model model) {
+		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
 		
+		
+//		의존성 주입 안했을때 이거 씀
 //		String birthday = request.getParameter("birthday");
 //		String phone = request.getParameter("phone");
 //		String nick_name = request.getParameter("nick_name");
 //		String address = request.getParameter("address");
 		
 		ms.modifyInfo(mem);
+		loginUser.setNick_name(mem.getNick_name());
+		loginUser.setPhone(mem.getPhone());
+		loginUser.setBirthday(mem.getBirthday());
+		
+		
 		System.out.println(mem.toString());
 		
 		//세션만 새로  
-		
+		//모든 작업이 성공일때
+		request.getSession().setAttribute("loginUser",loginUser);
 		
 		
 	

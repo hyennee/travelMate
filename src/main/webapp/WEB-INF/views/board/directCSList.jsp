@@ -28,7 +28,7 @@
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus fermentum elit. Suspendisse potenti. Cras eget nibh lacus. In egestas semper facilisis. Suspendisse placerat venenatis leo, at ornare sem vestibulum a. Aliquam erat volutpat. Praesent varius suscipit quam nec pretium.
 							</p>
-							<a href="/test/views/others/blog.jsp">Read more &gt;&gt;</a>
+							<a href="insertDirectForm.me">Read more &gt;&gt;</a>
 						</div>
 					</li>
 					<li>
@@ -39,7 +39,7 @@
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus fermentum elit. Suspendisse potenti. Cras eget nibh lacus. In egestas semper facilisis. Suspendisse placerat venenatis leo, at ornare sem vestibulum a. Aliquam erat volutpat. Praesent varius suscipit quam nec pretium.
 							</p>
-							<a href="/test/views/others/blog.jsp">Read more &gt;&gt;</a>
+							<a href="insertDirectForm.me">Read more &gt;&gt;</a>
 						</div>
 					</li>
 					<li>
@@ -50,7 +50,7 @@
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus fermentum elit. Suspendisse potenti. Cras eget nibh lacus. In egestas semper facilisis. Suspendisse placerat venenatis leo, at ornare sem vestibulum a. Aliquam erat volutpat. Praesent varius suscipit quam nec pretium.
 							</p>
-							<a href="/test/views/others/blog.jsp">Read more &gt;&gt;</a>
+							<a href="insertDirectForm.me">Read more &gt;&gt;</a>
 						</div>
 					</li>
 					<li>
@@ -61,7 +61,7 @@
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus fermentum elit. Suspendisse potenti. Cras eget nibh lacus. In egestas semper facilisis. Suspendisse placerat venenatis leo, at ornare sem vestibulum a. Aliquam erat volutpat. Praesent varius suscipit quam nec pretium.
 							</p>
-							<a href="/test/views/others/blog.jsp">Read more &gt;&gt;</a>
+							<a href="insertDirectForm.me">Read more &gt;&gt;</a>
 						</div>
 					</li>
 				</ul>
@@ -144,7 +144,7 @@
 				<!-- /.pagination -->
 			</div>
 			<!-- /#blogs -->
-			<ul id="categories">
+			<!-- <ul id="categories">
 				<li>
 					<img src="/test/resources/images/gear.png" alt="Img" height="53" width="60">
 					<h3>Froibrush Title One</h3>
@@ -169,7 +169,7 @@
 					</p>
 					<a href="/test/index.jsp" class="select">Select</a>
 				</li>
-			</ul>
+			</ul> -->
 			<!-- /#categories -->
 		</div>
 	</div>

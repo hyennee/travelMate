@@ -61,12 +61,13 @@ public class MemberDaoImpl implements MemberDao{
 
 	//이메일, 이름으로 회원 조회하기!
 	@Override
-	public Member selectSearchUser(SqlSessionTemplate sqlSession, Member m) {
+	public int selectSearchUser(SqlSessionTemplate sqlSession, Member m) {
 		
 		return sqlSession.selectOne("Member.selectSearchUser", m);
 	}
 
 	@Override
+
 	public Member selectOneMember(SqlSessionTemplate sqlSession, int writer)
 	{
 		return sqlSession.selectOne("Member.selectOneUser", writer);
@@ -83,6 +84,18 @@ public class MemberDaoImpl implements MemberDao{
 	{
 		return sqlSession.update("Member.useCyberMoney", answerMember);
 	}
+
+  
+  	@Override
+	public int updatePwd(SqlSessionTemplate sqlSession, Member m) {
+		
+		return sqlSession.update("Member.updatePwd", m);
+	}
+
+	
+
+	
+
 
 
 

@@ -120,11 +120,6 @@ a {
 									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>" name="nick_name"/></td>
 								</tr>
 								
-								<tr>
-									<td class="thstyle">주소 <span style="color:red;">*</span></td>
-									<td><input type="text" name="address" style=" width: 300px;"/>&nbsp;<input type="button" value="우편" /></td>
-								</tr>
-							
 							</table>
 							<input type="submit" value="변경"  />
 							<input type="hidden" value="${ sessionScope.loginUser.user_no }" name="user_no">

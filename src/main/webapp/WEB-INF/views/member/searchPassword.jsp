@@ -163,26 +163,26 @@ td:first-child {
 	<script>
 	
 	function searchPwd(){
-		var user_name = $('#user_name').val();
-		var email = $('#email').val();
+		
 		
 	/* 	
 		 $('#goSearchPwd').submit();
 		 */
 		$.ajax({
 			data : {
-				"user_name" : user_name, "email" : email
+				user_name :  $('#user_name').val(), 
+				email : $('#email').val()
 				},
 			url : 'selectSearchPwd.me',
 			type : 'post',
 			success : function(data){
-				if(data == null){
-					alert('입력하신 이름과 이메일 정보와 일치하는 아이디가 없습니다.');
+				if(data == "0"){
+					alert('입력하신 이름과 이메일 정보에 일치하는 아이디가 없습니다.');
 					$('#email').focus();
 					return false;
-				}else if(data != null){
-					alert('일치함');
-					return false;
+				}else if(data == "1"){
+					sendPwdMail();
+					alert('회원님의 메일로 임시비밀번호를 보내드렸습니다. 확인 후 로그인해주십시오.');
 					
 				}
 			}
@@ -191,6 +191,24 @@ td:first-child {
 		
 		
 	}
+	
+			function sendPwdMail(){
+				
+				$.ajax({
+					data : {email : $('#email').val()},
+					url : 'sendPwdMail.me',
+					type : 'post',
+					success : function(data){
+						
+					}
+				})
+			
+		
+		
+		}
+	
+	
+	
 	
 	</script>
 	

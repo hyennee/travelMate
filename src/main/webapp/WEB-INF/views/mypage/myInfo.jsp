@@ -91,7 +91,7 @@ a {
 			<div >
 						<p>내계정</p>
 						
-						<form action="">
+						<form action="modifyInfo.me">
 							<table >
 								<tr>
 									<td>이름</td>

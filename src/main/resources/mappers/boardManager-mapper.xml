@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardManage">
+	<resultMap
+		type="com.kh.travelMate.admin.model.vo.BoardManage"
+		id="boardmanageResultSet">
+		<id property="board_no" column="BOARD_NO"></id>
+		<result property="writer" column="WRITER"></result>
+		<result property="category" column="CATEGORY"></result>
+		<result property="title" column="TITLE"></result>
+		<result property="content" column="CONTENT"></result>
+		<result property="board_date" column="BOARD_DATE"></result>
+		<result property="status" column="STATUS"></result>
+		<result property="board_level" column="BOARD_LEVEL"></result>
+		<result property="ref_no" column="REF_NO"></result>
+	</resultMap>
+
+	<!-- 모든 게시물 목록을 조회해 오는 쿼리문 -->
+	<select id="selectAllBoard" parameterType="BoardManage"
+		resultMap="boardmanageResultSet">
+		SELECT *
+		FROM BOARD
+	</select>
+
+	<select id="boardListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM BOARD
+	</select>
+
+	<select id="boardList" parameterType="BoardManage" resultMap="boardmanageResultSet">
+		SELECT *
+		FROM BOARD
+		ORDER BY BOARD_NO DESC
+	</select>
+
+</mapper>  

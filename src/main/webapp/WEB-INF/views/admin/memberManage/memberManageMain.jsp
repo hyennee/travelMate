@@ -14,7 +14,8 @@
 }
 
 .leftMenu {
-	padding: 20px;
+	padding-left: 20px;
+	margin-top: 0px;
 	margin-right: 20px;
 	margin-bottom: 20px;
 	float: left;
@@ -50,9 +51,9 @@ table th {
 			<jsp:include page="sideMenu.jsp" />
 		</div>
 		<div class="lowerPage">
-			<h1>
-				<span class="label label-info">회원목록</span>
-			</h1>
+			<h2>
+				<span class="label label-primary">회원목록</span>
+			</h2>
 			<div class="table-responsive">
 				<table class="table table-striped">
 					<thead>
@@ -64,13 +65,13 @@ table th {
 							<th>전화번호</th>
 							<th>성별</th>
 							<th>가입일</th>
-							<th>권한</th>
+							<th>기능</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="row" items="${ memberList }">
 							<tr>
-								<td>${ row.user_no }</td>
+								<td><b>${ row.user_no }</b></td>
 								<td>${ row.email }</td>
 								<td>${ row.user_name }</td>
 								<td>${ row.nick_name }</td>
@@ -82,53 +83,56 @@ table th {
 									<td>여</td>
 								</c:if>
 								<td>${ row.enroll_date }</td>
-								<td>${ row.user_type }</td>
+								<td>
+									<button type="button" class="btn btn-sm btn-success" onclick="location.href='memberManageDetail.admin?userno=${ row.user_no }'">수정</button>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-			</div>
-			<div class="pagingArea">
-				<c:if test="${ page.currentPage <= 1 }">
+				<div class="pagingArea">
+					<c:if test="${ page.currentPage <= 1 }">
 				[이전] &nbsp;
 			</c:if>
-				<c:if test="${ page.currentPage > 1}">
-					<c:url var="blistBack" value="/memberManage.admin">
-						<c:param name="currentPage" value="${ page.currentPage - 1 }" />
-					</c:url>
-					<a href="${ blistBack }">[이전]</a>
-				</c:if>
-				<c:forEach var="p" begin="${ page.startPage }" end="${ page.endPage }">
-					<c:if test="${ p eq page.currentPage }">
-						<font color="red" size="4"><b>[${ p }]</b></font>
-					</c:if>
-					<c:if test="${ p ne page.currentPage }">
-						<c:url var="blistCheck" value="/memberManage.admin">
-							<c:param name="currentPage" value="${ page }" />
+					<c:if test="${ page.currentPage > 1}">
+						<c:url var="blistBack" value="/admin/memberManage.admin">
+							<c:param name="currentPage" value="${ page.currentPage - 1 }" />
 						</c:url>
-						<a href="${ blistCheck }">${ page }</a>
+						<a href="${ blistBack }">[이전]</a>
 					</c:if>
-				</c:forEach>
+					<c:forEach var="p" begin="${ page.startPage }"
+						end="${ page.endPage }">
+						<c:if test="${ p eq page.currentPage }">
+							<font color="black" size="4"><b>${ p }</b></font>
+						</c:if>
+						<c:if test="${ p ne page.currentPage }">
+							<c:url var="blistCheck" value="/admin/memberManage.admin">
+								<c:param name="currentPage" value="${ p }" />
+							</c:url>
+							<a href="${ blistCheck }">${ p }</a>
+						</c:if>
+					</c:forEach>
 
-				<c:if test="${ page.currentPage >= page.maxPage }">
+					<c:if test="${ page.currentPage >= page.maxPage }">
 				&nbsp; [다음]
 			</c:if>
-				<c:if test="${ page.currentPage < page.maxPage }">
-					<c:url var="blistEnd" value="/memberManage.admin">
-						<c:param name="currentPage" value="${ pi.currentPage + 1 }" />
-					</c:url>
-					<a href="${ blistEnd }">[다음]</a>
-				</c:if>
-			</div>
-			<div class="searchArea">
-				<form class="navbar-form navbar-center">
-					<select id="searchCondition">
-						<option value="user_name">이름</option>
-						<option value="email">이메일</option>
-						<option value="phone">전화번호</option>
-					</select> <input type="text" class="form-control" placeholder="키워드...">
-					<button type="submit" class="btn btn-success">검색</button>
-				</form>
+					<c:if test="${ page.currentPage < page.maxPage }">
+						<c:url var="blistEnd" value="/admin/memberManage.admin">
+							<c:param name="currentPage" value="${ page.currentPage + 1 }" />
+						</c:url>
+						<a href="${ blistEnd }">[다음]</a>
+					</c:if>
+				</div>
+				<div class="searchArea">
+					<form class="navbar-form navbar-center">
+						<select id="searchCondition">
+							<option value="user_name">이름</option>
+							<option value="email">이메일</option>
+							<option value="phone">전화번호</option>
+						</select> <input type="text" class="form-control" placeholder="키워드...">
+						<button type="submit" class="btn btn-success">검색</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</c:if>
