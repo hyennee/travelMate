@@ -66,11 +66,16 @@ public class mypageServiceImpl implements mypageService{
 	}
 
 	@Override
-	public int modifyInfo(Member m) {
+	public int modifyInfo(Member mem) {
 		
-		return md.modifyInfo(sqlSession, m);
+		int modifyInfo = md.modifyInfo(sqlSession, mem);
+		
+		System.out.println("modifyInfo : " + modifyInfo);
+		
+		return modifyInfo;
 	}
 
+	
 
 
 }

@@ -40,31 +40,36 @@ public class mypageController {
 	}
 	
 	@RequestMapping("modifyMyInfo.me")
-	public String modifyInfoView(Model model, HttpServletRequest request) {
-		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
+	public String modifyInfoView(Member mem,HttpServletRequest request) {
+//		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
 		
-		String birthday = request.getParameter("birthday");
-		String phone = request.getParameter("phone");
-		String nick_name = request.getParameter("nick_name");
-		String address = request.getParameter("address");
+//		String birthday = request.getParameter("birthday");
+//		String phone = request.getParameter("phone");
+//		String nick_name = request.getParameter("nick_name");
+//		String address = request.getParameter("address");
 		
-		Member m = new Member();
-		m.setUser_no(loginUser.getUser_no());
-		m.setBirthday(birthday);
-		m.setPhone(phone);
-		m.setNick_name(nick_name);
+		ms.modifyInfo(mem);
+		System.out.println(mem.toString());
 		
-		System.out.println(m.getUser_no());
-		System.out.println(m.getBirthday());
-		System.out.println(m.getPhone());
-		System.out.println(m.getNick_name());
+		//세션만 새로  
+		
+		
+		
+	
+		
+//		mem.setUser_no(loginUser.getUser_no());
+//		mem.setBirthday(birthday);
+//		mem.setPhone(phone);
+//		mem.setNick_name(nick_name);
+		
+//		System.out.println(loginUser.getUser_no());
+//		System.out.println(mem.getBirthday());
+//		System.out.println(mem.getPhone());
+//		System.out.println(mem.getNick_name());
 		/*Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));*/
 		
 		
-		
-		ms.modifyInfo(m);
-		
-		System.out.println(ms.modifyInfo(m));
+		//System.out.println(ms.modifyInfo(m));
 		
 		
 		return "mypage/modifyInfo";

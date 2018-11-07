@@ -30,8 +30,9 @@ public class mypageDaoImpl implements mypageDao{
 	}
 
 	@Override
-	public int modifyInfo(SqlSessionTemplate sqlSession, Member m) {
-		return sqlSession.update("Mypage.modifyUserInfo", m);
+	public int modifyInfo(SqlSessionTemplate sqlSession, Member mem) {
+		return sqlSession.update("Mypage.modifyUserInfo", mem);
 	}
+	
 
 }
