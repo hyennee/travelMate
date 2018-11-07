@@ -13,4 +13,6 @@ public interface MemberManageDao {
 
 	ArrayList<MemberManage> memberList(SqlSessionTemplate sqlSession, PageInfo page);
 
+	MemberManage selectOne(SqlSessionTemplate sqlSession, int userno);
+
 }
