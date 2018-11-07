@@ -9,19 +9,22 @@ import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.travelMate.admin.model.vo.BoardManage;
 import com.kh.travelMate.admin.model.vo.MemberManage;
 import com.kh.travelMate.admin.model.vo.PageInfo;
 
 @Repository
-public class MemberManageDaoImpl implements MemberManageDao {
+public class BoardManageDaoImpl implements BoardManageDao {
 	@Inject SqlSession sqlsession;
+	
 	@Override
 	public int getListCount(SqlSessionTemplate sqlSession) {
-		return sqlsession.selectOne("MemberManage.memberListCount");
+		return sqlSession.selectOne("BoardManage.boardListCount");
 	}
+
 	@Override
-	public ArrayList<MemberManage> memberList(SqlSessionTemplate sqlSession, PageInfo page) {
-		ArrayList<MemberManage> memberList = null;
+	public ArrayList<BoardManage> boardList(SqlSessionTemplate sqlSession, PageInfo page) {
+		ArrayList<BoardManage> boardList = null;
 		
 		// 몇 개의 게시물을 건너뛰고 조회할 것인지에 대한 처리
 		int offset = ((page.getCurrentPage() - 1) * page.getLimit());
@@ -34,16 +37,9 @@ public class MemberManageDaoImpl implements MemberManageDao {
 		System.out.println("rowBounds: " + rowBounds);
 		
 		// generic을 제외하고 down-casting
-		memberList = (ArrayList)sqlSession.selectList("MemberManage.memberList", null, rowBounds);
+		boardList = (ArrayList)sqlSession.selectList("BoardManage.boardList", null, rowBounds);
 		
-		return memberList;
+		return boardList;
 	}
-	@Override
-	public MemberManage selectOne(SqlSessionTemplate sqlSession, int userno) {
-		int user_no = userno;
-		MemberManage memberDetail = (MemberManage)sqlSession.selectOne("MemberManage.memberDetail", user_no);
-		return memberDetail;
-	}
-
 
 }

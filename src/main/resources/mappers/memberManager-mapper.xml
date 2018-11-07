@@ -43,5 +43,11 @@
 		FROM MEMBER
 		ORDER BY USER_NO DESC
 	</select>
+	
+	<select id="memberDetail" parameterType="_int" resultMap="membermanageResultSet">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_NO = #{ user_no }
+	</select>
 
 </mapper>  
