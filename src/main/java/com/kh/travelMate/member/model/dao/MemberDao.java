@@ -26,7 +26,13 @@ public interface MemberDao {
 	int selectDuplChkNick(SqlSessionTemplate sqlSession, String nick_name);
 
 	//이메일, 이름 일치하는 회원조회용 메소드
-	Member selectSearchUser(SqlSessionTemplate sqlSession, Member m);
+	int selectSearchUser(SqlSessionTemplate sqlSession, Member m);
+
+	//임시 비밀번호로 비밀번호 업데이트
+	int updatePwd(SqlSessionTemplate sqlSession, Member m);
+
+	
+	
 
 
 

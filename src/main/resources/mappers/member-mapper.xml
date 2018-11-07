@@ -90,6 +90,19 @@
 		WHERE NICK_NAME = #{nick_name}
 	</select>
 	
+	<select id="selectSearchUser" resultType="java.lang.Integer" parameterType="Member">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE USER_NAME = #{user_name} AND EMAIL = #{email}
+	
+	</select>
+	
+	<select id="updatePwd" resultType="java.lang.Integer" parameterType="java.lang.String">
+		UPDATE MEMBER
+		SET PASSWORD = #{password}
+		WHERE EMAIL = #{email}
+	
+	</select>
 </mapper> 
 
 
