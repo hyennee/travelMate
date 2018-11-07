@@ -17,6 +17,8 @@
 <body>
 	<!-- Header -->
 	<jsp:include page="../must/header.jsp" />
+	<form action="insertConsultApply.others">
+	<input type="hidden" name="USER_NO" value="${ sessionScope.loginUser.user_no }" >
 	<div class="outer">
 	<br><br>
 	<img src="/travelMate/resources/images/consult.jpg" style="width: 700px; height: 260px;">
@@ -52,15 +54,15 @@
 			<div class="col-sm-4 col-xs-5 col-xs-v12">
 				<div class="form-group">
 					<label for="form_email">이메일(아이디)</label>
-						<input type="text" name="form_email" id="form_email" value="" class="form-control" readonly>				
+						<input type="text" name="form_email" id="form_email" value="${ sessionScope.loginUser.email }" class="form-control" readonly>				
 				</div>
 				<div class="form-group">
 					<label for="name">성함</label>
-										<input type="text" name="name" id="name" value="" class="form-control" readonly>
+										<input type="text" name="name" id="name" value="${ sessionScope.loginUser.user_name }" class="form-control" readonly>
 									</div>
 				<div class="form-group">
 					<label for="form_phone">휴대전화</label>
-						<input type="text" name="form_phone" id="form_phone" value="" class="form-control" placeholder="상담받으실 수 있는 전화번호">					
+						<input type="text" name="form_phone" id="form_phone" value="${ sessionScope.loginUser.phone }" class="form-control" placeholder="상담받으실 수 있는 전화번호">					
 				</div>
 				
 								
@@ -70,24 +72,24 @@
 			<div class="col-sm-8 col-xs-7 col-xs-v12" style="    width: 525px;">
 				<div class="form-group" >
 					<label for="form_job">직업</label>
-					<input type="text" name="form_job" id="form_job" value="" class="form-control" placeholder="(건축가), (여행작가), (대학생), (프랑스 파리에서 예술 전공 중) 등">
+					<input type="text" name="JOB" id="form_job" value="" class="form-control" placeholder="(건축가), (여행작가), (대학생), (프랑스 파리에서 예술 전공 중) 등">
 				</div>
 				<div class="form-group">
 					<label for="form_intro">자기소개</label>
-					<textarea name="form_intro" id="form_intro" class="form-control" style="height:120px;" placeholder="(여행디자이너 활동에 직간접적으로 관련된 활동 중심)"></textarea>
+					<textarea name="INFO" id="form_intro" class="form-control" style="height:120px;" placeholder="(여행디자이너 활동에 직간접적으로 관련된 활동 중심)"></textarea>
 				</div>					
 				<div class="form-group">
 					<label for="form_exp">주요 여행경험</label>
-					<textarea name="form_exp" id="form_exp" class="form-control" style="height:120px;" placeholder="(2013년 3개월간 유럽 무전여행), (2011-2012년 아르헨티나 거주 및 여행) 등"></textarea>
+					<textarea name="TRAVEL_EXP" id="form_exp" class="form-control" style="height:120px;" placeholder="(2013년 3개월간 유럽 무전여행), (2011-2012년 아르헨티나 거주 및 여행) 등"></textarea>
 				</div>
 				<div class="form-group">
 					<label for="content">여행상품 아이디어</label>
-					<textarea name="content" id="content" class="form-control" style="height:250px;" placeholder="(여행 컨셉, 여행 제목, 주요 타겟, 주요 일정) 등"></textarea>
+					<textarea name="IDEA" id="content" class="form-control" style="height:250px;" placeholder="(여행 컨셉, 여행 제목, 주요 타겟, 주요 일정) 등"></textarea>
 					<input type="hidden" name="html" value="TEXT">
 				</div>	
 				<div class="form-group">
 					<label for="form_etc">특이사항</label>
-					<input type="text" name="form_etc" id="form_etc" value="" class="form-control" placeholder="">
+					<input type="text" name="ETC" id="form_etc" value="" class="form-control" placeholder="">
 				</div>				
 			</div>	
 		</div>
@@ -100,6 +102,7 @@
 		</div>
 </div>
 </div>
+</form>
 	<!-- Footer -->
 	<jsp:include page="../must/footer.jsp" />
 
