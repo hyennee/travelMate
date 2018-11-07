@@ -17,4 +17,6 @@ public interface mypageDao {
 
 	int modifyInfo(SqlSessionTemplate sqlSession,Member mem);
 
+	int nickNameCheck(SqlSessionTemplate sqlSession, String nick_name);
+
 }

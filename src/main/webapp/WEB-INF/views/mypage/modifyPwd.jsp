@@ -95,7 +95,7 @@ a {
 					<table>
 						<tr>
 							<td>현재 비밀번호 </td>
-							<td><input type="password" placeholder="내용을 입력해주세요" name="past-pwd"/></td>
+							<td><input type="password" placeholder="내용을 입력해주세요" oninput="currentPwd()" value="현재 비밀번호를 입력하세요" name="current_pwd" id="current_pwd"/></td>
 						</tr>
 						<tr>
 							<td>새 비밀번호</td>
@@ -106,7 +106,7 @@ a {
 							<td><input type="password" placeholder="비밀번호를 한번 더 입력해주세요" name="pwd2"/></td>
 						</tr>
 					</table>
-					<input type="submit" value="변경하기" />
+					<input type="submit" value="변경하기" onclick=""/>
 					</form>
 			</div>
 			<br />
@@ -117,7 +117,28 @@ a {
 
 	</div>
 
-
+	<script>
+	function currentPwd() {
+		console.log();
+		var current_pwd = $('#current_pwd').val();
+		$.ajax({
+			data : {
+				"current_pwd" : current_pwd
+			},
+			url :  'post',
+			success : function(data) {
+				
+				if (data == "0") {
+					document.getElementById('current_pwd').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
+					$('#submit').attr('disabled',false);					
+				} else if (data == "1") {
+					
+				}
+			}
+		})
+	}
+	
+	</script>
 
 	<jsp:include page="../must/footer.jsp" />
 </body>
