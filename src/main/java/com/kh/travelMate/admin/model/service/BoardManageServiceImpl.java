@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.travelMate.admin.model.dao.BoardManageDao;
 import com.kh.travelMate.admin.model.vo.BoardManage;
+import com.kh.travelMate.admin.model.vo.ConsultManage;
 import com.kh.travelMate.admin.model.vo.MemberManage;
 import com.kh.travelMate.admin.model.vo.PageInfo;
 
@@ -31,6 +32,18 @@ public class BoardManageServiceImpl implements BoardManageService {
 	public ArrayList<BoardManage> boardList(PageInfo page) {
 		ArrayList<BoardManage> boardList = bmd.boardList(sqlSession, page);
 		return boardList;
+	}
+
+	@Override
+	public int getConsultApplyListCount() {
+		int listCount = bmd.getConsultApplyListCount(sqlSession);
+		return listCount;
+	}
+
+	@Override
+	public ArrayList<ConsultManage> consultApplyList(PageInfo page) {
+		ArrayList<ConsultManage> consultApplyList = bmd.consultApplyList(sqlSession, page);
+		return consultApplyList;
 	}
 
 }

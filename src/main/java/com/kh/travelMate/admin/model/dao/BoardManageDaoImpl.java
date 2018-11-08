@@ -10,6 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.travelMate.admin.model.vo.BoardManage;
+import com.kh.travelMate.admin.model.vo.ConsultManage;
 import com.kh.travelMate.admin.model.vo.MemberManage;
 import com.kh.travelMate.admin.model.vo.PageInfo;
 
@@ -40,6 +41,31 @@ public class BoardManageDaoImpl implements BoardManageDao {
 		boardList = (ArrayList)sqlSession.selectList("BoardManage.boardList", null, rowBounds);
 		
 		return boardList;
+	}
+
+	@Override
+	public int getConsultApplyListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("BoardManage.consultApplyListCount");
+	}
+
+	@Override
+	public ArrayList<ConsultManage> consultApplyList(SqlSessionTemplate sqlSession, PageInfo page) {
+		ArrayList<ConsultManage> consultApplyList = null;
+		
+		// 몇 개의 게시물을 건너뛰고 조회할 것인지에 대한 처리
+		int offset = ((page.getCurrentPage() - 1) * page.getLimit());
+		
+		System.out.println("offset: " + offset);
+		
+		// myBatis가 제공하고 있는 RowBounds 클래스 사용
+		RowBounds rowBounds = new RowBounds(offset, page.getLimit());
+		
+		System.out.println("rowBounds: " + rowBounds);
+		
+		// generic을 제외하고 down-casting
+		consultApplyList = (ArrayList)sqlSession.selectList("BoardManage.consultApplyList", null, rowBounds);
+		
+		return consultApplyList;
 	}
 
 }
