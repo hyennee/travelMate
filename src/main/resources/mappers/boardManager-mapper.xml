@@ -16,6 +16,31 @@
 		<result property="status" column="STATUS"></result>
 		<result property="board_level" column="BOARD_LEVEL"></result>
 		<result property="ref_no" column="REF_NO"></result>
+		<result property="email" column="EMAIL"></result>
+		<result property="user_Name" column="USER_NAME"></result>
+		<result property="nick_Name" column="NICK_NAME"></result>
+		<result property="phone" column="PHONE"></result>
+		<result property="birthDay" column="BIRTHDAY"></result>
+		<result property="gender" column="GENDER"></result>
+		<result property="enroll_Date" column="ENROLL_DATE"></result>
+	</resultMap>
+
+	<resultMap
+		type="com.kh.travelMate.admin.model.vo.ConsultManage"
+		id="consultapplyResultSet">
+		<id property="consult_Apply_No" column="CONSULT_APPLY_NO"></id>
+		<result property="apply_Date" column="APPLY_DATE"></result>
+		<result property="job" column="JOB"></result>
+		<result property="info" column="INFO"></result>
+		<result property="travel_Exp" column="TRAVEL_EXP"></result>
+		<result property="idea" column="IDEA"></result>
+		<result property="etc" column="ETC"></result>
+		<result property="user_No" column="USER_NO"></result>
+		<result property="consult_Ok_Record_No"
+			column="CONSULT_OK_RECORD_NO"></result>
+		<result property="status" column="STATUS"></result>
+		<result property="reason" column="REASON"></result>
+		<result property="agree_Date" column="AGREE_DATE"></result>
 	</resultMap>
 
 	<!-- 모든 게시물 목록을 조회해 오는 쿼리문 -->
@@ -30,10 +55,24 @@
 		FROM BOARD
 	</select>
 
-	<select id="boardList" parameterType="BoardManage" resultMap="boardmanageResultSet">
+	<select id="boardList" parameterType="BoardManage"
+		resultMap="boardmanageResultSet">
 		SELECT *
 		FROM BOARD
 		ORDER BY BOARD_NO DESC
+	</select>
+
+	<select id="consultApplyListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM CONSULT_APPLY CA
+	</select>
+
+	<select id="consultApplyList" parameterType="ConsultManage"
+		resultMap="consultapplyResultSet">
+		SELECT *
+		FROM CONSULT_APPLY CA
+		LEFT JOIN MEMBER M ON (CA.USER_NO = M.USER_NO)
+		ORDER BY CONSULT_APPLY_NO DESC
 	</select>
 
 </mapper>  

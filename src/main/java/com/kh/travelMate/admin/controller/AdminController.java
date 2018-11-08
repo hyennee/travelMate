@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kh.travelMate.admin.model.service.BoardManageService;
 import com.kh.travelMate.admin.model.service.MemberManageService;
 import com.kh.travelMate.admin.model.vo.BoardManage;
+import com.kh.travelMate.admin.model.vo.ConsultManage;
 import com.kh.travelMate.admin.model.vo.MemberManage;
 import com.kh.travelMate.admin.model.vo.PageInfo;
 import com.kh.travelMate.admin.common.Pagination;
@@ -63,6 +64,25 @@ public class AdminController {
 			model.addAttribute("memberDetail", memberDetail);
 			return "admin/memberManage/memberManageDetail";
 		}
+	}
+	
+	@RequestMapping("admin/consultManage.admin")
+	public String consultManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model) {
+		ArrayList<ConsultManage> consultApplyList = null;
+		
+		int listCount = bms.getConsultApplyListCount();
+
+		PageInfo page = Pagination.getPageInfo(currentPage, listCount);
+		
+		consultApplyList = bms.consultApplyList(page);
+		
+		// 테스트코드
+		System.out.println("consultApplyList: " + consultApplyList);
+		
+		model.addAttribute("consultApplyList", consultApplyList);
+		model.addAttribute("page", page);
+		
+		return "admin/memberManage/consultManageList";
 	}
 	
 	
