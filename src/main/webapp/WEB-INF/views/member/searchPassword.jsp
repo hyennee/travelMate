@@ -183,7 +183,7 @@ td:first-child {
 				}else if(data == "1"){
 					sendPwdMail();
 					alert('회원님의 메일로 임시비밀번호를 보내드렸습니다. 확인 후 로그인해주십시오.');
-					
+					location.href="loginView.me";
 				}
 			}
 		});
@@ -199,6 +199,7 @@ td:first-child {
 					url : 'sendPwdMail.me',
 					type : 'post',
 					success : function(data){
+						
 						
 					}
 				})
