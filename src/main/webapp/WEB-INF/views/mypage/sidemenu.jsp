@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Jua"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>마이페이지 사이드바 메뉴</title>
 <style>
@@ -37,7 +36,7 @@ li.group {
 li.group div.title {
 	height: 50px;
 	line-height: 50px;
-	background: #fc972a;
+	background: #6bc6b3;
 	cursor: pointer;
 	color: white;
 	font-size: 18px;
@@ -65,7 +64,7 @@ ul.sub li a {
 }
 
 ul.sub li:hover {
-	background: #fc972a;
+	background: #6bc6b3;
 }
 
 
