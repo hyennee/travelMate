@@ -46,4 +46,10 @@ public class BoardManageServiceImpl implements BoardManageService {
 		return consultApplyList;
 	}
 
+	@Override
+	public ConsultManage selectApplyDetail(int apply_no) {
+		ConsultManage selectApplyDetail = bmd.selectApplyDetail(sqlSession, apply_no);
+		return selectApplyDetail;
+	}
+
 }

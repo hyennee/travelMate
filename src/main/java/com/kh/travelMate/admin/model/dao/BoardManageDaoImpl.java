@@ -68,4 +68,10 @@ public class BoardManageDaoImpl implements BoardManageDao {
 		return consultApplyList;
 	}
 
+	@Override
+	public ConsultManage selectApplyDetail(SqlSessionTemplate sqlSession, int apply_no) {
+		ConsultManage selectApplyDetail = (ConsultManage)sqlSession.selectOne("BoardManage.consultApplyDetail", apply_no);
+		return selectApplyDetail;
+	}
+
 }

@@ -29,7 +29,7 @@
 			<div class="panel-body">
 				<b><a
 					href="${ pageContext.request.contextPath }/admin/memberManage.admin">회원목록</a></b><br><br>
-					<b>컨설턴트 회원 관리</b>
+					<b><a href="${ pageContext.request.contextPath }/admin/consultManage.admin">컨설턴트 회원 신청관리</a></b><br><br>
 			</div>
 		</div>
 	</div>

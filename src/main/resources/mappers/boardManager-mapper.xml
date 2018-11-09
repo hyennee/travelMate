@@ -74,5 +74,12 @@
 		LEFT JOIN MEMBER M ON (CA.USER_NO = M.USER_NO)
 		ORDER BY CONSULT_APPLY_NO DESC
 	</select>
+	
+	<select id="consultApplyDetail" parameterType="_int" resultMap="consultapplyResultSet">
+		SELECT *
+		FROM CONSULT_APPLY CA
+		LEFT JOIN MEMBER M ON (CA.USER_NO = M.USER_NO)
+		WHERE CA.CONSULT_APPLY_NO = #{ apply_no } 
+	</select>
 
 </mapper>  

@@ -16,4 +16,6 @@ public interface BoardManageService {
 
 	ArrayList<ConsultManage> consultApplyList(PageInfo page);
 
+	ConsultManage selectApplyDetail(int apply_no);
+
 }

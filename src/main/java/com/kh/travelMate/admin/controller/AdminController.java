@@ -85,6 +85,19 @@ public class AdminController {
 		return "admin/memberManage/consultManageList";
 	}
 	
+	@RequestMapping("admin/consultManageDetail.admin")
+	public String consultManageDetailAdmin(@RequestParam(defaultValue="0") int apply_no, Model model) {
+		if(apply_no == 0) {
+			// apply_no가 없을 경우
+			return "admin/memberManage/consultManageList";
+		}else {
+			// apply_no가 있을 경우
+			ConsultManage selectApplyDetail = bms.selectApplyDetail(apply_no);
+			model.addAttribute("selectApplyDetail", selectApplyDetail);
+
+			return "admin/memberManage/consultManageDetail";
+		}
+	}	
 	
 	@RequestMapping("admin/boardManage.admin")
 	public String boardManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model) {
