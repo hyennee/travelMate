@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
+<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 	.image-div
@@ -133,10 +136,10 @@
 							<tr>
 								<input type="hidden" name="boardNo" value="${ notice.boardNo }">
 								<input type="hidden" name="category" value="${ notice.category }">
-								<td><c:out value="${ notice.rowNum }"/></td>
-								<td><c:out value="${ notice.title }"/></td>
-								<td><c:out value="${ notice.nickName }"/></td>
-								<td><c:out value="${ notice.boardDate }"/></td>
+								<td><c:out value="${ notice.rowNum }" escapeXml="false"/></td>
+								<td><c:out value="${ notice.title }" escapeXml="false"/></td>
+								<td><c:out value="${ notice.nickName }" escapeXml="false"/></td>
+								<td><c:out value="${ notice.boardDate }" escapeXml="false"/></td>
 							</tr>
 							</c:forEach>
 						</tbody>
@@ -168,8 +171,8 @@
 							<tr>
 								<input type="hidden" name="boardNo" value="${ question.boardNo }">
 								<input type="hidden" name="category" value="${ question.category }">
-								<td><c:out value="${ question.rowNum }"/></td>
-								<td><c:out value="${ question.title }"/></td>
+								<td><c:out value="${ question.rowNum }" escapeXml="false"/></td>
+								<td><c:out value="${ question.title }" escapeXml="false"/></td>
 								<c:if test="${ question.boardStatus eq 'N' }">
 									<td><img src="${ contextPath }/resources/images/go_in_icon.png" style="width:16px; height:16px;"></td>
 								</c:if>
@@ -182,8 +185,8 @@
 								<c:if test="${ question.boardStatus eq 'Y' }">
 									<td>답변완료</td>
 								</c:if>
-								<td><c:out value="${ question.nickName }"/></td>
-								<td><c:out value="${ question.boardDate }"/></td>
+								<td><c:out value="${ question.nickName }" escapeXml="false"/></td>
+								<td><c:out value="${ question.boardDate }" escapeXml="false"/></td>
 							</tr>
 							</c:forEach>
 						</tbody>

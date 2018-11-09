@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
 <link rel="stylesheet" href="resources/css/style.css" type="text/css">
+<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -192,8 +195,8 @@
 			<div id="contents">
 				<div id="openConsulting">
 					<div id="openQnAForm">
-						<span style="text-align: left; font-weight: bold; font-size: 24px; color: black"><c:out value="오픈컨설팅"/></span><br>
-						<span style="text-align: left; font-weight: bold; font-size: 12px; color: #999"><c:out value="오픈 컨설팅을 의뢰하고 답할 수 있습니다."/></span>
+						<span style="text-align: left; font-weight: bold; font-size: 24px; color: black">오픈컨설팅</span><br>
+						<span style="text-align: left; font-weight: bold; font-size: 12px; color: #999">오픈 컨설팅을 의뢰하고 답할 수 있습니다.</span>
 						<hr>
 						<!-- 오픈컨설팅 QnA div -->
 						<form action="goAnswerInsertForm.bo" method="post">
@@ -202,36 +205,36 @@
 							<div id="openQuestion">
 								<!-- 오픈컨설팅 질문 제목 div -->
 								<div id="questioncon1">
-									<h3><c:out value="${ selectOne.title }"/></h3>
+									<h3><c:out value="${ selectOne.title }" escapeXml="false"/></h3>
 								</div>
 								<!-- 오픈컨설팅 질문 작성자 관련 정보 div -->
 								<div id="questioncon2">
 									<ul id="questionUl">
-										<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span><c:out value="${ selectOne.nickName }"/></span></li>
+										<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span><c:out value="${ selectOne.nickName }" escapeXml="false"/></span></li>
 										<input type="hidden" name="nickName" value="${ selectOne.nickName }">
-										<li><span><c:out value="${ selectOne.boardDate }"/></span></li>
+										<li><span><c:out value="${ selectOne.boardDate }" escapeXml="false"/></span></li>
 										<input type="hidden" name="boardDate" value="${ selectOne.boardDate }">
 									</ul>
 								</div>
 								<hr style="width: 95%">
 								<!-- 오픈컨설팅 질문 내용 div -->
 								<div id="questioncon3">
-									<c:out value="${ selectOne.content }"/>
+									<c:out value="${ selectOne.content }" escapeXml="false"/>
 								</div>
-								<textarea style="display:none;" name="content"><c:out value="${ selectOne.content }"/></textarea>
+								<textarea style="display:none;" name="content"><c:out value="${ selectOne.content }" escapeXml="false"/></textarea>
 								<!-- 질문 버튼 부분 div -->
 								<c:if test="${ selectOne.nickName ne sessionScope.loginUser.getNick_name() }">
 									<c:if test="${ selectOne.refNo eq 0 }">
 										<div id="qBottom">
 											<p style="margin-top:20px;">
-												<c:out value="답변을 하실 수 있습니다."/>
-												<button class="btnAnswer" type="submit"><c:out value="답변하기"/></button>
+												답변을 하실 수 있습니다.
+												<button class="btnAnswer" type="submit">답변하기</button>
 											</p>
 										</div>
 									</c:if>
 									<c:if test="${ selectOne.refNo ne 0 }">
 										<div id="qBottom">
-											<p style="margin-top:20px;"><c:out value="채택이 완료되어 답변하실 수 없습니다."/></p>
+											<p style="margin-top:20px;">채택이 완료되어 답변하실 수 없습니다.</p>
 										</div>
 									</c:if>
 								</c:if>
@@ -243,14 +246,14 @@
 								<div id="openAnswer">
 									<div id="answercon1">
 										<h3>
-											<c:out value="${ answer.nickName }님 답변"/>
+											<c:out value="${ answer.nickName }님 답변" escapeXml="false"/>
 										</h3>
 									</div>
 									<!-- 오픈컨설팅 답변 작성자 관련 정보 div -->
 									<div id="answercon2">
 										<ul id="answerUl">
-											<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span><c:out value="${ answer.nickName }"/></span></li>
-											<li><span><c:out value="${ answer.boardDate }"/></span></li>
+											<li><img src="/travelMate/resources/images/flag/member.png" width="20px;" style="border-radius: 100%; vertical-align: bottom;" />&nbsp;&nbsp;<span><c:out value="${ answer.nickName }" escapeXml="false"/></span></li>
+											<li><span><c:out value="${ answer.boardDate }" escapeXml="false"/></span></li>
 										</ul>
 									</div>
 	
@@ -259,20 +262,20 @@
 									<div id="answercon3" style="font-style: normal">
 									<c:if test="${ sessionScope.loginUser.getNick_name() ne answer.nickName }">
 										<c:if test="${ selectOne.refNo ne answer.boardNo }">
-											<p><c:out value="${fn:substring(answer.content, 0, 200)}"/></p>
+											<p><c:out value="${fn:substring(answer.content, 0, 200)}" escapeXml="false"/></p>
 										</c:if>
 									</c:if>
 									<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
 										<c:if test="${ selectOne.refNo eq answer.boardNo }">
-											<p><c:out value="${ answer.content }"/></p>
+											<p><c:out value="${ answer.content }" escapeXml="false"/></p>
 										</c:if>
 									</c:if>
 									<c:if test="${ sessionScope.loginUser.getNick_name() eq answer.nickName }">
-										<p><c:out value="${ answer.content }"/></p>
+										<p><c:out value="${ answer.content }" escapeXml="false"/></p>
 									</c:if>
 									<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
 										<c:if test="${ selectOne.refNo ne answer.boardNo }">
-											<button id="btnSelect" type="button" onclick="location.href='updateContent.bo?boardNo=${ selectOne.boardNo }&refNo=${ answer.boardNo }&category=${ selectOne.category }'"><c:out value="내용 더보기"/></button>
+											<button id="btnSelect" type="button" onclick="location.href='updateContent.bo?boardNo=${ selectOne.boardNo }&refNo=${ answer.boardNo }&category=${ selectOne.category }'">내용 더보기</button>
 										</c:if>
 									</c:if>
 									</div>
@@ -281,7 +284,7 @@
 							</c:forEach>
 						</div>
 						<!-- 목록버튼 -->
-						<button id="btnList" type="button" onclick="location.href='selectList.bo?category=3'"><c:out value="목록"/></button>
+						<button id="btnList" type="button" onclick="location.href='selectList.bo?category=3'">목록</button>
 					</div>
 				</div>
 			</div>
