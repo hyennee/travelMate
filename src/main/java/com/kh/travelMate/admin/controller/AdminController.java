@@ -3,7 +3,6 @@ package com.kh.travelMate.admin.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +18,6 @@ import com.kh.travelMate.admin.common.Pagination;
 
 @Controller
 public class AdminController {
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
 	@Autowired
 	private BoardManageService bms;
 	@Autowired
