@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
+<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 	.question-list
@@ -103,8 +106,8 @@
 						<tr>
 							<input type="hidden" name="boardNo" value="${ list.boardNo }">
 							<input type="hidden" name="category" value="${ list.category }">
-							<td><c:out value="${ list.rowNum }"/></td>
-							<td><c:out value="${ list.title }"/></td>
+							<td><c:out value="${ list.rowNum }" escapeXml="false"/></td>
+							<td><c:out value="${ list.title }" escapeXml="false"/></td>
 							<c:if test="${ list.boardStatus eq 'N' }">
 								<td><img src="${ contextPath }/resources/images/go_in_icon.png" style="width:16px; height:16px;"></td>
 							</c:if>
@@ -117,8 +120,8 @@
 							<c:if test="${ list.boardStatus eq 'Y' }">
 								<td>답변완료</td>
 							</c:if>
-							<td><c:out value="${ list.nickName }"/></td>
-							<td><c:out value="${ list.boardDate }"/></td>
+							<td><c:out value="${ list.nickName }" escapeXml="false"/></td>
+							<td><c:out value="${ list.boardDate }" escapeXml="false"/></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -138,10 +141,10 @@
 						
 						<c:forEach var="p" begin="${ page.startPage }" end="${ page.endPage }">
 							<c:if test="${ p eq page.currentPage }">
-								<button type="button" class="disable-page-button"><c:out value="${ p }"/></button>
+								<button type="button" class="disable-page-button"><c:out value="${ p }" escapeXml="false"/></button>
 							</c:if>
 							<c:if test="${ p ne page.currentPage }">
-								<button type="button" class="page-button" onclick="location.href='selectList.bo?category=2&currentPage=${ p }'"><c:out value="${ p }"/></button>
+								<button type="button" class="page-button" onclick="location.href='selectList.bo?category=2&currentPage=${ p }'"><c:out value="${ p }" escapeXml="false"/></button>
 							</c:if>
 						</c:forEach>
 						

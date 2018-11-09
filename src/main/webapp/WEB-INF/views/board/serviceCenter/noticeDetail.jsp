@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
+<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
 <style>
 	.title
 	{
@@ -34,17 +37,17 @@
 				<hr style="border:1.5px solid lightgray;">
 				<div class="title" style="height:35px;">
 					<span style="font-size:12px; color:darkgray;">[공지사항]</span>
-					<span style="font-size:14px;"><c:out value="${ selectOne.title }"/></span>
+					<span style="font-size:14px;"><c:out value="${ selectOne.title }" escapeXml="false"/></span>
 				</div>
 				<hr style="border:1px dotted lightgray;">
 				<div class="title" style="height:20px;">
-					<span style="font-weight:bold; font-size:14px;"><c:out value="${ selectOne.nickName }"/></span>
+					<span style="font-weight:bold; font-size:14px;"><c:out value="${ selectOne.nickName }" escapeXml="false"/></span>
 					<span>&nbsp;|&nbsp;</span>
-					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:25px; height:25px;">&nbsp; <c:out value="${ selectOne.boardDate }"/></span>
+					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:25px; height:25px;">&nbsp; <c:out value="${ selectOne.boardDate }" escapeXml="false"/></span>
 				</div>
 				<hr>
 				<div class="content">
-					<span style="font-size:14px;"><c:out value="${ selectOne.content }"/></span>
+					<span style="font-size:14px;"><c:out value="${ selectOne.content }" escapeXml="false"/></span>
 				</div>
 				<hr>
 				<div class="content">

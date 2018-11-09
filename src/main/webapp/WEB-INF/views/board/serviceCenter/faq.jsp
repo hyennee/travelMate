@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
+<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
 <style>
 	/* Style the buttons that are used to open and close the accordion panel */
 	.accordion

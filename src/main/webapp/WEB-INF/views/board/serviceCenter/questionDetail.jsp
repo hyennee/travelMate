@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
+<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
 <style>
 	.title
 	{
@@ -45,21 +48,21 @@
 				<input type="hidden" name="category" value="${ selectOne.category }">
 				<div class="title" style="height:35px;">
 					<span style="font-size:12px; color:darkgray;">[문의]</span>
-					<span style="font-size:14px;"><c:out value="${ selectOne.title }"/></span>
+					<span style="font-size:14px;"><c:out value="${ selectOne.title }" escapeXml="false"/></span>
 					<%-- <input type="hidden" name="title" value="${ selectOne.title }"> --%>
 				</div>
 				<hr style="border:1px dotted lightgray;">
 				<div class="title" style="height:20px;">
 					<span style="font-size:14px;">[이미지] 접수됨</span>
 					<span>&nbsp;|&nbsp;</span>
-					<span style="font-weight:bold; font-size:14px;"><c:out value="${ selectOne.nickName }"/></span>
+					<span style="font-weight:bold; font-size:14px;"><c:out value="${ selectOne.nickName }" escapeXml="false"/></span>
 					<%-- <input type="hidden" name="nickName" value="${ selectOne.nickName }"> --%>
 					<span>&nbsp;|&nbsp;</span>
-					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:14px; height:14px;">&nbsp; <c:out value="${ selectOne.boardDate }"/></span>
+					<span style="font-size:14px;"><img src="${ contextPath }/resources/images/clock.png" style="width:14px; height:14px;">&nbsp; <c:out value="${ selectOne.boardDate }" escapeXml="false"/></span>
 				</div>
 				<hr>
 				<div class="content">
-					<span style="font-size:14px;"><c:out value="${ selectOne.content }"/></span>
+					<span style="font-size:14px;"><c:out value="${ selectOne.content }" escapeXml="false"/></span>
 					<%-- <input type="hidden" name="content" value="${ selectOne.content }"> --%>
 				</div>
 				<%-- <br><br>
