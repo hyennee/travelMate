@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Make your own travel! - TravelMate</title>
 <style>
 	.title
 	{

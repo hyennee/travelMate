@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Make your own travel! - TravelMate</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 	.image-div
@@ -108,7 +108,7 @@
 			</div>
 			<br clear="both">
 			<div style="width:960px; height:50px; margin:auto; display:table-cell; vertical-align:middel;">
-				<button type="button" class="pointer" style="height:30px; background:white; border:1px solid violet; border-radius:5px; color:violet;" onclick="window.open('http://192.168.10.51:8008/${ sessionScope.loginUser.user_name }', '_blank', 'width=600, height=600, menubar=no, status=no, toolbar=no')">1:1 문의하기</button>
+				<button type="button" class="pointer" style="height:30px; background:white; border:1px solid violet; border-radius:5px; color:violet;" onclick="window.open('http://192.168.10.51:8008/${ sessionScope.loginUser.email }', '_blank', 'width=600, height=600, menubar=no, status=no, toolbar=no')">1:1 문의하기</button>
 			</div>
 			<div style="width:960px; margin:auto; background:white;">
 			<br>
