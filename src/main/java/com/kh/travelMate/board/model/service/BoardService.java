@@ -27,4 +27,6 @@ public interface BoardService
 	ArrayList<Board> selectAnswerBoard(Board b);
 
 	int updateContent(Board b);
+
+	ArrayList<Board> selectSearch(Board b, PageInfo page) throws BoardListException;
 }

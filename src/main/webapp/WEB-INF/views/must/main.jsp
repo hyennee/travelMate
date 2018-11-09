@@ -67,35 +67,35 @@ a{
 				<div id="adbox">
 					<div class="w3-content" >
 						<div class="w3-display-container mySlides">
-							<img src="/travelMate/resources/images/1.jpg" style="width: 100%;">
+							<img src="${ contextPath }/resources/images/1.jpg" style="width: 100%;">
 							<div
 								class="w3-display-topright w3-large w3-container w3-padding-hor-16 w3-black">
 								Trolltunga, Norway</div>
 						</div>
 
 						<div class="w3-display-container mySlides">
-							<img src="/travelMate/resources/images/2.jpg" style="width: 100%;">
+							<img src="${ contextPath }/resources/images/2.jpg" style="width: 100%;">
 							<div
 								class="w3-display-topright w3-large w3-container w3-padding-hor-16 w3-black">
 								Northern Lights, Norway</div>
 						</div>
 
 						<div class="w3-display-container mySlides">
-							<img src="/travelMate/resources/images/3.jpg" style="width: 100%;">
+							<img src="${ contextPath }/resources/images/3.jpg" style="width: 100%;">
 							<div
 								class="w3-display-topright w3-large w3-container w3-padding-hor-16 w3-black">
 								Beautiful Mountains</div>
 						</div>
 
 						<div class="w3-display-container mySlides">
-							<img src="/travelMate/resources/images/4.jpg" style="width: 100%;">
+							<img src="${ contextPath }/resources/images/4.jpg" style="width: 100%;">
 							<div
 								class="w3-display-topright w3-large w3-container w3-padding-hor-16 w3-black">
 								The Rain Forest</div>
 						</div>
 
 						<div class="w3-display-container mySlides">
-							<img src="/travelMate/resources/images/5.jpg" style="width: 100%;">
+							<img src="${ contextPath }/resources/images/5.jpg" style="width: 100%;">
 							<div
 								class="w3-display-topright w3-large w3-container w3-padding-hor-16 w3-black">
 								Mountains!</div>
@@ -202,6 +202,7 @@ a{
 				</div>
 
 			</div>
+	</div>
 	</div>
 
 		<jsp:include page="footer.jsp"/>
