@@ -53,6 +53,14 @@
 		padding:auto;
 		text-align:inline-block;
 	}
+	#chatBtn {
+		background-color: red;
+		color: white;
+	}
+	#logoutBtn {
+		background-color: blue;
+		color: white;
+	}
 	
 </style>
 </head>
@@ -70,8 +78,8 @@
 				</td>
 				<td id="loginArea" colspan="2">
 					<b>${ sessionScope.loginUser.user_name }</b> 님 환영합니다!
-					<button>Setting</button>
-					<button onclick="location.href='${ pageContext.request.contextPath }/logout.me'">Logout</button>
+					<button id="chatBtn" onclick="window.open('http://192.168.10.51:8008/sel.jsp','window_name','width=430,height=500,location=no,status=no,scrollbars=yes');">상담 창 열기</button>
+					<button id="logoutBtn" onclick="location.href='${ pageContext.request.contextPath }/logout.me'">Logout</button>
 				</td>
 				</tr>
 				<tr>

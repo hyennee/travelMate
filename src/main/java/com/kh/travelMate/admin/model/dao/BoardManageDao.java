@@ -18,4 +18,6 @@ public interface BoardManageDao {
 
 	ArrayList<ConsultManage> consultApplyList(SqlSessionTemplate sqlSession, PageInfo page);
 
+	ConsultManage selectApplyDetail(SqlSessionTemplate sqlSession, int apply_no);
+
 }
