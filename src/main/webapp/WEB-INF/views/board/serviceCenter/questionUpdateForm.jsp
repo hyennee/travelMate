@@ -79,7 +79,7 @@
 				<input type="hidden" name="category" value="${ selectOne.category }">
 				<div class="title" style="height:40px; background:#E7E7E7; border:none; border-radius:5px;">
 					<div style="display:inline-block; border:none; border-radius:5px; margin-left:5px;">
-						<label style="font-size:14px; height:35px;">img</label>
+						<label style="font-size:14px; height:35px;"><img src="${ contextPath }/resources/images/gear.png" style="width:16px; height:16px;"></label>
 						<label style="font-size:14px; height:35px;">제    목</label>
 					</div>
 					<div style="display:inline-block;">

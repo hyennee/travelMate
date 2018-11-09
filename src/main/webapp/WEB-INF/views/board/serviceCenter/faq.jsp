@@ -13,7 +13,6 @@
 	/* Style the buttons that are used to open and close the accordion panel */
 	.accordion
 	{
-	    background-color: #eee;
 	    color: #444;
 	    cursor: pointer;
 	    padding: 18px;
@@ -72,7 +71,7 @@
 <body class="body">
 	<c:if test="${ !empty sessionScope.loginUser }">
 	<jsp:include page="../../must/header.jsp"/>
-	<div id="contents" class="full-container" style="background:#EC983E;">
+	<div id="contents" class="full-container">
 		<div style="margin:auto; width:960px; background:white;">
 			<div style="width:800px; margin:auto;">
 				<span style="color:#B4B4FF; font-size:16px; font-weight:bold;">자주 묻는 질문</span>
@@ -103,7 +102,7 @@
 				</div>
 			</div>
 			<br>
-			<div class="paging-container" style="margin:auto; width:960px;" align="center">
+<%-- 			<div class="paging-container" style="margin:auto; width:960px;" align="center">
 				<div>
 					<button type="button" class="page-button"><</button>&nbsp;
 					<button type="button" class="page-button">1</button>
@@ -123,7 +122,7 @@
 					<img src="${ contextPath }/resources/images/search-btn.PNG" style="width:25px; height:25px; border:1px solid lightgray; border-radius:5px;">
 				</div>
 			</div>
-			<br>
+			<br> --%>
 		</div>
 		<br>
 	</div>

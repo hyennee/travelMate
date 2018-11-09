@@ -105,4 +105,24 @@ public class BoardDaoImpl implements BoardDao
 	{
 		return sqlSession.selectOne("Board.selectOneRef", b);
 	}
+
+	@Override
+	public ArrayList<Board> selectSearch(SqlSessionTemplate sqlSession, Board b, PageInfo page) throws BoardListException
+	{
+		System.out.println("dao b : " + b);
+		
+		List<Board> list = null;
+		
+		int offset = (page.getCurrentPage() - 1) * page.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, page.getLimit());
+		
+		list = sqlSession.selectList("Board.searchList", b, rowBounds);
+		
+		if(list == null)
+		{
+			throw new BoardListException("게시글 검색 실패");
+		}
+		return (ArrayList<Board>) list;
+	}
 }

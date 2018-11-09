@@ -125,4 +125,12 @@ public class BoardServiceImpl implements BoardService
 		
 		return result;
 	}
+
+	@Override
+	public ArrayList<Board> selectSearch(Board b, PageInfo page) throws BoardListException
+	{
+		ArrayList<Board> list = bd.selectSearch(sqlSession, b, page);
+		
+		return list;
+	}
 }

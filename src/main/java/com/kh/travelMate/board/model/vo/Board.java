@@ -22,11 +22,14 @@ public class Board implements Serializable
 	private int boardLevel;			//게시글 레벨
 	private int refNo;				//참조 게시글번호
 	private String boardStatus;		//문의 게시글 답변 여부
+	private String searchCategory;	//게시글 검색 카테고리
+	private String searchValue;		//게시글 검색 내용
 	
 	public Board() {}
 
 	public Board(int boardNo, int rowNum, int writer, String nickName, String category, String title, String content,
-			Date boardDate, String status, int boardLevel, int refNo, String boardStatus) {
+			Date boardDate, String status, int boardLevel, int refNo, String boardStatus, String searchCategory,
+			String searchValue) {
 		super();
 		this.boardNo = boardNo;
 		this.rowNum = rowNum;
@@ -40,6 +43,8 @@ public class Board implements Serializable
 		this.boardLevel = boardLevel;
 		this.refNo = refNo;
 		this.boardStatus = boardStatus;
+		this.searchCategory = searchCategory;
+		this.searchValue = searchValue;
 	}
 
 	public int getBoardNo() {
@@ -138,6 +143,22 @@ public class Board implements Serializable
 		this.boardStatus = boardStatus;
 	}
 
+	public String getSearchCategory() {
+		return searchCategory;
+	}
+
+	public void setSearchCategory(String searchCategory) {
+		this.searchCategory = searchCategory;
+	}
+
+	public String getSearchValue() {
+		return searchValue;
+	}
+
+	public void setSearchValue(String searchValue) {
+		this.searchValue = searchValue;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -147,6 +168,6 @@ public class Board implements Serializable
 		return "Board [boardNo=" + boardNo + ", rowNum=" + rowNum + ", writer=" + writer + ", nickName=" + nickName
 				+ ", category=" + category + ", title=" + title + ", content=" + content + ", boardDate=" + boardDate
 				+ ", status=" + status + ", boardLevel=" + boardLevel + ", refNo=" + refNo + ", boardStatus="
-				+ boardStatus + "]";
+				+ boardStatus + ", searchCategory=" + searchCategory + ", searchValue=" + searchValue + "]";
 	}
 }

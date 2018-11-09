@@ -2,6 +2,8 @@ package com.kh.travelMate.board.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -190,5 +192,74 @@ public class BoardController
 		bs.updateContent(b);
 		
 		return "redirect:selectOne.bo?boardNo=" + b.getBoardNo() + "&category=" + b.getCategory();
+	}
+	
+	@RequestMapping("selectSearch.bo")
+	public String selectSearch(HttpServletRequest request, Board b, Model model, @RequestParam(defaultValue="1")int currentPage)
+	{
+		try
+		{	
+			int listCount = bs.getListCount(b);
+			System.out.println("listCount : " + listCount);
+			
+			PageInfo page = Pagination.getPageInfo(currentPage, listCount);
+			
+			/*------------------*/
+			
+			ArrayList<Board> list = null;
+			b.setSearchCategory(request.getParameter("searchCategory"));
+			
+			if(b.getSearchCategory().equals("title"))
+			{
+				b.setSearchValue(request.getParameter("searchValue"));
+				
+				System.out.println("search b : " + b);
+				
+				list = bs.selectSearch(b, page);
+			}
+			else if(b.getSearchCategory().equals("nick_name"))
+			{
+				b.setSearchValue(request.getParameter("searchValue"));
+
+				System.out.println("search b : " + b);
+				
+				list = bs.selectSearch(b, page);
+			}
+			else if(b.getSearchCategory().equals("content"))
+			{
+				b.setSearchValue(request.getParameter("searchValue"));
+				
+				System.out.println("search b : " + b);
+				
+				list = bs.selectSearch(b, page);
+			}
+			
+			list = bs.selectBoardList(b, page);
+			
+			System.out.println("list category : " + b.getCategory());
+			
+			model.addAttribute("list", list);
+			model.addAttribute("page", page);
+			
+			if(b.getCategory().equals("1"))
+			{
+				return "board/serviceCenter/noticeList";
+			}
+			else if(b.getCategory().equals("2"))
+			{
+				return "board/serviceCenter/questionList";
+			}
+			else if(b.getCategory().equals("3"))
+			{
+				return "board/openConsulting/ocList";
+			}
+			return null;
+		}
+		catch (BoardListException e)
+		{
+			model.addAttribute("msg", e.getMessage());
+			
+			return "must/errorPage";
+		}
 	}
 }

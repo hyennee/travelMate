@@ -315,16 +315,18 @@
 						</div>
 						<br clear="both">
 						<div class="search-container" style="margin:auto; width:900px;" align="center">
-							<div>
-								<select style="height:25px; border:1px solid lightgray; border-radius:5px;">
-									<option>제목</option>
-									<option>작성자</option>
-									<option>내용</option>
-								</select>
-								&nbsp;&nbsp;
-								<input type="search" style="width:400px; height:25px; border:1px solid lightgray; border-radius:5px;">
-								<img src="${ contextPath }/resources/images/search-btn.PNG" style="width:25px; height:25px; border:1px solid lightgray; border-radius:5px;">
-							</div>
+							<form action="selectSearch.bo?category=3" method="post">
+								<div>
+									<select style="height:25px; border:1px solid lightgray; border-radius:5px;" name="searchCategory">
+										<option value="title">제목</option>
+										<option value="nick_name">작성자</option>
+										<option value="content">내용</option>
+									</select>
+									&nbsp;&nbsp;
+									<input type="search" name="searchValue" style="width:400px; height:25px; border:1px solid lightgray; border-radius:5px;">
+									<button type="submit"><img src="${ contextPath }/resources/images/search-btn.PNG" style="width:25px; height:25px; border:1px solid lightgray; border-radius:5px;"></button>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
