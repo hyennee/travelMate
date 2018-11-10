@@ -19,7 +19,8 @@ public interface mypageService {
 
 	int nickNameCheck(String nick_name);
 
+	void insertCyberMoney(int parseInt, Member loginUser, String imp_uid);
 
-
-
+	void insertCyberMoney2(int parseInt, Member loginUser, String imp_uid);
+	
 }

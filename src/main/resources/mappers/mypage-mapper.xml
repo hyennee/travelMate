@@ -40,6 +40,16 @@
 		FROM MEMBER
 		WHERE NICK_NAME = #{nick_name}
 	</select>
+	
+	<insert id="insertCyberMoney" parameterType="java.util.HashMap">
+		insert into cybermoney_record
+		values(seq_CYBERMONEY_RECORD_NO.nextval, #{userNo}, #{imp_uid}, sysdate, #{money}, '충전',(select cybermoney from member where user_no = #{userNo}))
+	</insert>
+	
+	<insert id="insertCyberMoney2" parameterType="java.util.HashMap">
+		insert into cybermoney_record
+		values(seq_CYBERMONEY_RECORD_NO.nextval, #{userNo}, #{imp_uid}, sysdate, #{money}, '환불',(select cybermoney from member where user_no = #{userNo}))
+	</insert>
 </mapper> 
 
 

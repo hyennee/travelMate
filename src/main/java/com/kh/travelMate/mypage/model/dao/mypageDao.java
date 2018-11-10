@@ -19,4 +19,8 @@ public interface mypageDao {
 
 	int nickNameCheck(SqlSessionTemplate sqlSession, String nick_name);
 
+	void insertCyberMoney(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession);
+
+	void insertCyberMoney2(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession);
+
 }

@@ -9,6 +9,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+
 #jb-container {
 	width: 90%;
 	margin: 0px auto;
@@ -78,6 +79,16 @@ td{
 </style>
 </head>
 <body>
+<script type="text/javascript">
+
+	function a(){
+		window.open("charge.mp","w","width=800, height=700, left=100, top=100, scrollbars=yes, resizable=yes, location=yes");
+	}
+	function test(id){
+		location.href="insertCyberMoney2.me?money=10&imp_uid="+id;
+	}
+
+</script>
 	<jsp:include page="../must/header.jsp" />
 	<div id="jb-container">
 		<div id="jb-header">
@@ -90,7 +101,7 @@ td{
 			<h2>사이버머니</h2>
 			<hr />
 			<div >
-						<span>-&nbsp;&nbsp;${ sessionScope.loginUser.user_name }님의 보유적립금은 ${ sessionScope.loginUser.cybermoney }원입니다. <button onclick=""> 충전 </button></span><br />
+						<span>-&nbsp;&nbsp;${ sessionScope.loginUser.user_name }님의 보유적립금은 ${ sessionScope.loginUser.cybermoney }원입니다. <button type="button" onclick="a()"> 충전 </button></span><br />
 						<span>-&nbsp;&nbsp;적립금은 컨설트 요청할 시에 사용하실 수 있습니다.</span><br /><br /><br />
 						<form action="">
 						<table >
@@ -104,7 +115,7 @@ td{
 								<c:forEach var="size" items="${ cyberMoney }" >
 									
 								
-									<tr onclick="">
+									<tr onclick="test('<c:out value="${size.PROOF_NO}'"/>)">
 										<td>${ size.CYBERMONEY_RECORD_NO } </td>
 										<td>${ size.CHANGE_REASON }</td>
 										<td>${ size.CHANGE_MONEY }원</td>
