@@ -139,4 +139,9 @@ public class pageChangeController {
 		public String insertDirectForm() {
 		return "board/insertDirectForm";
 	}
+	
+	@RequestMapping("charge.mp")
+	public String charge() {
+	return "cyberMoney/charge";
+}
 }

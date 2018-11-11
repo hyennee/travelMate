@@ -1,8 +1,8 @@
 package com.kh.travelMate.mypage.model.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -38,6 +38,25 @@ public class mypageDaoImpl implements mypageDao{
 	public int nickNameCheck(SqlSessionTemplate sqlSession, String nick_name) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("Mypage.nickNameCheck", nick_name);
+	}
+
+	@Override
+	public void insertCyberMoney(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession) {
+		Map<String, Object> a = new HashMap<String, Object>();
+		a.put("money", parseInt);
+		a.put("userNo", loginUser.getUser_no());
+		a.put("imp_uid", imp_uid);
+		sqlSession.insert("Mypage.insertCyberMoney", a);
+	}
+
+	@Override
+	public void insertCyberMoney2(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession) {
+		Map<String, Object> a = new HashMap<String, Object>();
+		a.put("money", parseInt);
+		a.put("userNo", loginUser.getUser_no());
+		a.put("imp_uid", imp_uid);
+		sqlSession.insert("Mypage.insertCyberMoney2", a);
+		
 	}
 	
 

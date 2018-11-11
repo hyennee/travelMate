@@ -57,7 +57,6 @@ public class mypageServiceImpl implements mypageService{
 		
 		cyberMoney = md.cyberMoneyHistory(sqlSession,loginUser);
 		
-		System.out.println("ms.cyberMoney갔다왔니 ? : " + cyberMoney);
 		
 		for(int i = 0; i < cyberMoney.size(); i++) {
 			System.out.println(cyberMoney.get(i).get("CYBERMONEY_RECORD_NO"));
@@ -79,6 +78,17 @@ public class mypageServiceImpl implements mypageService{
 	public int nickNameCheck(String nick_name) {
 		// TODO Auto-generated method stub
 		return md.nickNameCheck(sqlSession, nick_name);
+	}
+
+	@Override
+	public void insertCyberMoney(int parseInt, Member loginUser, String imp_uid) {
+		md.insertCyberMoney(parseInt, loginUser, imp_uid, sqlSession);
+	}
+
+	@Override
+	public void insertCyberMoney2(int parseInt, Member loginUser, String imp_uid) {
+		md.insertCyberMoney2(parseInt, loginUser, imp_uid, sqlSession);
+		
 	}
 
 	
