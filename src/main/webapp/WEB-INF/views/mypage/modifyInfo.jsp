@@ -91,33 +91,58 @@ a {
 			<h2>정보 수정</h2>
 			<hr />
 			<div >
-						<p>내계정</p>
-						
+						<p>내계정</p>		
 						<img src="" alt="" />
 						<form action="modifyMyInfo.me" method="post">
+						<span style="color: #6c6e69; font: 12px/24px 'OpenSans';  margin: 0;">비밀번호 / 아이디 찾기에서 필요하므로 정확하게 입력 및 사용하는 이메일 주소는 반드시 기억해주십시요.</span>
 							<table >
 								<tr>
 									<td class="thstyle">아이디 </td>
-									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.email }"></c:out>" name="email"  readonly/></td>
-								</tr>
-								<tr>
-									<td colspan="3"><span style="color: #6c6e69; font: 12px/24px 'OpenSans';  margin: 0;">비밀번호 / 아이디 찾기에서 필요하므로 정확하게 입력 및 사용하는 이메일 주소는 반드시 기억해주십시요.</span></td>
+									<td colspan="3"><input type="text" value="<c:out value="${ sessionScope.loginUser.email }"></c:out>" name="email"  readonly/></td>
 								</tr>
 								<tr>
 									<td class="thstyle">이름</td>
-									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.user_name }"></c:out>" name="user_name"  readonly/></td>
+									<td colspan="3"><input type="text" value="<c:out value="${ sessionScope.loginUser.user_name }"></c:out>" name="user_name"  readonly/></td>
 								</tr>
 								<tr>
-									<td class="thstyle">생년월일</td>
-									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.birthday }"></c:out>" name="birthday" /></td>
+									<td class="thstyle">생년월일<span style="color:red;">*</span></td>
+									<td colspan="3"><input type="text" value="<c:out value="${ sessionScope.loginUser.birthday }"></c:out>" name="birthday" id="birthday" /></td>
+									<td><div id="checkBirthday"></div></td>
 								</tr>
+								
 								<tr>
 									<td class="thstyle">연락처 <span style="color:red;">*</span></td>
-									<td colspan="2"><input type="text" value="<c:out value="${ sessionScope.loginUser.phone }"></c:out>" name="phone"/></td>
+									<td colspan="3"><input type="text" oninput="checkPhone()" value="<c:out value="${ sessionScope.loginUser.phone }"></c:out>" name="phone" id="phone" /></td>
+									<td><div id="checkPhone"></div></td>
 								</tr>
+ <%-- 
+								<tr>
+									<td class="thstyle" style="width: 90px; height: 20px;">휴대전화<span
+										style="color: red">*</span></td>
+									<td ><select name="phoneNum1" id="phoneNum1"
+										style="height: 24px; width: 60px;">
+											<option value="---" selected>---</option>
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="018">018</option>
+											<option value="019">019</option>
+									</select>
+									 	<input type="text" name="phoneNum2" id="phoneNum2"	placeholder="" 
+									 	style="width: 56px; height: 18px;"
+										maxlength="4" oninput="checkPhone()" value="${ sessionScope.loginUser.phone }">
+										
+										<input type="text" name="phoneNum3"
+										id="phoneNum3" placeholder=""
+										style="width: 56px; height: 18px;" maxlength="4" oninput="checkPhone()"value="${ sessionScope.loginUser.phone }"></td>
+									<td></td>
+									<td><div id="checkPhone"></div></td>
+								</tr>
+--%>
 								<tr>
 									<td class="thstyle">닉네임 <span style="color:red;">*</span></td>
-									<td colspan="2"><input type="text" oninput="checkNick()" value="<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>" id="nick_name" name="nick_name"/></td>
+									<td colspan="3"><input type="text" oninput="checkNick()" value="<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>" id="nick_name" name="nick_name"/></td>
 									<td><div id="nick_name_check"></div></td>
 								</tr>
 								
@@ -153,12 +178,11 @@ a {
 					type : 'post',
 					success : function(data) {
 						if (data == "0") {
-							document.getElementById('current_pwd').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
+							document.getElementById('nick_name_check').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
 							$('#submit').attr('disabled',false);
 						} else if (data == "1") {
 
 							document.getElementById('nick_name_check').innerHTML = "<span style='color:red; font-size:12px'>사용할 수 없는 닉네임입니다. 다른 닉네임을 입력해주세요. </span>";
-// 							document.getElementById('submit').attr(disabled, true);
 							$('#submit').attr('disabled',true);
 						}
 
@@ -169,20 +193,41 @@ a {
 	 
 	//휴대폰 번호 유효성 검사
 	function checkPhone(){
-		var chkPhoneVal2 = $('#phoneNum2').val();
-		var chkPhoneVal3 = $('#phoneNum3').val();
-		var regPhoneExp2 = /^\d{3,4}$/;
-		var regPhoneExp3 = /^\d{4}$/;
+		var chkPhoneVal = $('#phone').val();
+		var regPhoneExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 		
-		if(regPhoneExp2.test(chkPhoneVal2) == false || regPhoneExp3.test(chkPhoneVal3) == false){
+		if(regPhoneExp.test(chkPhoneVal) == false ){
 			document.getElementById('checkPhone').innerHTML = "<span style='color:red; font-size:12px'>휴대폰 번호 형식에 맞지 않습니다.</span>";
+			$('#submit').attr('disabled',true);
 			return false;
 		}else{
-			document.getElementById('checkPhone').innerHTML = "<span style='color:red; font-size:12px'>　</span>";
+			document.getElementById('checkPhone').innerHTML = "<span style='color:blue; font-size:12px'>정상으로 입력되었습니다.　</span>";
+			$('#submit').attr('disabled',false);
+			checkPhone(chkPhoneVal);
+			return true;
 		}
 		
 	}
 	
+	 function birthday(){
+			var birthdayVal = $("#birthday").val();
+			var regBirthdayExp = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))$/
+			
+			if(regBirthdayExp.test(birthdayVal)==false){
+				//ㅅ입력한 생년월일이 이 정규식에 맞지 않으면 
+				document.getElementById('checkBirthday').innerHTML = "<span style='color:red; font-size:12px'>생년월일이 형식에 맞지 않습니다.</span>";
+				$('#submit').attr('disabled',true);
+				return false;
+				
+			}else{
+				document.getElementById('checkBirthday').innerHTML = "<span style='color:blue; font-size:12px'>정상으로 입력되었습니다. </span>";
+				$('#submit').attr('disabled',true);
+				return true;
+			}
+			
+			
+		} 
+
 	
 	</script>
 </body>

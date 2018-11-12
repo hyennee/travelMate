@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>마이페이지 사이드바 메뉴</title>
 <style>
@@ -74,6 +75,17 @@ ul.sub li:hover {
 <body>
 	<div class="side-menu" >
 		<ul id="navi">
+			<c:if test="${(!empty sessionScope.loginUser) and (sessionScope.loginUser.user_type_level eq '3')}">		
+				<li class="group">
+					<div class="title">컨설턴트관리</div>
+					<ul class="sub">
+						<li><a href="consultingCustomer.me">컨설팅 고객관리</a></li>
+						<li><a href="consultingManual.me">나의 컨설턴트 매뉴얼</a></li>
+
+					</ul>
+				</li>
+			</c:if>
+		
 			<li class="group">
 
 				<div class="title">계정관리</div>
@@ -91,14 +103,6 @@ ul.sub li:hover {
 					<li><a href="oneByOneQnA.me">1:1 문의</a></li>
 					<li><a href="Money.me">사이버머니</a></li>
 					
-				</ul>
-			</li>
-			<li class="group">
-				<div class="title">컨설턴트관리</div>
-				<ul class="sub">
-					<li><a href="consultingCustomer.me">컨설팅 고객관리</a></li>
-					<li><a href="consultingManual.me">나의 컨설턴트 매뉴얼</a></li>
-
 				</ul>
 			</li>
 		</ul>

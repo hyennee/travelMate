@@ -100,6 +100,12 @@ a {
 									<c:out value="${ sessionScope.loginUser.user_name }"></c:out></td>
 								</tr>
 								<tr>
+									<td>닉네임</td>
+									<td colspan="2">
+										<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>
+									</td>
+								</tr>
+								<tr>
 									<td>연락처</td>
 									<td><c:out value="${ sessionScope.loginUser.phone }"></c:out></td>
 									<td><input type="button" value="정보수정" /></td>
@@ -115,7 +121,7 @@ a {
 									<td colspan="2"><c:out
 											value="${ sessionScope.loginUser.cybermoney }"></c:out>원</td>
 								</tr>
-
+		
 							</table>
 						</td>
 						<td class="tdsection">
