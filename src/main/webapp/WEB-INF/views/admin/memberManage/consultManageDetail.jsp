@@ -36,21 +36,24 @@ table th {
 	height: 33px;
 	width: 120px;
 }
+
 .row-header {
 	text-align: center;
 	background: #efefef;
 	color: black;
 	font-weight: bold;
 }
+
 td {
 	color: #727272;
 	text-align: left;
 	height: 45px;
-
 }
+
 input {
 	height: 40px;
 }
+
 #email {
 	width: 250px;
 }
@@ -82,7 +85,7 @@ input {
 						<tr>
 							<td class="row-header">등록일</td>
 							<td>${ selectApplyDetail.apply_Date }</td>
-							
+
 						</tr>
 						<tr>
 							<td class="row-header">신청자</td>
@@ -96,11 +99,11 @@ input {
 							<c:if test="${ selectApplyDetail.gender eq 'F' }">
 								<td>여</td>
 							</c:if>
-						</tr>						
+						</tr>
 						<tr>
 							<td class="row-header">연락처</td>
 							<td>${ selectApplyDetail.phone }</td>
-						</tr>																
+						</tr>
 						<tr>
 							<td class="row-header">직업</td>
 							<td>${ selectApplyDetail.job }</td>
@@ -120,14 +123,65 @@ input {
 						<tr>
 							<td class="row-header">특이사항</td>
 							<td>${ selectApplyDetail.etc }</td>
-						</tr>												
+						</tr>
 					</tbody>
 				</table>
-				<button type="button" class="btn btn-primary">승인</button>
-				<button type="button" class="btn btn-danger">거부</button>
-				<button type="button" class="btn btn-success" onclick="location.href='${ pageContext.request.contextPath }/admin/consultManage.admin'">목록으로 돌아가기</button>
+				<c:if test='${ not empty selectApplyDetail.status }'>
+					<table class="table table-bordered">
+						<tr>
+							<td class="row-header">승인여부</td>
+							<td>${ selectApplyDetail.status }</td>
+						</tr>
+						<tr>
+							<td class="row-header" colspan="2">승인/거부 사유</td>
+						</tr>
+						<tr>
+							<td colspan="2">${ selectApplyDetail.reason }</td>
+						</tr>
+					</table>
+				</c:if>
+				<c:if test='${ empty selectApplyDetail.status }'>
+					<form name="applyAcceptForm" method="post">
+						<table class="table table-bordered">
+							<tr>
+								<td class="row-header">승인여부</td>
+								<td>미승인</td>
+							</tr>
+							<tr>
+								<td class="row-header" colspan="2">승인/거부 사유</td>
+							</tr>
+							<tr>
+								<td colspan="2"><textarea name="reason" cols="100" style="resize: none; width: 100%;"></textarea>
+								<input type="hidden" name="user_No" value='${ selectApplyDetail.user_No }'/>
+								<input type="hidden" name="apply_no" value='${ selectApplyDetail.consult_Apply_No }'/>
+								</td>
+							</tr>
+						</table>
+						<button type="button" class="btn btn-primary" onclick='applyConfirm(1);'>승인</button>
+						<button type="button" class="btn btn-danger" onclick='applyConfirm(2);'>거부</button>
+					</form>
+				</c:if>
+				<button type="button" class="btn btn-success"
+					onclick="location.href='${ pageContext.request.contextPath }/admin/consultManage.admin'">목록으로
+					돌아가기</button>
 			</div>
 		</div>
+		<script>
+						function applyConfirm(menu){
+							
+							if(menu == 1){
+								document.applyAcceptForm.action='${ pageContext.request.contextPath }/admin/consultApplyAccept.admin';
+								document.applyAcceptForm.submit();
+							}
+							
+							if(menu == 2){
+								document.applyAcceptForm.action='${ pageContext.request.contextPath }/admin/consultApplyRefuse.admin';
+								document.applyAcceptForm.submit();
+							}
+							
+							
+						}
+					</script>
 	</c:if>
 </body>
 </html>

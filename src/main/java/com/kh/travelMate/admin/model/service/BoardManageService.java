@@ -18,4 +18,8 @@ public interface BoardManageService {
 
 	ConsultManage selectApplyDetail(int apply_no);
 
+	void consultApplyAccept(ConsultManage selectApplyDetail);
+
+	void consultApplyRefuse(ConsultManage selectApplyDetail);
+
 }

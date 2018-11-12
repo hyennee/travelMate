@@ -71,15 +71,35 @@
 		resultMap="consultapplyResultSet">
 		SELECT *
 		FROM CONSULT_APPLY CA
-		LEFT JOIN MEMBER M ON (CA.USER_NO = M.USER_NO)
+		LEFT JOIN MEMBER M ON
+		(CA.USER_NO = M.USER_NO)
 		ORDER BY CONSULT_APPLY_NO DESC
 	</select>
-	
-	<select id="consultApplyDetail" parameterType="_int" resultMap="consultapplyResultSet">
+
+	<select id="consultApplyDetail" parameterType="_int"
+		resultMap="consultapplyResultSet">
 		SELECT *
 		FROM CONSULT_APPLY CA
-		LEFT JOIN MEMBER M ON (CA.USER_NO = M.USER_NO)
-		WHERE CA.CONSULT_APPLY_NO = #{ apply_no } 
+		LEFT JOIN MEMBER M ON
+		(CA.USER_NO = M.USER_NO)
+		LEFT JOIN CONSULT_OK_RECORD COR ON
+		(CA.CONSULT_APPLY_NO = COR.CONSULT_APPLY_NO)
+		WHERE CA.CONSULT_APPLY_NO = #{ apply_no }
 	</select>
+
+	<insert id="consultApplyAccept" parameterType="ConsultManage">
+		INSERT INTO CONSULT_OK_RECORD (CONSULT_OK_RECORD_NO, CONSULT_APPLY_NO, STATUS, REASON, AGREE_DATE)
+		VALUES(SEQ_CONSULT_OK_RECORD_NO.NEXTVAL, #{ consult_Apply_No }, 'Y', #{ reason }, SYSDATE)
+	</insert>
+
+	<insert id="consultApplyRefuse" parameterType="ConsultManage">
+		INSERT INTO CONSULT_OK_RECORD (CONSULT_OK_RECORD_NO, CONSULT_APPLY_NO, STATUS, REASON, AGREE_DATE)
+		VALUES(SEQ_CONSULT_OK_RECORD_NO.NEXTVAL, #{ consult_Apply_No }, 'N', #{ reason }, SYSDATE)
+	</insert>
+	
+	<update id="consultApplyAcceptSuccess" parameterType="ConsultManage">
+		UPDATE MEMBER SET USER_TYPE_LEVEL = '3'
+		WHERE USER_NO = #{ user_No }
+	</update>
 
 </mapper>  

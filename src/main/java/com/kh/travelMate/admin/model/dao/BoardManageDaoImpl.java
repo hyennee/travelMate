@@ -74,4 +74,15 @@ public class BoardManageDaoImpl implements BoardManageDao {
 		return selectApplyDetail;
 	}
 
+	@Override
+	public void consultApplyAccept(SqlSessionTemplate sqlSession, ConsultManage selectApplyDetail) {
+		sqlSession.insert("BoardManage.consultApplyAccept", selectApplyDetail);
+		sqlSession.update("BoardManage.consultApplyAcceptSuccess", selectApplyDetail);
+	}
+
+	@Override
+	public void consultApplyRefuse(SqlSessionTemplate sqlSession, ConsultManage selectApplyDetail) {
+		sqlSession.insert("BoardManage.consultApplyRefuse", selectApplyDetail);
+	}
+
 }
