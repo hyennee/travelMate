@@ -39,6 +39,7 @@
 		<result property="cm_modify_date" column="CM_MODIFY_DATE"/>
 		<result property="bank" column="BANK"/>
 		<result property="user_type_level" column="USER_TYPE_LEVEL"/>
+		<result property="join_status" column="JOIN_STATUS"/>
 		
 	</resultMap>
 	
@@ -60,7 +61,7 @@
 		INSERT INTO MEMBER
 		VALUES(SEQ_USER_NO.NEXTVAL, #{email}, #{password}, #{user_name}, 
 				#{nick_name}, #{phone}, #{birthday}, #{gender}, 
-				SYSDATE, SYSDATE, DEFAULT, NULL, 0, SYSDATE, NULL, DEFAULT)
+				SYSDATE, SYSDATE, DEFAULT, NULL, 0, SYSDATE, NULL, DEFAULT, 'T')
 	</insert>
 	
 	<!-- 암호화된 비밀번호 조회용 쿼리문-->

@@ -23,6 +23,7 @@ public class Member implements java.io.Serializable{
 	private Date cm_modify_date; //사이버머니변경일자
 	private String bank; //은행이름
 	private String user_type_level; //구분 '일반회원'
+	private String join_status;		//사이트 구분 - 카카오톡(K)/구글(G)/페이스북(F)/네이버(N)/일반(T)
 	
 	
 	
@@ -34,7 +35,7 @@ public class Member implements java.io.Serializable{
 
 	public Member(int user_no, String email, String password, String user_name, String nick_name, String phone,
 			String birthday, String gender, Date enroll_date, Date modify_date, String user_type, String bank_no,
-			int cybermoney, Date cm_modify_date, String bank, String user_type_level) {
+			int cybermoney, Date cm_modify_date, String bank, String user_type_level, String join_status) {
 		super();
 		this.user_no = user_no;
 		this.email = email;
@@ -52,6 +53,7 @@ public class Member implements java.io.Serializable{
 		this.cm_modify_date = cm_modify_date;
 		this.bank = bank;
 		this.user_type_level = user_type_level;
+		this.join_status = join_status;
 	}
 
 
@@ -169,6 +171,13 @@ public class Member implements java.io.Serializable{
 
 
 
+	public String getJoin_status() {
+		return join_status;
+	}
+
+
+
+
 	public void setUser_no(int user_no) {
 		this.user_no = user_no;
 	}
@@ -281,19 +290,25 @@ public class Member implements java.io.Serializable{
 
 
 
+	public void setJoin_status(String join_status) {
+		this.join_status = join_status;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Member [user_no=" + user_no + ", email=" + email + ", password=" + password + ", user_name=" + user_name
 				+ ", nick_name=" + nick_name + ", phone=" + phone + ", birthday=" + birthday + ", gender=" + gender
 				+ ", enroll_date=" + enroll_date + ", modify_date=" + modify_date + ", user_type=" + user_type
 				+ ", bank_no=" + bank_no + ", cybermoney=" + cybermoney + ", cm_modify_date=" + cm_modify_date
-				+ ", bank=" + bank + ", user_type_level=" + user_type_level + "]";
+				+ ", bank=" + bank + ", user_type_level=" + user_type_level + ", join_status=" + join_status + "]";
 	}
 
 
-	
 
-	
+
 	
 	
 }
