@@ -99,11 +99,11 @@ a {
 						</tr>
 						<tr>
 							<td>새 비밀번호</td>
-							<td><input type="password" placeholder="4~12자의 영문과 숫자만 사용가능합니다" name="pwd"/></td>
+							<td><input type="password" placeholder="4~12자의 영문과 숫자만 사용가능합니다" name="password" id="password"/></td>
 						</tr>
 						<tr>
 							<td>비밀번호 확인</td>
-							<td><input type="password" placeholder="비밀번호를 한번 더 입력해주세요" name="pwd2"/></td>
+							<td><input type="password" placeholder="비밀번호를 한번 더 입력해주세요" name="password2" id="password2"/></td>
 						</tr>
 					</table>
 					<input type="submit" value="변경하기" onclick=""/>
@@ -138,6 +138,56 @@ a {
 		})
 	}
 	
+	
+	//비밀번호 확인 체크 및 유효성 검사
+	function checkPwd() {
+		var chkPwdVal1 = $('#password').val();
+		var chkPwdVal2 = $('#password2').val();
+		var checkNumber = chkPwdVal1.search(/[0-9]/g);
+		var checkEnglish = chkPwdVal1.search(/[a-z]/ig);
+		var regPwdExp = /^[A-Za-z0-9]{8,16}$/; //비밀번호 영문(소문자와 대문자)과 숫자 8자~16자
+		console.log(chkPwdVal1);
+		console.log(chkPwdVal2);
+
+		//비밀번호 공백 체크
+		if (chkPwdVal1 == ""
+				&& ((chkPwdVal1 == chkPwdVal2) || (chkPwdVal1 != chkPwdVal2))) {
+
+			document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호를 입력해주십시오.</span>";
+			pwdCheck = 0;
+			return false;
+		}
+
+		//비밀번호 유효성 검사
+		if (regPwdExp.test(chkPwdVal1) == false) {
+			document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 영문(소문자와 대문자)과 숫자 조합으로 8자~16자로 입력해주십시오.</span>";
+			return false;
+		}
+		if (checkNumber < 0 || checkEnglish < 0) {
+			document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 숫자와 영문자를 혼용해서 입력해주십시오.</span>";
+			return false;
+		}
+		if (/(\w)\1\1\1/.test(chkPwdVal1) == true) {
+			document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>같은 문자를 4번 이상 사용하실 수 없습니다.</span>";
+			return false;
+		}
+
+		if (regPwdExp.test(chkPwdVal1) == true) {
+			//비밀번호 유효성 검사를 통과하면 확인 체크
+			if (chkPwdVal1 != "" && (chkPwdVal1 == chkPwdVal2)) {
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:blue; font-size:12px'>비밀번호가 일치합니다.</span>";
+
+			} else if (chkPwdVal1 != "" && (chkPwdVal1 != chkPwdVal2)) {
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호가 일치하지 않습니다.</span>";
+
+			}
+
+		}
+
+		return true;
+
+	}
+
 	</script>
 
 	<jsp:include page="../must/footer.jsp" />
