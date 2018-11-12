@@ -23,7 +23,7 @@ public class OthersController {
 	public OthersService os;
 	
 	@RequestMapping("insertConsultApply.others")
-	public String insertCONSULT_APPLY(ConsultApply ca, Model model, HttpServletRequest request, @RequestParam(name="FILE", required=false) MultipartFile file)
+	public String insertCONSULT_APPLY(ConsultApply ca, Model model, HttpServletRequest request, @RequestParam(name="FILE_PATH", required=false) MultipartFile file)
 	{	
 		/*System.out.println("왜 안될까");
 		System.out.println("ca : " + ca);
@@ -40,7 +40,7 @@ public class OthersController {
 		try
 		{
 			file.transferTo(new File(filePath + "\\" + changeFileName + ext));
-			ca.setFILE(changeFileName);
+			ca.setFILEPATH(changeFileName);
 			
 			
 			os.insertCONSULT_APPLY(ca);

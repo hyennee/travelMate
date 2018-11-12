@@ -162,16 +162,18 @@
 				</div>
 				<br clear="both">
 				<div class="search-container" style="margin:auto; width:800px;" align="center">
-					<div>
-						<select style="height:30px; border:1px solid lightgray; border-radius:5px;" name="searchCategory">
-							<option value="title">제목</option>
-							<option value="nick_name">작성자</option>
-							<option value="content">내용</option>
-						</select>
-						&nbsp;&nbsp;
-						<input type="search" name="searchValue" style="width:400px; height:30px; border:1px solid lightgray; border-radius:5px; padding-top:4px;">
-						<button type="submit" class="pointer" style="width:30px; height:30px; background:white; border:none;"><img src="${ contextPath }/resources/images/search-btn.PNG" style="width:28px; height:28px; border:1px solid lightgray; border-radius:5px; vertical-align:middle;"></button>
-					</div>
+					<form action="selectSearch.bo?category=2" method="post">
+						<div>
+							<select style="height:30px; border:1px solid lightgray; border-radius:5px;" name="searchCategory">
+								<option value="title">제목</option>
+								<option value="nick_name">작성자</option>
+								<option value="content">내용</option>
+							</select>
+							&nbsp;&nbsp;
+							<input type="search" name="searchValue" style="width:400px; height:30px; border:1px solid lightgray; border-radius:5px; padding-top:4px;">
+							<button type="submit" class="pointer" style="width:30px; height:30px; background:white; border:none;"><img src="${ contextPath }/resources/images/search-btn.PNG" style="width:28px; height:28px; border:1px solid lightgray; border-radius:5px; vertical-align:middle;"></button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

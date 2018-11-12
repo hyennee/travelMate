@@ -18,14 +18,14 @@ public class ConsultApply  implements Serializable {
 	private String IDEA;//아이디어
 	private String ETC;//특이사항
 	private int USER_NO;//회원번호
-	private String FILE;//파일
+	private String FILEPATH;//파일
 	
 	public ConsultApply() {
 		super();
 	}
 
 	public ConsultApply(int cONSULT_APPLY_NO, Date aPPLY_DATE, String jOB, String iNFO, String tRAVEL_EXP, String iDEA,
-			String eTC, int uSER_NO, String fILE) {
+			String eTC, int uSER_NO, String fILEPATH) {
 		super();
 		CONSULT_APPLY_NO = cONSULT_APPLY_NO;
 		APPLY_DATE = aPPLY_DATE;
@@ -35,7 +35,7 @@ public class ConsultApply  implements Serializable {
 		IDEA = iDEA;
 		ETC = eTC;
 		USER_NO = uSER_NO;
-		FILE = fILE;
+		FILEPATH = fILEPATH;
 	}
 
 	public int getCONSULT_APPLY_NO() {
@@ -102,12 +102,12 @@ public class ConsultApply  implements Serializable {
 		USER_NO = uSER_NO;
 	}
 
-	public String getFILE() {
-		return FILE;
+	public String getFILEPATH() {
+		return FILEPATH;
 	}
 
-	public void setFILE(String fILE) {
-		FILE = fILE;
+	public void setFILEPATH(String fILEPATH) {
+		FILEPATH = fILEPATH;
 	}
 
 	public static long getSerialversionuid() {
@@ -118,6 +118,6 @@ public class ConsultApply  implements Serializable {
 	public String toString() {
 		return "ConsultApply [CONSULT_APPLY_NO=" + CONSULT_APPLY_NO + ", APPLY_DATE=" + APPLY_DATE + ", JOB=" + JOB
 				+ ", INFO=" + INFO + ", TRAVEL_EXP=" + TRAVEL_EXP + ", IDEA=" + IDEA + ", ETC=" + ETC + ", USER_NO="
-				+ USER_NO + ", FILE=" + FILE + "]";
+				+ USER_NO + ", FILEPATH=" + FILEPATH + "]";
 	}
 }
