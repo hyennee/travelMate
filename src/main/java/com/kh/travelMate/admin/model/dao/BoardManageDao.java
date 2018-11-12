@@ -20,4 +20,8 @@ public interface BoardManageDao {
 
 	ConsultManage selectApplyDetail(SqlSessionTemplate sqlSession, int apply_no);
 
+	void consultApplyAccept(SqlSessionTemplate sqlSession, ConsultManage selectApplyDetail);
+
+	void consultApplyRefuse(SqlSessionTemplate sqlSession, ConsultManage selectApplyDetail);
+
 }

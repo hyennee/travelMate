@@ -5,18 +5,23 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
+import com.kh.travelMate.admin.common.Pagination;
 import com.kh.travelMate.admin.model.service.BoardManageService;
 import com.kh.travelMate.admin.model.service.MemberManageService;
 import com.kh.travelMate.admin.model.vo.BoardManage;
 import com.kh.travelMate.admin.model.vo.ConsultManage;
 import com.kh.travelMate.admin.model.vo.MemberManage;
 import com.kh.travelMate.admin.model.vo.PageInfo;
-import com.kh.travelMate.admin.common.Pagination;
 
 @Controller
+@SessionAttributes({"memberDetail", "selectApplyDetail"})
 public class AdminController {
 	@Autowired
 	private BoardManageService bms;
@@ -94,7 +99,52 @@ public class AdminController {
 
 			return "admin/memberManage/consultManageDetail";
 		}
-	}	
+	}
+	
+	@RequestMapping("admin/consultApplyAccept.admin")
+	public String consultManageAccpetAdmin(@RequestParam(defaultValue="0") int apply_no, @RequestParam(defaultValue="0") String reason, Model model) {
+		if(apply_no == 0 || reason.equals("0")) {
+			// apply_no이나 reason이 없을 경우
+			System.out.println("여기로 들어오면 안됨");
+			return "admin/memberManage/consultManageList";
+		}else{
+			// apply_no가 있을 경우
+			System.out.println("들어옴");
+			ConsultManage selectApplyDetail = bms.selectApplyDetail(apply_no);
+			selectApplyDetail.setConsult_Apply_No(apply_no);
+			selectApplyDetail.setReason(reason);
+			bms.consultApplyAccept(selectApplyDetail);
+			selectApplyDetail = bms.selectApplyDetail(apply_no);
+			model.addAttribute("selectApplyDetail", selectApplyDetail);
+
+			return "admin/memberManage/consultManageDetail";
+		}				
+
+	}
+	
+	@RequestMapping("admin/consultApplyRefuse.admin")
+	public String consultManageRefuseAdmin(@RequestParam(defaultValue="0") int apply_no, @RequestParam(defaultValue="0") String reason, @RequestParam(defaultValue="0") int user_No, Model model) {
+		
+		if(apply_no == 0 || reason.equals("0") || user_No == 0) {
+			// apply_no이나 reason이 없을 경우
+			System.out.println("여기로 들어오면 안됨");
+			return "admin/memberManage/consultManageList";
+		}else{
+			System.out.println("들어옴");
+			ConsultManage selectApplyDetail = bms.selectApplyDetail(apply_no);
+			selectApplyDetail.setConsult_Apply_No(apply_no);
+			selectApplyDetail.setReason(reason);
+			selectApplyDetail.setUser_No(user_No);
+			System.out.println("setted selectApplyDetail: " + selectApplyDetail);
+			
+			bms.consultApplyRefuse(selectApplyDetail);
+			selectApplyDetail = bms.selectApplyDetail(apply_no);
+			model.addAttribute("selectApplyDetail", selectApplyDetail);
+
+			return "admin/memberManage/consultManageDetail";
+		}			
+
+	}
 	
 	@RequestMapping("admin/boardManage.admin")
 	public String boardManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model) {
@@ -117,7 +167,13 @@ public class AdminController {
 
 		return "admin/boardManage/boardManageMain";
 		
-	}	
+	}
+	
+	@RequestMapping("admin/paymentManage.admin")
+	public String paymentManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model) {
+		
+		return "admin/paymentManage/paymentManageMain";
+	}
 	
 	
 }

@@ -2,6 +2,7 @@ package com.kh.travelMate.admin.model.service;
 
 import java.util.ArrayList;
 
+import com.kh.travelMate.admin.model.vo.ConsultManage;
 import com.kh.travelMate.admin.model.vo.MemberManage;
 import com.kh.travelMate.admin.model.vo.PageInfo;
 

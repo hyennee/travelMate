@@ -8,6 +8,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 
 import com.kh.travelMate.admin.model.dao.MemberManageDao;
+import com.kh.travelMate.admin.model.vo.ConsultManage;
 import com.kh.travelMate.admin.model.vo.MemberManage;
 import com.kh.travelMate.admin.model.vo.PageInfo;
 
@@ -39,6 +40,8 @@ public class MemberManageServiceImpl implements MemberManageService {
 		
 		return memberDetail;
 	}
+
+
 
 
 }
