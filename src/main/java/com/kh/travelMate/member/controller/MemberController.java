@@ -251,6 +251,9 @@ public class MemberController {
 			return mailService.send(subject, sb.toString(), "ejkim1111@gmail.com", email);
 	
 		}
+		
+		
+		
 	
 	
 }

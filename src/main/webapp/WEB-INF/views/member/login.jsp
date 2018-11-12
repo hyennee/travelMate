@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
 <link rel="stylesheet" href="resources/css/style.css" type="text/css">
-<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
-<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
-<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="icon" type="image/png" href="/travelMate/resources/images/flight.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -26,7 +27,7 @@
 
 #loginForm {
 	width: 300px;
-	height: 400px;
+	height: 450px;
 	margin-top: 124px;
 	background: #91d4c6; /* #a3dbcf; */
 	display: inline-block;
@@ -168,8 +169,13 @@ nav #memberMenuUl>li:first-child {
 							</div>
 							<br>
 							<button id="loginBtn">로그인</button>
+							
+							  
 						</form>
-
+						<br>
+						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+ 							 <div id="naver_id_login"></div>
+ 							 
 						<div id="memberMenu">
 							<nav>
 								<ul id="memberMenuUl">
@@ -222,6 +228,31 @@ $('#loginBtn').click(function(){
 })
 
 
+</script>
+ <script type="text/javascript">
+  	var naver_id_login = new naver_id_login("jlB_L3BFZdd8giolYl0O", "http://127.0.0.1:8001/travelMate/goMain.me");
+  	var state = naver_id_login.getUniqState();
+  	naver_id_login.setButton("white", 3,40);
+  	naver_id_login.setDomain("http://127.0.0.1:8001/travelMate/loginView.me");
+  	naver_id_login.setState(state);
+  	naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
+  </script>
+  
+  <script type="text/javascript">
+  var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "YOUR_CALLBACK_URL");
+  // 접근 토큰 값 출력
+  alert(naver_id_login.oauthParams.access_token);
+  // 네이버 사용자 프로필 조회
+  naver_id_login.get_naver_userprofile("naverSignInCallback()");
+  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+  function naverSignInCallback() {
+    alert(naver_id_login.getProfileData('email'));
+    alert(naver_id_login.getProfileData('nickname'));
+    alert(naver_id_login.getProfileData('age'));
+    alert(naver_id login.getProfileData('gender'));
+    alert(naver_id login.getProfileData(''))
+  }
 </script>
 
 </html>
