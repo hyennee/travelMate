@@ -92,10 +92,6 @@ public class BoardController
 			
 			selectList = bs.selectBoardList(b, page);
 			
-			System.out.println("selectList : " + selectList);
-			
-			/*System.out.println("list category : " + b.getCategory());*/
-			
 			model.addAttribute("selectList", selectList);
 			model.addAttribute("page", page);
 			
@@ -199,7 +195,7 @@ public class BoardController
 	{
 		try
 		{	
-			int listCount = bs.getListCount(b);
+			int listCount = bs.getListCountSearch(b);
 			System.out.println("listCount : " + listCount);
 			
 			PageInfo page = Pagination.getPageInfo(currentPage, listCount);
@@ -213,32 +209,22 @@ public class BoardController
 			{
 				b.setSearchValue(request.getParameter("searchValue"));
 				
-				System.out.println("search b : " + b);
-				
 				list = bs.selectSearch(b, page);
 			}
 			else if(b.getSearchCategory().equals("nick_name"))
 			{
 				b.setSearchValue(request.getParameter("searchValue"));
 
-				System.out.println("search b : " + b);
-				
 				list = bs.selectSearch(b, page);
 			}
 			else if(b.getSearchCategory().equals("content"))
 			{
 				b.setSearchValue(request.getParameter("searchValue"));
 				
-				System.out.println("search b : " + b);
-				
 				list = bs.selectSearch(b, page);
 			}
 			
-			list = bs.selectBoardList(b, page);
-			
-			System.out.println("list category : " + b.getCategory());
-			
-			model.addAttribute("list", list);
+			model.addAttribute("selectList", list);
 			model.addAttribute("page", page);
 			
 			if(b.getCategory().equals("1"))

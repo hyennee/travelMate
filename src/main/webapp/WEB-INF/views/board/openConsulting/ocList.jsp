@@ -8,11 +8,10 @@
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
 <link rel="stylesheet" href="resources/css/style.css" type="text/css">
-<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
-<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
-<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="icon" type="image/png" href="/travelMate/resources/images/flight.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <style>
 #openConsulting {
@@ -289,7 +288,7 @@
 									<button type="button" class="disable-page-button"><</button>
 								</c:if>
 								<c:if test="${ page.currentPage > 1 }">
-									<button type="button" class="page-button" onclick="location.href='selectList.bo?category=2&currentPage=${ page.currentPage - 1 }'"><</button>
+									<button type="button" class="page-button" onclick="location.href='selectList.bo?category=3&currentPage=${ page.currentPage - 1 }'"><</button>
 								</c:if>
 								
 								<c:forEach var="p" begin="${ page.startPage }" end="${ page.endPage }">
@@ -297,7 +296,7 @@
 										<button type="button" class="disable-page-button"><c:out value="${ p }" escapeXml="false"/></button>
 									</c:if>
 									<c:if test="${ p ne page.currentPage }">
-										<button type="button" class="page-button" onclick="location.href='selectList.bo?category=2&currentPage=${ p }'"><c:out value="${ p }" escapeXml="false"/></button>
+										<button type="button" class="page-button" onclick="location.href='selectList.bo?category=3&currentPage=${ p }'"><c:out value="${ p }" escapeXml="false"/></button>
 									</c:if>
 								</c:forEach>
 								
@@ -305,7 +304,7 @@
 									<button type="button" class="disable-page-button">></button>
 								</c:if>
 								<c:if test="${ page.currentPage < page.maxPage }">
-									<button type="button" class="page-button" onclick="location.href='selectList.bo?category=2&currentPage=${ page.currentPage + 1}'">></button>
+									<button type="button" class="page-button" onclick="location.href='selectList.bo?category=3&currentPage=${ page.currentPage + 1}'">></button>
 								</c:if>
 							
 								<!-- <button type="button" class="page-button"><</button>&nbsp;
@@ -317,14 +316,14 @@
 						<div class="search-container" style="margin:auto; width:900px;" align="center">
 							<form action="selectSearch.bo?category=3" method="post">
 								<div>
-									<select style="height:25px; border:1px solid lightgray; border-radius:5px;" name="searchCategory">
+									<select style="height:30px; border:1px solid lightgray; border-radius:5px;" name="searchCategory">
 										<option value="title">제목</option>
 										<option value="nick_name">작성자</option>
 										<option value="content">내용</option>
 									</select>
 									&nbsp;&nbsp;
-									<input type="search" name="searchValue" style="width:400px; height:25px; border:1px solid lightgray; border-radius:5px;">
-									<button type="submit"><img src="${ contextPath }/resources/images/search-btn.PNG" style="width:25px; height:25px; border:1px solid lightgray; border-radius:5px;"></button>
+									<input type="search" name="searchValue" style="width:400px; height:30px; border:1px solid lightgray; border-radius:5px; padding-top:4px;">
+									<button type="submit" class="pointer" style="width:30px; height:30px; background:white; border:none;"><img src="${ contextPath }/resources/images/search-btn.PNG" style="width:28px; height:28px; border:1px solid lightgray; border-radius:5px; vertical-align:middle;"></button>
 								</div>
 							</form>
 						</div>

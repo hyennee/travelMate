@@ -11,9 +11,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
-<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
-<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
-<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="icon" type="image/png" href="/travelMate/resources/images/flight.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
 <!-- Include Editor style. -->
 <!-- <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.5/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.5/css/froala_style.min.css' rel='stylesheet' type='text/css' /> -->
@@ -54,6 +54,10 @@
 		width:800px;
 		text-align:left;
 	}
+	.pointer:hover
+	{
+		cursor:pointer;
+	}
 </style>
 </head>
 <body>
@@ -89,8 +93,8 @@
 				</div>
 				<hr>
 				<div>
-					<button type="button" style="background:#E7E7E7; border:none; border-radius:5px; height:35px;">취소</button>
-					<button type="submit" style="background:skyblue; border:none; border-radius:5px; height:35px; color:white; font-size:16px; font-weight:bold;"><img src="${ contextPath }/resources/images/check.png" style="width:25px; height:25px;">확인</button>
+					<button type="button" class="pointer" style="background:#E7E7E7; border:none; border-radius:5px; height:35px;" onclick="location.href='selectList.bo?category=3'">취소</button>
+					<button type="submit" class="pointer" style="background:skyblue; border:none; border-radius:5px; height:35px; color:white; font-size:16px; font-weight:bold;"><img src="${ contextPath }/resources/images/check.png" style="width:25px; height:25px;">확인</button>
 				</div>
 				<br>
 			</div>

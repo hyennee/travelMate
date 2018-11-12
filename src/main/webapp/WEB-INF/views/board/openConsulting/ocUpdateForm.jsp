@@ -11,9 +11,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
-<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
-<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
-<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="icon" type="image/png" href="/travelMate/resources/images/flight.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
 <!-- Include Editor style. -->
 <!-- <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.5/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.5/css/froala_style.min.css' rel='stylesheet' type='text/css' /> -->

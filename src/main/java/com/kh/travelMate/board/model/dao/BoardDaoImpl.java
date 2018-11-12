@@ -109,20 +109,51 @@ public class BoardDaoImpl implements BoardDao
 	@Override
 	public ArrayList<Board> selectSearch(SqlSessionTemplate sqlSession, Board b, PageInfo page) throws BoardListException
 	{
-		System.out.println("dao b : " + b);
-		
 		List<Board> list = null;
+		
+		/*System.out.println("seoff : " + b.getSearchCategory());*/
 		
 		int offset = (page.getCurrentPage() - 1) * page.getLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, page.getLimit());
 		
-		list = sqlSession.selectList("Board.searchList", b, rowBounds);
+		if(b.getSearchCategory().equals("title"))
+		{
+			list = sqlSession.selectList("Board.searchTitleList", b, rowBounds);
+		}
+		else if(b.getSearchCategory().equals("nick_name"))
+		{
+			list = sqlSession.selectList("Board.searchNicknameList", b, rowBounds);
+		}
+		else if(b.getSearchCategory().equals("content"))
+		{
+			list = sqlSession.selectList("Board.searchContentList", b, rowBounds);
+		}
 		
 		if(list == null)
 		{
 			throw new BoardListException("게시글 검색 실패");
 		}
 		return (ArrayList<Board>) list;
+	}
+
+	@Override
+	public int getListCountSearch(SqlSessionTemplate sqlSession, Board b)
+	{
+		int result = 0;
+		
+		if(b.getSearchCategory().equals("title"))
+		{
+			result = sqlSession.selectOne("Board.selectListCountSearchTitle", b);
+		}
+		else if(b.getSearchCategory().equals("nick_name"))
+		{
+			result = sqlSession.selectOne("Board.selectListCountSearchNickname", b);
+		}
+		else if(b.getSearchCategory().equals("content"))
+		{
+			result = sqlSession.selectOne("Board.selectListCountSearchContent", b);
+		}
+		return result;
 	}
 }
