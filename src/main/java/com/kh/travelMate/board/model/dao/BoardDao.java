@@ -33,4 +33,6 @@ public interface BoardDao
 	Board selectOneRef(SqlSessionTemplate sqlSession, Board b);
 
 	ArrayList<Board> selectSearch(SqlSessionTemplate sqlSession, Board b, PageInfo page) throws BoardListException;
+
+	int getListCountSearch(SqlSessionTemplate sqlSession, Board b);
 }

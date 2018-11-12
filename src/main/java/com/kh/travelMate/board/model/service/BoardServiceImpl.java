@@ -133,4 +133,12 @@ public class BoardServiceImpl implements BoardService
 		
 		return list;
 	}
+
+	@Override
+	public int getListCountSearch(Board b)
+	{
+		int listCount = bd.getListCountSearch(sqlSession, b);
+		
+		return listCount;
+	}
 }

@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Make your own travel! - TravelMate</title>
-<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
-<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
-<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="icon" type="image/png" href="/travelMate/resources/images/flight.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
 <style>
 	.title
 	{
