@@ -101,7 +101,7 @@
 							</div>
 							<div class="form-group" style="text-align:left">
 								<label for="form_file">증빙자료</label>
-								<input type="file" name="FILE" id="form_file" class="form-control">
+								<input type="file" name="FILE_PATH" id="form_file" class="form-control">
 							</div>
 						</div>
 					</div>

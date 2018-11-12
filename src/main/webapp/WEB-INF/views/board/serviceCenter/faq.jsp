@@ -79,9 +79,13 @@
 			<hr style="border:2px solid lightgray; width:800px;">
 			<div class="page-container" style="margin:auto; width:960px;">
 				<div class="FAQ-container" style="margin:auto; width:800px;">
-					<button class="accordion">Section 1</button>
+					<button class="accordion">링켄리브는 왜 차별화된 여행사인가요?</button>
 					<div class="panel">
-					  <p>Lorem ipsum...</p>
+					  <p>TravelMate는 몇 명의 상품기획자가 여행상품을 만들지 않습니다. 여행PD, 작가, 기자, 예술가, 사진가 등
+					  자신만의 방법으로 세계를 여행한 각 분야의 다양한 전문가들이 자신의 경험과 전문분야를 살려 여행을 디자인합니다.
+					 TravelMate는 상업적으로 유명한 관광지에만 집중하지 않습니다. 단체관광이나 개별여행의 틀에 얽매이지도 않습니다.
+					 사진 몇 장만 찍고 바삐 돌아서는 '관광'이 아니라 깊이 있는 테마와 이야기의 '여행'을 만들고, 여행디자이너와 그들의
+					 여행에 가슴 떨리는 여행자들을 잇는 커뮤니티-TravelMate가 특별한 이유입니다.</p>
 					</div>
 					<div class="panel-blank" style="height:10px;">
 					</div>

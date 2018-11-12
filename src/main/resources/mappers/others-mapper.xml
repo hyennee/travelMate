@@ -8,7 +8,7 @@
 	
 	<insert id="insertCONSULT_APPLY" parameterType="ConsultApply">
 		INSERT INTO CONSULT_APPLY
-		VALUES(SEQ_CONSULT_APPLY_NO.NEXTVAL, default, #{JOB}, #{INFO}, #{TRAVEL_EXP}, #{IDEA}, #{ETC}, #{USER_NO}, #{FILE})
+		VALUES(SEQ_CONSULT_APPLY_NO.NEXTVAL, default, #{JOB}, #{INFO}, #{TRAVEL_EXP}, #{IDEA}, #{ETC}, #{USER_NO}, #{FILEPATH})
 	</insert>
 	
 	<insert id="insertConsultRequest" parameterType="ConsultRequest">
