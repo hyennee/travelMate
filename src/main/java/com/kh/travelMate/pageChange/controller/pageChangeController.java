@@ -1,5 +1,6 @@
 package com.kh.travelMate.pageChange.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,11 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.service.mypageService;
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.exception.IamportResponseException;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
 
 
 //페이지 이동에 관한 모든 것은 여기서 사용
 @Controller
 public class pageChangeController {
+	IamportClient client = new IamportClient("5297797561451640", "KRcAfNqO3pAQklrZuVACAZCG1wsNE5QpX2ZcPq1SPCJ9Xa8s6J4GIHnKeQxTVniSqi5fJ68zISIG3R89");
 	@Autowired
 	private mypageService ms;
 	
@@ -88,8 +94,32 @@ public class pageChangeController {
 	{
 		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
 		List<HashMap<String,Object>> cyberMoney = ms.cyberMoneyHistory(loginUser);
-		model.addAttribute("cyberMoney", cyberMoney);
+		for(int i = 0 ; i < cyberMoney.size(); i++) {
+			try {
+				String id = (String)cyberMoney.get(i).get("PROOF_NO");
+				if(id.contains("IMP")) {
+					IamportResponse<Payment> paymentByimpuid = client.paymentByImpUid((String)cyberMoney.get(i).get("PROOF_NO"));
+					if(paymentByimpuid.getResponse().getCancelReason() == null) {
+						cyberMoney.get(i).put("status", "1");
+					}else {
+						cyberMoney.get(i).put("status", "0");
+					}
+				}else {
+					
+				}
+			} catch (IamportResponseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
+		loginUser.setCybermoney(ms.cyberMoney(loginUser.getUser_no()));
+		model.addAttribute("loginUser", loginUser);
+		model.addAttribute("cyberMoney", cyberMoney);
+		model.addAttribute("msg", request.getParameter("msg"));
 		return "mypage/Money";
 	}
 	
@@ -98,6 +128,7 @@ public class pageChangeController {
 	{
 		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
 		List<HashMap<String,Object>> oneByOne = ms.oneByOneHistory(loginUser);
+		
 		model.addAttribute("oneByOne", oneByOne);
 		return "mypage/oneByOneQnA";
 	}
@@ -112,8 +143,12 @@ public class pageChangeController {
 	}
 	
 	@RequestMapping("consultingCustomer.me")
-	public String consultingCustomer()
+	public String consultingCustomer(Model model,HttpServletRequest request)
 	{
+		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+		List<HashMap<String,Object>> consultingCustomer = ms.consultingCustomerHistory(loginUser);
+		
+		model.addAttribute("consultingCustomer", consultingCustomer);
 		return "mypage/consultingCustomer";
 	}
 	

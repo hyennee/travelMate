@@ -15,6 +15,14 @@
 		WHERE USER_NO = #{user_no}
 	</select> 
 	
+	<select id="consultingCustomerHistory" resultType="java.util.HashMap" parameterType="int">
+		SELECT * 
+		FROM CONSULT_REQUEST cr
+		join member m on (cr.REQUEST_USER_NO = m.user_no) 
+		WHERE CONSULT_USER_NO = #{user_no}
+	</select> 
+	
+	
 	<select id="oneByOneHistory" resultType="java.util.HashMap" parameterType="int">
 		SELECT *
 		FROM BOARD 
@@ -41,14 +49,29 @@
 		WHERE NICK_NAME = #{nick_name}
 	</select>
 	
+	<select id="cyberMoney" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		SELECT CYBERMONEY
+		FROM member
+		WHERE USER_NO = #{user_no}
+	</select>
+	
 	<insert id="insertCyberMoney" parameterType="java.util.HashMap">
-		insert into cybermoney_record
-		values(seq_CYBERMONEY_RECORD_NO.nextval, #{userNo}, #{imp_uid}, sysdate, #{money}, '충전',(select cybermoney from member where user_no = #{userNo}))
+		insert into payment
+		values(seq_payment_NO.nextval, #{imp_uid}, '구매', #{money}, sysdate, '결제완료', '카드', null, #{userNo}) 
+	</insert>
+	
+	<insert id="insertCyberMoney3" parameterType="java.util.HashMap">
+		insert into payment
+		values(seq_payment_NO.nextval, null, '구매', #{money}, sysdate, '결제완료', '현금', null, #{userNo})
+	</insert>
+	<insert id="insertCyberMoney4" parameterType="java.util.HashMap">
+		insert into payment_info
+		values(seq_payment_info_no.nextval, #{account_no}, #{account_name})
 	</insert>
 	
 	<insert id="insertCyberMoney2" parameterType="java.util.HashMap">
-		insert into cybermoney_record
-		values(seq_CYBERMONEY_RECORD_NO.nextval, #{userNo}, #{imp_uid}, sysdate, #{money}, '환불',(select cybermoney from member where user_no = #{userNo}))
+		insert into payment
+		values(seq_payment_NO.nextval, #{imp_uid}, '환불', #{money}, sysdate, '환불완료', '카드', (select PAYMENT_NO from payment where PROOF_NO = #{imp_uid}), #{userNo})
 	</insert>
 	
 	<select id="checkpwd" parameterType="com.kh.travelMate.member.model.vo.Member" resultType="java.lang.String">

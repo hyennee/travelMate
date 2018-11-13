@@ -28,4 +28,11 @@ public interface mypageDao {
 	int updatepwd(SqlSessionTemplate sqlSession, Member m);
 
 	String checkpwd(SqlSessionTemplate sqlSession, Member m);
+
+	int cyberMoney(SqlSessionTemplate sqlSession, int user_no);
+
+	void insertCyberMoney3(int parseInt, Member loginUser, String account_name, String account_no,
+			SqlSessionTemplate sqlSession);
+
+	List<HashMap<String, Object>> consultingCustomerHistory(SqlSessionTemplate sqlSession, Member loginUser);
 }

@@ -129,6 +129,28 @@ public class mypageServiceImpl implements mypageService{
 		
 		return md.checkpwd(sqlSession, m);
 	}
+	@Override
+	public int cyberMoney(int user_no) {
+		
+		return md.cyberMoney(sqlSession, user_no);
+	}
+	@Override
+	public void insertCyberMoney3(int parseInt, Member loginUser, String account_name, String account_no) {
+		md.insertCyberMoney3(parseInt, loginUser, account_name, account_no, sqlSession);
+	}
+	@Override
+	public List<HashMap<String, Object>> consultingCustomerHistory(Member loginUser) {
+		List<HashMap<String, Object>> consultingCustomerHistory = md.consultingCustomerHistory(sqlSession,loginUser);
+		
+		System.out.println("ms.consultingCustomerHistory갔다왔니 ? : " + consultingCustomerHistory);
+		
+		for(int i = 0; i < consultingCustomerHistory.size(); i++) {
+			System.out.println(consultingCustomerHistory.get(i).get("tradeInfoHistory"));
+		}
+		
+		
+		return consultingCustomerHistory;
+	}
 	
 
 	
