@@ -99,7 +99,9 @@ public class mypageServiceImpl implements mypageService{
 		md.insertCyberMoney2(parseInt, loginUser, imp_uid, sqlSession);
 		
 	}
-	@Override
+	
+	//비밀번호 변경 시 현재비밀번호 일치하는지 체크
+/*	@Override
 	public String checkpwd(Member m) {
 		
 		//1. 암호화 된 비밀번호를 조회해오기
@@ -116,7 +118,18 @@ public class mypageServiceImpl implements mypageService{
 		}
 		
 		
+	}*/
+	@Override
+	public int updatepwd(Member m) {
+		
+		return md.updatepwd(sqlSession, m);
 	}
+	@Override
+	public String checkpwd(Member m) {
+		
+		return md.checkpwd(sqlSession, m);
+	}
+	
 
 	
 

@@ -129,22 +129,22 @@ a {
 					<div class="form-group">
 						<label for="inputPassword" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="pwd" name="pwd"
-								placeholder="현재 비밀번호를 입력하세요">
+							<input type="password" class="form-control" id="pwd" name="pwd" oninput="checkPwd()"
+								placeholder="현재 비밀번호를 입력하세요"> 
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="chg_pwd1" name="chg_pwd1"
-								placeholder="변경할 비밀번호를 입력하세요">
+							<input type="password" class="form-control" id="chg_pwd1" name="chg_pwd1" oninput="checkPwd()"
+								placeholder="변경할 비밀번호를 입력하세요"> <div id="checkInputPwd"></div>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="chg_pwd2" name="chg_pwd2"
-								placeholder="변경할 비밀번호를 확인해주세요">
+							<input type="password" class="form-control" id="chg_pwd2" name="chg_pwd2" oninput="checkPwd()"
+								placeholder="변경할 비밀번호를 확인해주세요"><div id="checkInputPwd"></div>
 						</div>
 					</div>
 					
@@ -160,31 +160,12 @@ a {
 	</div>
 
 	<script>
-		function currentPwd() {
-			console.log();
-			var current_pwd = $('#current_pwd').val();
-			$
-					.ajax({
-						data : {
-							"current_pwd" : current_pwd
-						},
-						url : 'post',
-						success : function(data) {
 
-							if (data == "0") {
-								document.getElementById('current_pwd').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
-								$('#submit').attr('disabled', false);
-							} else if (data == "1") {
-
-							}
-						}
-					})
-		}
 
 		//비밀번호 확인 체크 및 유효성 검사
 		function checkPwd() {
-			var chkPwdVal1 = $('#password').val();
-			var chkPwdVal2 = $('#password2').val();
+			var chkPwdVal1 = $('#chg_pwd1').val();
+			var chkPwdVal2 = $('#chg_pwd2').val();
 			var checkNumber = chkPwdVal1.search(/[0-9]/g);
 			var checkEnglish = chkPwdVal1.search(/[a-z]/ig);
 			var regPwdExp = /^[A-Za-z0-9]{8,16}$/; //비밀번호 영문(소문자와 대문자)과 숫자 8자~16자
@@ -192,8 +173,7 @@ a {
 			console.log(chkPwdVal2);
 
 			//비밀번호 공백 체크
-			if (chkPwdVal1 == ""
-					&& ((chkPwdVal1 == chkPwdVal2) || (chkPwdVal1 != chkPwdVal2))) {
+			if (chkPwdVal1 == "" && ((chkPwdVal1 == chkPwdVal2) || (chkPwdVal1 != chkPwdVal2))) {
 
 				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호를 입력해주십시오.</span>";
 				pwdCheck = 0;
@@ -216,11 +196,11 @@ a {
 
 			if (regPwdExp.test(chkPwdVal1) == true) {
 				//비밀번호 유효성 검사를 통과하면 확인 체크
-				if (chkPwdVal1 != "" && (chkPwdVal1 == chkPwdVal2)) {
-					document.getElementById('checkInputPwd').innerHTML = "<span style='color:blue; font-size:12px'>비밀번호가 일치합니다.</span>";
+			if ( chkPwdVal1 != "" && (chkPwdVal1 == chkPwdVal2) ) {
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:blue; font-size:12px'>비밀번호가 일치합니다.</span>";
 
-				} else if (chkPwdVal1 != "" && (chkPwdVal1 != chkPwdVal2)) {
-					document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호가 일치하지 않습니다.</span>";
+			} else if (chkPwdVal1 != "" && (chkPwdVal1 != chkPwdVal2)) {
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호가 일치하지 않습니다.</span>";
 
 				}
 

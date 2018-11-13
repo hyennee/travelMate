@@ -59,10 +59,22 @@ public class mypageDaoImpl implements mypageDao{
 		
 	}
 	
-// 비밀번호 체크
+/*// 비밀번호 체크
 	@Override
 	public String checkpwd(int user_no, SqlSessionTemplate sqlSession) {	
 		return sqlSession.selectOne("Mypage.checkpwd", user_no);
+	}*/
+
+	@Override
+	public int updatepwd(SqlSessionTemplate sqlSession, Member m) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("Mypage.updatepwd", m);
+	}
+
+	@Override
+	public String checkpwd(SqlSessionTemplate sqlSession, Member m) {
+		
+		return sqlSession.selectOne("Mypage.checkpwd", m.getUser_no());
 	}
 	
 

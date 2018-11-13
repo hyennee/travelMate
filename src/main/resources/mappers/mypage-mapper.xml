@@ -52,12 +52,16 @@
 	</insert>
 	
 	<select id="checkpwd" parameterType="com.kh.travelMate.member.model.vo.Member" resultType="java.lang.String">
-		SELECT PASSWORD FROM MEMBER WHERE USER_NO=#{user_no}	
+		SELECT PASSWORD 
+		FROM MEMBER 
+		WHERE USER_NO = #{user_no}	
 	</select>
 	
-	<!-- <update id="updatepwd" parameterType="java.lang.Integer">
-		
-	</update> -->
+	<update id="updatepwd" parameterType="com.kh.travelMate.member.model.vo.Member">
+		UPDATE MEMBER 
+		SET PASSWORD = #{password} 
+		WHERE USER_NO = #{user_no}
+	</update>
 </mapper> 
 
 
