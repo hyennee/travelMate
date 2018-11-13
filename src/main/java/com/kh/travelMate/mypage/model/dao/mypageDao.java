@@ -23,5 +23,9 @@ public interface mypageDao {
 
 	void insertCyberMoney2(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession);
 
-	String checkpwd(int user_no,SqlSessionTemplate sqlSession);
+	/*String checkpwd(int user_no,SqlSessionTemplate sqlSession);*/
+
+	int updatepwd(SqlSessionTemplate sqlSession, Member m);
+
+	String checkpwd(SqlSessionTemplate sqlSession, Member m);
 }

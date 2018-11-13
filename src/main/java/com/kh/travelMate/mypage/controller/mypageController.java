@@ -32,7 +32,8 @@ import com.siot.IamportRestClient.response.Payment;
 public class mypageController {
 	@Autowired
 	private mypageService ms;
-	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	
 	IamportClient client = new IamportClient("5297797561451640", "KRcAfNqO3pAQklrZuVACAZCG1wsNE5QpX2ZcPq1SPCJ9Xa8s6J4GIHnKeQxTVniSqi5fJ68zISIG3R89");
@@ -171,17 +172,67 @@ public class mypageController {
 			
 			Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
 			String pwd = request.getParameter("pwd");
-			m.setPassword(pwd);
-			m.setUser_no(loginUser.getUser_no());
-			//패스워드 받은거 pwd에 넣기
 			String chg_pwd1 = request.getParameter("chg_pwd1");
-			String chg_pwd2 = request.getParameter("chg_pwd2");
+			System.out.println(pwd);
+			System.out.println(chg_pwd1);//
+			int user_no = loginUser.getUser_no();
+			System.out.println(user_no);
 			
-			String check = ms.checkpwd(m);
 			
-			System.out.println("pwd:" + pwd + "check:" + check);
-			if(pwd == check) {
+			String encPassword = passwordEncoder.encode(pwd);
+			String encChg_pwd = passwordEncoder.encode(chg_pwd1);
+			
+			/*m.setPassword(encPassword);*/
+			m.setUser_no(loginUser.getUser_no());
+			
+			String selectPwd = ms.checkpwd(m);
+			
+			if(encPassword.equals(selectPwd)) {
+				
+				m.setPassword(encChg_pwd);
+				
+				int result = ms.updatepwd(m);
+				
+				
 			}
+			
+			//패스워드 받은거 pwd에 넣기
+			/*String chg_pwd1 = request.getParameter("chg_pwd1");
+			System.out.println(chg_pwd1);*/
+			
+			
+			
+			try {
+				
+				//매번 랜덤한 솔트값을 가지고 암호화를 하기 때문에 호출시마다 다이제스트값은 바뀌게 된다.
+				//스프링 시큐리티에서 match()메소드를 제공해준다.
+				//평문과 암호화된 문장이 일치하는지 여부만 true, false로 제공
+				
+				String check = ms.checkpwd(m);
+				
+				System.out.println("pwd :  " + pwd + "  /  check :  " + check);
+				
+				if(pwd.equals(check)) {
+					
+					m.setPassword(encChg_pwd);
+					int updatepwd = ms.updatepwd(m);
+					System.out.println("updatepwd : " + updatepwd);
+				}
+				
+				model.addAttribute("loginUser", loginUser);
+				
+				return "redirect:goMain.me";
+				
+			} catch (Exception e) {
+				model.addAttribute("msg", e.getMessage());
+				
+				return "common/errorPage";
+				
+			}
+			
+			
+			
+		
 			
 			
 			
@@ -190,8 +241,6 @@ public class mypageController {
 //			model.addAttribute("loginUser", loginUser);
 			 			
 //			System.out.println("loginUser : " + loginUser);
-
-			return "mypage/modifyPwd";		
 	}
 /*
 	// 임시 비밀번호 발급하기
