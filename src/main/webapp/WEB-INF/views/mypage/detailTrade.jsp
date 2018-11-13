@@ -5,16 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<title>1:1문의내역리스트</title>
+<title>상세거래내역</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -66,6 +57,7 @@ tr {
 }
 
 
+
 .section {
 	border: 1px solid #bcbcbc;
 	width: 100%;
@@ -100,27 +92,19 @@ td{
 			<jsp:include page="sidemenu.jsp" />
 		</div>
 		<div id="jb-content">
-			<h2>1:1문의</h2>
+			<h2>상세 거래내역</h2>
 			<hr />
 			<div >
-						<p>문의내역리스트</p>
-						<table  width="100%" class="table table-bordered table-hover text-center">
-								<tr>
-									<th class="thstyle">no</th>
-									<th class="thstyle">제목</th>
-									<th class="thstyle">작성자</th>
-									<th class="thstyle">작성일시</th>
-								</tr>
-								<c:forEach var="size" items="${ oneByOne }" >
-								<tr>
-									<td>${ size.BOARD_NO}</td>
-									<td>${ size.TITLE}</td>
-									<td>${ size.WRITE}</td>
-									<td>${ size.BOARD_DATE}</td>
-									
-								</tr>
-								</c:forEach>
-							</table>
+						<p>상세 거래 내역</p>
+						
+						<label for="">작성자</label><input type="text" value="아이디" readonly/><br />
+						<label for="">컨설턴트</label><input type="text" value="컨설턴트" readonly /><br />
+						<label for="">거래일시</label><input type="text" value="2018.01.11" readonly/><br />
+						<label for="">거래한 상품</label><input type="text" value="신혼여행으로 몰디브, 예산 1인 300으로 짜주세요"/><br />
+						<label for="">내용</label><br />
+						
+						
+												
 
 			</div>
 			<br />

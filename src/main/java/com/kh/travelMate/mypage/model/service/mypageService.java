@@ -22,5 +22,7 @@ public interface mypageService {
 	void insertCyberMoney(int parseInt, Member loginUser, String imp_uid);
 
 	void insertCyberMoney2(int parseInt, Member loginUser, String imp_uid);
+
+	String checkpwd(Member m);
 	
 }

@@ -8,6 +8,14 @@
 <title>myInfo</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
 #jb-container {
 	width: 90%;
@@ -70,9 +78,10 @@ a {
 	text-decoration: none;
 	color: black;
 }
-.tdsection{
-	width:49%;
-	display:inline-block;
+
+.tdsection {
+	width: 49%;
+	display: inline-block;
 }
 </style>
 </head>
@@ -88,10 +97,10 @@ a {
 		<div id="jb-content">
 			<h2>비밀번호 변경</h2>
 			<hr />
-			<div >
-					<p>비밀번호는 가급적 주기적으로 변경해주세요.</p>
-					<p>비밀번호는 잊지 않도록 주의하시기 바랍니다.</p>
-					<form action="">
+			<div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>비밀번호는 가급적 주기적으로 변경해주세요.</span><br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>비밀번호는 잊지 않도록 주의하시기 바랍니다.</span><br />
+				<!-- <form action="">
 					<table>
 						<tr>
 							<td>현재 비밀번호 </td>
@@ -107,87 +116,119 @@ a {
 						</tr>
 					</table>
 					<input type="submit" value="변경하기" onclick=""/>
-					</form>
+					</form> -->
+
+				<form class="form-horizontal" action="checkPwd.me" method="post">
+				
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-10">
+							<p class="form-control-static"><c:out value="${ sessionScope.loginUser.email }"></c:out></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="pwd" name="pwd"
+								placeholder="현재 비밀번호를 입력하세요">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="chg_pwd1" name="chg_pwd1"
+								placeholder="변경할 비밀번호를 입력하세요">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="chg_pwd2" name="chg_pwd2"
+								placeholder="변경할 비밀번호를 확인해주세요">
+						</div>
+					</div>
+					
+					<input type="submit" value="변경하기" />
+				</form>
+
 			</div>
 			<br />
 		</div>
 
-		<div id="jb-footer">
-		</div>
+		<div id="jb-footer"></div>
 
 	</div>
 
 	<script>
-	function currentPwd() {
-		console.log();
-		var current_pwd = $('#current_pwd').val();
-		$.ajax({
-			data : {
-				"current_pwd" : current_pwd
-			},
-			url :  'post',
-			success : function(data) {
-				
-				if (data == "0") {
-					document.getElementById('current_pwd').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
-					$('#submit').attr('disabled',false);					
-				} else if (data == "1") {
-					
+		function currentPwd() {
+			console.log();
+			var current_pwd = $('#current_pwd').val();
+			$
+					.ajax({
+						data : {
+							"current_pwd" : current_pwd
+						},
+						url : 'post',
+						success : function(data) {
+
+							if (data == "0") {
+								document.getElementById('current_pwd').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
+								$('#submit').attr('disabled', false);
+							} else if (data == "1") {
+
+							}
+						}
+					})
+		}
+
+		//비밀번호 확인 체크 및 유효성 검사
+		function checkPwd() {
+			var chkPwdVal1 = $('#password').val();
+			var chkPwdVal2 = $('#password2').val();
+			var checkNumber = chkPwdVal1.search(/[0-9]/g);
+			var checkEnglish = chkPwdVal1.search(/[a-z]/ig);
+			var regPwdExp = /^[A-Za-z0-9]{8,16}$/; //비밀번호 영문(소문자와 대문자)과 숫자 8자~16자
+			console.log(chkPwdVal1);
+			console.log(chkPwdVal2);
+
+			//비밀번호 공백 체크
+			if (chkPwdVal1 == ""
+					&& ((chkPwdVal1 == chkPwdVal2) || (chkPwdVal1 != chkPwdVal2))) {
+
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호를 입력해주십시오.</span>";
+				pwdCheck = 0;
+				return false;
+			}
+
+			//비밀번호 유효성 검사
+			if (regPwdExp.test(chkPwdVal1) == false) {
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 영문(소문자와 대문자)과 숫자 조합으로 8자~16자로 입력해주십시오.</span>";
+				return false;
+			}
+			if (checkNumber < 0 || checkEnglish < 0) {
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 숫자와 영문자를 혼용해서 입력해주십시오.</span>";
+				return false;
+			}
+			if (/(\w)\1\1\1/.test(chkPwdVal1) == true) {
+				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>같은 문자를 4번 이상 사용하실 수 없습니다.</span>";
+				return false;
+			}
+
+			if (regPwdExp.test(chkPwdVal1) == true) {
+				//비밀번호 유효성 검사를 통과하면 확인 체크
+				if (chkPwdVal1 != "" && (chkPwdVal1 == chkPwdVal2)) {
+					document.getElementById('checkInputPwd').innerHTML = "<span style='color:blue; font-size:12px'>비밀번호가 일치합니다.</span>";
+
+				} else if (chkPwdVal1 != "" && (chkPwdVal1 != chkPwdVal2)) {
+					document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호가 일치하지 않습니다.</span>";
+
 				}
-			}
-		})
-	}
-	
-	
-	//비밀번호 확인 체크 및 유효성 검사
-	function checkPwd() {
-		var chkPwdVal1 = $('#password').val();
-		var chkPwdVal2 = $('#password2').val();
-		var checkNumber = chkPwdVal1.search(/[0-9]/g);
-		var checkEnglish = chkPwdVal1.search(/[a-z]/ig);
-		var regPwdExp = /^[A-Za-z0-9]{8,16}$/; //비밀번호 영문(소문자와 대문자)과 숫자 8자~16자
-		console.log(chkPwdVal1);
-		console.log(chkPwdVal2);
-
-		//비밀번호 공백 체크
-		if (chkPwdVal1 == ""
-				&& ((chkPwdVal1 == chkPwdVal2) || (chkPwdVal1 != chkPwdVal2))) {
-
-			document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호를 입력해주십시오.</span>";
-			pwdCheck = 0;
-			return false;
-		}
-
-		//비밀번호 유효성 검사
-		if (regPwdExp.test(chkPwdVal1) == false) {
-			document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 영문(소문자와 대문자)과 숫자 조합으로 8자~16자로 입력해주십시오.</span>";
-			return false;
-		}
-		if (checkNumber < 0 || checkEnglish < 0) {
-			document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 숫자와 영문자를 혼용해서 입력해주십시오.</span>";
-			return false;
-		}
-		if (/(\w)\1\1\1/.test(chkPwdVal1) == true) {
-			document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>같은 문자를 4번 이상 사용하실 수 없습니다.</span>";
-			return false;
-		}
-
-		if (regPwdExp.test(chkPwdVal1) == true) {
-			//비밀번호 유효성 검사를 통과하면 확인 체크
-			if (chkPwdVal1 != "" && (chkPwdVal1 == chkPwdVal2)) {
-				document.getElementById('checkInputPwd').innerHTML = "<span style='color:blue; font-size:12px'>비밀번호가 일치합니다.</span>";
-
-			} else if (chkPwdVal1 != "" && (chkPwdVal1 != chkPwdVal2)) {
-				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호가 일치하지 않습니다.</span>";
 
 			}
 
+			return true;
+
 		}
-
-		return true;
-
-	}
-
 	</script>
 
 	<jsp:include page="../must/footer.jsp" />

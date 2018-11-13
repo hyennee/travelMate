@@ -50,6 +50,14 @@
 		insert into cybermoney_record
 		values(seq_CYBERMONEY_RECORD_NO.nextval, #{userNo}, #{imp_uid}, sysdate, #{money}, '환불',(select cybermoney from member where user_no = #{userNo}))
 	</insert>
+	
+	<select id="checkpwd" parameterType="com.kh.travelMate.member.model.vo.Member" resultType="java.lang.String">
+		SELECT PASSWORD FROM MEMBER WHERE USER_NO=#{user_no}	
+	</select>
+	
+	<!-- <update id="updatepwd" parameterType="java.lang.Integer">
+		
+	</update> -->
 </mapper> 
 
 

@@ -7,8 +7,10 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kh.travelMate.member.model.exception.LoginException;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.dao.mypageDao;
 
@@ -18,8 +20,10 @@ public class mypageServiceImpl implements mypageService{
 	private SqlSessionTemplate sqlSession;
 	@Autowired
 	private mypageDao md;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
-
+	//거래내역 가져오기
 	@Override
 	public List<HashMap<String, Object>> tradeInfoHistory(Member loginUser) {
 		List<HashMap<String, Object>> tradeInfo = new ArrayList<HashMap<String, Object>>();
@@ -35,7 +39,7 @@ public class mypageServiceImpl implements mypageService{
 		
 		return tradeInfo;
 	}
-
+	//1:1문의내역 가져오기
 	@Override
 	public List<HashMap<String, Object>> oneByOneHistory(Member loginUser) {
 		List<HashMap<String, Object>> oneByOne = new ArrayList<HashMap<String, Object>>();
@@ -50,7 +54,8 @@ public class mypageServiceImpl implements mypageService{
 		
 		return oneByOne;
 	}
-
+	
+	//사이버머니내역 가져오기
 	@Override
 	public List<HashMap<String, Object>> cyberMoneyHistory(Member loginUser) {
 		List<HashMap<String, Object>> cyberMoney = new ArrayList<HashMap<String, Object>>();
@@ -63,7 +68,8 @@ public class mypageServiceImpl implements mypageService{
 		}
 		return cyberMoney;
 	}
-
+	
+	//정보수정
 	@Override
 	public int modifyInfo(Member mem) {
 		
@@ -73,13 +79,16 @@ public class mypageServiceImpl implements mypageService{
 		
 		return modifyInfo;
 	}
-
+	
+	
+	//닉네임 중복체크
 	@Override
 	public int nickNameCheck(String nick_name) {
 		// TODO Auto-generated method stub
 		return md.nickNameCheck(sqlSession, nick_name);
 	}
-
+	
+	
 	@Override
 	public void insertCyberMoney(int parseInt, Member loginUser, String imp_uid) {
 		md.insertCyberMoney(parseInt, loginUser, imp_uid, sqlSession);
@@ -88,6 +97,24 @@ public class mypageServiceImpl implements mypageService{
 	@Override
 	public void insertCyberMoney2(int parseInt, Member loginUser, String imp_uid) {
 		md.insertCyberMoney2(parseInt, loginUser, imp_uid, sqlSession);
+		
+	}
+	@Override
+	public String checkpwd(Member m) {
+		
+		//1. 암호화 된 비밀번호를 조회해오기
+		String encPassword =  md.checkpwd(m.getUser_no(), sqlSession);
+				
+		//2. 조회해온 암호화 된 비밀번호와 평문 비밀번호를 비교해본다.
+		if(!passwordEncoder.matches(m.getPassword(), encPassword)){
+			//두개의 비밀번호가 같지 않으면 exception발생시킴
+			System.out.println("비번틀림");
+			return "must/errorPage";
+		}else {
+			//두개가 일치하는지 비교 일치하면 회원 정보를 조회해온다
+			return encPassword;
+		}
+		
 		
 	}
 
