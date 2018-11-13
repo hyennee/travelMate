@@ -88,8 +88,7 @@
 				<div class="fr-view" style="width:800px; margin:auto;">
 					<!-- Create a tag that we will use as the editable area. -->
 				    <!-- You can use a div tag as well. -->
-				    <textarea name="content">
-				    </textarea>
+				    <textarea name="content"></textarea>
 				</div>
 				<hr>
 				<div>
@@ -118,7 +117,8 @@
     	{   
 			theme : 'red',
 			imageUploadURL:'http://i.froala.com/upload',
-    		fileUploadURL:'http://i.froala.com/upload'
+    		fileUploadURL:'http://i.froala.com/upload',
+    		charCounterMax : 600
     	});
 	</script>
 </body>

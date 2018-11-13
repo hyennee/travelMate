@@ -500,9 +500,10 @@
                     <span class="degree">22~26˚C</span>
                 </li>
                 <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/300_new.png" alt="비"></span>
-                    <span class="date">10/26 (토)</span>
-                    <span class="degree">22~27˚C</span>
+                    <!-- <span class="img"><img src="/travelMate/resources/images/detail/300_new.png" alt="비"></span>
+                    <span class="info">10/26 (토)</span>
+                    <span class="info">22~27˚C</span> -->
+                    <div id="openweathermap-widget-16"></div>
                 </li>
                 <li>
                     <span class="ico"><img src="/travelMate/resources/images/detail/300_new.png" alt="비"></span>
@@ -570,5 +571,90 @@
     </div>
 </div>
 	<jsp:include page="../must/footer.jsp" />
+	
+	<script>
+		window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+		window.myWidgetParam.push(
+		{
+			id: 16,cityid: '1668341',
+			appid: 'e7a917f202e5b759fe9fac2ee226c96e',
+			units: 'metric',
+			containerid: 'openweathermap-widget-16',
+		});
+		(function()
+		{
+			var script = document.createElement('script');
+			script.async = true;
+			script.charset = "utf-8";
+			script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(script, s);
+		})();
+	</script>
+	
+	<!-- <script>
+	var fnWeatherNow = function()
+	{
+	 	$.ajax({
+			url:"http://api.openweathermap.org/data/2.5/forecast?q=Taipei,TW&APPID=e7a917f202e5b759fe9fac2ee226c96e"
+			,dataType:"json"
+			,type:"POST"
+			,success:function(data)
+			{
+				var nowImg = "";
+				var nowStatus = "";
+				var nowTemp = (data.main['temp']-273.15).toFixed(1);
+				
+				$.each(data.weather,function(key)
+				{
+	                var list = data.weather[key];
+	                switch(list.description)
+	                {
+		                case "clear sky":
+		                	nowImg = "/img/main/ico_weather1.png";
+		                	nowStatus = "맑음";
+		                    break;
+		                case "few clouds":
+		                	nowImg = "/img/main/ico_weather3.png";
+		                	nowStatus = "구름 조금";
+		                    break;
+		                case "scattered clouds":
+		                	nowImg = "/img/main/ico_weather2.png";
+		                	nowStatus = "구름 많음";
+		                    break;
+		                case "broken clouds":
+		                	nowImg = "/img/main/ico_weather4.png";
+		                	nowStatus = "흐림";
+		                    break;
+		                case "shower rain":
+		                	nowImg = "/img/main/ico_weather5.png";
+		                	nowStatus = "비";
+		                    break;
+		                case "rain":
+		                	nowImg = "/img/main/ico_weather5.png";
+		                	nowStatus = "비";
+		                    break;
+		                case "thunderstorm":
+		                	nowImg = "/img/main/ico_weather5.png";
+		                	nowStatus = "천둥/번개";
+		                    break;
+		                case "snow":
+		                	nowImg = "/img/main/ico_weather7.png";
+		                	nowStatus = "눈";
+		                    break;
+		                case "mist":
+		                	nowImg = "http://openweathermap.org/img/w/50d.png";
+		                	nowStatus = "안개";
+		                    break;
+	           	 	}
+				
+	           	 	$("#weatherNow").find('.img').children().attr('src', nowImg);
+	           	 	$("#weatherNow").find('.info').children('strong').html(nowTemp);
+	           		$("#weatherNow").find('.info').children('span').html(nowStatus);
+				});
+			}	
+		});
+	}
+	</script> -->
 </body>
 </html>

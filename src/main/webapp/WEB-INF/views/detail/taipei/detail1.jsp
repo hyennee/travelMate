@@ -51,6 +51,33 @@ ul{
 <li>찾아가는 법 : 지하철 스린(士林, Shilin) 역에서 하차하여 1번 출구로 나온다. 북쪽으로 직진하다 큰길에서 우회전하면 버스 정류장이 보인다. 紅 30번 버스나 255, 304, 815, 小18, 小19를 타면 고궁박물원 정문에 내릴 수 있다.</li>
 </ul>
 <br>
+<div align="center" style="margin:auto;">
+	<div id="map" style="width:700px; height:400px; background:lightgray;"></div>
+	<script>
+	var map;
+	function initMap()
+	{
+		var latLng = new google.maps.LatLng(25.102453, 121.548482);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng
+		}
+		
+		map = new google.maps.Map(document.getElementById('map'), mapOptions);
+		
+		var marker = new google.maps.Marker(
+		{
+			position : latLng,
+			map : map,
+		});
+	}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiF8Yj3g8V_IP0FHZqScTF8wrJseo6fHY&callback=initMap" async defer>
+    	/* API Key */
+	    /* AIzaSyDiF8Yj3g8V_IP0FHZqScTF8wrJseo6fHY */
+    </script>
+</div>
 <br>
 <h4>전시품과 관람 </h4>
 <div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2014062322/gjdiga/타이베이_테마_고궁박물원약도_TTP.jpg" title="타이베이 고궁박물원 약도" data-org="//ttcfd.hanatour.com/@cms_800/2014062322/gjdiga/타이베이_테마_고궁박물원약도_TTP.jpg"></div>

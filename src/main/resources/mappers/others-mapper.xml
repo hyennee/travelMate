@@ -8,7 +8,7 @@
 	
 	<insert id="insertCONSULT_APPLY" parameterType="ConsultApply">
 		INSERT INTO CONSULT_APPLY
-		VALUES(SEQ_CONSULT_APPLY_NO.NEXTVAL, default, #{JOB}, #{INFO}, #{TRAVEL_EXP}, #{IDEA}, #{ETC}, #{USER_NO}, #{FILEPATH})
+		VALUES(SEQ_CONSULT_APPLY_NO.NEXTVAL, default, #{JOB}, #{INFO}, #{TRAVEL_EXP}, #{IDEA}, #{ETC}, #{USER_NO})
 	</insert>
 	
 	<insert id="insertConsultRequest" parameterType="ConsultRequest">
@@ -17,6 +17,11 @@
 		, #{TRAVEL_AREA}, #{TRAVEL_START_DATE}, #{TRAVEL_END_DATE}, #{BUDGET}, #{ETC}, 'N'
 		, NULL, #{REQUEST_USER_NO}, #{CONSULT_USER_NO}
 )
+	</insert>
+	
+	<insert id="insertAttachment" parameterType="Attachment">
+		INSERT INTO ATTACHMENT
+		VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, #{originName}, #{modifyName}, #{fileRoot}, SYSDATE, '1', 1)
 	</insert>
 	
 </mapper>

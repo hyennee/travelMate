@@ -69,7 +69,34 @@ ul{
 송산기차역(라오허제 야시장) ▶ 지우펀 : 87 TWD(이지카드 이용 시 79 TWD) <br>
 루이팡 ▶ 지우펀 : 15 TWD(이지카드 가격 동일)<br></td></tr></tbody></table></div>
 <br>
-.<br>
+<div align="center" style="margin:auto;">
+	<div id="map" style="width:700px; height:400px; background:lightgray;"></div>
+	<script>
+	var map;
+	function initMap()
+	{
+		var latLng = new google.maps.LatLng(25.109960, 121.845169);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng
+		}
+		
+		map = new google.maps.Map(document.getElementById('map'), mapOptions);
+		
+		var marker = new google.maps.Marker(
+		{
+			position : latLng,
+			map : map,
+		});
+	}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiF8Yj3g8V_IP0FHZqScTF8wrJseo6fHY&callback=initMap" async defer>
+    	/* API Key */
+	    /* AIzaSyDiF8Yj3g8V_IP0FHZqScTF8wrJseo6fHY */
+    </script>
+</div>
+<br>
 <strong>진과스 ▶ 지우펀</strong><br>
 진과스와 지우펀은 버스로 10분 거리에 있어 많은 사람들이 진과스와 지우펀을 함께 둘러본다. 지우펀이 루이팡 역과 더 가깝고, 야경이 아름다운 곳이기에 대부분의 여행자들이 지우펀을 마지막 여정으로 남겨 둔다. 많은 사람들이 진과스가 종점임에도 불구하고 지우펀보다 진과스를 먼저 보는 이유가 바로 이 때문이다. <br>
 루이팡 역에서 출발할 경우, 역 맞은편 정류장에서 788번 또는 1062번 진과스행 버스를 타면 된다. 버스는 진과스에 가기 전에 지우펀에 먼저 정차한다. 이동 시간은 약 20분 정도 소요된다. 마찬가지로 진과스에서 지우펀으로 이동할 때도 반대편 정류장에서 같은 버스를 탑승하면 된다. <br>

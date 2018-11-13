@@ -20,6 +20,7 @@
 		<typeAlias type="com.kh.travelMate.admin.model.vo.ConsultManage" alias="ConsultManage"/>		
 		<typeAlias type="com.kh.travelMate.others.model.vo.ConsultApply" alias="ConsultApply"/>
 		<typeAlias type="com.kh.travelMate.others.model.vo.ConsultRequest" alias="ConsultRequest"/>
+		<typeAlias type="com.kh.travelMate.common.Attachment" alias="Attachment"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>

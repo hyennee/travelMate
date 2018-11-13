@@ -124,9 +124,10 @@
     	
     	$('textarea').froalaEditor(
     	{   
-            theme : 'red',
-            imageUploadURL:'http://i.froala.com/upload',
-            fileUploadURL:'http://i.froala.com/upload'
+    		theme : 'red',
+			imageUploadURL:'http://i.froala.com/upload',
+    		fileUploadURL:'http://i.froala.com/upload',
+    		charCounterMax : 600
         });
 	</script>
 </body>

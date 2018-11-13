@@ -46,10 +46,10 @@
 		var map;
 		function initMap()
 		{
-			var latLng = new google.maps.LatLng(37.56667, 126.97806);
+			var latLng = new google.maps.LatLng(22.303683, 114.160423);
 			var mapOptions = 
 			{
-				zoom : 10,
+				zoom : 18,
 				center : latLng
 			}
 			
@@ -61,7 +61,7 @@
 			});
 		}
 		
-		function placeMarker(location)
+		/* function placeMarker(location)
 		{
 			var marker = new google.maps.Marker(
 			{
@@ -70,7 +70,7 @@
 			});
 			
 			//map.setCenter(location);
-		}
+		} */
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiF8Yj3g8V_IP0FHZqScTF8wrJseo6fHY&callback=initMap" async defer>
     	/* API Key */
