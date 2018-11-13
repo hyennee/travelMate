@@ -3,6 +3,7 @@ package com.kh.travelMate.others.model.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.others.model.vo.ConsultApply;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
 
@@ -19,4 +20,9 @@ public class OthersDaoImpl implements OthersDao{
 		return sqlSession.insert("Others.insertConsultRequest", cr);
 	}
 
+	@Override
+	public int insertAttachment(Attachment attachment, SqlSessionTemplate sqlSession)
+	{
+		return sqlSession.insert("Others.insertAttachment", attachment);
+	}
 }

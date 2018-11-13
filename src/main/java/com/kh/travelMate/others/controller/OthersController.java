@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.others.model.service.OthersService;
 import com.kh.travelMate.others.model.vo.ConsultApply;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
@@ -25,12 +26,7 @@ public class OthersController {
 	@RequestMapping("insertConsultApply.others")
 	public String insertCONSULT_APPLY(ConsultApply ca, Model model, HttpServletRequest request, @RequestParam(name="FILE_PATH", required=false) MultipartFile file)
 	{	
-		/*System.out.println("왜 안될까");
-		System.out.println("ca : " + ca);
-		System.out.println("file : " + file);*/
-		
 		String root = request.getSession().getServletContext().getRealPath("resources");		//경로 지정
-		/*System.out.println("root : " + root);*/
 		String filePath = root + "\\uploadFiles";												//파일 경로(resources/uploadfiles)
 		System.out.println("path : " + filePath);
 		String originFileName = file.getOriginalFilename();
@@ -40,10 +36,14 @@ public class OthersController {
 		try
 		{
 			file.transferTo(new File(filePath + "\\" + changeFileName + ext));
-			ca.setFILEPATH(changeFileName);
 			
+			Attachment attachment = new Attachment();
 			
-			os.insertCONSULT_APPLY(ca);
+			attachment.setFileRoot(filePath);
+			attachment.setOriginName(originFileName);
+			attachment.setModifyName(changeFileName);
+			
+			os.insertCONSULT_APPLY(ca, attachment);
 			
 			return "others/applyConsultComplete";
 		}

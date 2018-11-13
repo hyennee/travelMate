@@ -41,6 +41,7 @@ ul{
 					<strong>타이완 정부에서 인정한 마사지 중의원인 자화당. 발바닥을 지나가는 혈을 찾아 여행 중 쌓인 피로를 풀어주는데 탁월하다. 2인 이상이라면 픽업서비스까지 된다니 여행객의 마음을 헤아린다.</strong> <br>
 <br>
 타이완에서 여행 하다 피로가 쌓였다면 타이완 정부에서 승인한 마사지 중의원인 자화당을 찾아보는 것도 좋다. 본래 중화권은 마사지가 유명한데 자화당의 발마사지 방법은 타 중화권인 태국이나 중국의 발마사지와 약간은 다르다. 발바닥에 지나가는 혈을 찾아 지압하여 피로를 풀어주거나 혈과 연결된 장기 부분의 건강도 살펴준다. 발은 인체의 축소판이며, 발에는 인체의 장기와 관련된 혈이 지나가기 때문에 혈 자리를 지압해주는 반사요법은 타이완에서는 1970년에 타이완으로 온 스위스 선교사가 연구한 방법이다. 30년 이상의 전통을 가진 자화당은 족건사 자격증을 가진 직원들만이 마사지 하니 마음 놓고 발을 맡겨도 된다. 따뜻한 물에 피로에 쌓인 발을 담가 깨끗이 씻은 다음 족건사의 마사지가 시작되는데 추가로 어깨 마사지도 해주기도 한다. 자화당은 여행자들이 많이 찾다 보니 자화당 내에는 한국어를 하는 직원도 있어 통역 서비스도 가능하다.<br>
+
 									<h2>로얄 발리</h2>
 					<strong>시먼딩에 위치한 우리나라 사람들이 자주 찾는 발마사지 샵</strong> <br>
 <strong>타이완 느낌의 고풍스러운 인테리어로 꾸며진 공간</strong> <br>
@@ -64,6 +65,9 @@ ul{
 <li>찾아가는 법 : 지하철 반난라인의 西門(Ximen) 6번 출구로 나온 후 도보 5분. 역에서 나온 뒤 시먼딩 거리로 네 블록 가량 이동한다. 사거리에 KFC가 보이면 좌측의 골목으로 진입하여 다섯 블록만 이동하면 길의 왼쪽에 있다.</li>
 </ul>
 <br>
+<div align="center" style="margin:auto;">
+	<div id="map2" style="width:700px; height:400px; background:lightgray;"></div>
+</div>
 <br>
 <strong>자화당 滋和堂</strong><br>
 타이베이 여행의 피로를 풀어줄 발 마사지 전문점을 찾는다면 자화당을 추천한다. 정확히는 자화당 건강 양생센터이며 국가인정 의료보험지정 진료소이다. 흡사 우리 병원과 같이 생겼다. 자화당을 들어서면 족부반사구 건강법이 붙어 있다. 족부반사구 건강법은 인체 각 내부기관에 이상이 생겼을 시 발바닥에서 유독 아픈 분위가 나타난다. 이때, 그곳을 안마로 자극하여 줌으로써 인체의 기능을 조절하고 질병을 치료해나가며, 나아가 질병 예방을 막을 수 있는 방법이 족부반사구 건강법이다. 자화당을 비롯한 타이완의 발 마사지 숍들은 반사구역을 마사지하여 피로감이 더 빨리 풀린다고 한다. 미리 예약을 하고 싶을 경우 전화를 걸거나 홈페이지로 가 예약 후 방문하면 바로 마사지를 받을 수 있다.<br>
@@ -76,11 +80,55 @@ ul{
 <li>찾아가는 법 : 지하철 南京東路(Songjian Nanjing)에서 하차 후 도보 5분. 3번 출구로 나온 뒤 바로 있는 우측의 골목으로 들어가 네 블록 걷는다. 고가도로가 있는 큰길에 나오게 된다면 다시 남쪽으로 여섯 블록만 이동하면 초록색 간판의 자화당이 있다.</li>
 </ul>
 <br>
+<div align="center" style="margin:auto;">
+	<div id="map1" style="width:700px; height:400px; background:lightgray;"></div>
+</div>
 <br>
 *[TIP!]<br>
 타이완의 마사지 숍에서는 발 마사지를 기본으로 하며, 그 외에 상반신, 전신 마사지를 제공한다. 오일 마사지 같은 경우에는 속옷만 입고 마사지를 받아야 하므로 동성 안마사를 선택하는 것이 좋다. 또한 밀폐된 공간으로 들어가야 할 경우 문을 열어 달라고 하여 조금 더 개방적인 분위기로 바꾸는 것도 좋다. 마사지 숍을 방문할 때는 너무 늦은 시간보다는 오후 10시 이전에 받고 나오도록 하자.<br>		
 			</div>
 			</div>
 			<jsp:include page="../../must/footer.jsp" />
+			
+	<script>
+	function initMap()
+	{
+		var map1;
+		var latLng1 = new google.maps.LatLng(25.048883, 121.529489);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng1
+		}
+		
+		map1 = new google.maps.Map(document.getElementById('map1'), mapOptions);
+		
+		var marker = new google.maps.Marker(
+		{
+			position : latLng1,
+			map : map1,
+		});
+		
+		var map2;
+		var latLng2 = new google.maps.LatLng(25.045440, 121.505356);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng2
+		}
+		
+		map2 = new google.maps.Map(document.getElementById('map2'), mapOptions);
+		
+		var marker = new google.maps.Marker(
+		{
+			position : latLng2,
+			map : map2,
+		});
+	}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiF8Yj3g8V_IP0FHZqScTF8wrJseo6fHY&callback=initMap" async defer>
+    	/* API Key */
+	    /* AIzaSyDiF8Yj3g8V_IP0FHZqScTF8wrJseo6fHY */
+    </script>
 </body>
 </html>

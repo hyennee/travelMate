@@ -196,10 +196,6 @@
 			</div>
 		</div>
 		<br>
-		<div align="center">
-			<button type="button" onclick="location.href='goMapView.map'">지도</button>
-		</div>
-		<br>
 		<jsp:include page="../../must/footer.jsp"/>
 	</c:if>
 	<c:if test="${ empty sessionScope.loginUser }">

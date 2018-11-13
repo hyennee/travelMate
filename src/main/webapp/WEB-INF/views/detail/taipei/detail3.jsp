@@ -58,6 +58,10 @@ ul{
 <li>찾아가는 법 : 지하철 東門(Dongmen)역 5번 출구에서 도보 3분</li>
 </ul>
 <br>
+<div align="center" style="margin:auto;">
+	<div id="map1" style="width:700px; height:400px; background:lightgray;"></div>
+</div>
+<br>
 <strong>[TIP!]</strong><br>
 딘타이펑 본점은 카드 결제가 안 되며 오직 현금만 받는다. 샤오롱바오 5개를 주문하고 싶으면 메뉴 용지에 1/2이라고 적으면 된다.<br>
 <br>
@@ -73,6 +77,10 @@ ul{
 <li>홈페이지 : <a href="http://www.kao-chi.com" target="_blank">www.kao-chi.com</a></li>
 <li>찾아가는 법 : 지하철 東門(Dongmen)역 5번 출구에서 도보 3분</li>
 </ul>
+<br>
+<div align="center" style="margin:auto;">
+	<div id="map2" style="width:700px; height:400px; background:lightgray;"></div>
+</div>
 <br>
 <strong>[TIP!] 샤오롱바오 맛있게 먹는 방법</strong><br>
 <ol>
@@ -102,6 +110,10 @@ ul{
 <li>찾아가는 법 : 지하철 東門(Dongmen) 역 5번 출구로 나와 도보 3분. 5번 출구로 나온 뒤 10m가량 직진한 후 우측으로 보면 나오는 용캉제 거리로 두 블록가량 걸어가면 사거리 코너에 위치하고 있다.</li>
 </ul>
 <br>
+<div align="center" style="margin:auto;">
+	<div id="map3" style="width:700px; height:400px; background:lightgray;"></div>
+</div>
+<br>
 <strong>[TIP!]</strong> <br>
 1층 야외 테이블에 많은 사람들이 줄을 서 있다고 해서 2층을 올라가는 것은 다시 한번 생각해보자. 2층 스무시는 1인당 100 TWD 이상 주문해야 착석이 가능하므로 유의하자.<br>
 <br>
@@ -118,6 +130,9 @@ ul{
 <li>찾아가는 법 : 지하철 國父紀念館捷運站(Sun Yat Sen Memorial hall) 1번 출구로 나온 뒤 도보 2분. 1번 출구로부터 스시 익스프레스 방향으로 쭉 직진하면 길의 왼쪽에 있다.</li>
 </ul>
 <br>
+<div align="center" style="margin:auto;">
+	<div id="map4" style="width:700px; height:400px; background:lightgray;"></div>
+</div>
 <br>
 <strong>삼형매 三兄妹</strong><br>
 <div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2014062329/gjdj7y/_삼형제_TT.jpg" title="삼형매" data-org="//ttcfd.hanatour.com/@cms_800/2014062329/gjdj7y/_삼형제_TT.jpg"></div>
@@ -131,6 +146,9 @@ ul{
 <li>찾아가는 법 : 지하철 西門(Ximen) 6번 출구로 나와 쭉 직진하여 길 끝쪽으로 이동하면 있다.</li>
 </ul>
 <br>
+<div align="center" style="margin:auto;">
+	<div id="map5" style="width:700px; height:400px; background:lightgray;"></div>
+</div>
 <br>
 <br>
 <h4>뉴러우멘 牛肉麵</h4>
@@ -147,6 +165,9 @@ ul{
 <li>찾아가는 법 : 지하철 東門(Dongmen) 역5번 출구로 나와 도보 5분. 출구로 나와, 10m가량 이동하다 보면 나오는 'Merry Cafe' 빵집 골목으로 들어간다. 그곳이 용캉제 거리인데 두 블록 가량 이동하여 스무시가 있는 사거리가 골목이 나온다. 좌측의 골목으로 이동하여 두 블록 이동하면 금화초등학교(金華國小) 맞은편에 자리하고 있다.</li>
 </ul>
 <br>
+<div align="center" style="margin:auto;">
+	<div id="map6" style="width:700px; height:400px; background:lightgray;"></div>
+</div>
 <br>
 <strong>린동팡 뉴러우멘 林東芳牛肉麵</strong><br>
 <div class="nd-image-wrap"><img src="//ttcfd.hanatour.com/@cms_800/2014110330/gje0qa/린동팡 뉴러우멘 (2).JPG" title="린동팡 뉴러우멘" data-org="//ttcfd.hanatour.com/@cms_800/2014110330/gje0qa/린동팡 뉴러우멘 (2).JPG"></div>
@@ -159,6 +180,9 @@ ul{
 <li>찾아가는 법 : 지하철 忠孝復興(Zhongxiaofuxing) 1번 출구로 나와 도보 10분. 출구로 나온 뒤 북쪽의 고가도로가 나 있고, 코너에 NET이 있는 도로로 횡단보도를 건넌 후 쭉 직진한다. 약 여섯 블록을 걸은 후 HSBC 은행이 나오는 사거리까지 도달했다면, 좌회전하여 永豐銀行이라는 독특하게 생긴 건물이 있는 곳까지 걸어간다. 그곳에서 좌측의 거리로 진입하면 길의 오른쪽에 린동팡 뉴러우멘이 있다.</li>
 </ul>
 <br>
+<div align="center" style="margin:auto;">
+	<div id="map7" style="width:700px; height:400px; background:lightgray;"></div>
+</div>
 <br>
 <br>
 <h4>야시장 먹거리</h4>
@@ -189,5 +213,118 @@ ul{
 			</div>
 			</div>
 			<jsp:include page="../../must/footer.jsp" />
+		<script>
+	function initMap1()
+	{
+		var map1;
+		var latLng1 = new google.maps.LatLng(25.033505, 121.530122);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng1
+		}
+		map1 = new google.maps.Map(document.getElementById('map1'), mapOptions);
+		
+		var marker1 = new google.maps.Marker(
+		{
+			position : latLng1,
+			map : map1,
+		});
+		
+		var map2;
+		var latLng2 = new google.maps.LatLng(25.033343, 121.529969);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng2
+		}
+		map2 = new google.maps.Map(document.getElementById('map2'), mapOptions);
+		
+		var marker2 = new google.maps.Marker(
+		{
+			position : latLng2,
+			map : map2,
+		});
+		
+		var map3;
+		var latLng3 = new google.maps.LatLng(25.032532, 121.529838);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng3
+		}
+		map3 = new google.maps.Map(document.getElementById('map3'), mapOptions);
+		
+		var marker3 = new google.maps.Marker(
+		{
+			position : latLng3,
+			map : map3,
+		});
+		
+		var map4;
+		var latLng4 = new google.maps.LatLng(25.041660, 121.555192);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng4
+		}
+		map4 = new google.maps.Map(document.getElementById('map4'), mapOptions);
+		
+		var marker4 = new google.maps.Marker(
+		{
+			position : latLng4,
+			map : map4,
+		});
+		
+		var map5;
+		var latLng5 = new google.maps.LatLng(25.045299, 121.507804);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng5
+		}
+		map5 = new google.maps.Map(document.getElementById('map5'), mapOptions);
+		
+		var marker5 = new google.maps.Marker(
+		{
+			position : latLng5,
+			map : map5,
+		});
+		
+		var map6;
+		var latLng6 = new google.maps.LatLng(25.032987, 121.528290);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng6
+		}
+		map6 = new google.maps.Map(document.getElementById('map6'), mapOptions);
+		
+		var marker6 = new google.maps.Marker(
+		{
+			position : latLng6,
+			map : map6,
+		});
+		
+		var map7;
+		var latLng7 = new google.maps.LatLng(25.046898, 121.541386);
+		var mapOptions = 
+		{
+			zoom : 18,
+			center : latLng7
+		}
+		map7 = new google.maps.Map(document.getElementById('map7'), mapOptions);
+		
+		var marker7 = new google.maps.Marker(
+		{
+			position : latLng7,
+			map : map7,
+		});
+	}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiF8Yj3g8V_IP0FHZqScTF8wrJseo6fHY&callback=initMap1" async defer>
+    	/* API Key */
+	    /* AIzaSyDiF8Yj3g8V_IP0FHZqScTF8wrJseo6fHY */
+    </script>
 </body>
 </html>
