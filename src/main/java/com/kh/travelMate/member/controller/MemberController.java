@@ -1,6 +1,10 @@
 package com.kh.travelMate.member.controller;
 
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Random;
 import java.util.UUID;
 
@@ -12,12 +16,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.travelMate.mail.model.service.MailService;
 import com.kh.travelMate.member.model.exception.LoginException;
@@ -250,6 +252,35 @@ public class MemberController {
 			/*model.addAttribute("randomPwd", randomPwd);*/
 			return mailService.send(subject, sb.toString(), "ejkim1111@gmail.com", email);
 	
+		}
+		
+		@RequestMapping(value = "/personalInfo")
+		public void personalInfo(HttpServletRequest request) throws Exception {
+		       String token = "AAAAOvZ0R1wCmLo9Vg5rbUKZg5hErsgJkTzKIRvdTDbYDLfiMmvwKKWJYevJhdB%2Fx4XNpX5lJPoPseqrVHleSanTs7c%3D";// 네이버 로그인 접근 토큰; 여기에 복사한 토큰값을 넣어줍니다.
+		        String header = "Bearer " + token; // Bearer 다음에 공백 추가
+		        try {
+		            String apiURL = "https://openapi.naver.com/v1/nid/me";
+		            URL url = new URL(apiURL);
+		            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+		            con.setRequestMethod("GET");
+		            con.setRequestProperty("Authorization", header);
+		            int responseCode = con.getResponseCode();
+		            BufferedReader br;
+		            if(responseCode==200) { // 정상 호출
+		                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+		            } else {  // 에러 발생
+		                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+		            }
+		            String inputLine;
+		            StringBuffer response = new StringBuffer();
+		           while ((inputLine = br.readLine()) != null) {
+	                response.append(inputLine);
+		            }
+		           br.close();
+		            System.out.println(response.toString());
+		       } catch (Exception e) {
+	            System.out.println(e);
+		       }
 		}
 		
 		

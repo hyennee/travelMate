@@ -145,4 +145,14 @@ public class pageChangeController {
 		return "mypage/detailTrade";
 	}
 	
+	@RequestMapping("naverlogin.me")
+	public String goNaverLogin() {
+		return "member/naverlogin";
+	}
+	
+	@RequestMapping("callback.me")
+	public String callback() {
+		return "member/callback";
+	}
+	
 }
