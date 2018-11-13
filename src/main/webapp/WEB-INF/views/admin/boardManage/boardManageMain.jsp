@@ -54,30 +54,49 @@ table th {
 				<span class="label label-info">게시물목록</span>
 			</h1>
 			<div class="table-responsive">
-				<table class="table table-striped">
+				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>#</th>
-							<th>작성자</th>
+							<th>게시물번호</th>
 							<th>카테고리</th>
 							<th>제목</th>
-							<th>내용</th>
+							<th>작성자</th>
 							<th>작성일</th>
 							<th>상태</th>
-							<th>참조게시물번호</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="row" items="${ boardList }">
 							<tr>
-								<td>${ row.board_no }</td>
-								<td>${ row.writer }</td>
-								<td>${ row.category }</td>
-								<td>${ row.title }</td>
-								<td>${ row.content }</td>
+								<c:if test="${ row.ref_no eq '0'}">
+									<td style="text-align:center;"><b>#${ row.board_no }</b></td>
+								</c:if>
+								<c:if test="${ row.ref_no ne '0'}">
+									<td></td>
+								</c:if>
+								<c:choose>
+									<c:when test="${ row.category eq '3'}">
+									<td>오픈 컨설팅</td>
+									</c:when>
+									<c:when test="${ row.category eq '2'}">
+									<td>1:1 상담</td>
+									</c:when>
+									<c:otherwise>
+									<td>기타</td>
+									</c:otherwise>
+								</c:choose>
+								<c:if test="${ row.ref_no eq '0'}">
+									<td style="text-align:left;"><b><a
+											href="${ pageContext.request.contextPath }/admin/boardManageDetail.admin?board_no=${ row.board_no }">${ row.title }</a></b></td>
+								</c:if>
+								<c:if test="${ row.ref_no ne '0'}">
+									<td style="text-align:left;"><b><a
+											href="${ pageContext.request.contextPath }/admin/boardManageDetail.admin?board_no=${ row.board_no }">&nbsp;
+												&nbsp; ㄴ${ row.title }</a></b></td>
+								</c:if>
+								<td>${ row.nick_Name }</td>
 								<td>${ row.board_date }</td>
 								<td>${ row.status }</td>
-								<td>${ row.ref_no }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -93,7 +112,8 @@ table th {
 					</c:url>
 					<a href="${ blistBack }">[이전]</a>
 				</c:if>
-				<c:forEach var="p" begin="${ page.startPage }" end="${ page.endPage }">
+				<c:forEach var="p" begin="${ page.startPage }"
+					end="${ page.endPage }">
 					<c:if test="${ p eq page.currentPage }">
 						<font color="black" size="4"><b>${ p }</b></font>
 					</c:if>

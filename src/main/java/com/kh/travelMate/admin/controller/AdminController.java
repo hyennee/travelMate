@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.kh.travelMate.admin.common.Pagination;
 import com.kh.travelMate.admin.model.service.BoardManageService;
@@ -21,7 +18,6 @@ import com.kh.travelMate.admin.model.vo.MemberManage;
 import com.kh.travelMate.admin.model.vo.PageInfo;
 
 @Controller
-@SessionAttributes({"memberDetail", "selectApplyDetail"})
 public class AdminController {
 	@Autowired
 	private BoardManageService bms;
@@ -105,11 +101,11 @@ public class AdminController {
 	public String consultManageAccpetAdmin(@RequestParam(defaultValue="0") int apply_no, @RequestParam(defaultValue="0") String reason, Model model) {
 		if(apply_no == 0 || reason.equals("0")) {
 			// apply_no이나 reason이 없을 경우
-			System.out.println("여기로 들어오면 안됨");
+			// System.out.println("여기로 들어오면 안됨");
 			return "admin/memberManage/consultManageList";
 		}else{
 			// apply_no가 있을 경우
-			System.out.println("들어옴");
+			// System.out.println("들어옴");
 			ConsultManage selectApplyDetail = bms.selectApplyDetail(apply_no);
 			selectApplyDetail.setConsult_Apply_No(apply_no);
 			selectApplyDetail.setReason(reason);
@@ -127,10 +123,10 @@ public class AdminController {
 		
 		if(apply_no == 0 || reason.equals("0") || user_No == 0) {
 			// apply_no이나 reason이 없을 경우
-			System.out.println("여기로 들어오면 안됨");
+			// System.out.println("여기로 들어오면 안됨");
 			return "admin/memberManage/consultManageList";
 		}else{
-			System.out.println("들어옴");
+			// System.out.println("들어옴");
 			ConsultManage selectApplyDetail = bms.selectApplyDetail(apply_no);
 			selectApplyDetail.setConsult_Apply_No(apply_no);
 			selectApplyDetail.setReason(reason);
