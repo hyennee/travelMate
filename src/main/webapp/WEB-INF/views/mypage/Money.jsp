@@ -6,8 +6,15 @@
 <head>
 <meta charset="utf-8">
 <title>사이버머니</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
 
 #jb-container {
@@ -104,7 +111,7 @@ td{
 						<span>-&nbsp;&nbsp;${ sessionScope.loginUser.user_name }님의 보유적립금은 ${ sessionScope.loginUser.cybermoney }원입니다. <button type="button" onclick="a()"> 충전 </button></span><br />
 						<span>-&nbsp;&nbsp;적립금은 컨설트 요청할 시에 사용하실 수 있습니다.</span><br /><br /><br />
 						<form action="">
-						<table >
+						<table id="example-table-1" width="100%" class="table table-bordered table-hover text-center">
 								<tr>
 									<th class="thstyle">번호</th>
 									<th class="thstyle">구분</th>

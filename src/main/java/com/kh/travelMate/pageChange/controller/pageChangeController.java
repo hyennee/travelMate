@@ -143,5 +143,12 @@ public class pageChangeController {
 	@RequestMapping("charge.mp")
 	public String charge() {
 	return "cyberMoney/charge";
-}
+	}
+	
+	@RequestMapping("detailTrade.bo")
+	public String detailTrade()
+	{
+		return "mypage/detailTrade";
+	}
+	
 }
