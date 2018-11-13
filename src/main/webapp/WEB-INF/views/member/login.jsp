@@ -240,7 +240,7 @@ $('#loginBtn').click(function(){
   </script>
   
   <script type="text/javascript">
-  var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "YOUR_CALLBACK_URL");
+  var naver_id_login = new naver_id_login("jlB_L3BFZdd8giolYl0O", "http://127.0.0.1:8001/travelMate/goMain.me");
   // 접근 토큰 값 출력
   alert(naver_id_login.oauthParams.access_token);
   // 네이버 사용자 프로필 조회
@@ -250,8 +250,8 @@ $('#loginBtn').click(function(){
     alert(naver_id_login.getProfileData('email'));
     alert(naver_id_login.getProfileData('nickname'));
     alert(naver_id_login.getProfileData('age'));
-    alert(naver_id login.getProfileData('gender'));
-    alert(naver_id login.getProfileData(''))
+   
+
   }
 </script>
 
