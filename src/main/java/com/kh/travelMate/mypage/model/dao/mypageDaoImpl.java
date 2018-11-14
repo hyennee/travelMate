@@ -40,14 +40,6 @@ public class mypageDaoImpl implements mypageDao{
 		return sqlSession.selectOne("Mypage.nickNameCheck", nick_name);
 	}
 
-	@Override
-	public void insertCyberMoney(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession) {
-		Map<String, Object> a = new HashMap<String, Object>();
-		a.put("money", parseInt);
-		a.put("userNo", loginUser.getUser_no());
-		a.put("imp_uid", imp_uid);
-		sqlSession.insert("Mypage.insertCyberMoney", a);
-	}
 
 	@Override
 	public void insertCyberMoney2(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession) {
@@ -84,6 +76,15 @@ public class mypageDaoImpl implements mypageDao{
 	}
 
 	@Override
+	public void insertCyberMoney(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession) {
+		Map<String, Object> a = new HashMap<String, Object>();
+		a.put("money", parseInt);
+		a.put("userNo", loginUser.getUser_no());
+		a.put("imp_uid", imp_uid);
+		sqlSession.insert("Mypage.insertCyberMoney", a);
+	}
+	
+	@Override
 	public void insertCyberMoney3(int parseInt, Member loginUser, String account_name, String account_no,
 			SqlSessionTemplate sqlSession) {
 		Map<String, Object> a = new HashMap<String, Object>();
@@ -91,14 +92,28 @@ public class mypageDaoImpl implements mypageDao{
 		a.put("userNo", loginUser.getUser_no());
 		a.put("account_name", account_name);
 		a.put("account_no", account_no);
-		sqlSession.insert("Mypage.insertCyberMoney4", a);
 		sqlSession.insert("Mypage.insertCyberMoney3", a);
+		sqlSession.insert("Mypage.insertCyberMoney4", a);
 		
 	}
 
 	@Override
 	public List<HashMap<String, Object>> consultingCustomerHistory(SqlSessionTemplate sqlSession, Member loginUser) {
 		return sqlSession.selectList("Mypage.consultingCustomerHistory", loginUser.getUser_no());
+	}
+
+	@Override
+	public List<HashMap<String, Object>> cyberMoneyStatus(SqlSessionTemplate sqlSession, Member loginUser) {
+		return sqlSession.selectList("Mypage.cyberMoneyStatus",loginUser.getUser_no());
+	}
+
+	@Override
+	public void insertCyberMoney4(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession) {
+		Map<String, Object> a = new HashMap<String, Object>();
+		a.put("money", parseInt);
+		a.put("userNo", loginUser.getUser_no());
+		a.put("imp_uid", imp_uid);
+		sqlSession.insert("Mypage.insertCyberMoney5", a);
 	}
 	
 

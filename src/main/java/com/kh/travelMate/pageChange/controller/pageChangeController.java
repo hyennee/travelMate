@@ -95,24 +95,12 @@ public class pageChangeController {
 		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
 		List<HashMap<String,Object>> cyberMoney = ms.cyberMoneyHistory(loginUser);
 		for(int i = 0 ; i < cyberMoney.size(); i++) {
-			try {
-				String id = (String)cyberMoney.get(i).get("PROOF_NO");
-				if(id.contains("IMP")) {
-					IamportResponse<Payment> paymentByimpuid = client.paymentByImpUid((String)cyberMoney.get(i).get("PROOF_NO"));
-					if(paymentByimpuid.getResponse().getCancelReason() == null) {
-						cyberMoney.get(i).put("status", "1");
-					}else {
-						cyberMoney.get(i).put("status", "0");
-					}
-				}else {
-					
-				}
-			} catch (IamportResponseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			String pno = (String)cyberMoney.get(i).get("PROOF_NO");
+			String temp = (String)cyberMoney.get(i).get("CHANGE_REASON");
+			if(pno.contains("imp")) {
+				cyberMoney.get(i).replace("CHANGE_REASON", "카드 " + temp);
+			}else {
+				cyberMoney.get(i).replace("CHANGE_REASON", "현금 " + temp);
 			}
 		}
 		
