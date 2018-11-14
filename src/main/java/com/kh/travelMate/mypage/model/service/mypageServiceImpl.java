@@ -151,6 +151,17 @@ public class mypageServiceImpl implements mypageService{
 		
 		return consultingCustomerHistory;
 	}
+	@Override
+	public List<HashMap<String, Object>> cyberMoneyStatus(Member loginUser) {
+		
+		return  md.cyberMoneyStatus(sqlSession,loginUser);
+		
+	}
+	@Override
+	public void insertCyberMoney4(int parseInt, Member loginUser, String imp_uid) {
+		md.insertCyberMoney4(parseInt, loginUser, imp_uid, sqlSession);
+		
+	}
 	
 
 	

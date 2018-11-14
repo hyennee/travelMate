@@ -143,6 +143,7 @@ public class mypageController {
 		ms.insertCyberMoney3(Integer.parseInt(money), loginUser, account_name, account_no);
 		return "redirect:Money.me";
 	}
+	
 	@RequestMapping("insertCyberMoney2.me")
 	public String insertCyberMoney2(@RequestParam(value="money")String money, @RequestParam(value="imp_uid")String imp_uid, Model model,  HttpServletRequest request) {
 		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
@@ -154,28 +155,32 @@ public class mypageController {
 		String test_already_cancelled_imp_uid = imp_uid;
 		CancelData cancel_data = new CancelData(test_already_cancelled_imp_uid, true); //imp_uid를 통한 전액취소
 
-		try {
-			IamportResponse<Payment> payment_response = client.cancelPaymentByImpUid(cancel_data);
-			if(payment_response.getResponse() != null) {
-				ms.insertCyberMoney2(Integer.parseInt(money), loginUser, imp_uid);
-				return "redirect:Money.me";
+		if(imp_uid.contains("imp")) {
+			try {
+				IamportResponse<Payment> payment_response = client.cancelPaymentByImpUid(cancel_data);
+				if(payment_response.getResponse() != null) {
+					ms.insertCyberMoney2(Integer.parseInt(money), loginUser, imp_uid);
+					return "redirect:Money.me";
+				}
+			} catch (IamportResponseException e) {
+				System.out.println(e.getMessage());
+	
+				switch(e.getHttpStatusCode()) {
+				case 401 :
+					//TODO
+					break;
+				case 500 :
+					//TODO
+					break;
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (IamportResponseException e) {
-			System.out.println(e.getMessage());
-
-			switch(e.getHttpStatusCode()) {
-			case 401 :
-				//TODO
-				break;
-			case 500 :
-				//TODO
-				break;
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}else {
+			ms.insertCyberMoney4(Integer.parseInt(money), loginUser, imp_uid);
+			return "redirect:Money.me";
 		}
-		
 
 		model.addAttribute("msg", "이미 환불 완료된 거래입니다.");
 		return "redirect:Money.me";

@@ -96,7 +96,7 @@ td{
 			<hr />
 			<div >
 						<p>고객관리리스트</p>
-						<table id="example-table-1" class="table table-bordered table-hover text-center">
+						<table id="example-table-1"e class="table table-bordered table-hover text-center">
 								<tr>
 									<th style="width:50px" class="thstyle">컨설팅번호</th>
 									<th style="width:50px" class="thstyle">여행목적</th>

@@ -32,5 +32,9 @@ public interface mypageService {
 	void insertCyberMoney3(int parseInt, Member loginUser, String account_name, String account_no);
 
 	List<HashMap<String, Object>> consultingCustomerHistory(Member loginUser);
+
+	List<HashMap<String, Object>> cyberMoneyStatus(Member loginUser);
+
+	void insertCyberMoney4(int parseInt, Member loginUser, String imp_uid);
 	
 }

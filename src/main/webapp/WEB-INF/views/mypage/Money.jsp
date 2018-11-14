@@ -127,7 +127,6 @@ $(document).ready(function() {
 						<form action="">
 						<table id="example-table-1" width="100%" class="table table-bordered table-hover text-center">
 								<tr>
-									<th class="thstyle">번호</th>
 									<th class="thstyle">구분</th>
 									<th class="thstyle">금액</th>
 									<th class="thstyle">내역일시</th>
@@ -137,14 +136,14 @@ $(document).ready(function() {
 									
 								
 									<tr>
-										<td>${ size.CYBERMONEY_RECORD_NO } </td>
 										<td>${ size.CHANGE_REASON }</td>
 										<td>${ size.CHANGE_MONEY }원</td>
 										<td>${ size.RECORD_DATE }</td>
-										<c:if test="${ size.status eq '1' }">
+										
+										<c:if test="${ size.COUNT eq 1}">
 											<td class="my"><button type="button" onclick="test('${size.PROOF_NO}','${ size.CHANGE_MONEY }')">환불</button></td>
 										</c:if>
-										<c:if test="${ size.status eq '0' }">
+										<c:if test="${ size.COUNT eq 2}">
 											<td class="my"></td>
 										</c:if>
 									</tr>

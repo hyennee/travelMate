@@ -35,4 +35,8 @@ public interface mypageDao {
 			SqlSessionTemplate sqlSession);
 
 	List<HashMap<String, Object>> consultingCustomerHistory(SqlSessionTemplate sqlSession, Member loginUser);
+
+	List<HashMap<String, Object>> cyberMoneyStatus(SqlSessionTemplate sqlSession, Member loginUser);
+
+	void insertCyberMoney4(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession);
 }
