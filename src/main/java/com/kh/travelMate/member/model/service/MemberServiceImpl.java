@@ -85,6 +85,25 @@ public class MemberServiceImpl implements MemberService{
 		return md.updatePwd(sqlSession, m);
 	}
 
+	@Override
+	public Member naverlogincheck(Member m) {
+		Member loginUser = null;
+		
+		loginUser = md.selectNaverMember(sqlSession, m);
+
+		
+		return loginUser;
+	}
+
+	//네이버 회원가입
+	@Override
+	public int insertNaverMember(Member m) {
+		
+		return md.insertNaverMember(sqlSession, m);
+	}
+
+	
+
 
 
 

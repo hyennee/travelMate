@@ -230,7 +230,7 @@ $('#loginBtn').click(function(){
 
 </script>
  <script type="text/javascript">
-  	var naver_id_login = new naver_id_login("jlB_L3BFZdd8giolYl0O", "http://127.0.0.1:8001/travelMate/goMain.me");
+  	var naver_id_login = new naver_id_login("jlB_L3BFZdd8giolYl0O", "http://127.0.0.1:8001/travelMate/callback.me");
   	var state = naver_id_login.getUniqState();
   	naver_id_login.setButton("white", 3,40);
   	naver_id_login.setDomain("http://127.0.0.1:8001/travelMate/loginView.me");
@@ -239,20 +239,6 @@ $('#loginBtn').click(function(){
   	naver_id_login.init_naver_id_login();
   </script>
   
-  <script type="text/javascript">
-  var naver_id_login = new naver_id_login("jlB_L3BFZdd8giolYl0O", "http://127.0.0.1:8001/travelMate/goMain.me");
-  // 접근 토큰 값 출력
-  alert(naver_id_login.oauthParams.access_token);
-  // 네이버 사용자 프로필 조회
-  naver_id_login.get_naver_userprofile("naverSignInCallback()");
-  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-  function naverSignInCallback() {
-    alert(naver_id_login.getProfileData('email'));
-    alert(naver_id_login.getProfileData('nickname'));
-    alert(naver_id_login.getProfileData('age'));
-   
 
-  }
-</script>
 
 </html>

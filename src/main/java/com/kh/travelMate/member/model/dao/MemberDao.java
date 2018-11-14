@@ -31,14 +31,21 @@ public interface MemberDao {
 	//임시 비밀번호로 비밀번호 업데이트
 	int updatePwd(SqlSessionTemplate sqlSession, Member m);
 
+	//네이버 로그인 유저 조회
+	Member selectNaverMember(SqlSessionTemplate sqlSession, Member m);
 	
-	
+	//네이버 로그인 유저 조회 후 유저가 없을 시 회원가입
+	int insertNaverMember(SqlSessionTemplate sqlSession, Member m);
 
 	Member selectOneMember(SqlSessionTemplate sqlSession, int writer);
 
 	int updateCyberMoney(SqlSessionTemplate sqlSession, Member m);
 
 	int useCyberMoney(SqlSessionTemplate sqlSession, Member answerMember);
+
+	
+
+	
 
 
 

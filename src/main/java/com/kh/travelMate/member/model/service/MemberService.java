@@ -23,5 +23,13 @@ public interface MemberService {
 	//랜덤 비밀번호 update
 	int updatePwd(Member m);
 
+	//네이버 로그인
+	Member naverlogincheck(Member m);
+
+	//네이버 회원가입
+	int insertNaverMember(Member m);
+
+	
+
 
 }

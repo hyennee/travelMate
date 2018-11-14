@@ -123,6 +123,21 @@
 		WHERE EMAIL = #{email}
 	
 	</select>
+	
+	<select id="selectNaverMember" resultType="Member" parameterType="Member">
+	SELECT *
+	FROM MEMBER
+	WHERE EMAIL = #{email} 
+	AND JOIN_STATUS = 'N'
+	</select>
+	
+	<!-- 네이버 회원가입용 쿼리문 -->
+	<insert id = "insertNaverMember" parameterType="Member">
+		INSERT INTO MEMBER
+		VALUES(SEQ_USER_NO.NEXTVAL, #{email}, NULL, #{user_name}, 
+				#{nick_name}, NULL, #{birthday}, #{gender}, 
+				SYSDATE, SYSDATE, DEFAULT, NULL, 0, SYSDATE, NULL, DEFAULT, 'N')
+	</insert>
 
 </mapper> 
 
