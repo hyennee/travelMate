@@ -89,7 +89,7 @@ a {
 	<jsp:include page="../must/header.jsp" />
 	<div id="jb-container">
 		<div id="jb-header">
-			<h1>헤더</h1>
+			<h1></h1>
 		</div>
 		<div id="jb-sidebar-left">
 			<jsp:include page="sidemenu.jsp" />
