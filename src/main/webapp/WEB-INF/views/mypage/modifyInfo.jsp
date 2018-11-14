@@ -8,6 +8,14 @@
 <title>modifyInfo</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
 #jb-container {
 	width: 90%;
@@ -82,7 +90,7 @@ a {
 	<jsp:include page="../must/header.jsp" />
 	<div id="jb-container">
 		<div id="jb-header">
-			<h1>헤더</h1>
+			<h1></h1>
 		</div>
 		<div id="jb-sidebar-left">
 			<jsp:include page="sidemenu.jsp" />
@@ -95,7 +103,7 @@ a {
 						<img src="" alt="" />
 						<form action="modifyMyInfo.me" method="post">
 						<span style="color: #6c6e69; font: 12px/24px 'OpenSans';  margin: 0;">비밀번호 / 아이디 찾기에서 필요하므로 정확하게 입력 및 사용하는 이메일 주소는 반드시 기억해주십시요.</span>
-							<table >
+							<table class="table">
 								<tr>
 									<td class="thstyle">아이디 </td>
 									<td colspan="3"><input type="text" value="<c:out value="${ sessionScope.loginUser.email }"></c:out>" name="email"  readonly/></td>

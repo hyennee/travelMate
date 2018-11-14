@@ -205,22 +205,9 @@ public class mypageController {
 			/*m.setPassword(encPassword);*/
 			m.setUser_no(loginUser.getUser_no());
 			
-			String selectPwd = ms.checkpwd(m);
-			
-			if(encPassword.equals(selectPwd)) {
-				
-				m.setPassword(encChg_pwd);
-				
-				int result = ms.updatepwd(m);
-				
-				
-			}
-			
 			//패스워드 받은거 pwd에 넣기
 			/*String chg_pwd1 = request.getParameter("chg_pwd1");
 			System.out.println(chg_pwd1);*/
-			
-			
 			
 			try {
 				
@@ -230,18 +217,21 @@ public class mypageController {
 				
 				String check = ms.checkpwd(m);
 				
-				System.out.println("pwd :  " + pwd + "  /  check :  " + check);
+				System.out.println("encPassword :  " + encPassword + "  /  check :  " + check);
 				
-				if(pwd.equals(check)) {
-					
+				
+				if(!passwordEncoder.matches(encPassword, check)) {
 					m.setPassword(encChg_pwd);
+					
 					int updatepwd = ms.updatepwd(m);
+					
 					System.out.println("updatepwd : " + updatepwd);
+					
+					
+					return "redirect:logout.me";
+				}else {
+					return "redirect:modifyPwd";
 				}
-				
-				model.addAttribute("loginUser", loginUser);
-				
-				return "redirect:goMain.me";
 				
 			} catch (Exception e) {
 				model.addAttribute("msg", e.getMessage());
@@ -262,57 +252,5 @@ public class mypageController {
 			 			
 //			System.out.println("loginUser : " + loginUser);
 	}
-/*
-	// 임시 비밀번호 발급하기
-	@ResponseBody
-	@RequestMapping("")
-	public boolean sendPwdMail(HttpSession session, @RequestParam(value="email")String email, Model model, Member m) {
 
-		System.out.println("email임 :" + email);
-
-		//임시비밀번호 생성
-		String randomPwd = "";
-		for(int i = 0; i< 5; i++) {
-			randomPwd = UUID.randomUUID().toString().replaceAll("-", ""); // -를 제거
-			randomPwd = randomPwd.substring(0, 10); //랜덤코드를 앞에서부터 10자리 잘라줌.
-
-		}
-
-
-		System.out.println(randomPwd);
-		//비밀번호를 비크립트로 암호화함
-		String encPassword = passwordEncoder.encode(randomPwd);
-
-		//사용자가 입력한 이메일과 임시 비밀번호를 member객체에 넣기
-		m.setEmail(email);
-		m.setPassword(encPassword);
-
-		int result = ms.updatePwd(m); //member객체를 전달하기! 임시비밀번호로 업데이트!
-		session.setAttribute("randomPwd", randomPwd);
-
-		if(result > 0) {
-
-
-
-		}
-
-
-		String subject = "안녕하세요! TravelMate 임시 비밀번호입니다.";
-		StringBuilder sb = new StringBuilder();
-		sb.append("\n");
-		sb.append("\n");
-		sb.append("TravleMate 임시 비밀번호입니다.");
-		sb.append("\n"); 
-		sb.append("\n"); 
-		sb.append("임시 비밀번호는 ").append(randomPwd).append(" 입니다.");
-		sb.append("\n");
-		sb.append("\n"); 
-		sb.append("확인 후 로그인을 진행해주세요.");
-		sb.append("\n");
-		sb.append("\n");
-
-		model.addAttribute("randomPwd", randomPwd);
-		return mailService.send(subject, sb.toString(), "ejkim1111@gmail.com", email);
-
-	}*/
 }
