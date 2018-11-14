@@ -92,6 +92,21 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.update("Member.updatePwd", m);
 	}
 
+  	
+  	//네이버 로그인 유저 조회
+	@Override
+	public Member selectNaverMember(SqlSessionTemplate sqlSession, Member m) {
+		
+		return sqlSession.selectOne("Member.selectNaverMember", m);
+	}
+
+	//네이버 로그인 유저 조회 후 없을 시 회원가입 
+	@Override
+	public int insertNaverMember(SqlSessionTemplate sqlSession, Member m) {
+		
+		return sqlSession.insert("Member.insertNaverMember", m);
+	}
+
 	
 
 	

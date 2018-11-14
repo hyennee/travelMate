@@ -1,10 +1,7 @@
 package com.kh.travelMate.member.controller;
 
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
 import java.util.Random;
 import java.util.UUID;
 
@@ -254,7 +251,55 @@ public class MemberController {
 	
 		}
 		
-		@RequestMapping(value = "/personalInfo")
+		@ResponseBody
+		@RequestMapping("naverlogin.me")
+		public String naverlogin(Model model, Member m,  @RequestParam(value="email")String email, @RequestParam(value="name")String name,  
+				@RequestParam(value="nickname")String nick_name, @RequestParam(value="gender")String gender, 
+				@RequestParam(value="birthday")String birthday) {
+		
+			
+			System.out.println(email);
+			System.out.println(nick_name);
+			System.out.println(gender);
+			System.out.println(birthday);
+			
+			String birthday2 = birthday.replaceAll("-", "");
+			
+			System.out.println(birthday2);
+			
+			m.setEmail(email);
+			m.setNick_name(nick_name);
+			m.setGender(gender);
+			m.setBirthday(birthday2);
+			
+		
+			
+				Member loginUser = ms.naverlogincheck(m);
+				
+				if(loginUser == null) { //네이버로 가입한 유저의 정보가 없을 시 
+					int result = ms.insertNaverMember(m); //회원가입 진행
+					
+					if(result > 0) {//인서트한 결과가 있을 시 다시 로그인!
+						Member loginUser2 = ms.naverlogincheck(m);
+						model.addAttribute("loginUser", loginUser2);
+						return "redirect:goMain.me";
+					}
+					
+				}
+				
+					//네이버로 가입한 유저의 정보가 있을 시 로그인 진행!
+					
+					model.addAttribute("loginUser", loginUser);
+					return "redirect:goMain.me";
+					
+				}
+				
+				
+			
+		}
+		
+		
+		/*@RequestMapping(value = "/personalInfo")
 		public void personalInfo(HttpServletRequest request) throws Exception {
 		       String token = "AAAAOvZ0R1wCmLo9Vg5rbUKZg5hErsgJkTzKIRvdTDbYDLfiMmvwKKWJYevJhdB%2Fx4XNpX5lJPoPseqrVHleSanTs7c%3D";// 네이버 로그인 접근 토큰; 여기에 복사한 토큰값을 넣어줍니다.
 		        String header = "Bearer " + token; // Bearer 다음에 공백 추가
@@ -281,10 +326,10 @@ public class MemberController {
 		       } catch (Exception e) {
 	            System.out.println(e);
 		       }
-		}
+		}*/
 		
 		
 		
 	
 	
-}
+
