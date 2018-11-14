@@ -76,6 +76,30 @@ public class mypageDaoImpl implements mypageDao{
 		
 		return sqlSession.selectOne("Mypage.checkpwd", m.getUser_no());
 	}
+
+	@Override
+	public int cyberMoney(SqlSessionTemplate sqlSession, int user_no) {
+		
+		return sqlSession.selectOne("Mypage.cyberMoney", user_no);
+	}
+
+	@Override
+	public void insertCyberMoney3(int parseInt, Member loginUser, String account_name, String account_no,
+			SqlSessionTemplate sqlSession) {
+		Map<String, Object> a = new HashMap<String, Object>();
+		a.put("money", parseInt);
+		a.put("userNo", loginUser.getUser_no());
+		a.put("account_name", account_name);
+		a.put("account_no", account_no);
+		sqlSession.insert("Mypage.insertCyberMoney4", a);
+		sqlSession.insert("Mypage.insertCyberMoney3", a);
+		
+	}
+
+	@Override
+	public List<HashMap<String, Object>> consultingCustomerHistory(SqlSessionTemplate sqlSession, Member loginUser) {
+		return sqlSession.selectList("Mypage.consultingCustomerHistory", loginUser.getUser_no());
+	}
 	
 
 }

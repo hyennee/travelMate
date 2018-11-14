@@ -16,7 +16,9 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
-
+.my{
+	width: 51px;
+}
 #jb-container {
 	width: 90%;
 	margin: 0px auto;
@@ -87,13 +89,25 @@ td{
 </head>
 <body>
 <script type="text/javascript">
-
+$(document).ready(function() { 
+	var msg = null;
+	msg = '${msg}';
+	if(msg!=''){	
+		alert('${msg}'); 
+	}
+	});
+	
+	
 	function a(){
 		window.open("charge.mp","w","width=800, height=700, left=100, top=100, scrollbars=yes, resizable=yes, location=yes");
 	}
-	function test(id){
-		location.href="insertCyberMoney2.me?money=10&imp_uid="+id;
-	}
+	function test(id,money){
+ 		if(${ sessionScope.loginUser.cybermoney } >= money){
+			location.href="insertCyberMoney2.me?money="+money+"&imp_uid="+id;
+		}else{
+			alert("환불하려는 사이버머니보다 보유 사이버머니가 부족합니다.");
+		} 
+ 	}
 
 </script>
 	<jsp:include page="../must/header.jsp" />
@@ -122,11 +136,17 @@ td{
 								<c:forEach var="size" items="${ cyberMoney }" >
 									
 								
-									<tr onclick="test('<c:out value="${size.PROOF_NO}'"/>)">
+									<tr>
 										<td>${ size.CYBERMONEY_RECORD_NO } </td>
 										<td>${ size.CHANGE_REASON }</td>
 										<td>${ size.CHANGE_MONEY }원</td>
 										<td>${ size.RECORD_DATE }</td>
+										<c:if test="${ size.status eq '1' }">
+											<td class="my"><button type="button" onclick="test('${size.PROOF_NO}','${ size.CHANGE_MONEY }')">환불</button></td>
+										</c:if>
+										<c:if test="${ size.status eq '0' }">
+											<td class="my"></td>
+										</c:if>
 									</tr>
 								
 								</c:forEach>

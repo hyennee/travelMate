@@ -118,21 +118,33 @@ public class mypageController {
 	@ResponseBody
 	@RequestMapping("insertCyberMoney.me")
 	public String insertCyberMoney(@RequestParam(value="money")String money, @RequestParam(value="imp_uid")String imp_uid, HttpServletRequest request) {
-
+		
 		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
 
 		System.out.println(loginUser);
 		System.out.println("번호 : " + loginUser.getUser_no());
-
+		
 		System.out.println("imp_uid : " + imp_uid);
-
 		ms.insertCyberMoney(Integer.parseInt(money), loginUser, imp_uid);
-
 		return "redirect:Money.me";
 	}
+	
+	@ResponseBody
+	@RequestMapping("insertCyberMoney3.me")
+	public String insertCyberMoney3(@RequestParam(value="money")String money, @RequestParam(value="account_name")String account_name,@RequestParam(value="account_no")String account_no, HttpServletRequest request) {
+		
+		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
 
+		System.out.println(loginUser);
+		System.out.println("번호 : " + loginUser.getUser_no());
+		
+		System.out.println("account_name : " + account_name);
+		System.out.println("account_no : " + account_no);
+		ms.insertCyberMoney3(Integer.parseInt(money), loginUser, account_name, account_no);
+		return "redirect:Money.me";
+	}
 	@RequestMapping("insertCyberMoney2.me")
-	public String insertCyberMoney2(@RequestParam(value="money")String money, @RequestParam(value="imp_uid")String imp_uid, HttpServletRequest request) {
+	public String insertCyberMoney2(@RequestParam(value="money")String money, @RequestParam(value="imp_uid")String imp_uid, Model model,  HttpServletRequest request) {
 		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
 
 		System.out.println(loginUser);
@@ -144,7 +156,10 @@ public class mypageController {
 
 		try {
 			IamportResponse<Payment> payment_response = client.cancelPaymentByImpUid(cancel_data);
-
+			if(payment_response.getResponse() != null) {
+				ms.insertCyberMoney2(Integer.parseInt(money), loginUser, imp_uid);
+				return "redirect:Money.me";
+			}
 		} catch (IamportResponseException e) {
 			System.out.println(e.getMessage());
 
@@ -160,9 +175,9 @@ public class mypageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ms.insertCyberMoney2(Integer.parseInt(money), loginUser, imp_uid);
+		
 
-
+		model.addAttribute("msg", "이미 환불 완료된 거래입니다.");
 		return "redirect:Money.me";
 	}
 	

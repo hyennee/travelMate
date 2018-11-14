@@ -86,7 +86,7 @@ td{
 	<jsp:include page="../must/header.jsp" />
 	<div id="jb-container">
 		<div id="jb-header">
-			<h1>헤더</h1>
+			
 		</div>
 		<div id="jb-sidebar-left">
 			<jsp:include page="sidemenu.jsp" />
@@ -96,7 +96,30 @@ td{
 			<hr />
 			<div >
 						<p>고객관리리스트</p>
-						
+						<table id="example-table-1" class="table table-bordered table-hover text-center">
+								<tr>
+									<th style="width:50px" class="thstyle">컨설팅번호</th>
+									<th style="width:50px" class="thstyle">여행목적</th>
+									<th style="width:50px" class="thstyle">여행지역</th>
+									<th style="width:50px" class="thstyle">여행시작일자</th>
+									<th style="width:50px" class="thstyle">여행종료일자</th>
+									<th style="width:50px" class="thstyle">요청자 이름</th>
+								</tr>
+								
+								<c:forEach var="size" items="${ consultingCustomer }" >
+									
+								
+									<tr>
+										<td>${ size.CONSULT_REQUEST_NO }</th>
+										<td>${ size.TRAVEL_PURPOSE }</th>
+										<td>${ size.TRAVEL_AREA }</th>
+										<td>${ size.TRAVEL_START_DATE }</th>
+										<td>${ size.TRAVEL_END_DATE }</th>
+										<td>${ size.USER_NAME }</th>	
+									</tr>
+								
+								</c:forEach>
+							</table>
 
 			</div>
 			<br />

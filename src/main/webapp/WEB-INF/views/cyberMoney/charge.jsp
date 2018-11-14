@@ -81,39 +81,73 @@ td{
 </head>
 <body onUnload="x()">
 <script type="text/javascript">
+
+function test(sel){
+	if(sel==1){
+		$("#cash").css("visibility","visible");
+	}else{
+		$("#cash").css("visibility","hidden");
+	}
+}
+
  var IMP = window.IMP; // 생략해도 괜찮습니다.
 IMP.init("imp10977160"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다
 function pay(){
-	IMP.request_pay({ // param
-	    pg: "html5_inicis",
-	    pay_method: "card",
-	    name: $(":radio:checked").val()+"원",
-	    amount: 10,
-	    buyer_email: "${ sessionScope.loginUser.email }",
-	    buyer_name: "${ sessionScope.loginUser.user_name }",
-	    buyer_tel: "{ sessionScope.loginUser.phone }"
-	}, function (rsp) { // callback
-	    if (rsp.success) {
-	    	aj(rsp.imp_uid);	 
-	    }else{
-	    	alert("결제를 실패하였습니다.");
-	    }
-	}); 
+	if($('input[name="sel"]:checked').val() == "카드"){
+		IMP.request_pay({ // param
+		    pg: "html5_inicis",
+		    pay_method: "card",
+		    name: $(":radio:checked").val()+"원",
+		    amount: 10,
+		    buyer_email: "${ sessionScope.loginUser.email }",
+		    buyer_name: "${ sessionScope.loginUser.user_name }",
+		    buyer_tel: "{ sessionScope.loginUser.phone }"
+		}, function (rsp) { // callback
+		    if (rsp.success) {
+		    	aj(rsp.imp_uid);	 
+		    }else{
+		    	alert("결제를 실패하였습니다.");
+		    	parent.opener.location.reload();
+		    	parent.window.close();
+		    }
+		}); 
+	}else{
+		aj2();
+	}
 } 
 function aj(id){
 	 $.ajax({
 			data : {
 				"imp_uid": id,
-				"money" : $(":radio:checked").val()
+				"money" : $('input[name="money"]:checked').val()
 			},
 			url : 'insertCyberMoney.me', 
 			success : function(data) {
+				alert("결제가 완료되었습니다..");
 				parent.opener.location.reload();
 		    	parent.window.close();
 			},
 			error:function(request,status,error){
 				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
          	}
+		}); 
+}
+function aj2(){
+	 $.ajax({
+			data : {
+				"account_name": $('input[name="account_name"]').val(),
+				"account_no": $('input[name="account_no"]').val(),
+				"money" : $('input[name="money"]:checked').val()
+			},
+			url : 'insertCyberMoney3.me', 
+			success : function(data) {
+				alert("결제가 완료되었습니다..");
+				parent.opener.location.reload();
+		    	parent.window.close();
+			},
+			error:function(request,status,error){
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        	}
 		}); 
 }
 function x(){
@@ -124,14 +158,20 @@ function x(){
 		<div id="jb-content">
 			<h2>사이버머니</h2>
 			<hr />
-			<div >
-			<input type="radio" name="money" value="1000" checked="checked" /> 1000원
-			<input type="radio" name="money" value="5000"/> 5000원
-
-			
-						<button onclick="pay()">확인</button>
-						<button onclick="re()">환불</button>
-
+			<div>
+				<div >
+					<input type="radio" name="money" value="1000" checked="checked" id="1000"/><label for="1000">1000원</label> 
+					<input type="radio" name="money" value="5000" id="5000"/> <label for="5000">5000원</label> 
+				</div>
+				<div >
+					<input type="radio" name="sel" value="카드" checked="checked" id="카드" onclick="test(0)"/><label for="카드">카드</label> 
+					<input type="radio" name="sel" value="현금" id="현금" onclick="test(1)"/> <label for="현금">현금</label> 
+				</div>
+				<div id="cash" style="visibility:hidden;">
+					예금주 : <input type="text" name="account_name" id="account_name">&nbsp;&nbsp;&nbsp;
+					계좌번호 : <input type="text" name="account_no" id="account_no">
+				</div>
+				<button onclick="pay()">확인</button>
 			</div>
 			<br />
 		</div>

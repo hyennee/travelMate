@@ -26,5 +26,11 @@ public interface mypageService {
 	String checkpwd(Member m);
 
 	int updatepwd(Member m);
+
+	int cyberMoney(int user_no);
+
+	void insertCyberMoney3(int parseInt, Member loginUser, String account_name, String account_no);
+
+	List<HashMap<String, Object>> consultingCustomerHistory(Member loginUser);
 	
 }
