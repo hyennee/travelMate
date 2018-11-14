@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/travelMate/resources/css/style.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 .outer {
 	width: 960px;
@@ -478,6 +480,16 @@
 .newListArea li .likeArea ul li button {
 	width: 70px;
 }
+.selectDate
+{
+	background:#000;
+	opacity:0.25;
+}
+.selectDate:hover
+{
+	cursor:pointer;
+	background:white;
+}
 </style>
 </head>
 <body>
@@ -485,38 +497,48 @@
 	<br><br><br><br>
 	<div class="outer">
 		<div class="visualArea new">
-		<div class="visualIn" style="background-image:url('/travelMate/resources/images/detail/taipei.jpg');">
-            <h2 class="cityName">타이페이</h2>
-            <span class="cover"></span>
-            <ul class="weather">
-                <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/110_new.png" alt="흐림"></span>
-                    <span class="date">10/24 (목)</span>
-                    <span class="degree">21~24˚C</span>
-                </li>
-                <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/110_new.png" alt="흐림"></span>
-                    <span class="date">10/25 (금)</span>
-                    <span class="degree">22~26˚C</span>
-                </li>
-                <li>
-                    <!-- <span class="img"><img src="/travelMate/resources/images/detail/300_new.png" alt="비"></span>
-                    <span class="info">10/26 (토)</span>
-                    <span class="info">22~27˚C</span> -->
-                    <div id="openweathermap-widget-16"></div>
-                </li>
-                <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/300_new.png" alt="비"></span>
-                    <span class="date">10/27 (일)</span>
-                    <span class="degree">21~22˚C</span>
-                </li>
-                <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/110_new.png" alt="흐림"></span>
-                    <span class="date">10/28 (월)</span>
-                    <span class="degree">17~24˚C</span>
-                </li>
-            </ul>
-        </div>  
+			<div class="visualIn" style="background-image:url('/travelMate/resources/images/detail/taipei.jpg');">
+	            <h2 class="cityName">타이페이</h2>
+	            <span class="cover"></span>
+	            <ul class="weather">
+	                <!-- <li>
+	                	<div class="selectDate" style="width:183px; height:32px; filter: alpha(opacity = 25); margin-top:-40px;">
+	            		</div>
+	                    <span class="ico"><img src="/travelMate/resources/images/detail/110_new.png" alt="흐림"></span>
+	                    <span class="date">10/24 (목)</span>
+	                    <span class="degree">21~24˚C</span>
+	                </li>
+	                <li>
+	                	<div class="selectDate" style="width:183px; height:32px; filter: alpha(opacity = 25); margin-top:-40px;">
+	            		</div>
+	                    <span class="ico"><img src="/travelMate/resources/images/detail/110_new.png" alt="흐림"></span>
+	                    <span class="date">10/25 (금)</span>
+	                    <span class="degree">22~26˚C</span>
+	                </li>
+	                <li>
+	                	<div class="selectDate" style="width:182px; height:32px; filter: alpha(opacity = 25); margin-top:-45px;">
+	            		</div>
+	                    <span class="img"><img src="/travelMate/resources/images/detail/300_new.png" alt="비"></span>
+	                    <span class="info">10/26 (토)</span>
+	                    <span class="info">22~27˚C</span>
+	                </li>
+	                <li>
+	                	<div class="selectDate" style="width:182px; height:32px; filter: alpha(opacity = 25); margin-top:-40px;">
+	            		</div>
+	                    <span class="ico"><img src="/travelMate/resources/images/detail/300_new.png" alt="비"></span>
+	                    <span class="date">10/27 (일)</span>
+	                    <span class="degree">21~22˚C</span>
+	                </li>
+	                <li>
+	                	<div class="selectDate" style="width:182px; height:32px; filter: alpha(opacity = 25); margin-top:-40px;">
+	            		</div>
+	                    <span class="ico"><img src="/travelMate/resources/images/detail/110_new.png" alt="흐림"></span>
+	                    <span class="date">10/28 (월)</span>
+	                    <span class="degree">17~24˚C</span>
+	                </li> -->
+	            </ul>
+	        </div>  
+   	 	</div>
     </div>
     
     <div id="subWrap" class="cityMain">
@@ -573,6 +595,99 @@
 	<jsp:include page="../must/footer.jsp" />
 	
 	<script>
+		$(function()
+		{
+			$.ajax(
+			{
+				url : "http://api.openweathermap.org/data/2.5/forecast?q=Taipei,TW&APPID=e7a917f202e5b759fe9fac2ee226c96e",
+				type : "post",
+				success:function(data)
+				{
+					console.log(data);
+					console.log(data.list);
+					console.log(data.list[5].weather);
+					console.log(data.list[0].weather[0].description);
+					
+					/* var date = new Date(2018, 9, 12, 09, 1, 03);
+					alert(date); */
+					
+					var nowDate = new Date();
+					/* alert(nowDate.getHours()); */
+
+					for(var i=0; i<data.list.length; i++)
+					{
+						var test = data.list[i];
+						var nowTemp;
+						
+						console.log(test);
+						
+						var years = parseInt(test.dt_txt.substring(0, 4));
+						var months = parseInt(test.dt_txt.substring(5, 7));
+						var days = parseInt(test.dt_txt.substring(8, 10));
+						var hours = parseInt(test.dt_txt.substring(11, 13));
+						var minutes = parseInt(test.dt_txt.substring(14, 16));
+						var seconds = parseInt(test.dt_txt.substring(17, 19));
+						
+						/* alert(years);
+						alert(months);
+						alert(days);
+						alert(hours);
+						alert(minutes);
+						alert(seconds); */
+						
+						var apiDate = new Date(years, months, days, hours, minutes, seconds);
+						
+						alert(Math.abs(apiDate.getHours() - nowDate.getHours()));
+						
+						if(nowDate.getHours() >= 9 && nowDate.getHours() < 12)
+						{
+							if(apiDate.getHours() >= 9 && apiDate.getHours() < 12)
+							{
+								
+							}
+						}
+						
+						break;
+						
+						
+						
+						
+							/* nowTemp = parseFloat((data.list[i].main['temp']-273.15).toFixed(1));
+							
+							var $li = $("<li>")
+							var $div = $("<div class='selectDate' style='width:183px; height:32px; filter: alpha(opacity = 25); margin-top:-40px;'>");
+							var $span1 = $("<span class='ico'><img src='/travelMate/resources/images/detail/110_new.png'>");
+							var $span2 = $("<span class='date'>").text(data.list[i].dt_txt.substring(5, 7) + '월 ' + data.list[i].dt_txt.substring(8, 10) + '일');
+							var $span3 = $("<span class='degree'>").text(parseFloat((data.list[i].main['temp']-273.15).toFixed(1)) + "˚C");
+							
+							$li.append($div);
+							$li.append($span1);
+							$li.append($span2);
+							$li.append($span3);
+							$(".weather").append($li); */
+							
+							 /* <span class="ico"><img src="/travelMate/resources/images/detail/110_new.png" alt="흐림"></span>
+			                    <span class="date">10/24 (목)</span>
+			                    <span class="degree">21~24˚C</span> */
+					}
+					
+					/* 1. 이미지
+					2. 날짜
+					3. 온도 */
+					
+					/* $("#weatherNow").find('.img').children().attr('src', nowImg);
+	           	 	$("#weatherNow").find('.info').children('strong').html(nowTemp);
+	           		$("#weatherNow").find('.info').children('span').html(nowStatus); */
+				},
+				error:function(error)
+				{
+					console.log(error);
+				}
+			});
+		});
+	</script>
+	
+	<!-- <script>
 		window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
 		window.myWidgetParam.push(
 		{
@@ -590,7 +705,7 @@
 			var s = document.getElementsByTagName('script')[0];
 			s.parentNode.insertBefore(script, s);
 		})();
-	</script>
+	</script> -->
 	
 	<!-- <script>
 	var fnWeatherNow = function()
