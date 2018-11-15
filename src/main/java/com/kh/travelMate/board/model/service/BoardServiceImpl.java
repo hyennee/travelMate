@@ -141,4 +141,12 @@ public class BoardServiceImpl implements BoardService
 		
 		return listCount;
 	}
+
+	@Override
+	public Board selectOneAnswer(Board b)
+	{
+		Board noticeOne = bd.selectOneAnswer(sqlSession, b);
+		
+		return noticeOne;
+	}
 }

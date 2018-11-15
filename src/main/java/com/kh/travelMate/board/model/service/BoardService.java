@@ -31,4 +31,6 @@ public interface BoardService
 	ArrayList<Board> selectSearch(Board b, PageInfo page) throws BoardListException;
 
 	int getListCountSearch(Board b);
+
+	Board selectOneAnswer(Board b);
 }

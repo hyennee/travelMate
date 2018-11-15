@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/travelMate/resources/css/style.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 .outer {
 	width: 960px;
@@ -184,10 +185,9 @@
 	z-index: 3;
 	position: absolute;
 	bottom: 0;
-	left: -15px;
 	display: table;
 	table-layout: fixed;
-	width: 95%;
+	width: 100%;
 	height: 140px;
 }
 
@@ -204,7 +204,7 @@
 	filter: alpha(opacity = 25);
 }
 
-.visualArea.new .visualIn .weather li {
+.visualArea.new .visualIn .weather div {
 	z-index: 1;
 	position: relative;
 	display: table-cell;
@@ -217,7 +217,7 @@
 	color: #FFF;
 }
 
-.visualArea.new .visualIn .weather li:before {
+.visualArea.new .visualIn .weather div:before {
 	z-index: 2;
 	content: '';
 	position: absolute;
@@ -230,28 +230,27 @@
 	filter: alpha(opacity = 40);
 }
 
-.visualArea.new .visualIn .weather li:first-child:before {
+.visualArea.new .visualIn .weather div:first-child:before {
 	display: none;
 }
 
-.visualArea.new .visualIn .weather li .ico {
+.visualArea.new .visualIn .weather div .ico {
 	display: block;
 	margin: 0 0 6px;
 }
 
-.visualArea.new .visualIn .weather li .date {
+.visualArea.new .visualIn .weather div .date {
 	line-height: 18px;
 }
 
-.visualArea.new .visualIn .weather li .degree {
+.visualArea.new .visualIn .weather div .degree {
 	position: relative;
 	line-height: 18px;
 	padding-left: 11px;
 	margin: 0 0 0 9px;
 }
 
-.visualArea.new .visualIn .weather li .degree:before {
-	content: '';
+.visualArea.new .visualIn .weather div .degree:before {
 	position: absolute;
 	top: 4px;
 	left: 0;
@@ -478,6 +477,24 @@
 .newListArea li .likeArea ul li button {
 	width: 70px;
 }
+.selectDate
+{
+	opacity:0.25;
+	background:#000;
+	color:white;
+}
+.selectDate:hover
+{
+	cursor:pointer;
+	background:white;
+	opacity:0.75;
+	color:black;
+	font-weight:bold;
+}
+.weathers li
+{
+	display:table;
+}
 </style>
 </head>
 <body>
@@ -485,37 +502,228 @@
 	<br><br><br><br>
 	<div class="outer">
 		<div class="visualArea new">
-		<div class="visualIn" style="background-image:url('/travelMate/resources/images/detail/hongkong.jpg');">
-            <h2 class="cityName">홍콩</h2>
-            <span class="cover"></span>
-			<ul class="weather">
-                 <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/101_new.png" alt="구름조금"></span>
-                    <span class="date">10/25 (목)</span>
-                    <span class="degree">24~28˚C</span>
-                </li>
-                <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/101_new.png" alt="구름조금"></span>
-                    <span class="date">10/26 (금)</span>
-                    <span class="degree">24~28˚C</span>
-                </li>
-                <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/201_new.png" alt="흐림"></span>
-                    <span class="date">10/27 (토)</span>
-                    <span class="degree">22~26˚C</span>
-                </li>
-                <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/101_new.png" alt="구름조금"></span>
-                    <span class="date">10/28 (일)</span>
-                    <span class="degree">22~26˚C</span>
-                </li>
-                <li>
-                    <span class="ico"><img src="/travelMate/resources/images/detail/101_new.png" alt="구름조금"></span>
-                    <span class="date">10/29 (월)</span>
-                    <span class="degree">21~27˚C</span>
-                </li>
-            </ul>
-        </div>  
+			<div class="visualIn" style="background-image:url('/travelMate/resources/images/detail/taipei.jpg');">
+	            <h2 class="cityName">홍콩</h2>
+	            <span class="cover"></span>
+	            <div class="weather-menu" style="margin-top:84px;">
+		    	    <div class="selectDate dateButton1" style="width:192px; height:32px; float:left; display:table-cell;" align="center"></div>
+			        <div class="selectDate dateButton2" style="width:192px; height:32px; float:left; display:table-cell;" align="center"></div>
+			        <div class="selectDate dateButton3" style="width:192px; height:32px; float:left; display:table-cell;" align="center"></div>
+			        <div class="selectDate dateButton4" style="width:192px; height:32px; float:left; display:table-cell;" align="center"></div>
+			        <div class="selectDate dateButton5" style="width:192px; height:32px; float:left; display:table-cell;" align="center"></div>
+			    </div>
+	            <div class="weather weather1">
+	            	<div class="weather-block1" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block2" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block3" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block4" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block5" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block6" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block7" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block8" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            </div>
+	            <div class="weather weather2">
+	            	<div class="weather-block1" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block2" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block3" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block4" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block5" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block6" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block7" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block8" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            </div>
+	            <div class="weather weather3">
+	            	<div class="weather-block1" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block2" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block3" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block4" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block5" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block6" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block7" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block8" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            </div>
+	            <div class="weather weather4">
+	            	<div class="weather-block1" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block2" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block3" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block4" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block5" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block6" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block7" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block8" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            </div>
+	            <div class="weather weather5">
+	            	<div class="weather-block1" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block2" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block3" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block4" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block5" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block6" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block7" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            	<div class="weather-block8" style="width:120px; display:inline-block;">
+	            		<span class="ico"><img src=""></span>
+	                    <span class="date"></span>
+	                    <span class="degree"></span>
+	            	</div>
+	            </div>
+	        </div>  
+   	 	</div>
     </div>
     
     <div id="subWrap" class="cityMain">
@@ -581,5 +789,559 @@
     </div>
 </div>
 	<jsp:include page="../must/footer.jsp" />
+	
+	<script>
+		$(function()
+		{
+			$(".weather2").css({"display":"none"});
+			$(".weather3").css({"display":"none"});
+			$(".weather4").css({"display":"none"});
+			$(".weather5").css({"display":"none"});
+			
+			$(".dateButton1").click(function()
+			{
+				$(".weather1").css({"display":"table"});
+				$(".weather2").css({"display":"none"});
+				$(".weather3").css({"display":"none"});
+				$(".weather4").css({"display":"none"});
+				$(".weather5").css({"display":"none"});
+			});
+			$(".dateButton2").click(function()
+			{
+				$(".weather1").css({"display":"none"});
+				$(".weather2").css({"display":"table"});
+				$(".weather3").css({"display":"none"});
+				$(".weather4").css({"display":"none"});
+				$(".weather5").css({"display":"none"});
+			});
+			$(".dateButton3").click(function()
+			{
+				$(".weather1").css({"display":"none"});
+				$(".weather2").css({"display":"none"});
+				$(".weather3").css({"display":"table"});
+				$(".weather4").css({"display":"none"});
+				$(".weather5").css({"display":"none"});
+			});
+			$(".dateButton4").click(function()
+			{
+				$(".weather1").css({"display":"none"});
+				$(".weather2").css({"display":"none"});
+				$(".weather3").css({"display":"none"});
+				$(".weather4").css({"display":"table"});
+				$(".weather5").css({"display":"none"});
+			});
+			$(".dateButton5").click(function()
+			{
+				$(".weather1").css({"display":"none"});
+				$(".weather2").css({"display":"none"});
+				$(".weather3").css({"display":"none"});
+				$(".weather4").css({"display":"none"});
+				$(".weather5").css({"display":"table"});
+			});
+			
+			$.ajax(
+			{
+				url : "http://api.openweathermap.org/data/2.5/forecast?q=Hong Kong,CN&APPID=e7a917f202e5b759fe9fac2ee226c96e",
+				type : "post",
+				success:function(data)
+				{
+					var nowDate = new Date();
+					var buttonMonths = parseInt(nowDate.getMonth());
+					var buttonDays = parseInt(nowDate.getDate());
+					
+					$(".dateButton1").html(buttonMonths + "/" + buttonDays);
+					$(".dateButton2").html(buttonMonths + "/" + (buttonDays+1));
+					$(".dateButton3").html(buttonMonths + "/" + (buttonDays+2));
+					$(".dateButton4").html(buttonMonths + "/" + (buttonDays+3));
+					$(".dateButton5").html(buttonMonths + "/" + (buttonDays+4));
+
+					for(var i=0; i<data.list.length; i++)
+					{
+						var dataList = data.list[i];
+						var nowTemp;
+						var imageSrc;
+						
+						var years = parseInt(dataList.dt_txt.substring(0, 4));
+						var months = parseInt(dataList.dt_txt.substring(5, 7));
+						var days = parseInt(dataList.dt_txt.substring(8, 10));
+						var hours = parseInt(dataList.dt_txt.substring(11, 13));
+						var minutes = parseInt(dataList.dt_txt.substring(14, 16));
+						var seconds = parseInt(dataList.dt_txt.substring(17, 19));
+						
+						var monthDays = months + "/" + days + " " + hours + ":00";
+						
+						var apiDate = new Date(years, months-1, days, hours, minutes, seconds);
+						var weekends;
+						
+						if(apiDate.getDay() == 0)
+						{
+							weekends = "(일)";
+						}
+						else if(apiDate.getDay() == 1)
+						{
+							weekends = "(월)";
+						}
+						else if(apiDate.getDay() == 2)
+						{
+							weekends = "(화)";
+						}
+						else if(apiDate.getDay() == 3)
+						{
+							weekends = "(수)";
+						}
+						else if(apiDate.getDay() == 4)
+						{
+							weekends = "(목)";
+						}
+						else if(apiDate.getDay() == 5)
+						{
+							weekends = "(금)";
+						}
+						else if(apiDate.getDay() == 6)
+						{
+							weekends = "(토)";
+						}
+						
+						if(apiDate.getHours() >= 9 && apiDate.getHours() <= 18)
+						{
+							if((dataList.weather[0].id >= 200 && dataList.weather[0].id <= 202) || (dataList.weather[0].id >= 210 && dataList.weather[0].id <= 212) || dataList.weather[0].id == 221 || (dataList.weather[0].id >= 230 && dataList.weather[0].id <= 232))
+							{
+								imageSrc = "http://openweathermap.org/img/w/11d.png";
+							}
+							else if((dataList.weather[0].id >= 300 && dataList.weather[0].id <= 302) || (dataList.weather[0].id >= 310 && dataList.weather[0].id <= 314) || dataList.weather[0].id == 321)
+							{
+								imageSrc = "http://openweathermap.org/img/w/09d.png";
+							}
+							else if((dataList.weather[0].id >= 500 && dataList.weather[0].id <= 504))
+							{
+								imageSrc = "http://openweathermap.org/img/w/10d.png";
+							}
+							else if(dataList.weather[0].id == 511)
+							{
+								imageSrc = "http://openweathermap.org/img/w/13d.png";
+							}
+							else if((dataList.weather[0].id >= 520 && dataList.weather[0].id <= 522) || dataList.weather[0].id == 531)
+							{
+								imageSrc = "http://openweathermap.org/img/w/09d.png";
+							}
+							else if((dataList.weather[0].id >= 600 && dataList.weather[0].id <= 602) || (dataList.weather[0].id >= 611 && dataList.weather[0].id <= 612) || (dataList.weather[0].id >= 615 && dataList.weather[0].id <= 616) || (dataList.weather[0].id >= 620 && dataList.weather[0].id <= 622))
+							{
+								imageSrc = "http://openweathermap.org/img/w/13d.png";
+							}
+							else if(dataList.weather[0].id == 701 || dataList.weather[0].id == 711 || dataList.weather[0].id == 721 || dataList.weather[0].id == 731 || dataList.weather[0].id == 741 || dataList.weather[0].id == 751 || (dataList.weather[0].id >= 761 && dataList.weather[0].id <= 762) || dataList.weather[0].id == 771 || dataList.weather[0].id == 781)
+							{
+								imageSrc = "http://openweathermap.org/img/w/50d.png";
+							}
+							else if(dataList.weather[0].id == 800)
+							{
+								imageSrc = "http://openweathermap.org/img/w/01d.png";
+							}
+							else if(dataList.weather[0].id == 801)
+							{
+								imageSrc = "http://openweathermap.org/img/w/02d.png";
+							}
+							else if(dataList.weather[0].id == 802)
+							{
+								imageSrc = "http://openweathermap.org/img/w/03d.png";
+							}
+							else if(dataList.weather[0].id >= 803 && dataList.weather[0].id <= 804)
+							{
+								imageSrc = "http://openweathermap.org/img/w/04d.png";
+							}
+						}
+						else
+						{
+							if((dataList.weather[0].id >= 200 && dataList.weather[0].id <= 202) || (dataList.weather[0].id >= 210 && dataList.weather[0].id <= 212) || dataList.weather[0].id == 221 || (dataList.weather[0].id >= 230 && dataList.weather[0].id <= 232))
+							{
+								imageSrc = "http://openweathermap.org/img/w/11n.png";
+							}
+							else if((dataList.weather[0].id >= 300 && dataList.weather[0].id <= 302) || (dataList.weather[0].id >= 310 && dataList.weather[0].id <= 314) || dataList.weather[0].id == 321)
+							{
+								imageSrc = "http://openweathermap.org/img/w/09n.png";
+							}
+							else if((dataList.weather[0].id >= 500 && dataList.weather[0].id <= 504))
+							{
+								imageSrc = "http://openweathermap.org/img/w/10n.png";
+							}
+							else if(dataList.weather[0].id == 511)
+							{
+								imageSrc = "http://openweathermap.org/img/w/13n.png";
+							}
+							else if((dataList.weather[0].id >= 520 && dataList.weather[0].id <= 522) || dataList.weather[0].id == 531)
+							{
+								imageSrc = "http://openweathermap.org/img/w/09n.png";
+							}
+							else if((dataList.weather[0].id >= 600 && dataList.weather[0].id <= 602) || (dataList.weather[0].id >= 611 && dataList.weather[0].id <= 612) || (dataList.weather[0].id >= 615 && dataList.weather[0].id <= 616) || (dataList.weather[0].id >= 620 && dataList.weather[0].id <= 622))
+							{
+								imageSrc = "http://openweathermap.org/img/w/13n.png";
+							}
+							else if(dataList.weather[0].id == 701 || dataList.weather[0].id == 711 || dataList.weather[0].id == 721 || dataList.weather[0].id == 731 || dataList.weather[0].id == 741 || dataList.weather[0].id == 751 || (dataList.weather[0].id >= 761 && dataList.weather[0].id <= 762) || dataList.weather[0].id == 771 || dataList.weather[0].id == 781)
+							{
+								imageSrc = "http://openweathermap.org/img/w/50n.png";
+							}
+							else if(dataList.weather[0].id == 800)
+							{
+								imageSrc = "http://openweathermap.org/img/w/01n.png";
+							}
+							else if(dataList.weather[0].id == 801)
+							{
+								imageSrc = "http://openweathermap.org/img/w/02n.png";
+							}
+							else if(dataList.weather[0].id == 802)
+							{
+								imageSrc = "http://openweathermap.org/img/w/03n.png";
+							}
+							else if(dataList.weather[0].id >= 803 && dataList.weather[0].id <= 804)
+							{
+								imageSrc = "http://openweathermap.org/img/w/04n.png";
+							}
+						}
+						
+						/* alert(apiDate.getDate() + "/" + (apiDate.getDate()+1) + "/" + (apiDate.getDate()+2)); */
+						if(apiDate.getDate() == nowDate.getDate())
+						{
+							/* alert(i + " : " + apiDate.getDate() + " == " + nowDate.getDate()); */
+							if(apiDate.getHours() >= 0 && apiDate.getHours() < 3)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather1").find(".weather-block1").find(".ico").children().attr('src', imageSrc);
+								$(".weather1").find(".weather-block1").find(".degree").html(nowTemp + "˚C");
+								$(".weather1").find(".weather-block1").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 3 && apiDate.getHours() < 6)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather1").find(".weather-block2").find(".ico").children().attr('src', imageSrc);
+								$(".weather1").find(".weather-block2").find(".degree").html(nowTemp + "˚C");
+								$(".weather1").find(".weather-block2").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 6 && apiDate.getHours() < 9)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather1").find(".weather-block3").find(".ico").children().attr('src', imageSrc);
+								$(".weather1").find(".weather-block3").find(".degree").html(nowTemp + "˚C");
+								$(".weather1").find(".weather-block3").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 9 && apiDate.getHours() < 12)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather1").find(".weather-block4").find(".ico").children().attr('src', imageSrc);
+								$(".weather1").find(".weather-block4").find(".degree").html(nowTemp + "˚C");
+								$(".weather1").find(".weather-block4").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 12 && apiDate.getHours() < 15)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather1").find(".weather-block5").find(".ico").children().attr('src', imageSrc);
+								$(".weather1").find(".weather-block5").find(".degree").html(nowTemp + "˚C");
+								$(".weather1").find(".weather-block5").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 15 && apiDate.getHours() < 18)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather1").find(".weather-block6").find(".ico").children().attr('src', imageSrc);
+								$(".weather1").find(".weather-block6").find(".degree").html(nowTemp + "˚C");
+								$(".weather1").find(".weather-block6").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 18 && apiDate.getHours() < 21)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather1").find(".weather-block7").find(".ico").children().attr('src', imageSrc);
+								$(".weather1").find(".weather-block7").find(".degree").html(nowTemp + "˚C");
+								$(".weather1").find(".weather-block7").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 21 && apiDate.getHours() < 24)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather1").find(".weather-block8").find(".ico").children().attr('src', imageSrc);
+								$(".weather1").find(".weather-block8").find(".degree").html(nowTemp + "˚C");
+								$(".weather1").find(".weather-block8").find(".date").html(monthDays);
+							}
+						}
+						if(apiDate.getDate() == (nowDate.getDate()+1))
+						{
+							if(apiDate.getHours() >= 0 && apiDate.getHours() < 3)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather2").find(".weather-block1").find(".ico").children().attr('src', imageSrc);
+								$(".weather2").find(".weather-block1").find(".degree").html(nowTemp + "˚C");
+								$(".weather2").find(".weather-block1").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 3 && apiDate.getHours() < 6)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather2").find(".weather-block2").find(".ico").children().attr('src', imageSrc);
+								$(".weather2").find(".weather-block2").find(".degree").html(nowTemp + "˚C");
+								$(".weather2").find(".weather-block2").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 6 && apiDate.getHours() < 9)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather2").find(".weather-block3").find(".ico").children().attr('src', imageSrc);
+								$(".weather2").find(".weather-block3").find(".degree").html(nowTemp + "˚C");
+								$(".weather2").find(".weather-block3").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 9 && apiDate.getHours() < 12)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather2").find(".weather-block4").find(".ico").children().attr('src', imageSrc);
+								$(".weather2").find(".weather-block4").find(".degree").html(nowTemp + "˚C");
+								$(".weather2").find(".weather-block4").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 12 && apiDate.getHours() < 15)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather2").find(".weather-block5").find(".ico").children().attr('src', imageSrc);
+								$(".weather2").find(".weather-block5").find(".degree").html(nowTemp + "˚C");
+								$(".weather2").find(".weather-block5").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 15 && apiDate.getHours() < 18)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather2").find(".weather-block6").find(".ico").children().attr('src', imageSrc);
+								$(".weather2").find(".weather-block6").find(".degree").html(nowTemp + "˚C");
+								$(".weather2").find(".weather-block6").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 18 && apiDate.getHours() < 21)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather2").find(".weather-block7").find(".ico").children().attr('src', imageSrc);
+								$(".weather2").find(".weather-block7").find(".degree").html(nowTemp + "˚C");
+								$(".weather2").find(".weather-block7").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 21 && apiDate.getHours() < 24)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather2").find(".weather-block8").find(".ico").children().attr('src', imageSrc);
+								$(".weather2").find(".weather-block8").find(".degree").html(nowTemp + "˚C");
+								$(".weather2").find(".weather-block8").find(".date").html(monthDays);
+							}
+						}
+						if(apiDate.getDate() == (nowDate.getDate()+2))
+						{
+							if(apiDate.getHours() >= 0 && apiDate.getHours() < 3)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather3").find(".weather-block1").find(".ico").children().attr('src', imageSrc);
+								$(".weather3").find(".weather-block1").find(".degree").html(nowTemp + "˚C");
+								$(".weather3").find(".weather-block1").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 3 && apiDate.getHours() < 6)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather3").find(".weather-block2").find(".ico").children().attr('src', imageSrc);
+								$(".weather3").find(".weather-block2").find(".degree").html(nowTemp + "˚C");
+								$(".weather3").find(".weather-block2").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 6 && apiDate.getHours() < 9)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather3").find(".weather-block3").find(".ico").children().attr('src', imageSrc);
+								$(".weather3").find(".weather-block3").find(".degree").html(nowTemp + "˚C");
+								$(".weather3").find(".weather-block3").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 9 && apiDate.getHours() < 12)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather3").find(".weather-block4").find(".ico").children().attr('src', imageSrc);
+								$(".weather3").find(".weather-block4").find(".degree").html(nowTemp + "˚C");
+								$(".weather3").find(".weather-block4").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 12 && apiDate.getHours() < 15)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather3").find(".weather-block5").find(".ico").children().attr('src', imageSrc);
+								$(".weather3").find(".weather-block5").find(".degree").html(nowTemp + "˚C");
+								$(".weather3").find(".weather-block5").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 15 && apiDate.getHours() < 18)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather3").find(".weather-block6").find(".ico").children().attr('src', imageSrc);
+								$(".weather3").find(".weather-block6").find(".degree").html(nowTemp + "˚C");
+								$(".weather3").find(".weather-block6").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 18 && apiDate.getHours() < 21)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather3").find(".weather-block7").find(".ico").children().attr('src', imageSrc);
+								$(".weather3").find(".weather-block7").find(".degree").html(nowTemp + "˚C");
+								$(".weather3").find(".weather-block7").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 21 && apiDate.getHours() < 24)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather3").find(".weather-block8").find(".ico").children().attr('src', imageSrc);
+								$(".weather3").find(".weather-block8").find(".degree").html(nowTemp + "˚C");
+								$(".weather3").find(".weather-block8").find(".date").html(monthDays);
+							}
+						}
+						if(apiDate.getDate() == (nowDate.getDate()+3))
+						{
+							if(apiDate.getHours() >= 0 && apiDate.getHours() < 3)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather4").find(".weather-block1").find(".ico").children().attr('src', imageSrc);
+								$(".weather4").find(".weather-block1").find(".degree").html(nowTemp + "˚C");
+								$(".weather4").find(".weather-block1").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 3 && apiDate.getHours() < 6)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather4").find(".weather-block2").find(".ico").children().attr('src', imageSrc);
+								$(".weather4").find(".weather-block2").find(".degree").html(nowTemp + "˚C");
+								$(".weather4").find(".weather-block2").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 6 && apiDate.getHours() < 9)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather4").find(".weather-block3").find(".ico").children().attr('src', imageSrc);
+								$(".weather4").find(".weather-block3").find(".degree").html(nowTemp + "˚C");
+								$(".weather4").find(".weather-block3").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 9 && apiDate.getHours() < 12)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather4").find(".weather-block4").find(".ico").children().attr('src', imageSrc);
+								$(".weather4").find(".weather-block4").find(".degree").html(nowTemp + "˚C");
+								$(".weather4").find(".weather-block4").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 12 && apiDate.getHours() < 15)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather4").find(".weather-block5").find(".ico").children().attr('src', imageSrc);
+								$(".weather4").find(".weather-block5").find(".degree").html(nowTemp + "˚C");
+								$(".weather4").find(".weather-block5").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 15 && apiDate.getHours() < 18)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather4").find(".weather-block6").find(".ico").children().attr('src', imageSrc);
+								$(".weather4").find(".weather-block6").find(".degree").html(nowTemp + "˚C");
+								$(".weather4").find(".weather-block6").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 18 && apiDate.getHours() < 21)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather4").find(".weather-block7").find(".ico").children().attr('src', imageSrc);
+								$(".weather4").find(".weather-block7").find(".degree").html(nowTemp + "˚C");
+								$(".weather4").find(".weather-block7").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 21 && apiDate.getHours() < 24)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather4").find(".weather-block8").find(".ico").children().attr('src', imageSrc);
+								$(".weather4").find(".weather-block8").find(".degree").html(nowTemp + "˚C");
+								$(".weather4").find(".weather-block8").find(".date").html(monthDays);
+							}
+						}
+						if(apiDate.getDate() == (nowDate.getDate()+4))
+						{
+							if(apiDate.getHours() >= 0 && apiDate.getHours() < 3)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather5").find(".weather-block1").find(".ico").children().attr('src', imageSrc);
+								$(".weather5").find(".weather-block1").find(".degree").html(nowTemp + "˚C");
+								$(".weather5").find(".weather-block1").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 3 && apiDate.getHours() < 6)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather5").find(".weather-block2").find(".ico").children().attr('src', imageSrc);
+								$(".weather5").find(".weather-block2").find(".degree").html(nowTemp + "˚C");
+								$(".weather5").find(".weather-block2").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 6 && apiDate.getHours() < 9)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather5").find(".weather-block3").find(".ico").children().attr('src', imageSrc);
+								$(".weather5").find(".weather-block3").find(".degree").html(nowTemp + "˚C");
+								$(".weather5").find(".weather-block3").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 9 && apiDate.getHours() < 12)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather5").find(".weather-block4").find(".ico").children().attr('src', imageSrc);
+								$(".weather5").find(".weather-block4").find(".degree").html(nowTemp + "˚C");
+								$(".weather5").find(".weather-block4").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 12 && apiDate.getHours() < 15)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather5").find(".weather-block5").find(".ico").children().attr('src', imageSrc);
+								$(".weather5").find(".weather-block5").find(".degree").html(nowTemp + "˚C");
+								$(".weather5").find(".weather-block5").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 15 && apiDate.getHours() < 18)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather5").find(".weather-block6").find(".ico").children().attr('src', imageSrc);
+								$(".weather5").find(".weather-block6").find(".degree").html(nowTemp + "˚C");
+								$(".weather5").find(".weather-block6").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 18 && apiDate.getHours() < 21)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather5").find(".weather-block7").find(".ico").children().attr('src', imageSrc);
+								$(".weather5").find(".weather-block7").find(".degree").html(nowTemp + "˚C");
+								$(".weather5").find(".weather-block7").find(".date").html(monthDays);
+							}
+							else if(apiDate.getHours() >= 21 && apiDate.getHours() < 24)
+							{
+								nowTemp = parseFloat((dataList.main['temp']-273.15).toFixed(1));
+								
+								$(".weather5").find(".weather-block8").find(".ico").children().attr('src', imageSrc);
+								$(".weather5").find(".weather-block8").find(".degree").html(nowTemp + "˚C");
+								$(".weather5").find(".weather-block8").find(".date").html(monthDays);
+							}
+						}
+					}
+				},
+				error:function(error)
+				{
+					console.log(error);
+				}
+			});
+		});
+	</script>
 </body>
 </html>

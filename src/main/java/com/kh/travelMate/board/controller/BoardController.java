@@ -160,12 +160,34 @@ public class BoardController
 		return "board/serviceCenter/questionUpdateForm";
 	}
 	
+	@RequestMapping("goAnswerUpdateForm.bo")
+	public String showAnswerUpdateForm(Board b, Model model)
+	{	
+		Board selectOne = bs.selectOneAnswer(b);
+		
+		System.out.println("보드 : " + b);
+		System.out.println("셀원 : " + selectOne);
+			
+		model.addAttribute("selectOneAnswer", selectOne);
+			
+		return "board/openConsulting/ocAnswerUpdateForm";
+	}
+	
 	@RequestMapping("update.bo")
 	public String updateBoard(Board b, Model model)
 	{
 		bs.updateBoard(b);
 		
 		return "redirect:selectOne.bo?boardNo=" + b.getBoardNo() + "&category=" + b.getCategory();
+	}
+	
+	@RequestMapping("updateAnswer.bo")
+	public String updateAnswerBoard(Board b, Model model)
+	{
+		System.out.println("보드앤서 : " + b);
+		bs.updateBoard(b);
+		
+		return "redirect:selectOne.bo?boardNo=" + b.getRefNo() + "&category=" + b.getCategory();
 	}
 	
 	@RequestMapping("delete.bo")

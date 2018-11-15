@@ -242,6 +242,7 @@
 						<br>
 						<div class="AnswerArea">
 							<c:forEach var="answer" items="${ answerList }">
+							<form action="goAnswerUpdateForm.bo" method="post">
 								<div id="openAnswer">
 									<div id="answercon1">
 										<h3>
@@ -259,31 +260,42 @@
 									<hr style="width: 95%">
 									<!-- 오픈컨설팅 답변 내용 div -->
 									<div id="answercon3" style="font-style: normal">
-									<c:if test="${ sessionScope.loginUser.getNick_name() ne answer.nickName }">
-										<c:if test="${ selectOne.refNo ne answer.boardNo }">
-											<p><c:out value="${fn:substring(answer.content, 0, 200)}" escapeXml="false"/></p>
+										<input type="hidden" name="boardNo" value="${ answer.boardNo }">
+										<input type="hidden" name="category" value="${ answer.category }">
+										<c:if test="${ sessionScope.loginUser.getNick_name() ne answer.nickName }">
+											<c:if test="${ selectOne.refNo ne answer.boardNo }">
+												<p><c:out value="${fn:substring(answer.content, 0, 200)}" escapeXml="false"/></p>
+											</c:if>
 										</c:if>
-									</c:if>
-									<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
-										<c:if test="${ selectOne.refNo eq answer.boardNo }">
+										<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
+											<c:if test="${ selectOne.refNo eq answer.boardNo }">
+												<p><c:out value="${ answer.content }" escapeXml="false"/></p>
+											</c:if>
+										</c:if>
+										<c:if test="${ sessionScope.loginUser.getNick_name() eq answer.nickName }">
 											<p><c:out value="${ answer.content }" escapeXml="false"/></p>
 										</c:if>
-									</c:if>
-									<c:if test="${ sessionScope.loginUser.getNick_name() eq answer.nickName }">
-										<p><c:out value="${ answer.content }" escapeXml="false"/></p>
-									</c:if>
-									<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
-										<c:if test="${ selectOne.refNo ne answer.boardNo }">
-											<button id="btnSelect" type="button" onclick="location.href='updateContent.bo?boardNo=${ selectOne.boardNo }&refNo=${ answer.boardNo }&category=${ selectOne.category }'">내용 더보기</button>
+										<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
+											<c:if test="${ selectOne.refNo ne answer.boardNo }">
+												<button id="btnSelect" type="button" onclick="location.href='updateContent.bo?boardNo=${ selectOne.boardNo }&refNo=${ answer.boardNo }&category=${ selectOne.category }'">내용 더보기</button>
+											</c:if>
 										</c:if>
-									</c:if>
+										<c:if test="${ sessionScope.loginUser.getNick_name() eq answer.nickName }">
+											<div style="float:right;">
+												<button type="submit" id="btnList">답변 수정</button>
+											</div>
+										</c:if>
 									</div>
 								</div>
+							</form>
 							<br>
 							</c:forEach>
 						</div>
 						<!-- 목록버튼 -->
 						<button id="btnList" type="button" onclick="location.href='selectList.bo?category=3'">목록</button>
+						<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
+							<button id="btnList" type="button" onclick="location.href='delete.bo?boardNo=${ selectOne.boardNo }&category=${ selectOne.category }'">삭제</button>
+						</c:if>
 					</div>
 				</div>
 			</div>
