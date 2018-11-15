@@ -57,12 +57,14 @@ public class mypageDaoImpl implements mypageDao{
 		return sqlSession.selectOne("Mypage.checkpwd", user_no);
 	}*/
 
+	//비번 변경하기
 	@Override
 	public int updatepwd(SqlSessionTemplate sqlSession, Member m) {
 		// TODO Auto-generated method stub
 		return sqlSession.update("Mypage.updatepwd", m);
 	}
 
+	//비번이 일치하는지
 	@Override
 	public String checkpwd(SqlSessionTemplate sqlSession, Member m) {
 		
@@ -114,6 +116,14 @@ public class mypageDaoImpl implements mypageDao{
 		a.put("userNo", loginUser.getUser_no());
 		a.put("imp_uid", imp_uid);
 		sqlSession.insert("Mypage.insertCyberMoney5", a);
+	}
+
+	//탈퇴회원으로 변경하기
+	@Override
+	public int updateCancel(SqlSessionTemplate sqlSession, Member m) {
+		
+		
+		return  sqlSession.update("Mypage.updateCancel", m);
 	}
 	
 

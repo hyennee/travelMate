@@ -119,11 +119,15 @@ public class mypageServiceImpl implements mypageService{
 		
 		
 	}*/
+	
+	//비밀번호 변경
 	@Override
 	public int updatepwd(Member m) {
 		
 		return md.updatepwd(sqlSession, m);
 	}
+	
+	//비밀번호 일치하는지
 	@Override
 	public String checkpwd(Member m) {
 		
@@ -161,6 +165,13 @@ public class mypageServiceImpl implements mypageService{
 	public void insertCyberMoney4(int parseInt, Member loginUser, String imp_uid) {
 		md.insertCyberMoney4(parseInt, loginUser, imp_uid, sqlSession);
 		
+	}
+	
+	//유저그레이드? 유저타입? '탈퇴회원'으로 변경
+	@Override
+	public int updateCancel(Member m) {
+		// TODO Auto-generated method stub
+		return md.updateCancel(sqlSession, m);
 	}
 	
 

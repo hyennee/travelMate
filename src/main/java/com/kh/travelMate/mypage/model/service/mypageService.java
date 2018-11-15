@@ -36,5 +36,7 @@ public interface mypageService {
 	List<HashMap<String, Object>> cyberMoneyStatus(Member loginUser);
 
 	void insertCyberMoney4(int parseInt, Member loginUser, String imp_uid);
+
+	int updateCancel(Member m);
 	
 }

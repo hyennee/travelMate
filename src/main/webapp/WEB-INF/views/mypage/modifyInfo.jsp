@@ -60,10 +60,6 @@
 	border: 0px solid #bcbcbc;
 }
 
-tr {
-	border: 1px solid #bcbcbc;
-}
-
 
 .thstyle{
 	width : 200px;
@@ -71,7 +67,6 @@ tr {
 }
 
 .section {
-	border: 1px solid #bcbcbc;
 	width: 100%;
 	display: inline-block;
 }
@@ -131,7 +126,7 @@ a {
 								</tr>
 								
 							</table>
-							<input type="submit" value="변경"  id="submit"/>
+							<input type="submit" value="변경"  id="submit" class="btn btn-default"/>
 							<input type="hidden" value="${ sessionScope.loginUser.user_no }" name="user_no">
 							</form>
 							

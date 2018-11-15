@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>myInfo</title>
+<title>회원탈퇴</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -61,6 +61,8 @@
 }
 
 
+
+
 .section {
 	border: 1px solid #bcbcbc;
 	width: 100%;
@@ -75,10 +77,6 @@ a {
 	width:49%;
 	display:inline-block;
 }
-.thstyle{
-	width : 200px;
-	background-color : lightgray;
-}
 </style>
 </head>
 <body>
@@ -91,37 +89,33 @@ a {
 			<jsp:include page="sidemenu.jsp" />
 		</div>
 		<div id="jb-content">
-			<h2>나의 계정</h2>
+			<h2>회원탈퇴</h2>
 			<hr />
 			<div >
-						<p>내계정</p>
-						
-						<form action="modifyInfo.me">
-							<table class="table">
-								<tr>
-									<td class="thstyle">이름</td>
-									<td colspan="2">
-									<c:out value="${ sessionScope.loginUser.user_name }"></c:out></td>
-								</tr>
-								<tr>
-									<td class="thstyle">연락처</td>
-									<td><c:out value="${ sessionScope.loginUser.phone }"></c:out></td>
-									<td><button onclick="modifyInfo()" class="btn btn-default  btn-sm">정보수정</button></td>
-								</tr>
-								<tr>
-									<td class="thstyle">가입일</td>
-									<td colspan="2"><c:out
-											value="${ sessionScope.loginUser.enroll_date }"></c:out></td>
-								</tr>
-
-								<tr>
-									<td class="thstyle">보유 적립금</td>
-									<td colspan="2"><c:out
-											value="${ sessionScope.loginUser.cybermoney }"></c:out>원</td>
-								</tr>
-
-							</table>
-						</form>
+				<ul>
+					<li><span>회원탈퇴를 원하시면 비밀번호를 입력하신 후, 회원탈퇴 버튼을 클릭해 주세요.</span></li>
+					<li><span>탈퇴하시면 계정정보는 데이터베이스에서 즉시 삭제됩니다.</span></li>
+					
+				</ul>		
+				
+				<form action="" method="" class="form-horizontal" >
+				
+				
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-10">
+							<p class="form-control-static"><c:out value="${ sessionScope.loginUser.email }"></c:out></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="pwd" name="pwd" oninput="checkPwd()"
+								placeholder="현재 비밀번호를 입력하세요"> 
+						</div>
+					</div>
+				<input type="submit" value="회원탈퇴" class="btn btn-danger"/>
+				</form>
 			</div>
 			<br />
 		</div>
@@ -133,12 +127,7 @@ a {
 
 
 	<jsp:include page="../must/footer.jsp" />
-	<script>
-	 function modifyInfo(){
- 		 location.href = "<%=request.getContextPath()%>/modifyInfo.me";
- 		 
- 	 }
-	</script>
+
 </body>
 </html>
 
