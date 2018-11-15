@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.member.model.exception.LoginException;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.service.mypageService;
@@ -276,6 +277,19 @@ public class mypageController {
 					
 				}
 				
+		}
+		
+		//1:1문의게시판 상세보기
+		@RequestMapping("selectOneByOneBoard.bo")
+		public String selectOneByOneBoard(Board boardNo, Model model, HttpServletRequest request) {
+		
+			//ModelAndView / String 로 포워딩 한다
+			
+			Board b = new Board();
+			
+			b = ms.selectOneByOneBoard(boardNo);
+			
+			return "mypage/detailOneByOneQnA";
 		}
 
 }

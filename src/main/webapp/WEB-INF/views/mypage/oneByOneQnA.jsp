@@ -104,8 +104,9 @@ td{
 			<hr />
 			<div >
 						<p>문의내역리스트</p>
-						<table  width="100%" class="table table-bordered table-hover text-center">
-								<tr>
+						<form action="">
+						<table id="QnAList" width="100%" class="table table-bordered table-hover text-center">
+								<tr >
 									<th class="thstyle">no</th>
 									<th class="thstyle">제목</th>
 									<th class="thstyle">작성자</th>
@@ -113,15 +114,17 @@ td{
 								</tr>
 								<c:forEach var="size" items="${ oneByOne }" >
 								<tr>
-									<td>${ size.BOARD_NO}</td>
+									<td>
+										${ size.BOARD_NO}
+										<input type="hidden" name="boardNo" value="${ size.BOARD_NO}" />
+									</td>
 									<td>${ size.TITLE}</td>
 									<td>${ size.WRITE}</td>
 									<td>${ size.BOARD_DATE}</td>
-									
 								</tr>
 								</c:forEach>
 							</table>
-
+						</form>
 			</div>
 			<br />
 		</div>
@@ -133,7 +136,22 @@ td{
 
 
 	<jsp:include page="../must/footer.jsp" />
-
+	<script>
+		$(function()
+		{
+			$("#QnAList").children().click(function(){
+						
+							var boardNo = $(this).children("input[name='boardNo']").val();
+							
+							
+							location.href="selectOneByOneBoard.bo?boardNo=" + boardNo;
+				
+// 				location.href =  "selectOneByOneBoard.bo?boardNo="+${size.board}
+				
+			})
+		});
+	
+	</script>
 </body>
 </html>
 
