@@ -156,4 +156,12 @@ public class BoardDaoImpl implements BoardDao
 		}
 		return result;
 	}
+
+	@Override
+	public Board selectOneAnswer(SqlSessionTemplate sqlSession, Board b)
+	{
+		Board noticeOne = sqlSession.selectOne("Board.selectOneAnswer", b);
+		
+		return noticeOne;
+	}
 }
