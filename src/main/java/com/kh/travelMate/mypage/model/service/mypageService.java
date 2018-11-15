@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.member.model.vo.Member;
 
 public interface mypageService {
@@ -38,5 +39,7 @@ public interface mypageService {
 	void insertCyberMoney4(int parseInt, Member loginUser, String imp_uid);
 
 	int updateCancel(Member m);
+
+	Board selectOneByOneBoard(Board boardNo);
 	
 }

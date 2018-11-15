@@ -25,6 +25,8 @@ public class OthersServiceImpl implements OthersService {
 		int conResult = od.insertCONSULT_APPLY(ca, sqlSession);
 		int attResult = od.insertAttachment(attachment, sqlSession);
 		
+		System.out.println("!! : " + attResult);
+		
 		if(conResult > 0 && attResult > 0)
 		{
 			result = 1;

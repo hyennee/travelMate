@@ -5,17 +5,9 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>회원탈퇴</title>
+<title>상세거래내역</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
 #jb-container {
 	width: 90%;
@@ -60,6 +52,9 @@
 	border: 0px solid #bcbcbc;
 }
 
+tr {
+	border: 1px solid #bcbcbc;
+}
 
 
 
@@ -77,6 +72,14 @@ a {
 	width:49%;
 	display:inline-block;
 }
+td{
+	border-bottom: 1px solid lightgray;
+}
+
+.thstyle{
+	width : 200px;
+	background-color : lightgray;
+}
 </style>
 </head>
 <body>
@@ -89,33 +92,26 @@ a {
 			<jsp:include page="sidemenu.jsp" />
 		</div>
 		<div id="jb-content">
-			<h2>회원탈퇴</h2>
+			<h2>상세 1:1문의</h2>
 			<hr />
 			<div >
-				<ul>
-					<li><span>회원탈퇴를 원하시면 비밀번호를 입력하신 후, 회원탈퇴 버튼을 클릭해 주세요.</span></li>
-					<li><span>탈퇴하시면 계정정보는 데이터베이스에서 즉시 삭제됩니다.</span></li>
-					
-				</ul>		
-				
-				<form action="checkPwd_cancel.me" method="post" class="form-horizontal" >
-				
-				
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Email</label>
-						<div class="col-sm-10">
-							<p class="form-control-static"><c:out value="${ sessionScope.loginUser.email }"></c:out></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword" class="col-sm-2 control-label">Password</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="pwd" name="pwd" oninput="checkPwd()"
-								placeholder="현재 비밀번호를 입력하세요"> 
-						</div>
-					</div>
-				<input type="submit" value="회원탈퇴" class="btn btn-danger"/>
-				</form>
+						<p>상세 거래 내역</p>
+						
+						<label for="">no</label><input type="text" value="아이디" readonly/><br />
+						<label for="">컨설턴트</label><input type="text" value="컨설턴트" readonly /><br />
+						<label for="">거래일시</label><input type="text" value="2018.01.11" readonly/><br />
+						<label for="">거래한 상품</label><input type="text" value="신혼여행으로 몰디브, 예산 1인 300으로 짜주세요"/><br />
+						<label for="">내용</label><br />
+						
+						<c:forEach var="size" items="${ oneByOne }" >
+									${ size.BOARD_NO}
+									${ size.TITLE}
+									${ size.WRITE}
+									${ size.BOARD_DATE}
+									
+								</c:forEach>
+												
+
 			</div>
 			<br />
 		</div>

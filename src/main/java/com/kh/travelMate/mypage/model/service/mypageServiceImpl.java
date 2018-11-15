@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.member.model.exception.LoginException;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.dao.mypageDao;
@@ -172,6 +173,11 @@ public class mypageServiceImpl implements mypageService{
 	public int updateCancel(Member m) {
 		// TODO Auto-generated method stub
 		return md.updateCancel(sqlSession, m);
+	}
+	@Override
+	public Board selectOneByOneBoard(Board boardNo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

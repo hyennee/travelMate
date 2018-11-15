@@ -17,7 +17,7 @@
 		order by record_date desc
 	</select> 
 	
-	<select id="consultingCustomerHistory" resultType="java.util.HashMap" parameterType="int">
+	<select id="consultingCustomerHistory" resultType="java.util.HashMap" parameterType="_int">
 		SELECT * 
 		FROM CONSULT_REQUEST cr
 		join member m on (cr.REQUEST_USER_NO = m.user_no) 
@@ -25,13 +25,14 @@
 	</select> 
 	
 	
-	<select id="oneByOneHistory" resultType="java.util.HashMap" parameterType="int">
+	<select id="oneByOneHistory" resultType="java.util.HashMap" parameterType="_int">
 		SELECT *
 		FROM BOARD 
-		WHERE WRITER = #{user_no}
+		WHERE WRITER = #{user_no} 
+		AND CATEGORY = 2
 	</select>
 	
-	<select id="tradeInfoHistory" resultType="java.util.HashMap" parameterType="int">
+	<select id="tradeInfoHistory" resultType="java.util.HashMap" parameterType="_int">
 		SELECT *
 		FROM CONSULT_REQUEST
 		WHERE REQUEST_USER_NO = #{user_no}
@@ -94,10 +95,16 @@
 	
 	<update id="updateCancel" parameterType="com.kh.travelMate.member.model.vo.Member">
 		UPDATE MEMBER 
-		SET USER_TYPE_LEVEL = #{user_type_level} 
+		SET USER_TYPE_LEVEL = '탈퇴회원'
 		WHERE USER_NO = #{user_no}
 	</update>
 	
+	<!-- 	1:1문의 상세보기 -->
+	<select id="selectOneByOneBoard" parameterType="java.lang.Integer" resultType="java.util.ArrayList">
+		SELECT *
+		FROM BOARD
+		WHERE BOARD_NO = #{ boardNo }
+	</select>
 </mapper> 
 
 
