@@ -102,6 +102,7 @@ public class MemberServiceImpl implements MemberService{
 		return md.insertNaverMember(sqlSession, m);
 	}
 
+
 	
 
 

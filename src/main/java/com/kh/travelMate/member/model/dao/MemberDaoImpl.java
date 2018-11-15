@@ -107,6 +107,8 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.insert("Member.insertNaverMember", m);
 	}
 
+
+
 	
 
 	

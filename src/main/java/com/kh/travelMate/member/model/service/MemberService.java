@@ -29,6 +29,8 @@ public interface MemberService {
 	//네이버 회원가입
 	int insertNaverMember(Member m);
 
+
+
 	
 
 
