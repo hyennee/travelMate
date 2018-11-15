@@ -39,4 +39,6 @@ public interface mypageDao {
 	List<HashMap<String, Object>> cyberMoneyStatus(SqlSessionTemplate sqlSession, Member loginUser);
 
 	void insertCyberMoney4(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession);
+
+	int updateCancel(SqlSessionTemplate sqlSession, Member m);
 }

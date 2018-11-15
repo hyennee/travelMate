@@ -90,10 +90,10 @@ ul.sub li:hover {
 
 				<div class="title">계정관리</div>
 				<ul class="sub">
-					<li><a href="myInfo.me">나의 계정</a></li>
+					<li><a href="myInfo.me">나의계정</a></li>
 					<li><a href="modifyInfo.me">정보수정</a></li>
-					<li><a href="modifyPwd.me">비번수정</a></li>
-					
+					<li><a href="modifyPwd.me">비밀번호변경</a></li>
+					<li><a href="cancelAccount.me">회원탈퇴</a></li>
 				</ul>
 			</li>
 			<li class="group">

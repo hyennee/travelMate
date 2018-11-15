@@ -148,7 +148,7 @@ a {
 						</div>
 					</div>
 					
-					<input type="submit" value="변경하기" />
+					<input type="submit" value="변경하기" class="btn btn-default" />
 				</form>
 
 			</div>

@@ -205,16 +205,7 @@ public class mypageController {
 			/*m.setPassword(encPassword);*/
 			m.setUser_no(loginUser.getUser_no());
 			
-			//패스워드 받은거 pwd에 넣기
-			/*String chg_pwd1 = request.getParameter("chg_pwd1");
-			System.out.println(chg_pwd1);*/
-			
 			try {
-				
-				//매번 랜덤한 솔트값을 가지고 암호화를 하기 때문에 호출시마다 다이제스트값은 바뀌게 된다.
-				//스프링 시큐리티에서 match()메소드를 제공해준다.
-				//평문과 암호화된 문장이 일치하는지 여부만 true, false로 제공
-				
 				String check = ms.checkpwd(m);
 				
 				System.out.println("encPassword :  " + encPassword + "  /  check :  " + check);
@@ -241,16 +232,50 @@ public class mypageController {
 			}
 			
 			
-			
-		
-			
-			
-			
-//			Member loginUser = ms.checkPwd(); //평문하고 비교를 해야해서 평문을 그냥 보냄
-			
-//			model.addAttribute("loginUser", loginUser);
-			 			
-//			System.out.println("loginUser : " + loginUser);
 	}
+
+	
+	
+	
+	//비밀번호 일치하는지 확인하고 status 탈퇴회원으로 변경
+		@RequestMapping("checkPwd_cancel.me")
+		public String checkPwd_cancel(Member m, Model model, HttpServletRequest request) {
+				
+				Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
+				String pwd = request.getParameter("pwd");
+				System.out.println(pwd);
+				int user_no = loginUser.getUser_no();
+				System.out.println(user_no);
+				
+				
+				String encPassword = passwordEncoder.encode(pwd);
+				m.setUser_no(loginUser.getUser_no());
+				
+				try {
+					String check = ms.checkpwd(m);
+					
+					System.out.println("encPassword :  " + encPassword + "  /  check :  " + check);
+					
+					
+					if(!passwordEncoder.matches(encPassword, check)) {
+						
+						int updateCancel = ms.updateCancel(m);
+						
+						System.out.println("updateCancel : " + updateCancel);
+						
+						
+						return "redirect:logout.me";
+					}else {
+						return "redirect:modifyPwd";
+					}
+					
+				} catch (Exception e) {
+					model.addAttribute("msg", e.getMessage());
+					
+					return "common/errorPage";
+					
+				}
+				
+		}
 
 }

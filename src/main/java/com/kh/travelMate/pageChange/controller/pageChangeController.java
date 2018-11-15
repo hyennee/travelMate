@@ -178,4 +178,10 @@ public class pageChangeController {
 		return "member/callback";
 	}
 	
+	@RequestMapping("cancelAccount.me")
+	public String cancelAccount() 
+	{
+		return "mypage/cancelAccount";
+	}
+	
 }
