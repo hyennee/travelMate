@@ -139,6 +139,7 @@ nav #memberMenuUl>li:first-child {
 
 #loginMsg {
 	font-size : 11px;
+	color:red;
 	font-weight:bold;
 	text-align:left;
 	padding: 0px 20px 0px 20px; 
@@ -157,7 +158,11 @@ nav #memberMenuUl>li:first-child {
 					<div id="loginForm" align="center">
 						<form action="login.me" method="post">
 							<p style="text-align: center; padding-top: 50px; font-weight: bold; font-size: 22px; color: white">로그인</p>
-							<div id="loginMsg">　<br>　</div>
+							<c:if test="${empty sessionScope.loginUser and !empty msg }">
+							<div id="loginMsg">${ msg }</div>
+							</c:if>
+							
+							
 							<div class="inputLoginForm">
 								<label for="ex_input">아이디(이메일 주소)</label> 
 								<input type="text" id="ex_input" name="email" maxlength="100">
@@ -168,7 +173,7 @@ nav #memberMenuUl>li:first-child {
 								<input type="password" id="ex_input2" name="password" maxlength="100">
 							</div>
 							<br>
-							<button id="loginBtn">로그인</button>
+							<button id="loginBtn" onclick="loginXCheck();">로그인</button>
 							
 							  
 						</form>
@@ -233,12 +238,13 @@ $('#loginBtn').click(function(){
   	var naver_id_login = new naver_id_login("jlB_L3BFZdd8giolYl0O", "http://127.0.0.1:8001/travelMate/callback.me");
   	var state = naver_id_login.getUniqState();
   	naver_id_login.setButton("white", 3,40);
-  	naver_id_login.setDomain("http://127.0.0.1:8001/travelMate/loginView.me");
+  	naver_id_login.setDomain("http://127.0.0.1:8001/travelMate");
   	naver_id_login.setState(state);
   	naver_id_login.setPopup();
   	naver_id_login.init_naver_id_login();
   </script>
-  
+
+
 
 
 </html>

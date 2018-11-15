@@ -138,6 +138,7 @@
 				#{nick_name}, NULL, #{birthday}, #{gender}, 
 				SYSDATE, SYSDATE, DEFAULT, NULL, 0, SYSDATE, NULL, DEFAULT, 'N')
 	</insert>
+	
 
 </mapper> 
 
