@@ -23,6 +23,7 @@ import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.member.model.exception.LoginException;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.service.mypageService;
+import com.kh.travelMate.others.model.vo.ConsultRequest;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.request.CancelData;
@@ -281,15 +282,44 @@ public class mypageController {
 		
 		//1:1문의게시판 상세보기
 		@RequestMapping("selectOneByOneBoard.bo")
-		public String selectOneByOneBoard(Board boardNo, Model model, HttpServletRequest request) {
+		public String selectOneByOneBoard(@RequestParam(value="boardNo")int boardNo, Model model, HttpServletRequest request) {
 		
 			//ModelAndView / String 로 포워딩 한다
+			System.out.println("boardNo" + boardNo);
+//			String boardNo=request.getParameter("boardNo");
+			Board result = ms.selectOneByOneBoard(boardNo);
+			if(result != null) {
+				
+				model.addAttribute("board", result);
+				
+				System.out.println("b : " + result);
+				return "mypage/detailOneByOneQnA";
+			}else {
+				System.out.println("에러");
+				return "common/errorPage";
+				
+			}
 			
-			Board b = new Board();
 			
-			b = ms.selectOneByOneBoard(boardNo);
-			
-			return "mypage/detailOneByOneQnA";
 		}
+		
+		//컨설팅한 거래내역 상세보기
+		@RequestMapping("selectOneTrade.others")
+		public String selectOneTrade(Model model, HttpServletRequest request, ConsultRequest cr) {
+			
+			System.out.println("cr : " + cr);
+			
+////			ConsultRequest c = new ConsultRequest();
+////			
+////			
+////			model.addAttribute("trade" + c);
+////			
+////			System.out.println("c : " + c);
+//			
+//			
+			
+			return "mypage/detailTrade";
+		}
+		
 
 }

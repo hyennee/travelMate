@@ -168,16 +168,18 @@ public class mypageServiceImpl implements mypageService{
 		
 	}
 	
-	//유저그레이드? 유저타입? '탈퇴회원'으로 변경
+	//유저타입레벨 '탈퇴회원'으로 변경
 	@Override
 	public int updateCancel(Member m) {
 		// TODO Auto-generated method stub
 		return md.updateCancel(sqlSession, m);
 	}
+	
+	//상세보기 1:1
 	@Override
-	public Board selectOneByOneBoard(Board boardNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public Board selectOneByOneBoard(int boardNo) {
+		
+		return md.selectOneByOneBoard(sqlSession, boardNo);
 	}
 	
 

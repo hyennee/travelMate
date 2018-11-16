@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.member.model.vo.Member;
 
 public interface mypageDao {
@@ -41,4 +42,6 @@ public interface mypageDao {
 	void insertCyberMoney4(int parseInt, Member loginUser, String imp_uid, SqlSessionTemplate sqlSession);
 
 	int updateCancel(SqlSessionTemplate sqlSession, Member m);
+
+	Board selectOneByOneBoard(SqlSessionTemplate sqlSession, int boardNo);
 }

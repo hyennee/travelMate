@@ -95,21 +95,17 @@ td{
 			<h2>상세 1:1문의</h2>
 			<hr />
 			<div >
-						<p>상세 거래 내역</p>
+						<p>상세 1:1 문의 내역</p>
 						
-						<label for="">no</label><input type="text" value="아이디" readonly/><br />
-						<label for="">컨설턴트</label><input type="text" value="컨설턴트" readonly /><br />
-						<label for="">거래일시</label><input type="text" value="2018.01.11" readonly/><br />
-						<label for="">거래한 상품</label><input type="text" value="신혼여행으로 몰디브, 예산 1인 300으로 짜주세요"/><br />
+						<label for="">no</label><input type="text" value="${ board.boardNo }" readonly/><br />
+						<label for="">작성자</label><input type="text" value="${ board.nickName }" readonly/><br />
+						<label for="">답변여부</label><input type="text" value="${ board.boardStatus }" />
+						<label for="">날짜</label><input type="text" value="${ board.boardDate }" readonly/><br />
+						<label for="">제목</label><input type="text" value="${ board.title }"/><br />
 						<label for="">내용</label><br />
+						<textarea name="" id="" cols="30" rows="10">${ board.content }</textarea>
 						
-						<c:forEach var="size" items="${ oneByOne }" >
-									${ size.BOARD_NO}
-									${ size.TITLE}
-									${ size.WRITE}
-									${ size.BOARD_DATE}
-									
-								</c:forEach>
+						
 												
 
 			</div>

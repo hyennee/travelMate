@@ -97,7 +97,7 @@ td{
 			<div >
 						<p>상세 거래 내역</p>
 						
-						<label for="">작성자</label><input type="text" value="아이디" readonly/><br />
+						<label for="">작성자</label><input type="text" value="${ trade.TRAVEL_PURPOSE}" readonly/><br />
 						<label for="">컨설턴트</label><input type="text" value="컨설턴트" readonly /><br />
 						<label for="">거래일시</label><input type="text" value="2018.01.11" readonly/><br />
 						<label for="">거래한 상품</label><input type="text" value="신혼여행으로 몰디브, 예산 1인 300으로 짜주세요"/><br />

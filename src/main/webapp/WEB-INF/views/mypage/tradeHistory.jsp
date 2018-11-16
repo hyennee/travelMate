@@ -104,7 +104,7 @@ td{
 			<hr />
 			<div >
 						<p>거래내역리스트</p>
-						<table id="example-table-1" width="100%" class="table table-bordered table-hover text-center">
+						<table id="example-table-1" width="100%" class="table table-bordered table-hover text-center" >
 								<tr >
 									<th class="thstyle">no</th>
 									<th style="background-color:lightgray;">컨설팅제목</th>
@@ -113,7 +113,7 @@ td{
 									<th class="thstyle">여행종료일자</th>
 								</tr>
 								<c:forEach var="size" items="${ tradeInfo }" >
-									<tr >
+									<tr style="cursor:pointer;"  onclick="detail('${ size.CONSULT_REQUEST_NO}')" >
 										
 										<td>${ size.CONSULT_REQUEST_NO }</td>
 										<td>${ size.TRAVEL_PURPOSE }</td>
@@ -141,6 +141,12 @@ td{
 
 	
 	<jsp:include page="../must/footer.jsp" />
+	
+	<script>
+		function detail(CONSULT_REQUEST_NO){
+			location.href="selectOneTrade.others?CONSULT_REQUEST_NO=" + CONSULT_REQUEST_NO;
+		}
+	</script>
 
 <!-- 	<script>
 	$("#example-table-1 tr").click(function(){ 	
