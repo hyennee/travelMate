@@ -104,22 +104,24 @@ td{
 			<hr />
 			<div >
 						<p>문의내역리스트</p>
-						<form action="">
+						<form action="selectOneByOneBoard.bo" method="post">
 						<table id="QnAList" width="100%" class="table table-bordered table-hover text-center">
 								<tr >
 									<th class="thstyle">no</th>
 									<th class="thstyle">제목</th>
 									<th class="thstyle">작성자</th>
+									<th class="thstyle">답변여부</th>
 									<th class="thstyle">작성일시</th>
 								</tr>
 								<c:forEach var="size" items="${ oneByOne }" >
-								<tr>
+								<tr style="cursor:pointer;" onclick="detail('${ size.BOARD_NO}')" >
 									<td>
 										${ size.BOARD_NO}
 										<input type="hidden" name="boardNo" value="${ size.BOARD_NO}" />
 									</td>
 									<td>${ size.TITLE}</td>
-									<td>${ size.WRITE}</td>
+									<td>${ size.NICK_NAME}</td>
+									<td>${ size.BOARD_DATE}</td>
 									<td>${ size.BOARD_DATE}</td>
 								</tr>
 								</c:forEach>
@@ -137,7 +139,18 @@ td{
 
 	<jsp:include page="../must/footer.jsp" />
 	<script>
-		$(function()
+	
+	function detail(boardNo){
+		
+		
+		location.href="selectOneByOneBoard.bo?boardNo=" + boardNo;
+		
+		
+	}
+		
+	/* 
+	
+	$(function()
 		{
 			$("#QnAList").children().click(function(){
 						
@@ -149,7 +162,7 @@ td{
 // 				location.href =  "selectOneByOneBoard.bo?boardNo="+${size.board}
 				
 			})
-		});
+		}); */
 	
 	</script>
 </body>

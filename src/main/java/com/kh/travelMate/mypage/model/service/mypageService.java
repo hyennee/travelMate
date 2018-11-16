@@ -40,6 +40,6 @@ public interface mypageService {
 
 	int updateCancel(Member m);
 
-	Board selectOneByOneBoard(Board boardNo);
+	Board selectOneByOneBoard(int boardNo);
 	
 }

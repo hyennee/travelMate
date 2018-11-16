@@ -8,6 +8,23 @@
   
 <mapper namespace="Mypage">
 	
+	
+	<resultMap type="Board" id="boardResultSet">
+		<id property="boardNo" column="BOARD_NO"/>
+		<result property="rowNum" column="ROWNUM"/>
+		<result property="writer" column="WRITER"/>
+		<result property="nickName" column="NICK_NAME"/>
+		<result property="category" column="CATEGORY"/>
+		<result property="title" column="TITLE"/>
+		<result property="content" column="CONTENT"/>
+		<result property="boardDate" column="BOARD_DATE"/>
+		<result property="status" column="STATUS"/>
+		<result property="boardLevel" column="BOARD_LEVEL"/>
+		<result property="refNo" column="REF_NO"/>
+		<result property="boardStatus" column="BOARD_STATUS"/>
+		
+	</resultMap>
+	
 
 	<select id="cyberMoneyHistory" resultType="java.util.HashMap" parameterType="int">
 		select CYBERMONEY_RECORD_NO,USER_NO,CR.PROOF_NO,RECORD_DATE,CHANGE_MONEY,CHANGE_REASON,BEFORE_MONEY,COUNT
@@ -99,12 +116,23 @@
 		WHERE USER_NO = #{user_no}
 	</update>
 	
-	<!-- 	1:1문의 상세보기 -->
-	<select id="selectOneByOneBoard" parameterType="java.lang.Integer" resultType="java.util.ArrayList">
+	<!-- 	거래내역 상세보기 -->
+	
+	<select id="selectOneByOneBoard" parameterType="_int" resultType="com.kh.travelMate.board.model.vo.Board">
+		SELECT BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO
+		FROM (SELECT B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO
+			  FROM BOARD B
+			  JOIN MEMBER M ON(B.WRITER = M.USER_NO)
+			  WHERE BOARD_NO = #{boardNo} )
+	</select>
+	
+<!-- 	
+	<select id="selectOneByOneBoard" parameterType="com.kh.travelMate.board.model.vo.Board" resultType="com.kh.travelMate.board.model.vo.Board">
 		SELECT *
 		FROM BOARD
 		WHERE BOARD_NO = #{ boardNo }
 	</select>
+	 -->
 </mapper> 
 
 
