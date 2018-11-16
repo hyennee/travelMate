@@ -21,12 +21,13 @@ public class MemberManage implements Serializable {
 	private Date cm_modify_date;
 	private String bank;
 	private String user_type_level;
+	private String join_status;
 	
 	public MemberManage() {}
 
 	public MemberManage(int user_no, String email, String password, String user_name, String nick_name, String phone,
 			String birthday, String gender, Date enroll_date, Date modify_date, String user_type, String bank_no,
-			int cybermoney, Date cm_modify_date, String bank, String user_type_level) {
+			int cybermoney, Date cm_modify_date, String bank, String user_type_level, String join_status) {
 		super();
 		this.user_no = user_no;
 		this.email = email;
@@ -44,6 +45,7 @@ public class MemberManage implements Serializable {
 		this.cm_modify_date = cm_modify_date;
 		this.bank = bank;
 		this.user_type_level = user_type_level;
+		this.join_status = join_status;
 	}
 
 	public int getUser_no() {
@@ -174,13 +176,27 @@ public class MemberManage implements Serializable {
 		this.user_type_level = user_type_level;
 	}
 
+	public String getJoin_status() {
+		return join_status;
+	}
+
+	public void setJoin_status(String join_status) {
+		this.join_status = join_status;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberManage [user_no=" + user_no + ", email=" + email + ", password=" + password + ", user_name="
 				+ user_name + ", nick_name=" + nick_name + ", phone=" + phone + ", birthday=" + birthday + ", gender="
 				+ gender + ", enroll_date=" + enroll_date + ", modify_date=" + modify_date + ", user_type=" + user_type
 				+ ", bank_no=" + bank_no + ", cybermoney=" + cybermoney + ", cm_modify_date=" + cm_modify_date
-				+ ", bank=" + bank + ", user_type_level=" + user_type_level + "]";
+				+ ", bank=" + bank + ", user_type_level=" + user_type_level + ", join_status=" + join_status + "]";
 	}
+
+	
 
 }

@@ -22,4 +22,8 @@ public interface BoardManageService {
 
 	void consultApplyRefuse(ConsultManage selectApplyDetail);
 
+	ArrayList<BoardManage> selectBoardDetail(int board_no);
+
+	void updateBoardDetail(BoardManage modifyBoard);
+
 }

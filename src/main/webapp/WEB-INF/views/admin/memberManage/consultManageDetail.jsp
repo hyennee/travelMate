@@ -117,8 +117,10 @@ input {
 							<td>${ selectApplyDetail.travel_Exp }</td>
 						</tr>
 						<tr>
-							<td class="row-header">여행상품 아이디어</td>
-							<td>${ selectApplyDetail.idea }</td>
+							<td class="row-header" colspan="2">여행상품 아이디어</td>
+						</tr>
+						<tr>
+							<td colspan="2">${ selectApplyDetail.idea }</td>
 						</tr>
 						<tr>
 							<td class="row-header">특이사항</td>
@@ -151,14 +153,18 @@ input {
 								<td class="row-header" colspan="2">승인/거부 사유</td>
 							</tr>
 							<tr>
-								<td colspan="2"><textarea name="reason" cols="100" style="resize: none; width: 100%;"></textarea>
-								<input type="hidden" name="user_No" value='${ selectApplyDetail.user_No }'/>
-								<input type="hidden" name="apply_no" value='${ selectApplyDetail.consult_Apply_No }'/>
+								<td colspan="2"><textarea name="reason" cols="100"
+										style="resize: none; width: 100%;"></textarea> <input
+									type="hidden" name="user_No"
+									value='${ selectApplyDetail.user_No }' /> <input type="hidden"
+									name="apply_no" value='${ selectApplyDetail.consult_Apply_No }' />
 								</td>
 							</tr>
 						</table>
-						<button type="button" class="btn btn-primary" onclick='applyConfirm(1);'>승인</button>
-						<button type="button" class="btn btn-danger" onclick='applyConfirm(2);'>거부</button>
+						<button type="button" class="btn btn-primary"
+							onclick='applyConfirm(1);'>승인</button>
+						<button type="button" class="btn btn-danger"
+							onclick='applyConfirm(2);'>거부</button>
 					</form>
 				</c:if>
 				<button type="button" class="btn btn-success"
@@ -167,21 +173,20 @@ input {
 			</div>
 		</div>
 		<script>
-						function applyConfirm(menu){
-							
-							if(menu == 1){
-								document.applyAcceptForm.action='${ pageContext.request.contextPath }/admin/consultApplyAccept.admin';
-								document.applyAcceptForm.submit();
-							}
-							
-							if(menu == 2){
-								document.applyAcceptForm.action='${ pageContext.request.contextPath }/admin/consultApplyRefuse.admin';
-								document.applyAcceptForm.submit();
-							}
-							
-							
-						}
-					</script>
+			function applyConfirm(menu) {
+
+				if (menu == 1) {
+					document.applyAcceptForm.action = '${ pageContext.request.contextPath }/admin/consultApplyAccept.admin';
+					document.applyAcceptForm.submit();
+				}
+
+				if (menu == 2) {
+					document.applyAcceptForm.action = '${ pageContext.request.contextPath }/admin/consultApplyRefuse.admin';
+					document.applyAcceptForm.submit();
+				}
+
+			}
+		</script>
 	</c:if>
 </body>
 </html>
