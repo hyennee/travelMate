@@ -86,6 +86,7 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
   
+	//임시비밀번호로 비밀번호 업데이트!
   	@Override
 	public int updatePwd(SqlSessionTemplate sqlSession, Member m) {
 		

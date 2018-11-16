@@ -64,6 +64,8 @@ public class MemberController {
 				return "member/reLogin";
 			}
 			
+			
+			
 			System.out.println("loginUser : " + loginUser);
 			
 			return "redirect:goMain.me";
@@ -264,7 +266,7 @@ public class MemberController {
 				@RequestParam(value="birthday",required=false)String birthday) {
 		
 			if(birthday == null || birthday.length() == 0) {
-				birthday = "　";
+				birthday = "";
 			}
 			System.out.println(email);
 			System.out.println(user_name);
@@ -277,14 +279,14 @@ public class MemberController {
 			System.out.println(birthday2);
 			
 			if(user_name == null || user_name.length() == 0) {
-				user_name = "　";
+				user_name = "";
 			}
 			if(nick_name == null || nick_name.length() == 0) {
-				nick_name = "　";
+				nick_name = "";
 			}
 			
 			if(gender == null || gender.length() == 0) {
-				gender = "　";
+				gender = "";
 			}
 			m.setUser_name(user_name);
 			m.setEmail(email);
@@ -301,6 +303,7 @@ public class MemberController {
 					
 					if(result > 0) {//인서트한 결과가 있을 시 다시 로그인!
 						Member loginUser2 = ms.naverlogincheck(m);
+						System.out.println(loginUser2);
 						model.addAttribute("loginUser", loginUser2);
 						return "redirect:goMain.me";
 					}
@@ -308,7 +311,7 @@ public class MemberController {
 				}
 				
 					//네이버로 가입한 유저의 정보가 있을 시 로그인 진행!
-					
+					System.out.println(loginUser);
 					model.addAttribute("loginUser", loginUser);
 					return "redirect:goMain.me";
 					
@@ -345,7 +348,7 @@ public class MemberController {
 			
 			
 			if(birthday == null || birthday.length() == 0) {
-				birthday = "　";
+				birthday = "";
 			}
 			
 			String email2 = email.replace("\"", "");
@@ -366,6 +369,7 @@ public class MemberController {
 				
 				if(result > 0) { //인서트한 결과가 있을 경우 다시 로그인
 					Member loginUser2 = ms.kakaologincheck(m);
+					System.out.println(loginUser2);
 					model.addAttribute("loginUser", loginUser2);
 					return "redirect:goMain.me";
 				}
@@ -373,7 +377,7 @@ public class MemberController {
 			}
 			
 			//카카오로 가입한 유저의 정보가 있을 시 로그인 진행!
-			
+			System.out.println(loginUser);
 			model.addAttribute("loginUser", loginUser);
 			return "redirect:goMain.me";
 			

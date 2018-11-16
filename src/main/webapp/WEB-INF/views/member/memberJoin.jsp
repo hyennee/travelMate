@@ -535,7 +535,7 @@ td:first-child {
 
 								document.getElementById('checkDuplId').innerHTML = "<span style='color:blue; font-size:12px'>사용 가능한 아이디입니다. 인증을 진행해주십시오.</span>"
 								$('#authMail').attr('disabled',false);  //인증버튼 활성화
-							} else if (data == "1") { //중복되는 아이디가 있으면!
+							} else { //중복되는 아이디가 있으면!
 
 								document.getElementById('checkDuplId').innerHTML = "<span style='color:red; font-size:12px'>이미 가입한 아이디입니다.</span>"
 								 $('#authMail').attr('disabled',true);  //인증버튼 비활성화 
@@ -606,7 +606,7 @@ td:first-child {
 				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임을 입력해주십시오."
 				return false;
 			} else if (regNickExp.test(chkNickVal) == false) {
-				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임은 2~10자로 작성해야 합니다."
+				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임은 2~20자로 작성해야 합니다."
 				return false;
 
 			} else {
@@ -628,7 +628,7 @@ td:first-child {
 							if (data == "0") {
 								document.getElementById('checkNick').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
 
-							} else if (data == "1") {
+							} else {
 
 								document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>사용할 수 없는 닉네임입니다.</span>";
 							}
