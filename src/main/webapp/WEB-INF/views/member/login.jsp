@@ -23,14 +23,14 @@
 
 #loginArea {
 	width: 100%;
-	height: 800px;
+	height: 1000px;
 	margin: auto;
 
 }
 
 #loginForm {
 	width: 370px;
-	height: 550px;
+	height: 580px;
 	margin-top: 124px;
 	background: #91d4c6; /* #a3dbcf; */
 	display: inline-block;
@@ -195,13 +195,13 @@ font-size : 11px;
 							
 							  
 						</form>
-						<br>
-						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
- 							 <div id="naver_id_login"></div>
+					
  						<br>
  						<!-- 카카오톡 아이디 버튼 -->
- 						<a id="kakao-login-btn"></a>
- 							 
+ 						&nbsp;&nbsp;<a id="kakao-login-btn"></a>
+ 							<br><br>	
+						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+ 							 <div id="naver_id_login"></div> 
 						<div id="memberMenu">
 							<nav>
 								<ul id="memberMenuUl">
@@ -294,18 +294,19 @@ $('#loginBtn').click(function(){
             	
             	$.ajax({
             		data : {'email' : email,
-            				/* 'gender' : gender, */
+            				'gender' : gender,
             				'birthday' : birthday,
             				'nick_name' : nickname,
             		},
             		url : 'kakaologin.me',
             		type:'post',
-            		dataType:'json',
             		success : function(data){
-            			parent.opener.location.href="goMain.me";
+            			
             		}
             	});
             	
+            	
+            	location.href="goMain.me";
             	
             	},
             	fail:function(error){

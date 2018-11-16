@@ -17,6 +17,7 @@
 <style>
 #searchPwdArea {
 	width: 100%;
+	height:800px;
 	padding: 0 0 200px 0;
 	margin: auto;
 	background: /* #edefea; */ white;
@@ -106,13 +107,13 @@ td:first-child {
 									<tr>
 										<td style="width: 100px;">이름</td>
 										<td><input type="text" name="user_name" id="user_name"
-											style="width:187px; height: 18px;"></td>
+											style="width:187px; height: 18px;" maxlength="8" placeholder="이름"></td>
 
 									</tr>
 									<tr>
 										<td>아이디</td>
 										<td><input type="text" name="email" id="email"
-											style="width:187px; height: 18px;"></td>
+											style="width:187px; height: 18px;" maxlength="50"  placeholder="이메일"></td>
 
 									</tr>
 
@@ -167,7 +168,17 @@ td:first-child {
 	
 	function searchPwd(){
 		
-		
+		if($('#user_name').val() == "" || $('#user_name').val() == null){
+			alert('이름을 입력해주십시오.');
+			$('#user_name').focus();
+			return false;
+		}
+		if($('#email').val() == "" || $('#email').val() == null){
+			alert('아이디를 입력해주십시오.');
+			$('#email').focus();
+			return false;
+		}
+	
 	/* 	
 		 $('#goSearchPwd').submit();
 		 */

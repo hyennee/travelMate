@@ -259,12 +259,15 @@ public class MemberController {
 		
 		@ResponseBody
 		@RequestMapping("naverlogin.me")
-		public String naverlogin(Model model, Member m,  @RequestParam(value="email")String email, @RequestParam(value="name")String name,  
-				@RequestParam(value="nickname")String nick_name, @RequestParam(value="gender")String gender, 
-				@RequestParam(value="birthday")String birthday) {
+		public String naverlogin(Model model, Member m,  @RequestParam(value="email",required=false)String email, @RequestParam(value="user_name",required=false)String user_name,  
+				@RequestParam(value="nickname",required=false)String nick_name, @RequestParam(value="gender",required=false)String gender, 
+				@RequestParam(value="birthday",required=false)String birthday) {
 		
-			
+			if(birthday == null || birthday.length() == 0) {
+				birthday = "　";
+			}
 			System.out.println(email);
+			System.out.println(user_name);
 			System.out.println(nick_name);
 			System.out.println(gender);
 			System.out.println(birthday);
@@ -273,6 +276,17 @@ public class MemberController {
 			
 			System.out.println(birthday2);
 			
+			if(user_name == null || user_name.length() == 0) {
+				user_name = "　";
+			}
+			if(nick_name == null || nick_name.length() == 0) {
+				nick_name = "　";
+			}
+			
+			if(gender == null || gender.length() == 0) {
+				gender = "　";
+			}
+			m.setUser_name(user_name);
 			m.setEmail(email);
 			m.setNick_name(nick_name);
 			m.setGender(gender);
@@ -302,8 +316,8 @@ public class MemberController {
 			
 		@ResponseBody
 		@RequestMapping("kakaologin.me")
-		public String kakaologin(@RequestParam(value="email")String email, @RequestParam(value="nick_name")String nick_name,
-								@RequestParam(value="gender")String gender, @RequestParam(value="birthday")String birthday,
+		public String kakaologin(@RequestParam(value="email",required=false)String email, @RequestParam(value="nick_name",required=false)String nick_name,
+								@RequestParam(value="gender",required=false)String gender, @RequestParam(value="birthday",required=false)String birthday,
 								Model model, Member m) {
 			
 			System.out.println(email);
@@ -311,6 +325,56 @@ public class MemberController {
 			System.out.println(gender);
 			System.out.println(birthday);
 			
+			
+			if(nick_name == null || nick_name.length() == 0) {
+				nick_name = "";
+			}
+			
+			if(gender == null || gender.length() == 0) {
+				gender = "";
+				
+			}
+			
+			
+			if(gender.equals("female")) {
+				gender = "F";
+			}
+			if(gender.equals("male")) {
+				gender = "M";
+			}
+			
+			
+			if(birthday == null || birthday.length() == 0) {
+				birthday = "　";
+			}
+			
+			String email2 = email.replace("\"", "");
+			String nick_name2 = nick_name.replace("\"", "");
+			String gender2 = gender.replace("\"", "");
+			String birthday2 = birthday.replace("\"", "");
+			
+			
+			m.setEmail(email2);
+			m.setNick_name(nick_name2);
+			m.setGender(gender2);
+			m.setBirthday(birthday2);
+			
+			Member loginUser = ms.kakaologincheck(m);
+			
+			if(loginUser == null) { //카카오로 가입한 유저의 정보가 없을 시
+				int result = ms.insertKakaoMember(m); //회원가입 진행
+				
+				if(result > 0) { //인서트한 결과가 있을 경우 다시 로그인
+					Member loginUser2 = ms.kakaologincheck(m);
+					model.addAttribute("loginUser", loginUser2);
+					return "redirect:goMain.me";
+				}
+			
+			}
+			
+			//카카오로 가입한 유저의 정보가 있을 시 로그인 진행!
+			
+			model.addAttribute("loginUser", loginUser);
 			return "redirect:goMain.me";
 			
 			

@@ -36,12 +36,23 @@ public interface MemberDao {
 	
 	//네이버 로그인 유저 조회 후 유저가 없을 시 회원가입
 	int insertNaverMember(SqlSessionTemplate sqlSession, Member m);
+	
+	//카카오 로그인 유저 조회
+	Member selectKakaoMember(SqlSessionTemplate sqlSession, Member m);
+	
+	//카카오 로그인 유저 조회 후 유저가 없을 시 회원 가입
+	int insertKakaoMember(SqlSessionTemplate sqlSession, Member m);
+	
 
 	Member selectOneMember(SqlSessionTemplate sqlSession, int writer);
 
 	int updateCyberMoney(SqlSessionTemplate sqlSession, Member m);
 
 	int useCyberMoney(SqlSessionTemplate sqlSession, Member answerMember);
+
+	
+
+	
 
 	
 
