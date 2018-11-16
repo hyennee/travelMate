@@ -302,11 +302,16 @@ $('#loginBtn').click(function(){
             		type:'post',
             		success : function(data){
             			
+            			location.reload();
+            			location.href="goMain.me";
+            		},
+            		error: function(data){
+            			alert('안돼');
             		}
             	});
             	
             	
-            	location.href="goMain.me";
+            	
             	
             	},
             	fail:function(error){
