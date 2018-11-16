@@ -91,7 +91,7 @@ table th {
 								</c:if>
 								<c:if test="${ row.ref_no ne '0'}">
 									<td style="text-align:left;"><b><a
-											href="${ pageContext.request.contextPath }/admin/boardManageDetail.admin?board_no=${ row.board_no }">&nbsp;
+											href="${ pageContext.request.contextPath }/admin/boardManageDetail.admin?board_no=${ row.ref_no }">&nbsp;
 												&nbsp; ㄴ${ row.title }</a></b></td>
 								</c:if>
 								<td>${ row.nick_Name }</td>

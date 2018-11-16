@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class ConsultManage implements Serializable {
+	private static final long serialVersionUID = 1213323016272387223L;
 	private int consult_Apply_No;
 	private Date apply_Date;
 	private String job;
@@ -23,13 +24,14 @@ public class ConsultManage implements Serializable {
 	private String birthDay;
 	private String gender;
 	private Date enroll_Date;
+	private String user_Type_Level;
 	
 	public ConsultManage() {}
 
 	public ConsultManage(int consult_Apply_No, Date apply_Date, String job, String info, String travel_Exp, String idea,
 			String etc, int user_No, int consult_Ok_Record_No, String status, String reason, Date agree_Date,
 			String email, String user_Name, String nick_Name, String phone, String birthDay, String gender,
-			Date enroll_Date) {
+			Date enroll_Date, String user_Type_Level) {
 		super();
 		this.consult_Apply_No = consult_Apply_No;
 		this.apply_Date = apply_Date;
@@ -50,6 +52,7 @@ public class ConsultManage implements Serializable {
 		this.birthDay = birthDay;
 		this.gender = gender;
 		this.enroll_Date = enroll_Date;
+		this.user_Type_Level = user_Type_Level;
 	}
 
 	public int getConsult_Apply_No() {
@@ -204,6 +207,14 @@ public class ConsultManage implements Serializable {
 		this.enroll_Date = enroll_Date;
 	}
 
+	public String getUser_Type_Level() {
+		return user_Type_Level;
+	}
+
+	public void setUser_Type_Level(String user_Type_Level) {
+		this.user_Type_Level = user_Type_Level;
+	}
+
 	@Override
 	public String toString() {
 		return "ConsultManage [consult_Apply_No=" + consult_Apply_No + ", apply_Date=" + apply_Date + ", job=" + job
@@ -211,7 +222,9 @@ public class ConsultManage implements Serializable {
 				+ user_No + ", consult_Ok_Record_No=" + consult_Ok_Record_No + ", status=" + status + ", reason="
 				+ reason + ", agree_Date=" + agree_Date + ", email=" + email + ", user_Name=" + user_Name
 				+ ", nick_Name=" + nick_Name + ", phone=" + phone + ", birthDay=" + birthDay + ", gender=" + gender
-				+ ", enroll_Date=" + enroll_Date + "]";
+				+ ", enroll_Date=" + enroll_Date + ", user_Type_Level=" + user_Type_Level + "]";
 	}
+
+
 
 }

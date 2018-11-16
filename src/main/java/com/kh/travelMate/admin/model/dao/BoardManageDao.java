@@ -24,4 +24,8 @@ public interface BoardManageDao {
 
 	void consultApplyRefuse(SqlSessionTemplate sqlSession, ConsultManage selectApplyDetail);
 
+	ArrayList<BoardManage> selectBoardDetail(SqlSessionTemplate sqlSession, int board_no);
+
+	void updateBoardDetail(SqlSessionTemplate sqlSession, BoardManage modifyBoard);
+
 }

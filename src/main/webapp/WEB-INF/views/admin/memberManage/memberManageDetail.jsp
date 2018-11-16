@@ -112,6 +112,18 @@ input {
 							<td class="row-header">회원종류</td>
 							<td>${ memberDetail.user_type }</td>
 						</tr>
+						<tr>
+							<td class="row-header">가입구분</td>
+							<c:if test="${ memberDetail.join_status eq 'T' }">
+								<td>일반(이메일)가입</td>
+							</c:if>
+							<c:if test="${ memberDetail.join_status eq 'N' }">
+								<td>네이버ID 인증가입</td>
+							</c:if>
+							<c:if test="${ memberDetail.join_status eq 'K' }">
+								<td>카카오ID 인증가입</td>
+							</c:if>														
+						</tr>
 					</tbody>
 				</table>
 				<button type="button" class="btn btn-success" onclick="location.href='${ pageContext.request.contextPath }/admin/memberManage.admin'">목록으로 돌아가기</button>

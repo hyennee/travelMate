@@ -85,4 +85,15 @@ public class BoardManageDaoImpl implements BoardManageDao {
 		sqlSession.insert("BoardManage.consultApplyRefuse", selectApplyDetail);
 	}
 
+	@Override
+	public ArrayList<BoardManage> selectBoardDetail(SqlSessionTemplate sqlSession, int board_no) {
+		ArrayList<BoardManage> boardDetail = (ArrayList)sqlSession.selectList("BoardManage.selectBoardDetail", board_no);
+		return boardDetail;
+	}
+
+	@Override
+	public void updateBoardDetail(SqlSessionTemplate sqlSession, BoardManage modifyBoard) {
+		sqlSession.update("BoardManage.updateBoardDetail", modifyBoard);
+	}
+
 }

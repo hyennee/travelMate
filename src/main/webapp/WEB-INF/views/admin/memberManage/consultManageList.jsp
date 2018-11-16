@@ -62,7 +62,8 @@ table th {
 							<th>등록일</th>
 							<th>신청자</th>
 							<th>이메일</th>
-							<th>전화번호</th>
+							<th>회원등급</th>
+							<th>상태</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -73,9 +74,24 @@ table th {
 								<td><c:out value="${ row.apply_Date }"></c:out></td>
 								<td><c:out value="${ row.nick_Name }(${ row.user_Name })"></c:out></td>
 								<td><c:out value="${ row.email }"></c:out></td>
-								<td><c:out value="${ row.phone }"></c:out></td>
+								<c:if test="${ row.user_Type_Level eq '3' }">
+									<td>컨설턴트</td>
+								</c:if>
+								<c:if test="${ row.user_Type_Level ne '3'}">
+									<td><c:out value="${ row.user_Type_Level }"></c:out></td>
+								</c:if>
+								<c:if test="${ empty row.status }">
+									<td>미처리</td>
+								</c:if>
+								<c:if test="${ row.status eq 'Y'}">
+									<td>승인</td>
+								</c:if>
+								<c:if test="${ row.status eq 'N'}">
+									<td>거부</td>
+								</c:if>
 								<td>
-									<button type="button" class="btn btn-sm btn-success" onclick="location.href='consultManageDetail.admin?apply_no=${ row.consult_Apply_No }'">조회</button>
+									<button type="button" class="btn btn-sm btn-success"
+										onclick="location.href='consultManageDetail.admin?apply_no=${ row.consult_Apply_No }'">조회</button>
 								</td>
 							</tr>
 						</c:forEach>

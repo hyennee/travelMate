@@ -165,6 +165,70 @@ public class AdminController {
 		
 	}
 	
+	@RequestMapping("admin/boardManageDetail.admin")
+	public String boardManageDetail(@RequestParam(defaultValue="0") int board_no, Model model) {
+		
+		if(board_no == 0) {
+			
+			return "admin/boardManage/boardManageMain";
+		}else {
+			ArrayList<BoardManage> boardDetail;
+			boardDetail = bms.selectBoardDetail(board_no);
+			
+			System.out.println(boardDetail);
+			
+			model.addAttribute("boardDetail", boardDetail);
+			
+			return "admin/boardManage/boardManageDetailPage";
+		}
+		
+	}
+	
+	@RequestMapping("admin/boardManageModify.admin")
+	public String boardManageModify(@RequestParam(defaultValue="0") int board_no, Model model) {
+		if(board_no == 0) {
+			return "admin/boardManage/boardManageMain";
+		}else {
+			ArrayList<BoardManage> boardDetail;
+			boardDetail = bms.selectBoardDetail(board_no);
+			model.addAttribute("boardDetail", boardDetail);
+			
+			return "admin/boardManage/boardManageModifyPage";
+		}
+		
+	}
+	
+	@RequestMapping("admin/boardManageConfirm.admin")
+	public String boardManageModifyConfirm(@RequestParam(defaultValue="0") int board_no, @RequestParam(defaultValue="0x0") String content, Model model) {
+		System.out.println("board_no와 content 들어왔니? " + board_no + ", " + content);
+		if(board_no == 0 || content.equals("0x0")) {
+			return "admin/boardManage/boardManageMain";
+		}else {
+			BoardManage modifyBoard = new BoardManage();
+			ArrayList<BoardManage> boardDetail;
+			modifyBoard.setBoard_no(board_no);
+			modifyBoard.setContent(content);
+			bms.updateBoardDetail(modifyBoard);
+			boardDetail = bms.selectBoardDetail(board_no);
+			model.addAttribute("boardDetail", boardDetail);
+			
+			return "admin/boardManage/boardManageDetailPage";
+		}
+		
+	}
+	
+	@RequestMapping("admin/boardManageDelete.admin")
+	public String boardManageDelete(@RequestParam(defaultValue="0") int board_no, Model model) {
+		
+		return "admin/boardManage/boardManageDetailPage";
+	}
+	
+	@RequestMapping("admin/boardManageReply.admin")
+	public String boardManageReply(@RequestParam(defaultValue="0") int board_no, Model model) {
+		
+		return "admin/boardManage/boardManageDetailPage";
+	}
+	
 	@RequestMapping("admin/paymentManage.admin")
 	public String paymentManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model) {
 		

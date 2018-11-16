@@ -36,6 +36,7 @@
 		<result property="idea" column="IDEA"></result>
 		<result property="etc" column="ETC"></result>
 		<result property="user_No" column="USER_NO"></result>
+		<result property="user_Type_Level" column="USER_TYPE_LEVEL"></result>
 		<result property="consult_Ok_Record_No"
 			column="CONSULT_OK_RECORD_NO"></result>
 		<result property="status" column="STATUS"></result>
@@ -58,15 +59,37 @@
 
 	<select id="boardList" parameterType="BoardManage"
 		resultMap="boardmanageResultSet">
-		SELECT BOARD_NO, WRITER, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS,
-		BOARD_LEVEL, REF_NO, EMAIL, USER_NAME, NICK_NAME, PHONE, BIRTHDAY,
+		SELECT BOARD_NO, WRITER, CATEGORY, TITLE, CONTENT,
+		BOARD_DATE, STATUS,
+		BOARD_LEVEL, REF_NO, EMAIL, USER_NAME, NICK_NAME,
+		PHONE, BIRTHDAY,
 		GENDER, ENROLL_DATE
 		FROM BOARD B
-		JOIN MEMBER M ON (M.USER_NO = B.WRITER)
+		JOIN MEMBER M ON
+		(M.USER_NO = B.WRITER)
 		START WITH REF_NO IS NULL
-		CONNECT BY PRIOR BOARD_NO = REF_NO
+		CONNECT BY PRIOR
+		BOARD_NO = REF_NO
 		ORDER SIBLINGS BY BOARD_NO DESC
 	</select>
+
+	<select id="selectBoardDetail" parameterType="_int"
+		resultMap="boardmanageResultSet">
+		SELECT BOARD_NO, WRITER, CATEGORY, TITLE, CONTENT,
+		BOARD_DATE, STATUS,
+		BOARD_LEVEL, REF_NO, EMAIL, USER_NAME, NICK_NAME,
+		PHONE, BIRTHDAY,
+		GENDER, ENROLL_DATE
+		FROM BOARD B
+		JOIN MEMBER M ON
+		(M.USER_NO = B.WRITER)
+		WHERE BOARD_NO = #{ board_no } OR REF_NO = #{ board_no }
+		START WITH REF_NO IS NULL
+		CONNECT BY PRIOR
+		BOARD_NO = REF_NO
+		ORDER SIBLINGS BY BOARD_NO DESC
+	</select>
+
 
 	<select id="consultApplyListCount" resultType="_int">
 		SELECT COUNT(*)
@@ -77,9 +100,11 @@
 		resultMap="consultapplyResultSet">
 		SELECT *
 		FROM CONSULT_APPLY CA
-		LEFT JOIN MEMBER M ON
+		JOIN MEMBER M ON
 		(CA.USER_NO = M.USER_NO)
-		ORDER BY CONSULT_APPLY_NO DESC
+		LEFT JOIN CONSULT_OK_RECORD COR ON
+		(CA.CONSULT_APPLY_NO = COR.CONSULT_APPLY_NO)
+		ORDER BY CA.CONSULT_APPLY_NO DESC
 	</select>
 
 	<select id="consultApplyDetail" parameterType="_int"
@@ -109,6 +134,11 @@
 		VALUES(SEQ_CONSULT_OK_RECORD_NO.NEXTVAL, #{
 		consult_Apply_No }, 'N', #{ reason }, SYSDATE)
 	</insert>
+	
+	<update id="updateBoardDetail" parameterType="BoardManage">
+		UPDATE BOARD SET CONTENT = #{ content }, BOARD_DATE = SYSDATE
+		WHERE BOARD_NO = #{ board_no }
+	</update>
 
 	<update id="consultApplyAcceptSuccess"
 		parameterType="ConsultManage">

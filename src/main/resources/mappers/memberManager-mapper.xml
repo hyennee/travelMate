@@ -23,6 +23,7 @@
 		<result property="cm_modify_date" column="CM_MODIFY_DATE"></result>
 		<result property="bank" column="BANK"></result>
 		<result property="user_type_level" column="USER_TYPE_LEVEL"></result>
+		<result property="join_status" column="JOIN_STATUS"></result>
 	</resultMap>
 
 	<!-- 모든 회원 목록을 조회해 오는 쿼리문 -->
@@ -38,13 +39,21 @@
 		MEMBER
 	</select>
 
-	<select id="memberList" parameterType="MemberManage" resultMap="membermanageResultSet">
+	<select id="todayJoinMemberCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE TO_CHAR(ENROLL_DATE, 'YY/MM/DD') = TO_CHAR(SYSDATE, 'YY/MM/DD')
+	</select>
+
+	<select id="memberList" parameterType="MemberManage"
+		resultMap="membermanageResultSet">
 		SELECT *
 		FROM MEMBER
 		ORDER BY USER_NO DESC
 	</select>
-	
-	<select id="memberDetail" parameterType="_int" resultMap="membermanageResultSet">
+
+	<select id="memberDetail" parameterType="_int"
+		resultMap="membermanageResultSet">
 		SELECT *
 		FROM MEMBER
 		WHERE USER_NO = #{ user_no }

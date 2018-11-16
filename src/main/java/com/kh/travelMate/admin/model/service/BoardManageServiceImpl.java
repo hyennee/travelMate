@@ -63,4 +63,16 @@ public class BoardManageServiceImpl implements BoardManageService {
 		bmd.consultApplyRefuse(sqlSession, selectApplyDetail);
 	}
 
+	@Override
+	public ArrayList<BoardManage> selectBoardDetail(int board_no) {
+		ArrayList<BoardManage> boardDetail;
+		boardDetail = bmd.selectBoardDetail(sqlSession, board_no);
+		return boardDetail;
+	}
+
+	@Override
+	public void updateBoardDetail(BoardManage modifyBoard) {
+		bmd.updateBoardDetail(sqlSession, modifyBoard);
+	}
+
 }
