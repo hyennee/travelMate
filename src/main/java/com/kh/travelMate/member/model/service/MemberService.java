@@ -29,6 +29,12 @@ public interface MemberService {
 	//네이버 회원가입
 	int insertNaverMember(Member m);
 
+	//카카오 로그인
+	Member kakaologincheck(Member m);
+
+	//카카오 회원가입
+	int insertKakaoMember(Member m);
+
 
 
 	

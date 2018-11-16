@@ -84,7 +84,7 @@
     $.ajax({
     	data : {
     		'email' : email,
-    		'name' : name,
+    		'user_name' : name,
     		'nickname' : nickname,
     		'gender' : gender,
     		'birthday' : birthday

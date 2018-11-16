@@ -107,6 +107,20 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.insert("Member.insertNaverMember", m);
 	}
 
+	//카카오 로그인 유저 조회
+	@Override
+	public Member selectKakaoMember(SqlSessionTemplate sqlSession, Member m) {
+		
+		return sqlSession.selectOne("Member.selectKakaoMember", m);
+	}
+
+	//카카오 로그인 유저 조회 후 없을 시 회원가입
+	@Override
+	public int insertKakaoMember(SqlSessionTemplate sqlSession, Member m) {
+		
+		return sqlSession.insert("Member.insertKakaoMember", m);
+	}
+
 
 
 	

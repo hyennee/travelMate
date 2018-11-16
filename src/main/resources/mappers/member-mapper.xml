@@ -124,6 +124,7 @@
 	
 	</select>
 	
+	<!-- 네이버로 가입한 회원조회 -->
 	<select id="selectNaverMember" resultType="Member" parameterType="Member">
 	SELECT *
 	FROM MEMBER
@@ -139,6 +140,21 @@
 				SYSDATE, SYSDATE, DEFAULT, NULL, 0, SYSDATE, NULL, DEFAULT, 'N')
 	</insert>
 	
+	<!-- 카카오로 가입한 회원조회 -->
+	<select id="selectKakaoMember" resultType="Member" parameterType="Member">
+	SELECT *
+	FROM MEMBER
+	WHERE EMAIL = #{email}
+	AND JOIN_STATUS = 'K'
+	</select>
+	
+	<!-- 카카오 회원가입용 쿼리문 -->
+	<insert id = "insertKakaoMember" parameterType="Member">
+		INSERT INTO MEMBER
+		VALUES(SEQ_USER_NO.NEXTVAL, #{email}, NULL, NULL, 
+				#{nick_name}, NULL, #{birthday}, #{gender}, 
+				SYSDATE, SYSDATE, DEFAULT, NULL, 0, SYSDATE, NULL, DEFAULT, 'K')
+	</insert>
 
 </mapper> 
 

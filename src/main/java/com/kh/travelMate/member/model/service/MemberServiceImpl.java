@@ -85,6 +85,7 @@ public class MemberServiceImpl implements MemberService{
 		return md.updatePwd(sqlSession, m);
 	}
 
+	//네이버 로그인
 	@Override
 	public Member naverlogincheck(Member m) {
 		Member loginUser = null;
@@ -100,6 +101,23 @@ public class MemberServiceImpl implements MemberService{
 	public int insertNaverMember(Member m) {
 		
 		return md.insertNaverMember(sqlSession, m);
+	}
+
+	//카카오 로그인
+	@Override
+	public Member kakaologincheck(Member m) {
+		Member loginUser = null;
+		
+		loginUser = md.selectKakaoMember(sqlSession, m);
+		
+		return loginUser;
+	}
+
+	//카카오 회원가입
+	@Override
+	public int insertKakaoMember(Member m) {
+		
+		return md.insertKakaoMember(sqlSession, m);
 	}
 
 
