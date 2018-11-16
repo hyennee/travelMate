@@ -299,8 +299,23 @@ public class MemberController {
 					return "redirect:goMain.me";
 					
 				}
-				
 			
+		@ResponseBody
+		@RequestMapping("kakaologin.me")
+		public String kakaologin(@RequestParam(value="email")String email, @RequestParam(value="nick_name")String nick_name,
+								@RequestParam(value="gender")String gender, @RequestParam(value="birthday")String birthday,
+								Model model, Member m) {
+			
+			System.out.println(email);
+			System.out.println(nick_name);
+			System.out.println(gender);
+			System.out.println(birthday);
+			
+			return "redirect:goMain.me";
+			
+			
+		}
+		
 		
 	
 }		

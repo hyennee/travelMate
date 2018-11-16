@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +12,7 @@
 <link rel="icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/flightIcon.ico" />
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -26,8 +29,8 @@
 }
 
 #loginForm {
-	width: 300px;
-	height: 450px;
+	width: 370px;
+	height: 550px;
 	margin-top: 124px;
 	background: #91d4c6; /* #a3dbcf; */
 	display: inline-block;
@@ -36,7 +39,7 @@
 
 .inputLoginForm {
 	position: relative;
-	width: 200px;
+	width: 230px;
 	margin-top: 15px;
 	margin-right: 10px;
 }
@@ -70,7 +73,7 @@
 	border: 1px solid white;
 	position: relative;
 	margin-left: 5px;
-	width: 215px;
+	width: 245px;
 	height: 42px;
 	font-size: 14px;
 	padding: 0 2em;
@@ -142,9 +145,20 @@ nav #memberMenuUl>li:first-child {
 	color:red;
 	font-weight:bold;
 	text-align:left;
-	padding: 0px 20px 0px 20px; 
-	margin-left:7px;
+	padding: 15px 30px 15px 40px; 
+	margin-left:30px;
+	margin-right:30px;
 	
+}
+#loginEmptyMsg{
+font-size : 11px;
+	color:red;
+	font-weight:bold;
+	text-align:left;
+	padding: 15px 30px 15px 40px; 
+	margin-left:30px;
+	margin-right:30px;
+
 }
 </style>
 </head>
@@ -157,11 +171,15 @@ nav #memberMenuUl>li:first-child {
 				<div id="loginArea" align="center">
 					<div id="loginForm" align="center">
 						<form action="login.me" method="post">
-							<p style="text-align: center; padding-top: 50px; font-weight: bold; font-size: 22px; color: white">로그인</p>
-							<c:if test="${empty sessionScope.loginUser and !empty msg }">
-							<div id="loginMsg">${ msg }</div>
-							</c:if>
-							
+							<p style="text-align: center; padding-top: 60px; font-weight: bold; font-size: 22px; color: white">로그인</p>
+							<c:choose>
+ 								 <c:when test="${empty sessionScope.loginUser and !empty msg }">
+     								<div id="loginMsg">${ msg }</div>
+								  </c:when>
+ 								 <c:when test="${empty sessionScope.loginUser and empty msg }">
+   									<div id="loginMsg">　　　　　　　<br>　　　　　　</div>
+ 								 </c:when>
+							</c:choose>
 							
 							<div class="inputLoginForm">
 								<label for="ex_input">아이디(이메일 주소)</label> 
@@ -173,13 +191,16 @@ nav #memberMenuUl>li:first-child {
 								<input type="password" id="ex_input2" name="password" maxlength="100">
 							</div>
 							<br>
-							<button id="loginBtn" onclick="loginXCheck();">로그인</button>
+							<button id="loginBtn">로그인</button>
 							
 							  
 						</form>
 						<br>
 						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
  							 <div id="naver_id_login"></div>
+ 						<br>
+ 						<!-- 카카오톡 아이디 버튼 -->
+ 						<a id="kakao-login-btn"></a>
  							 
 						<div id="memberMenu">
 							<nav>
@@ -238,11 +259,68 @@ $('#loginBtn').click(function(){
   	var naver_id_login = new naver_id_login("jlB_L3BFZdd8giolYl0O", "http://127.0.0.1:8001/travelMate/callback.me");
   	var state = naver_id_login.getUniqState();
   	naver_id_login.setButton("white", 3,40);
-  	naver_id_login.setDomain("http://127.0.0.1:8001/travelMate");
+  	naver_id_login.setDomain("http://127.0.0.1:8001/travelMate/loginView.me");
   	naver_id_login.setState(state);
   	naver_id_login.setPopup();
   	naver_id_login.init_naver_id_login();
+  	
+  	
   </script>
+  
+  <script type='text/javascript'>
+      //<![CDATA[
+        // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('5beafa6bfdb2f121ddef950f3df3ffc5');
+        // 카카오 로그인 버튼을 생성합니다.
+        Kakao.Auth.createLoginButton({
+          container: '#kakao-login-btn',
+          success: function(authObj) {
+            alert(JSON.stringify(authObj));
+            Kakao.API.request({
+            	url : '/v2/user/me',
+            	success : function(res){
+            		console.log(JSON.stringify(res));
+            		console.log(JSON.stringify(res.kakao_account.email));
+            		console.log(JSON.stringify(res.kakao_account.gender));
+            		console.log(JSON.stringify(res.kakao_account.birthday));
+                    console.log(JSON.stringify(res.id));
+                    console.log(JSON.stringify(res.properties.nickname));
+            	
+                var email = JSON.stringify(res.kakao_account.email);
+            	var gender = JSON.stringify(res.kakao_account.gender);
+            	var birthday = JSON.stringify(res.kakao_account.birthday);
+            	var nickname = JSON.stringify(res.properties.nickname);
+        
+            	
+            	$.ajax({
+            		data : {'email' : email,
+            				/* 'gender' : gender, */
+            				'birthday' : birthday,
+            				'nick_name' : nickname,
+            		},
+            		url : 'kakaologin.me',
+            		type:'post',
+            		dataType:'json',
+            		success : function(data){
+            			parent.opener.location.href="goMain.me";
+            		}
+            	});
+            	
+            	
+            	},
+            	fail:function(error){
+            		alert(JSON.stringify(error));
+            	}
+            });
+           
+            
+          },
+          fail: function(err) {
+             alert(JSON.stringify(err));
+          }
+        });
+      //]]>
+    </script>
 
 
 

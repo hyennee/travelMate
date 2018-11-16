@@ -34,7 +34,7 @@
 
 	<div class="topLoginArea">
 
-		<c:if test="${empty sessionScope.loginUser }">
+		<c:if test="${empty sessionScope.loginUser}">
 			<div id="beforeLoginMenu">
 				<nav>
 					<ul class="loginMenuBarUl">
@@ -49,7 +49,10 @@
 				</nav>
 			</div>
 		</c:if>
-		<c:if test="${!empty sessionScope.loginUser }">
+		
+		
+		
+		<c:if test="${!empty sessionScope.loginUser}">
 			<div id="afterLoginMenu">
 				<nav>
 					<ul class="loginMenuBarUl">
