@@ -275,7 +275,7 @@ $('#loginBtn').click(function(){
         Kakao.Auth.createLoginButton({
           container: '#kakao-login-btn',
           success: function(authObj) {
-            alert(JSON.stringify(authObj));
+            /* alert(JSON.stringify(authObj)); */
             Kakao.API.request({
             	url : '/v2/user/me',
             	success : function(res){
@@ -306,7 +306,7 @@ $('#loginBtn').click(function(){
             			location.href="goMain.me";
             		},
             		error: function(data){
-            			alert('안돼');
+            			alert('error');
             		}
             	});
             	
