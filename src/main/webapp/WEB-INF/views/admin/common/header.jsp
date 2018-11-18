@@ -87,7 +87,7 @@
 					<button id="menuBtn">기본설정</button>
 					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/memberManage.admin'">회원관리</button>
 					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/boardManage.admin'">게시물관리</button>
-					<button id="menuBtn">결제관리</button>
+					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/paymentManage.admin'">결제관리</button>
 					<button id="menuBtn">통계</button>
 				</td>
 				<td id="searchArea">	

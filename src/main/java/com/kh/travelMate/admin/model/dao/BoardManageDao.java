@@ -28,4 +28,10 @@ public interface BoardManageDao {
 
 	void updateBoardDetail(SqlSessionTemplate sqlSession, BoardManage modifyBoard);
 
+	BoardManage selectBoardDetailOne(SqlSessionTemplate sqlSession, int board_no);
+
+	void deleteBoardAll(SqlSessionTemplate sqlSession, int board_no);
+
+	void insertBoardReply(SqlSessionTemplate sqlSession, BoardManage replyBoardInfo);
+
 }

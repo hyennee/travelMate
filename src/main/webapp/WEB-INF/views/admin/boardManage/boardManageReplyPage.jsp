@@ -116,14 +116,23 @@ input {
 									<b>${ selectBoardDetail.board_date }</b></td>
 							</tr>
 							<tr>
+									<td colspan="2">${ selectBoardDetail.content }</td>
+							</tr>
+							<tr>
+								<td colspan="2" style="background-color: lightgray;"><h4
+										style="color: orangered;">
+										<b>1:1 질문 답변 작성</b></h4></td>
+							</tr>
+							<tr>
 								<td>
-								<form action="${ pageContext.request.contextPath }/admin/boardManageConfirm.admin" method="POST">
-									<input type="hidden" name="board_no" value="${ selectBoardDetail.board_no }"/>
+								<form action="${ pageContext.request.contextPath }/admin/boardManageReplyConfirm.admin" method="POST">
+									<input type="hidden" name="title" value="&nbsp;Re:&nbsp;${ selectBoardDetail.title }"/>
+									<input type="hidden" name="writer" value="${ sessionScope.loginUser.user_no }"/>
+									<input type="hidden" name="ref_no" value="${ selectBoardDetail.board_no }"/>
 									<div class="fr-view" style="margin: auto;">
 										<!-- Create a tag that we will use as the editable area. -->
 										<!-- You can use a div tag as well. -->
-										<textarea name="content"><c:out
-												value="${ selectBoardDetail.content }" escapeXml="false" /></textarea>
+										<textarea name="content"></textarea>
 									</div>
 									<button type="submit" class="btn btn-sm btn-info">확인</button>
 									<button type="button" class="btn btn-sm btn-danger" onclick="location.href='${ pageContext.request.contextPath }/admin/boardManageDetail.admin?board_no=${ selectBoardDetail.board_no }'">취소</button>
