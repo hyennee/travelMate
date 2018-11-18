@@ -26,4 +26,10 @@ public interface BoardManageService {
 
 	void updateBoardDetail(BoardManage modifyBoard);
 
+	BoardManage selectBoardDetailOne(int board_no);
+
+	void deleteBoardAll(int board_no);
+
+	void insertBoardReply(BoardManage replyBoardInfo);
+
 }

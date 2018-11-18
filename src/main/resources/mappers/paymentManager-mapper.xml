@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PaymentManage">
+	<resultMap
+		type="com.kh.travelMate.admin.model.vo.PaymentManage"
+		id="paymentmanageResultSet">
+		<id property="payment_No" column="PAYMENT_NO"></id>
+		<result property="user_No" column="USER_NO"></result>
+		<result property="email" column="EMAIL"></result>
+		<result property="user_Name" column="USER_NAME"></result>
+		<result property="nick_Name" column="NICK_NAME"></result>
+		<result property="proof_No" column="PROOF_NO"></result>
+		<result property="payment_Type" column="PAYMENT_TYPE"></result>
+		<result property="money" column="MONEY"></result>
+		<result property="payment_Date" column="PAYMENT_DATE"></result>
+		<result property="payment_Status" column="PAYMENT_STATUS"></result>
+		<result property="payment_Way" column="PAYMENT_WAY"></result>
+		<result property="ref_No" column="REF_NO"></result>
+	</resultMap>
+
+	<select id="paymentListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM
+		PAYMENT
+	</select>
+
+	<select id="paymentList" parameterType="PaymentManage"
+		resultMap="paymentmanageResultSet">
+		SELECT PAYMENT_NO, PROOF_NO, PAYMENT_TYPE, MONEY, PAYMENT_DATE,
+		PAYMENT_STATUS, PAYMENT_WAY, REF_NO, P.USER_NO, EMAIL, USER_NAME,
+		NICK_NAME
+		FROM PAYMENT P
+		JOIN MEMBER M ON (M.USER_NO = P.USER_NO)
+		START WITH REF_NO IS NULL
+		CONNECT BY PRIOR
+		PAYMENT_NO = REF_NO
+		ORDER SIBLINGS BY PAYMENT_NO DESC
+	</select>
+
+</mapper>  
