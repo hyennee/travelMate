@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
+import com.kh.travelMate.others.model.vo.ConsultRequest;
 
 public interface mypageService {
 
@@ -42,12 +43,19 @@ public interface mypageService {
 
 	int updateCancel(Member m);
 
+//	1:1상세보기
 	Board selectOneByOneBoard(int boardNo);
+
 
 	void insertProfile(Map<String, Object> data, Attachment attachment);
 
 	HashMap<String, Object> selectProfile(int user_no);
 
 	Attachment selectProfileAttachment(int user_no);
+
+//	거래내역 상세보기
+	ConsultRequest selectOneTrade(int consultNo);
+
+
 	
 }

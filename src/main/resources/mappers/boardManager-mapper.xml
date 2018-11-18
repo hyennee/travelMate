@@ -90,6 +90,24 @@
 		ORDER SIBLINGS BY BOARD_NO DESC
 	</select>
 
+	<select id="selectBoardDetailOne" parameterType="_int"
+		resultMap="boardmanageResultSet">
+		SELECT BOARD_NO, WRITER, CATEGORY, TITLE, CONTENT,
+		BOARD_DATE, STATUS,
+		BOARD_LEVEL, REF_NO, EMAIL, USER_NAME, NICK_NAME,
+		PHONE, BIRTHDAY,
+		GENDER, ENROLL_DATE
+		FROM BOARD B
+		JOIN MEMBER M ON
+		(M.USER_NO = B.WRITER)
+		WHERE BOARD_NO = #{ board_no }
+	</select>
+	
+	<delete id="deleteBoardAll" parameterType="_int">
+		DELETE
+		FROM BOARD
+		WHERE BOARD_NO = #{ board_no } OR REF_NO = #{ board_no }
+	</delete>
 
 	<select id="consultApplyListCount" resultType="_int">
 		SELECT COUNT(*)
@@ -145,6 +163,16 @@
 		UPDATE MEMBER SET USER_TYPE_LEVEL = '3'
 		WHERE USER_NO =
 		#{ user_No }
+	</update>
+	
+	<insert id="insertBoardReply" parameterType="BoardManage">
+		INSERT INTO BOARD
+		VALUES (SEQ_BOARD_NO.NEXTVAL, #{ writer }, 2, #{ title }, #{ content }, SYSDATE, 'Y', 2, #{ ref_no })
+	</insert>
+	
+	<update id="updateBoardReplyStatus" parameterType="_int">
+		UPDATE BOARD_STATUS SET STATUS = 'Y'
+		WHERE BOARD_NO = #{ ref_no }
 	</update>
 
 </mapper>  

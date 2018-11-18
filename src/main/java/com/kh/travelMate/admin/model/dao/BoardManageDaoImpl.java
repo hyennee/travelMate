@@ -96,4 +96,21 @@ public class BoardManageDaoImpl implements BoardManageDao {
 		sqlSession.update("BoardManage.updateBoardDetail", modifyBoard);
 	}
 
+	@Override
+	public BoardManage selectBoardDetailOne(SqlSessionTemplate sqlSession, int board_no) {
+		BoardManage selectBoardDetailOne = (BoardManage)sqlSession.selectOne("BoardManage.selectBoardDetailOne", board_no);
+		return selectBoardDetailOne;
+	}
+
+	@Override
+	public void deleteBoardAll(SqlSessionTemplate sqlSession, int board_no) {
+		sqlSession.delete("BoardManage.deleteBoardAll", board_no);
+	}
+
+	@Override
+	public void insertBoardReply(SqlSessionTemplate sqlSession, BoardManage replyBoardInfo) {
+		sqlSession.insert("BoardManage.insertBoardReply", replyBoardInfo);
+		sqlSession.update("BoardManage.updateBoardReplyStatus", replyBoardInfo.getRef_no());
+	}
+
 }

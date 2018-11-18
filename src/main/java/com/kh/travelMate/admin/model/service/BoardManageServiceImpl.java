@@ -75,4 +75,22 @@ public class BoardManageServiceImpl implements BoardManageService {
 		bmd.updateBoardDetail(sqlSession, modifyBoard);
 	}
 
+	@Override
+	public BoardManage selectBoardDetailOne(int board_no) {
+		BoardManage selectBoardDetailOne = 
+		bmd.selectBoardDetailOne(sqlSession, board_no);
+		return selectBoardDetailOne;
+	}
+
+	@Override
+	public void deleteBoardAll(int board_no) {
+		bmd.deleteBoardAll(sqlSession, board_no);
+	}
+
+	@Override
+	public void insertBoardReply(BoardManage replyBoardInfo) {
+		bmd.insertBoardReply(sqlSession, replyBoardInfo);
+		
+	}
+
 }

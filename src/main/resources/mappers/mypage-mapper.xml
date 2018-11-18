@@ -24,6 +24,7 @@
 		<result property="boardStatus" column="BOARD_STATUS"/>
 	</resultMap>
 	
+
 	<select id="cyberMoneyHistory" resultType="java.util.HashMap" parameterType="int">
 		select CYBERMONEY_RECORD_NO,USER_NO,CR.PROOF_NO,RECORD_DATE,CHANGE_MONEY,CHANGE_REASON,BEFORE_MONEY,COUNT
 		from CYBERMONEY_RECORD CR
@@ -114,9 +115,9 @@
 		WHERE USER_NO = #{user_no}
 	</update>
 	
-	<!-- 	거래내역 상세보기 -->
+	<!-- 1:1 문의 상세보기 -->
 	
-	<select id="selectOneByOneBoard" parameterType="_int" resultType="com.kh.travelMate.board.model.vo.Board">
+	<select id="selectOneByOneBoard" parameterType="_int" resultMap="boardResultSet">
 		SELECT BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO
 		FROM (SELECT B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO
 			  FROM BOARD B
@@ -124,14 +125,19 @@
 			  WHERE BOARD_NO = #{boardNo} )
 	</select>
 	
-<!-- 	
-	<select id="selectOneByOneBoard" parameterType="com.kh.travelMate.board.model.vo.Board" resultType="com.kh.travelMate.board.model.vo.Board">
-		SELECT *
-		FROM BOARD
-		WHERE BOARD_NO = #{ boardNo }
+	
+<!-- 	거래내역 상세보기 -->
+	<select id="selectOneTrade" parameterType="_int" resultType="com.kh.travelMate.others.model.vo.ConsultRequest">
+	
+		SELECT CONSULT_REQUEST_NO, TRAVEL_PURPOSE, ADULT_NUM, CHILD_NUM, TRAVEL_AREA, TRAVEL_START_DATE,
+  			   TRAVEL_END_DATE, BUDGET, ETC, STATUS, REF_NO, REQUEST_USER_NO, CONSULT_USER_NO, M.NICK_NAME, M2.NICK_NAME
+		FROM CONSULT_REQUEST CQ
+		JOIN MEMBER M ON(M.USER_NO = CQ.REQUEST_USER_NO)
+		JOIN MEMBER M2 ON(M2.USER_NO = CQ.CONSULT_USER_NO)
+		WHERE CONSULT_REQUEST_NO = #{ CONSULT_REQUEST_NO }
+	
 	</select>
-	 -->
-	 
+
 	 <!-- 컨설턴트 프로필 검색 -->
 	 
 	 <select id="selectProfile" resultType="java.util.HashMap" parameterType="_int">
@@ -157,12 +163,7 @@
 		INSERT INTO ATTACHMENT
 		VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, #{originName}, #{modifyName}, #{fileRoot}, SYSDATE, '1', #{refNo})
 	</insert>
-	 
-	 
-	 
-	 
-	 
-	 
+
 </mapper> 
 
 

@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
+import com.kh.travelMate.others.model.vo.ConsultRequest;
 
 public interface mypageDao {
 
@@ -47,6 +48,7 @@ public interface mypageDao {
 
 	Board selectOneByOneBoard(SqlSessionTemplate sqlSession, int boardNo);
 
+
 	void insertProfile(SqlSessionTemplate sqlSession, Map<String, Object> data);
 
 	void insertProfileAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
@@ -54,4 +56,7 @@ public interface mypageDao {
 	HashMap<String, Object> selectProfile(SqlSessionTemplate sqlSession, int user_no);
 
 	Attachment selectProfileAttachment(SqlSessionTemplate sqlSession, int user_no);
+
+	ConsultRequest selectOneTrade(SqlSessionTemplate sqlSession, int consultNo);
+
 }

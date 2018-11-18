@@ -37,4 +37,6 @@ public interface BoardDao
 	int getListCountSearch(SqlSessionTemplate sqlSession, Board b);
 
 	Board selectOneAnswer(SqlSessionTemplate sqlSession, Board b);
+
+	Board selectOneAnswerAdmin(SqlSessionTemplate sqlSession, Board b);
 }

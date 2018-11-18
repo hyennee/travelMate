@@ -38,8 +38,8 @@ public class mypageController {
 	private mypageService ms;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
-	
+
+
 	IamportClient client = new IamportClient("5297797561451640", "KRcAfNqO3pAQklrZuVACAZCG1wsNE5QpX2ZcPq1SPCJ9Xa8s6J4GIHnKeQxTVniSqi5fJ68zISIG3R89");
 
 	@RequestMapping("mypage.me")
@@ -122,32 +122,32 @@ public class mypageController {
 	@ResponseBody
 	@RequestMapping("insertCyberMoney.me")
 	public String insertCyberMoney(@RequestParam(value="money")String money, @RequestParam(value="imp_uid")String imp_uid, HttpServletRequest request) {
-		
+
 		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
 
 		System.out.println(loginUser);
 		System.out.println("번호 : " + loginUser.getUser_no());
-		
+
 		System.out.println("imp_uid : " + imp_uid);
 		ms.insertCyberMoney(Integer.parseInt(money), loginUser, imp_uid);
 		return "redirect:Money.me";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("insertCyberMoney3.me")
 	public String insertCyberMoney3(@RequestParam(value="money")String money, @RequestParam(value="account_name")String account_name,@RequestParam(value="account_no")String account_no, HttpServletRequest request) {
-		
+
 		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
 
 		System.out.println(loginUser);
 		System.out.println("번호 : " + loginUser.getUser_no());
-		
+
 		System.out.println("account_name : " + account_name);
 		System.out.println("account_no : " + account_no);
 		ms.insertCyberMoney3(Integer.parseInt(money), loginUser, account_name, account_no);
 		return "redirect:Money.me";
 	}
-	
+
 	@RequestMapping("insertCyberMoney2.me")
 	public String insertCyberMoney2(@RequestParam(value="money")String money, @RequestParam(value="imp_uid")String imp_uid, Model model,  HttpServletRequest request) {
 		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
@@ -168,7 +168,7 @@ public class mypageController {
 				}
 			} catch (IamportResponseException e) {
 				System.out.println(e.getMessage());
-	
+
 				switch(e.getHttpStatusCode()) {
 				case 401 :
 					//TODO
@@ -189,139 +189,98 @@ public class mypageController {
 		model.addAttribute("msg", "이미 환불 완료된 거래입니다.");
 		return "redirect:Money.me";
 	}
-	
+
 	//비밀번호 일치하는지 확인하기
 	@RequestMapping("checkPwd.me")
 	public String checkPwd(Member m, Model model, HttpServletRequest request) {
-			
-			Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
-			String pwd = request.getParameter("pwd");
-			String chg_pwd1 = request.getParameter("chg_pwd1");
-			System.out.println(pwd);
-			System.out.println(chg_pwd1);//
-			int user_no = loginUser.getUser_no();
-			System.out.println(user_no);
-			
-			
-			String encPassword = passwordEncoder.encode(pwd);
-			String encChg_pwd = passwordEncoder.encode(chg_pwd1);
-			
-			/*m.setPassword(encPassword);*/
-			m.setUser_no(loginUser.getUser_no());
-			
-			try {
-				String check = ms.checkpwd(m);
-				
-				System.out.println("encPassword :  " + encPassword + "  /  check :  " + check);
-				
-				
-				if(!passwordEncoder.matches(encPassword, check)) {
-					m.setPassword(encChg_pwd);
-					
-					int updatepwd = ms.updatepwd(m);
-					
-					System.out.println("updatepwd : " + updatepwd);
-					
-					
-					return "redirect:logout.me";
-				}else {
-					return "redirect:modifyPwd";
-				}
-				
-			} catch (Exception e) {
-				model.addAttribute("msg", e.getMessage());
-				
-				return "common/errorPage";
-				
+
+		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
+		String pwd = request.getParameter("pwd");
+		String chg_pwd1 = request.getParameter("chg_pwd1");
+		System.out.println(pwd);
+		System.out.println(chg_pwd1);//
+		int user_no = loginUser.getUser_no();
+		System.out.println(user_no);
+
+
+		String encPassword = passwordEncoder.encode(pwd);
+		String encChg_pwd = passwordEncoder.encode(chg_pwd1);
+
+		/*m.setPassword(encPassword);*/
+		m.setUser_no(loginUser.getUser_no());
+
+		try {
+			String check = ms.checkpwd(m);
+
+			System.out.println("encPassword :  " + encPassword + "  /  check :  " + check);
+
+
+			if(!passwordEncoder.matches(encPassword, check)) {
+				m.setPassword(encChg_pwd);
+
+				int updatepwd = ms.updatepwd(m);
+
+				System.out.println("updatepwd : " + updatepwd);
+
+
+				return "redirect:logout.me";
+			}else {
+				return "redirect:modifyPwd";
 			}
-			
-			
+
+		} catch (Exception e) {
+			model.addAttribute("msg", e.getMessage());
+
+			return "common/errorPage";
+
+		}
+
+
 	}
 
-	
-	
-	
+
+
+
 	//비밀번호 일치하는지 확인하고 status 탈퇴회원으로 변경
-		@RequestMapping("checkPwd_cancel.me")
-		public String checkPwd_cancel(Member m, Model model, HttpServletRequest request) {
-				
-				Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
-				String pwd = request.getParameter("pwd");
-				System.out.println(pwd);
-				int user_no = loginUser.getUser_no();
-				System.out.println(user_no);
-				
-				
-				String encPassword = passwordEncoder.encode(pwd);
-				m.setUser_no(loginUser.getUser_no());
-				
-				try {
-					String check = ms.checkpwd(m);
-					
-					System.out.println("encPassword :  " + encPassword + "  /  check :  " + check);
-					
-					
-					if(!passwordEncoder.matches(encPassword, check)) {
-						
-						int updateCancel = ms.updateCancel(m);
-						
-						System.out.println("updateCancel : " + updateCancel);
-						
-						
-						return "redirect:logout.me";
-					}else {
-						return "redirect:modifyPwd";
-					}
-					
-				} catch (Exception e) {
-					model.addAttribute("msg", e.getMessage());
-					
-					return "common/errorPage";
-					
-				}
-				
-		}
-		
-		//1:1문의게시판 상세보기
-		@RequestMapping("selectOneByOneBoard.bo")
-		public String selectOneByOneBoard(@RequestParam(value="boardNo")int boardNo, Model model, HttpServletRequest request) {
-		
-			//ModelAndView / String 로 포워딩 한다
-			System.out.println("boardNo" + boardNo);
-//			String boardNo=request.getParameter("boardNo");
-			Board result = ms.selectOneByOneBoard(boardNo);
-			if(result != null) {
-				
-				model.addAttribute("board", result);
-				
-				System.out.println("b : " + result);
-				return "mypage/detailOneByOneQnA";
+	@RequestMapping("checkPwd_cancel.me")
+	public String checkPwd_cancel(Member m, Model model, HttpServletRequest request) {
+
+		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
+		String pwd = request.getParameter("pwd");
+		System.out.println(pwd);
+		int user_no = loginUser.getUser_no();
+		System.out.println(user_no);
+
+
+		String encPassword = passwordEncoder.encode(pwd);
+		m.setUser_no(loginUser.getUser_no());
+
+		try {
+			String check = ms.checkpwd(m);
+
+			System.out.println("encPassword :  " + encPassword + "  /  check :  " + check);
+
+
+			if(!passwordEncoder.matches(encPassword, check)) {
+
+				int updateCancel = ms.updateCancel(m);
+
+				System.out.println("updateCancel : " + updateCancel);
+
+
+				return "redirect:logout.me";
 			}else {
-				System.out.println("에러");
-				return "common/errorPage";
-				
+				return "redirect:modifyPwd";
 			}
-			
-			
+
+		} catch (Exception e) {
+			model.addAttribute("msg", e.getMessage());
+
+			return "common/errorPage";
+
 		}
-		
-		//컨설팅한 거래내역 상세보기
-		@RequestMapping("selectOneTrade.me")
-		public String selectOneTrade(Model model, HttpServletRequest request, ConsultRequest cr) {
-			
-			System.out.println("cr : " + cr);
-			
-////			ConsultRequest c = new ConsultRequest();
-////			
-////			
-////			model.addAttribute("trade" + c);
-////			
-////			System.out.println("c : " + c);
-//			
-//			
-			
-			return "mypage/detailTrade";
-		}
+
+
 		
 		//컨설턴트 프로필 검색
 		@RequestMapping("selectProfile.me")
@@ -383,5 +342,59 @@ public class mypageController {
 				return "must/errorPage";
 			}
 		}
+
+	}
+
+	//1:1문의게시판 상세보기
+	@RequestMapping("selectOneByOneBoard.bo")
+	public String selectOneByOneBoard(@RequestParam(value="boardNo")int boardNo, Model model, HttpServletRequest request) {
+
+		//ModelAndView / String 로 포워딩 한다
+		System.out.println("boardNo" + boardNo);
+		//			String boardNo=request.getParameter("boardNo");
+		Board result = ms.selectOneByOneBoard(boardNo);
+		if(result != null) {
+
+			model.addAttribute("board", result);
+
+			System.out.println("b : " + result);
+			return "mypage/detailOneByOneQnA";
+		}else {
+			System.out.println("에러");
+			return "common/errorPage";
+
+		}
+
+
+	}
+
+	//컨설팅한 거래내역 상세보기
+	@RequestMapping("selectOneTrade.mp")
+	public String selectOneTrade(Model model, HttpServletRequest request, @RequestParam(value="CONSULT_REQUEST_NO")int CONSULT_REQUEST_NO) {
+
+		System.out.println("CONSULT_REQUEST_NO : " +CONSULT_REQUEST_NO);
+
+		ConsultRequest c = new ConsultRequest();
+		ConsultRequest result = ms.selectOneTrade(CONSULT_REQUEST_NO);
+
+		if( result != null ) {
+
+
+			model.addAttribute("trade" + c);
+
+			System.out.println("c : " + c);
+
+
+
+
+			return "mypage/detailTrade";
+		}
+		else {
+
+			System.out.println("에러");
+			return "common/errorPage";
+		}
+	}
+
 
 }

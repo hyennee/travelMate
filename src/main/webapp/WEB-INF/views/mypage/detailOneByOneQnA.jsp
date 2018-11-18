@@ -8,6 +8,14 @@
 <title>상세거래내역</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
 #jb-container {
 	width: 90%;
@@ -97,13 +105,13 @@ td{
 			<div >
 						<p>상세 1:1 문의 내역</p>
 						
-						<label for="">no</label><input type="text" value="${ board.boardNo }" readonly/><br />
-						<label for="">작성자</label><input type="text" value="${ board.nickName }" readonly/><br />
-						<label for="">답변여부</label><input type="text" value="${ board.boardStatus }" />
-						<label for="">날짜</label><input type="text" value="${ board.boardDate }" readonly/><br />
-						<label for="">제목</label><input type="text" value="${ board.title }"/><br />
+						<label for="">no</label><input type="text" class="form-control no"  value="${ board.boardNo }" readonly/><br />
+						<label for="">작성자</label><input type="text" class="form-control writer" value="${ board.nickName }" readonly/><br />
+						<label for="">답변여부</label><input type="text" class="form-control" value="<c:if test="${ board.status eq 'Y'}">답변있음</c:if><c:if test="${ board.status eq 'N' }">준비중</c:if>" />
+						<label for="">날짜</label><input type="text" class="form-control date" value="${ board.boardDate }" readonly/><br />
+						<label for="">제목</label><input type="text" class="form-control oboTitle" value="${ board.title }"/><br />
 						<label for="">내용</label><br />
-						<textarea name="" id="" cols="30" rows="10">${ board.content }</textarea>
+						<textarea contentEditable="true" class="form-control" name="" id="" cols="30" rows="10" readonly style="cursor:default">${ board.content }</textarea>
 						
 						
 												
