@@ -156,7 +156,7 @@ public class mypageDaoImpl implements mypageDao{
 	@Override
 	public Attachment selectProfileAttachment(SqlSessionTemplate sqlSession, int user_no) {
 		return sqlSession.selectOne("Mypage.selectProfileAttachment", user_no);
-
+	}
     
 //	거래내역 상세보기
 	@Override

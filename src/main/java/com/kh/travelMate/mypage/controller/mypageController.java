@@ -277,7 +277,7 @@ public class mypageController {
 			model.addAttribute("msg", e.getMessage());
 
 			return "common/errorPage";
-
+		}
 		}
 
 
@@ -343,7 +343,7 @@ public class mypageController {
 			}
 		}
 
-	}
+	
 
 	//1:1문의게시판 상세보기
 	@RequestMapping("selectOneByOneBoard.bo")
