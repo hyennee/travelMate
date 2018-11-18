@@ -17,6 +17,7 @@ import com.kh.travelMate.member.model.exception.LoginException;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.dao.mypageDao;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
+import com.kh.travelMate.others.model.vo.ConsultRequest2;
 
 @Service
 public class mypageServiceImpl implements mypageService{
@@ -202,7 +203,7 @@ public class mypageServiceImpl implements mypageService{
 	
 //	거래내역 상세보기
 	@Override
-	public ConsultRequest selectOneTrade(int consultNo) {
+	public ConsultRequest2 selectOneTrade(int consultNo) {
 		
 		
 		return md.selectOneTrade(sqlSession, consultNo);

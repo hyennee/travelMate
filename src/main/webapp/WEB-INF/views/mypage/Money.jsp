@@ -130,6 +130,7 @@ $(document).ready(function() {
 									<th class="thstyle">구분</th>
 									<th class="thstyle">금액</th>
 									<th class="thstyle">내역일시</th>
+									<th class="thstyle">비고</th>
 								</tr>
 								
 								<c:forEach var="size" items="${ cyberMoney }" >

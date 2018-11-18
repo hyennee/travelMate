@@ -10,6 +10,7 @@ import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
+import com.kh.travelMate.others.model.vo.ConsultRequest2;
 
 public interface mypageService {
 
@@ -54,7 +55,7 @@ public interface mypageService {
 	Attachment selectProfileAttachment(int user_no);
 
 //	거래내역 상세보기
-	ConsultRequest selectOneTrade(int consultNo);
+	ConsultRequest2 selectOneTrade(int consultNo);
 
 
 	

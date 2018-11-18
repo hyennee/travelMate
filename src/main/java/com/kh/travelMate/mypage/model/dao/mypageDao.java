@@ -10,6 +10,7 @@ import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
+import com.kh.travelMate.others.model.vo.ConsultRequest2;
 
 public interface mypageDao {
 
@@ -57,6 +58,6 @@ public interface mypageDao {
 
 	Attachment selectProfileAttachment(SqlSessionTemplate sqlSession, int user_no);
 
-	ConsultRequest selectOneTrade(SqlSessionTemplate sqlSession, int consultNo);
+	ConsultRequest2 selectOneTrade(SqlSessionTemplate sqlSession, int consultNo);
 
 }

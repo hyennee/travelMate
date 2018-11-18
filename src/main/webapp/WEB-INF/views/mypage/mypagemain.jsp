@@ -166,14 +166,12 @@ a {
 								<tr>
 									<th class="thstyle">no</th>
 									<th class="thstyle">제목</th>
-									<th class="thstyle">작성자</th>
 									<th class="thstyle">작성일시</th>
 								</tr>
 								<c:forEach var="size" items="${ oneByOne }" >
 								<tr>
 									<td>${ size.BOARD_NO}</td>
 									<td>${ size.TITLE}</td>
-									<td>${ size.WRITE}</td>
 									<td>${ size.BOARD_DATE}</td>
 									
 								</tr>
