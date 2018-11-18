@@ -1,6 +1,7 @@
 package com.kh.travelMate.board.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -172,4 +173,12 @@ public class BoardDaoImpl implements BoardDao
 		
 		return answer;
 	}
+
+	@Override
+	public ArrayList<HashMap<String, Object>> selectCSlist(SqlSessionTemplate sqlSession) {
+		List<HashMap<String, Object>> list = sqlSession.selectList("Board.selectCSlist"); 
+		return (ArrayList<HashMap<String, Object>>)list;
+	}
+
+
 }

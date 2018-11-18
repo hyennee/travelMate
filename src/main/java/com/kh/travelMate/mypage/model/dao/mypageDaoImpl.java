@@ -145,18 +145,18 @@ public class mypageDaoImpl implements mypageDao{
 	
 	@Override
 	public void insertProfile(SqlSessionTemplate sqlSession, Map<String, Object> data) {
-		sqlSession.insert("Mypage.insertProfile", data);
+		sqlSession.update("Mypage.insertProfile", data);
 	}
 
 	@Override
 	public void insertProfileAttachment(SqlSessionTemplate sqlSession, Attachment attachment) {
-		sqlSession.insert("Mypage.insertProfileAttachment", attachment);
+		sqlSession.update("Mypage.insertProfileAttachment", attachment);
 	}
 
 	@Override
-	public Attachment selectProfileAttachment(SqlSessionTemplate sqlSession, int user_no) {
+	public String selectProfileAttachment(SqlSessionTemplate sqlSession, int user_no) {
 		return sqlSession.selectOne("Mypage.selectProfileAttachment", user_no);
-
+	}
     
 //	거래내역 상세보기
 	@Override

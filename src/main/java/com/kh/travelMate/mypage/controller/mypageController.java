@@ -279,7 +279,7 @@ public class mypageController {
 			return "common/errorPage";
 
 		}
-
+	}
 
 		
 		//컨설턴트 프로필 검색
@@ -288,14 +288,16 @@ public class mypageController {
 			Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
 			int user_no = loginUser.getUser_no();
 			HashMap<String, Object> result = ms.selectProfile(user_no);
+			System.out.println(result);
 			if(result != null) {
-				result.put("Attachment", ms.selectProfileAttachment(user_no));	
+				System.out.println(user_no);
+				result.put("fileName", ms.selectProfileAttachment(user_no));	
+				System.out.println(result.get("fileName"));
 				
 			}else {
 				result = new HashMap<String, Object>();
 				result.put("content", "");
 				result.put("title", "");
-				result.put("Attachment",new Attachment());
 			}
 			model.addAttribute("result", result);
 			return "mypage/consultingManual";
@@ -312,8 +314,10 @@ public class mypageController {
 			String filePath = root + "\\images\\profile";												//파일 경로(resources/uploadfiles)
 			System.out.println("path : " + filePath);
 			String originFileName = file.getOriginalFilename();
+			System.out.println("originFileName : " + originFileName);
 			String ext = originFileName.substring(originFileName.lastIndexOf("."));					//확장자 분리
 			String changeFileName = loginUser.getNick_name();				//파일명 변경
+			System.out.println("changeFileName : " + changeFileName);
 			Map<String, Object> data = new HashMap<String, Object>();
 			data.put("user_no", loginUser.getUser_no());
 			data.put("title", title);
@@ -331,10 +335,12 @@ public class mypageController {
 				attachment.setRefNo(loginUser.getUser_no());
 				ms.insertProfile(data, attachment);
 				
-				return "others/applyConsultComplete";
+				return "redirect:mypage.me";
 			}
 			catch (Exception e)
 			{
+				System.out.println(e);
+				
 				new File(filePath + "\\" + changeFileName + ext).delete();
 				
 				model.addAttribute("msg", "파일 업로드 실패");
@@ -343,7 +349,7 @@ public class mypageController {
 			}
 		}
 
-	}
+	
 
 	//1:1문의게시판 상세보기
 	@RequestMapping("selectOneByOneBoard.bo")

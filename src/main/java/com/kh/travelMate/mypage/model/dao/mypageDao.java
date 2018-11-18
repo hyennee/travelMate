@@ -55,7 +55,7 @@ public interface mypageDao {
 
 	HashMap<String, Object> selectProfile(SqlSessionTemplate sqlSession, int user_no);
 
-	Attachment selectProfileAttachment(SqlSessionTemplate sqlSession, int user_no);
+	String selectProfileAttachment(SqlSessionTemplate sqlSession, int user_no);
 
 	ConsultRequest selectOneTrade(SqlSessionTemplate sqlSession, int consultNo);
 
