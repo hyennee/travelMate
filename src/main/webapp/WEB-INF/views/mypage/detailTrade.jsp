@@ -103,7 +103,16 @@ td{
 						<label for="">거래한 상품</label><input type="text" value="신혼여행으로 몰디브, 예산 1인 300으로 짜주세요"/><br />
 						<label for="">내용</label><br />
 						
+						<label for="">no</label><input type="text" class="form-control no"  value="고쳐" readonly/><br />
+						<label for="">작성자</label><input type="text" class="form-control writer" value="고쳐" readonly/><br />
+						<label for="">답변여부</label><input type="text" class="form-control" />
+						<label for="">날짜</label><input type="text" class="form-control date" value="고쳥" readonly/><br />
+						<label for="">제목</label><input type="text" class="form-control oboTitle" value="고쳥"/><br />
+						<label for="">내용</label><br />
+						<textarea contentEditable="true" class="form-control" name="" id="" cols="30" rows="10" readonly style="cursor:default"></textarea>
 						
+						
+												
 												
 
 			</div>
