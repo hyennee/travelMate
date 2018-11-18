@@ -29,9 +29,9 @@
 		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
 		      JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
 		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category}
-		      ORDER BY B.BOARD_NO DESC)
+		      ORDER BY B.BOARD_NO ASC)
 		WHERE ROWNUM <![CDATA[<]]>= 5
-		ORDER BY ROWNUM ASC
+		ORDER BY ROWNUM DESC
 	</select>
 	
 	<select id="boardList" resultMap="boardResultSet" parameterType="Board">
@@ -41,8 +41,8 @@
 		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
 		      JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
 		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category}
-		      ORDER BY B.BOARD_NO DESC)
-		ORDER BY ROWNUM ASC
+		      ORDER BY B.BOARD_NO ASC)
+		ORDER BY ROWNUM DESC
 	</select>
 	
 	<select id="searchTitleList" resultMap="boardResultSet" parameterType="Board">
@@ -52,8 +52,8 @@
 		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
 		      JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
 		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category} AND B.TITLE LIKE '%'||#{searchValue}||'%'
-		      ORDER BY B.BOARD_NO DESC)
-		ORDER BY ROWNUM ASC
+		      ORDER BY B.BOARD_NO ASC)
+		ORDER BY ROWNUM DESC
 	</select>
 	<select id="searchNicknameList" resultMap="boardResultSet" parameterType="Board">
 		SELECT ROWNUM, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO, BOARD_STATUS
@@ -62,8 +62,8 @@
 		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
 		      JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
 		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category} AND M.NICK_NAME LIKE '%'||#{searchValue}||'%'
-		      ORDER BY B.BOARD_NO DESC)
-		ORDER BY ROWNUM ASC
+		      ORDER BY B.BOARD_NO ASC)
+		ORDER BY ROWNUM DESC
 	</select>
 	<select id="searchContentList" resultMap="boardResultSet" parameterType="Board">
 		SELECT ROWNUM, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO, BOARD_STATUS
@@ -72,16 +72,17 @@
 		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
 		      JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
 		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category} AND B.CONTENT LIKE '%'||#{searchValue}||'%'
-		      ORDER BY B.BOARD_NO DESC)
-		ORDER BY ROWNUM ASC
+		      ORDER BY B.BOARD_NO ASC)
+		ORDER BY ROWNUM DESC
 	</select>
 	
 	<select id="selectOne" resultMap="boardResultSet" parameterType="board">
-		SELECT RO1, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO
-		FROM (SELECT ROWNUM "RO1", B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO
+		SELECT RO1, BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO, BOARD_STATUS
+		FROM (SELECT ROWNUM "RO1", B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO, S.STATUS "BOARD_STATUS"
 			  FROM BOARD B
 			  JOIN MEMBER M ON(B.WRITER = M.USER_NO)
-			  WHERE BOARD_NO = #{boardNo} AND CATEGORY = #{category} AND BOARD_LEVEL = 1 AND STATUS = 'Y')
+			  JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
+			  WHERE B.BOARD_NO = #{boardNo} AND B.CATEGORY = #{category} AND B.BOARD_LEVEL = 1 AND B.STATUS = 'Y')
 	</select>
 	
 	<select id="selectOneAnswer" resultMap="boardResultSet" parameterType="board">
@@ -90,6 +91,15 @@
 			  FROM BOARD B
 			  JOIN MEMBER M ON(B.WRITER = M.USER_NO)
 			  WHERE BOARD_NO = #{boardNo} AND CATEGORY = #{category} AND BOARD_LEVEL = 2 AND STATUS = 'Y')
+	</select>
+	
+	<select id="selectOneAnswerAdmin" resultMap="boardResultSet" parameterType="board">
+		SELECT BOARD_NO, WRITER, NICK_NAME, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO, BOARD_STATUS
+		FROM (SELECT B.BOARD_NO, B.WRITER, M.NICK_NAME, B.CATEGORY, B.TITLE, B.CONTENT, B.BOARD_DATE, B.STATUS, B.BOARD_LEVEL, B.REF_NO, S.STATUS "BOARD_STATUS"
+			  FROM BOARD B
+			  JOIN MEMBER M ON(B.WRITER = M.USER_NO)
+			  JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
+			  WHERE B.REF_NO = #{boardNo} AND CATEGORY = #{category} AND B.BOARD_LEVEL = 2 AND B.STATUS = 'Y')
 	</select>
 	
 	<select id="selectOneRef" resultMap="boardResultSet" parameterType="board">
@@ -125,8 +135,8 @@
 		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
 		      JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
 		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category} AND B.TITLE LIKE '%'||#{searchValue}||'%'
-		      ORDER BY B.BOARD_NO DESC)
-		ORDER BY ROWNUM ASC
+		      ORDER BY B.BOARD_NO ASC)
+		ORDER BY ROWNUM DESC
 	</select>
 	<select id="selectListCountSearchNickname" resultType="_int">
 		SELECT COUNT(*)
@@ -135,8 +145,8 @@
 		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
 		      JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
 		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category} AND M.NICK_NAME LIKE '%'||#{searchValue}||'%'
-		      ORDER BY B.BOARD_NO DESC)
-		ORDER BY ROWNUM ASC
+		      ORDER BY B.BOARD_NO ASC)
+		ORDER BY ROWNUM DESC
 	</select>
 	<select id="selectListCountSearchContent" resultType="_int">
 		SELECT COUNT(*)
@@ -145,8 +155,8 @@
 		      JOIN MEMBER M ON(B.WRITER = M.USER_NO)
 		      JOIN BOARD_STATUS S ON(B.BOARD_NO = S.BOARD_NO)
 		      WHERE B.STATUS = 'Y' AND B.BOARD_LEVEL = 1 AND B.CATEGORY = #{category} AND B.CONTENT LIKE '%'||#{searchValue}||'%'
-		      ORDER BY B.BOARD_NO DESC)
-		ORDER BY ROWNUM ASC
+		      ORDER BY B.BOARD_NO ASC)
+		ORDER BY ROWNUM DESC
 	</select>
 	
 	<insert id="insertBoard" parameterType="Board">

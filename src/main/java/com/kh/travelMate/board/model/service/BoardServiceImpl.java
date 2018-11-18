@@ -149,4 +149,12 @@ public class BoardServiceImpl implements BoardService
 		
 		return noticeOne;
 	}
+
+	@Override
+	public Board selectOneAnswerAdmin(Board b)
+	{
+		Board answer = bd.selectOneAnswerAdmin(sqlSession, b);
+		
+		return answer;
+	}
 }

@@ -56,11 +56,14 @@ public class BoardController
 		}
 		else if(b.getCategory().equals("2"))
 		{
+			Board answerBoard = bs.selectOneAnswerAdmin(b);
+			
+			model.addAttribute("answerBoard", answerBoard);
+			
 			return "board/serviceCenter/questionDetail";
 		}
 		else if(b.getCategory().equals("3"))
 		{
-			/*System.out.println("aList : " + b);*/
 			ArrayList<Board> answerList = bs.selectAnswerBoard(b);
 			
 			model.addAttribute("answerList", answerList);
