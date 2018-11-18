@@ -33,4 +33,6 @@ public interface BoardService
 	int getListCountSearch(Board b);
 
 	Board selectOneAnswer(Board b);
+
+	Board selectOneAnswerAdmin(Board b);
 }

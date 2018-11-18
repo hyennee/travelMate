@@ -281,9 +281,12 @@
 											</c:if>
 										</c:if>
 										<c:if test="${ sessionScope.loginUser.getNick_name() eq answer.nickName }">
-											<div style="float:right;">
-												<button type="submit" id="btnList">답변 수정</button>
-											</div>
+											<c:if test="${ selectOne.refNo eq 0 }">
+												<div style="float:right;">
+													<button type="button" id="btnList" onclick="boardDelete(${answer.boardNo}, ${answer.category});">답변 삭제</button>
+													<button type="submit" id="btnList">답변 수정</button>
+												</div>
+											</c:if>
 										</c:if>
 									</div>
 								</div>
@@ -294,7 +297,7 @@
 						<!-- 목록버튼 -->
 						<button id="btnList" type="button" onclick="location.href='selectList.bo?category=3'">목록</button>
 						<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
-							<button id="btnList" type="button" onclick="location.href='delete.bo?boardNo=${ selectOne.boardNo }&category=${ selectOne.category }'">삭제</button>
+							<button id="btnList" type="button" onclick="boardDelete(${selectOne.boardNo}, ${selectOne.category});">삭제</button>
 						</c:if>
 					</div>
 				</div>
@@ -319,5 +322,15 @@
 		window.location.href = '${contextPath}/loginView.me';
 	</script>
 	</c:if> --%>
+	
+	<script>
+		function boardDelete(boardNo, category)
+		{
+			if(confirm("삭제하시겠습니까?"))
+			{
+				location.href="delete.bo?boardNo=" + boardNo + "&category=" + category;
+			}
+		}
+	</script>
 </body>
 </html>
