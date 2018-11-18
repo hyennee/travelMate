@@ -140,11 +140,6 @@ public class pageChangeController {
 		return "mypage/consultingCustomer";
 	}
 	
-	@RequestMapping("consultingManual.me")
-	public String consultingManual()
-	{
-		return "mypage/consultingManual";
-	}
 	
 	//이메일 인증 
 		@RequestMapping("mailAuthView.me")

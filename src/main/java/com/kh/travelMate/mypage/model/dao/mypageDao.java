@@ -2,10 +2,12 @@ package com.kh.travelMate.mypage.model.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.travelMate.board.model.vo.Board;
+import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
 
 public interface mypageDao {
@@ -44,4 +46,12 @@ public interface mypageDao {
 	int updateCancel(SqlSessionTemplate sqlSession, Member m);
 
 	Board selectOneByOneBoard(SqlSessionTemplate sqlSession, int boardNo);
+
+	void insertProfile(SqlSessionTemplate sqlSession, Map<String, Object> data);
+
+	void insertProfileAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
+
+	HashMap<String, Object> selectProfile(SqlSessionTemplate sqlSession, int user_no);
+
+	Attachment selectProfileAttachment(SqlSessionTemplate sqlSession, int user_no);
 }

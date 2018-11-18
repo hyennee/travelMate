@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.travelMate.board.model.vo.Board;
+import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
 
 @Repository
@@ -133,6 +134,29 @@ public class mypageDaoImpl implements mypageDao{
 		
 		System.out.println("md의 1:1상세보기 리스트 : " + boardNo);
 		return sqlSession.selectOne("Mypage.selectOneByOneBoard", boardNo);
+	}
+
+	
+	//1:1 상세보기 
+	@Override
+	public HashMap<String, Object> selectProfile(SqlSessionTemplate sqlSession, int user_no) {
+		
+		return sqlSession.selectOne("Mypage.selectProfile", user_no);
+	}
+	
+	@Override
+	public void insertProfile(SqlSessionTemplate sqlSession, Map<String, Object> data) {
+		sqlSession.insert("Mypage.insertProfile", data);
+	}
+
+	@Override
+	public void insertProfileAttachment(SqlSessionTemplate sqlSession, Attachment attachment) {
+		sqlSession.insert("Mypage.insertProfileAttachment", attachment);
+	}
+
+	@Override
+	public Attachment selectProfileAttachment(SqlSessionTemplate sqlSession, int user_no) {
+		return sqlSession.selectOne("Mypage.selectProfileAttachment", user_no);
 	}
 	
 	
