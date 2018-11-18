@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.member.model.vo.Member;
+import com.kh.travelMate.others.model.vo.ConsultRequest;
 
 @Repository
 public class mypageDaoImpl implements mypageDao{
@@ -133,6 +134,14 @@ public class mypageDaoImpl implements mypageDao{
 		
 		System.out.println("md의 1:1상세보기 리스트 : " + boardNo);
 		return sqlSession.selectOne("Mypage.selectOneByOneBoard", boardNo);
+	}
+
+//	거래내역 상세보기
+	@Override
+	public ConsultRequest selectOneTrade(SqlSessionTemplate sqlSession, int consultNo) {
+		
+		System.out.println("md의 거래내역 상세보기 프라임키 잘 전달? : " + consultNo);
+		return sqlSession.selectOne("Mypage.selectOneTrade", consultNo);
 	}
 	
 	

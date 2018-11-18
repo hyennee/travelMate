@@ -14,6 +14,7 @@ import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.member.model.exception.LoginException;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.dao.mypageDao;
+import com.kh.travelMate.others.model.vo.ConsultRequest;
 
 @Service
 public class mypageServiceImpl implements mypageService{
@@ -180,6 +181,14 @@ public class mypageServiceImpl implements mypageService{
 	public Board selectOneByOneBoard(int boardNo) {
 		
 		return md.selectOneByOneBoard(sqlSession, boardNo);
+	}
+	
+//	거래내역 상세보기
+	@Override
+	public ConsultRequest selectOneTrade(int consultNo) {
+		
+		
+		return md.selectOneTrade(sqlSession, consultNo);
 	}
 	
 

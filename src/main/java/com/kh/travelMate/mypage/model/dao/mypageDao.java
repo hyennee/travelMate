@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.member.model.vo.Member;
+import com.kh.travelMate.others.model.vo.ConsultRequest;
 
 public interface mypageDao {
 
@@ -44,4 +45,6 @@ public interface mypageDao {
 	int updateCancel(SqlSessionTemplate sqlSession, Member m);
 
 	Board selectOneByOneBoard(SqlSessionTemplate sqlSession, int boardNo);
+
+	ConsultRequest selectOneTrade(SqlSessionTemplate sqlSession, int consultNo);
 }

@@ -121,7 +121,8 @@ td{
 									</td>
 									<td>${ size.TITLE}</td>
 									<td>${ size.NICK_NAME}</td>
-									<td>${ size.BOARD_DATE}</td>
+									<td><c:if test="${ size.STATUS eq 'Y'}" >답변</c:if>
+									<c:if test="${ size.STATUS eq 'N'}" >미응답</c:if></td>
 									<td>${ size.BOARD_DATE}</td>
 								</tr>
 								</c:forEach>
