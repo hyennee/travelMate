@@ -89,9 +89,10 @@ a {
 			<h2>나의 컨설팅 메뉴얼</h2>
 			<hr />
 			<div >
-						<p>컨설팅 리스트</p>
-						
-
+				<label>제목</label><input type="text" value="${ result.title }" name = "title"><br>
+				<label>내용</label><input type="text" value="${ result.content }" name = "content"><br>
+				<label>프로필사진</label><img alt="" src=""><br>
+				<input type="file" name="FILE_PATH" id="form_file" class="form-control">
 			</div>
 			<br />
 		</div>

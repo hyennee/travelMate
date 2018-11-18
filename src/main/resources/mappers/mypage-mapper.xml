@@ -22,9 +22,8 @@
 		<result property="boardLevel" column="BOARD_LEVEL"/>
 		<result property="refNo" column="REF_NO"/>
 		<result property="boardStatus" column="BOARD_STATUS"/>
-		
 	</resultMap>
-
+	
 
 	<select id="cyberMoneyHistory" resultType="java.util.HashMap" parameterType="int">
 		select CYBERMONEY_RECORD_NO,USER_NO,CR.PROOF_NO,RECORD_DATE,CHANGE_MONEY,CHANGE_REASON,BEFORE_MONEY,COUNT
@@ -138,6 +137,33 @@
 		WHERE CONSULT_REQUEST_NO = #{ CONSULT_REQUEST_NO }
 	
 	</select>
+
+	 <!-- 컨설턴트 프로필 검색 -->
+	 
+	 <select id="selectProfile" resultType="java.util.HashMap" parameterType="_int">
+		SELECT *
+		FROM BOARD 
+		WHERE WRITER = #{user_no} 
+		AND CATEGORY = '프로필'
+	</select>
+	
+	
+	 <select id="selectProfileAttachment" resultType="com.kh.travelMate.common.Attachment" parameterType="_int">
+		select *
+		from attachment
+		where ref_no = #{user_no}
+	</select>
+	 <!-- 컨설턴트 프로필 등록 -->
+	 <insert id="insertProfile" parameterType="java.util.HashMap">
+		insert into board 
+		values(SEQ_BOARD_NO.NEXTVAL,#{user_no},'프로필',#{title},#{content},SYSDATE,DEFAULT,9,NULL)
+	</insert>
+	 
+	 <insert id="insertProfileAttachment" parameterType="Attachment">
+		INSERT INTO ATTACHMENT
+		VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, #{originName}, #{modifyName}, #{fileRoot}, SYSDATE, '1', #{refNo})
+	</insert>
+
 </mapper> 
 
 

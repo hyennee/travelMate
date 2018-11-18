@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kh.travelMate.board.model.vo.Board;
+import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.exception.LoginException;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.dao.mypageDao;
@@ -181,6 +183,21 @@ public class mypageServiceImpl implements mypageService{
 	public Board selectOneByOneBoard(int boardNo) {
 		
 		return md.selectOneByOneBoard(sqlSession, boardNo);
+	}
+	@Override
+	public HashMap<String, Object> selectProfile(int user_no) {
+		
+		return md.selectProfile(sqlSession, user_no);
+	}
+	@Override
+	public void insertProfile(Map<String, Object> data, Attachment attachment) {
+		md.insertProfile(sqlSession, data);
+		md.insertProfileAttachment(sqlSession, attachment);
+	}
+	@Override
+	public Attachment selectProfileAttachment(int user_no) {
+		// TODO Auto-generated method stub
+		return md.selectProfileAttachment(sqlSession, user_no);
 	}
 	
 //	거래내역 상세보기

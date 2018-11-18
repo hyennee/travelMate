@@ -80,7 +80,7 @@ ul.sub li:hover {
 					<div class="title">컨설턴트관리</div>
 					<ul class="sub">
 						<li><a href="consultingCustomer.me">컨설팅 고객관리</a></li>
-						<li><a href="consultingManual.me">나의 컨설턴트 매뉴얼</a></li>
+						<li><a href="selectProfile.me">나의 컨설턴트 프로필</a></li>
 
 					</ul>
 				</li>

@@ -2,14 +2,15 @@ package com.kh.travelMate.mypage.controller;
 
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,9 +19,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.travelMate.board.model.vo.Board;
-import com.kh.travelMate.member.model.exception.LoginException;
+import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.service.mypageService;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
@@ -276,6 +278,69 @@ public class mypageController {
 
 			return "common/errorPage";
 
+		}
+
+
+		
+		//컨설턴트 프로필 검색
+		@RequestMapping("selectProfile.me")
+		public String selectProfile(Model model, HttpServletRequest request) {
+			Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
+			int user_no = loginUser.getUser_no();
+			HashMap<String, Object> result = ms.selectProfile(user_no);
+			if(result != null) {
+				result.put("Attachment", ms.selectProfileAttachment(user_no));	
+				
+			}else {
+				result = new HashMap<String, Object>();
+				result.put("content", "");
+				result.put("title", "");
+				result.put("Attachment",new Attachment());
+			}
+			model.addAttribute("result", result);
+			return "mypage/consultingManual";
+			
+			
+		}
+		
+		
+		//컨설턴트 프로필 등록
+		@RequestMapping("insertProfile.me")
+		public String insertProfile(Model model, HttpServletRequest request, @RequestParam(name="FILE_PATH", required=false) MultipartFile file,@RequestParam(value="content")String content,@RequestParam(value="title")String title) {
+			Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
+			String root = request.getSession().getServletContext().getRealPath("resources");		//경로 지정
+			String filePath = root + "\\images\\profile";												//파일 경로(resources/uploadfiles)
+			System.out.println("path : " + filePath);
+			String originFileName = file.getOriginalFilename();
+			String ext = originFileName.substring(originFileName.lastIndexOf("."));					//확장자 분리
+			String changeFileName = loginUser.getNick_name();				//파일명 변경
+			Map<String, Object> data = new HashMap<String, Object>();
+			data.put("user_no", loginUser.getUser_no());
+			data.put("title", title);
+			data.put("content", content);
+			try
+			{
+				new File(filePath + "\\" + changeFileName + ext).delete();
+				file.transferTo(new File(filePath + "\\" + changeFileName + ext));
+				
+				Attachment attachment = new Attachment();
+				
+				attachment.setFileRoot(filePath);
+				attachment.setOriginName(originFileName);
+				attachment.setModifyName(changeFileName);
+				attachment.setRefNo(loginUser.getUser_no());
+				ms.insertProfile(data, attachment);
+				
+				return "others/applyConsultComplete";
+			}
+			catch (Exception e)
+			{
+				new File(filePath + "\\" + changeFileName + ext).delete();
+				
+				model.addAttribute("msg", "파일 업로드 실패");
+				
+				return "must/errorPage";
+			}
 		}
 
 	}

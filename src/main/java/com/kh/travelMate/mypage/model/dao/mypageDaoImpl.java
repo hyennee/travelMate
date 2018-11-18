@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.travelMate.board.model.vo.Board;
+import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
 
@@ -136,12 +137,34 @@ public class mypageDaoImpl implements mypageDao{
 		return sqlSession.selectOne("Mypage.selectOneByOneBoard", boardNo);
 	}
 
+	@Override
+	public HashMap<String, Object> selectProfile(SqlSessionTemplate sqlSession, int user_no) {
+		
+		return sqlSession.selectOne("Mypage.selectProfile", user_no);
+	}
+	
+	@Override
+	public void insertProfile(SqlSessionTemplate sqlSession, Map<String, Object> data) {
+		sqlSession.insert("Mypage.insertProfile", data);
+	}
+
+	@Override
+	public void insertProfileAttachment(SqlSessionTemplate sqlSession, Attachment attachment) {
+		sqlSession.insert("Mypage.insertProfileAttachment", attachment);
+	}
+
+	@Override
+	public Attachment selectProfileAttachment(SqlSessionTemplate sqlSession, int user_no) {
+		return sqlSession.selectOne("Mypage.selectProfileAttachment", user_no);
+
+    
 //	거래내역 상세보기
 	@Override
 	public ConsultRequest selectOneTrade(SqlSessionTemplate sqlSession, int consultNo) {
 		
 		System.out.println("md의 거래내역 상세보기 프라임키 잘 전달? : " + consultNo);
 		return sqlSession.selectOne("Mypage.selectOneTrade", consultNo);
+
 	}
 	
 	
