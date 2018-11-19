@@ -491,15 +491,17 @@ td:first-child {
 			var regNameExp = /^[가-힣]+$/;
 			if (chkNameVal == "" || chkNameVal == null) {
 				document.getElementById('checkName').innerHTML = "<span style='color:red; font-size:12px'>이름을 입력해주십시오.</span>";
+				$('#joinBtn').attr('disabled',true);
 				return false;
 			}
 
 			if (chkNameVal != "" && regNameExp.test(chkNameVal) == false) {
 				document.getElementById('checkName').innerHTML = "<span style='color:red; font-size:12px'>이름의 형식에 알맞지 않습니다.</span>";
+				$('#joinBtn').attr('disabled',true);
 				return false;
 			} else {
 				document.getElementById('checkName').innerHTML = "<span style='color:red; font-size:12px'>　</span>";
-
+				$('#joinBtn').attr('disabled',false);
 			}
 
 		}
@@ -563,31 +565,41 @@ td:first-child {
 
 				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호를 입력해주십시오.</span>";
 				pwdCheck = 0;
+				$('#joinBtn').attr('disabled',true);
 				return false;
 			}
 
 			//비밀번호 유효성 검사
 			if (regPwdExp.test(chkPwdVal1) == false) {
 				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 영문(소문자와 대문자)과 숫자 조합으로 8자~16자로 입력해주십시오.</span>";
+				$('#joinBtn').attr('disabled',true);
 				return false;
 			}
 			if (checkNumber < 0 || checkEnglish < 0) {
 				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호는 숫자와 영문자를 혼용해서 입력해주십시오.</span>";
+				$('#joinBtn').attr('disabled',true);
 				return false;
 			}
 			if (/(\w)\1\1\1/.test(chkPwdVal1) == true) {
 				document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>같은 문자를 4번 이상 사용하실 수 없습니다.</span>";
+				$('#joinBtn').attr('disabled',true);
 				return false;
 			}
 
 			if (regPwdExp.test(chkPwdVal1) == true) {
 				//비밀번호 유효성 검사를 통과하면 확인 체크
-				if (chkPwdVal1 != "" && (chkPwdVal1 == chkPwdVal2)) {
+				if ((chkPwdVal1 != "" || chkPwdVal1 != null) && (chkPwdVal1 == chkPwdVal2)) {
 					document.getElementById('checkInputPwd').innerHTML = "<span style='color:blue; font-size:12px'>비밀번호가 일치합니다.</span>";
-
-				} else if (chkPwdVal1 != "" && (chkPwdVal1 != chkPwdVal2)) {
+					$('#joinBtn').attr('disabled',false);
+				} else if ((chkPwdVal1 != "" || chkPwdVal1 != null) && (chkPwdVal1 != chkPwdVal2)) {
 					document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호가 일치하지 않습니다.</span>";
-
+					 $('#joinBtn').attr('disabled',true);
+				} else if ((chkPwdVal2 == ""|| chkPwdVal2 == null) && (chkPwdVal1 == chkPwdVal2)){
+					document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호가 일치하지 않습니다.</span>";
+					 $('#joinBtn').attr('disabled',true);
+				} else if ((chkPwdVal2 == ""|| chkPwdVal2 == null) && (chkPwdVal1 != chkPwdVal2)){
+					document.getElementById('checkInputPwd').innerHTML = "<span style='color:red; font-size:12px'>비밀번호가 일치하지 않습니다.</span>";
+					 $('#joinBtn').attr('disabled',true);
 				}
 
 			}
@@ -604,9 +616,11 @@ td:first-child {
 
 			if (chkNickVal == "" || chkNickVal == null) {
 				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임을 입력해주십시오."
+				$('#joinBtn').attr('disabled',true);
 				return false;
 			} else if (regNickExp.test(chkNickVal) == false) {
 				document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>닉네임은 2~20자로 작성해야 합니다."
+				$('#joinBtn').attr('disabled',true);
 				return false;
 
 			} else {
@@ -627,10 +641,11 @@ td:first-child {
 						success : function(data) {
 							if (data == "0") {
 								document.getElementById('checkNick').innerHTML = "<span style='color:blue; font-size:12px'>사용할 수 있는 닉네임입니다.</span>";
-
+								$('#joinBtn').attr('disabled',false);
 							} else {
 
 								document.getElementById('checkNick').innerHTML = "<span style='color:red; font-size:12px'>사용할 수 없는 닉네임입니다.</span>";
+								$('#joinBtn').attr('disabled',true);
 							}
 
 						}
@@ -647,9 +662,11 @@ td:first-child {
 			
 			if(regPhoneExp2.test(chkPhoneVal2) == false || regPhoneExp3.test(chkPhoneVal3) == false){
 				document.getElementById('checkPhone').innerHTML = "<span style='color:red; font-size:12px'>휴대폰 번호 형식에 맞지 않습니다.</span>";
+				$('#joinBtn').attr('disabled',true);
 				return false;
 			}else{
 				document.getElementById('checkPhone').innerHTML = "<span style='color:red; font-size:12px'>　</span>";
+				$('#joinBtn').attr('disabled',false);
 			}
 			
 		}
