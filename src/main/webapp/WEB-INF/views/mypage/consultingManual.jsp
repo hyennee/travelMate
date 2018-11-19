@@ -74,10 +74,15 @@ a {
 	width:49%;
 	display:inline-block;
 }
+#image_section{
+	width:200px;
+	height: 200px;
+}
 </style>
 </head>
 <body>
 	<jsp:include page="../must/header.jsp" />
+	
 	<div id="jb-container">
 		<div id="jb-header">
 			<h1>헤더</h1>
@@ -89,10 +94,31 @@ a {
 			<h2>나의 컨설팅 메뉴얼</h2>
 			<hr />
 			<div >
-				<label>제목</label><input type="text" value="${ result.title }" name = "title"><br>
-				<label>내용</label><input type="text" value="${ result.content }" name = "content"><br>
-				<label>프로필사진</label><img alt="" src=""><br>
-				<input type="file" name="FILE_PATH" id="form_file" class="form-control">
+			<script type="text/javascript">
+				function readURL(input) {
+					 alert(input);
+				    if (input.files && input.files[0]) {
+				        var reader = new FileReader();
+				 
+				        reader.onload = function (e) {
+				        	alert(e.target.result);
+				            $('#image_section').attr('src', e.target.result);
+				        }
+				 
+				        reader.readAsDataURL(input.files[0]);
+				    }
+				}
+			</script>
+			<form action="insertProfile.me" method="post" encType="multipart/form-data">
+				<label>제목</label><input type="text" value="${ result.TITLE }" name = "title"><br>
+				<label>내용</label><input type="text" value="${ result.CONTENT }" name = "content"><br>
+				<label>프로필사진</label><br>
+				<img alt="" src="${contextPath}/resources/images/profile/${result.fileName}.png" id="image_section"><br>
+				<input type="file" name="FILE_PATH" id="form_file" class="form-control" onchange="readURL(this);"><br><br>
+				<input type="submit" value="수정">
+				<input type="reset" value="취소">
+			</form>
+			
 			</div>
 			<br />
 		</div>

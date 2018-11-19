@@ -45,7 +45,7 @@
 		SELECT *
 		FROM BOARD 
 		WHERE WRITER = #{user_no} 
-		AND CATEGORY = 2
+		AND CATEGORY = '2'
 	</select>
 	
 	<select id="tradeInfoHistory" resultType="java.util.HashMap" parameterType="_int">
@@ -148,21 +148,24 @@
 	</select>
 	
 	
-	 <select id="selectProfileAttachment" resultType="com.kh.travelMate.common.Attachment" parameterType="_int">
-		select *
-		from attachment
-		where ref_no = #{user_no}
+	 <select id="selectProfileAttachment" resultType="java.lang.String" parameterType="_int">
+	 	SELECT MODIFY_NAME
+		FROM ATTACHMENT 
+		WHERE REF_NO = #{user_no}	
 	</select>
+	
 	 <!-- 컨설턴트 프로필 등록 -->
-	 <insert id="insertProfile" parameterType="java.util.HashMap">
-		insert into board 
-		values(SEQ_BOARD_NO.NEXTVAL,#{user_no},'프로필',#{title},#{content},SYSDATE,DEFAULT,9,NULL)
-	</insert>
+	 <update id="insertProfile" parameterType="java.util.HashMap">
+	 	UPDATE board 
+		SET title = #{title}, content=#{content}, status='Y'
+		WHERE writer = #{user_no}
+	</update>
 	 
-	 <insert id="insertProfileAttachment" parameterType="Attachment">
-		INSERT INTO ATTACHMENT
-		VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, #{originName}, #{modifyName}, #{fileRoot}, SYSDATE, '1', #{refNo})
-	</insert>
+	 <update id="insertProfileAttachment" parameterType="Attachment">
+		UPDATE ATTACHMENT 
+		SET modify_Name = #{modifyName}, upload_date=SYSDATE, origin_Name=#{originName}
+		WHERE ref_no = #{refNo}
+	</update>
 
 </mapper> 
 

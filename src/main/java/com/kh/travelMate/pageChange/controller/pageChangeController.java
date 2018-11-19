@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.service.mypageService;
@@ -148,7 +149,10 @@ public class pageChangeController {
 		}
 		
 	@RequestMapping("insertDirectForm.me")
-		public String insertDirectForm() {
+	public String insertDirectForm(@RequestParam(value="USER_NO")int userno, Model model,HttpServletRequest request) {
+		
+		model.addAttribute("user_no", userno);
+		
 		return "board/insertDirectForm";
 	}
 	

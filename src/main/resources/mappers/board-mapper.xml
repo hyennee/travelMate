@@ -186,4 +186,16 @@
 		SET REF_NO = #{refNo}
 		WHERE BOARD_NO = #{boardNo} AND STATUS = 'Y' AND CATEGORY = #{category} AND BOARD_LEVEL = 1
 	</update>
+	
+	
+	<select id="selectCSlist" resultType="java.util.HashMap">
+		select title, content, modify_name, USER_NO
+		from member m
+		join board b on (b.writer = m.user_no)
+		join attachment a on (a.ref_no = m.user_no)
+		WHERE CATEGORY = '프로필' and STATUS = 'Y'
+		ORDER BY BOARD_DATE DESC
+	</select>
+	
+	
 </mapper>

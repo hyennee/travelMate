@@ -1,6 +1,7 @@
 package com.kh.travelMate.board.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,10 +16,13 @@ import com.kh.travelMate.board.model.service.BoardService;
 import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.board.model.vo.PageInfo;
 import com.kh.travelMate.common.Pagination;
+import com.kh.travelMate.member.model.vo.Member;
+import com.kh.travelMate.mypage.model.service.mypageService;
 
 @Controller
 public class BoardController
 {
+	
 	@Autowired
 	public BoardService bs;
 	
@@ -273,4 +277,21 @@ public class BoardController
 			return "must/errorPage";
 		}
 	}
+	
+	
+	@RequestMapping("selectCSlist.bo")
+	public String selectCSlist(Model model,HttpServletRequest request)
+	{	
+		
+		ArrayList<HashMap<String, Object>> noticeList = bs.selectCSlist();
+		System.out.println(noticeList);
+		model.addAttribute("board", noticeList);
+		return "board/directCSList";
+	}
+	
+	
+	
+	
+	
+	
 }

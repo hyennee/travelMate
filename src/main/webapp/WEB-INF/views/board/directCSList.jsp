@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,50 +21,19 @@
 	<div id="contents">
 			<div id="blogs">
 				<ul>
+					<c:forEach var="size" items="${ board }" >
 					<li>
-						<img src="/test/resources/images/default-pic.png" alt="Img" height="144" width="140">
+						<img src="${contextPath}/resources/images/profile/${size.MODIFY_NAME}.png" alt="Img" height="144" width="140">
 						<div>
-							<span class="time">Posted on 12/12/12</span>
-							<h4>요긴 1:1상담쪽으로</h4>
+							<!-- <span class="time">Posted on 12/12/12</span> -->
+							<h4>${ size.TITLE }</h4>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus fermentum elit. Suspendisse potenti. Cras eget nibh lacus. In egestas semper facilisis. Suspendisse placerat venenatis leo, at ornare sem vestibulum a. Aliquam erat volutpat. Praesent varius suscipit quam nec pretium.
+								${ size.CONTENT }
 							</p>
-							<a href="insertDirectForm.me">Read more &gt;&gt;</a>
+							<a href="insertDirectForm.me?USER_NO=${ size.USER_NO }">컨설팅 신청 &gt;&gt;</a>
 						</div>
-					</li>
-					<li>
-						<img src="/test/resources/images/default-pic.png" alt="Img" height="144" width="140">
-						<div>
-							<span class="time">Posted on 12/12/12</span>
-							<h4>Blog Title One Example Title</h4>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus fermentum elit. Suspendisse potenti. Cras eget nibh lacus. In egestas semper facilisis. Suspendisse placerat venenatis leo, at ornare sem vestibulum a. Aliquam erat volutpat. Praesent varius suscipit quam nec pretium.
-							</p>
-							<a href="insertDirectForm.me">Read more &gt;&gt;</a>
-						</div>
-					</li>
-					<li>
-						<img src="/test/resources/images/default-pic.png" alt="Img" height="144" width="140">
-						<div>
-							<span class="time">Posted on 12/12/12</span>
-							<h4>Blog Title One Example Title</h4>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus fermentum elit. Suspendisse potenti. Cras eget nibh lacus. In egestas semper facilisis. Suspendisse placerat venenatis leo, at ornare sem vestibulum a. Aliquam erat volutpat. Praesent varius suscipit quam nec pretium.
-							</p>
-							<a href="insertDirectForm.me">Read more &gt;&gt;</a>
-						</div>
-					</li>
-					<li>
-						<img src="/test/resources/images/default-pic.png" alt="Img" height="144" width="140">
-						<div>
-							<span class="time">Posted on 12/12/12</span>
-							<h4>Blog Title One Example Title</h4>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus fermentum elit. Suspendisse potenti. Cras eget nibh lacus. In egestas semper facilisis. Suspendisse placerat venenatis leo, at ornare sem vestibulum a. Aliquam erat volutpat. Praesent varius suscipit quam nec pretium.
-							</p>
-							<a href="insertDirectForm.me">Read more &gt;&gt;</a>
-						</div>
-					</li>
+					</li>				
+					</c:forEach>
 				</ul>
 				<div class="pagination">
 					<ul>

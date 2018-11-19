@@ -41,7 +41,7 @@
 					<a href="selectList.bo?category=3">오픈컨설팅</a>
 				</li>
 				<li>
-					<a href="directConsult.me">다이렉트컨설팅</a>
+					<a href="selectCSlist.bo">다이렉트컨설팅</a>
 				</li>
 				<li>
 					<a href="applyConsult.me">회원컨설팅신청</a>

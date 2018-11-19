@@ -1,6 +1,7 @@
 package com.kh.travelMate.board.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.kh.travelMate.board.model.exception.BoardListException;
 import com.kh.travelMate.board.model.vo.Board;
@@ -35,4 +36,6 @@ public interface BoardService
 	Board selectOneAnswer(Board b);
 
 	Board selectOneAnswerAdmin(Board b);
+
+	ArrayList<HashMap<String, Object>> selectCSlist();
 }

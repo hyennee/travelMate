@@ -52,7 +52,7 @@ public interface mypageService {
 
 	HashMap<String, Object> selectProfile(int user_no);
 
-	Attachment selectProfileAttachment(int user_no);
+	String selectProfileAttachment(int user_no);
 
 //	거래내역 상세보기
 	ConsultRequest2 selectOneTrade(int consultNo);

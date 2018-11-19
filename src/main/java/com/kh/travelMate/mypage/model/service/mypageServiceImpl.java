@@ -196,7 +196,7 @@ public class mypageServiceImpl implements mypageService{
 		md.insertProfileAttachment(sqlSession, attachment);
 	}
 	@Override
-	public Attachment selectProfileAttachment(int user_no) {
+	public String selectProfileAttachment(int user_no) {
 		// TODO Auto-generated method stub
 		return md.selectProfileAttachment(sqlSession, user_no);
 	}

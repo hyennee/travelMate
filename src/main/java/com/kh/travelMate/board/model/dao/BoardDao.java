@@ -1,6 +1,8 @@
 package com.kh.travelMate.board.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -39,4 +41,7 @@ public interface BoardDao
 	Board selectOneAnswer(SqlSessionTemplate sqlSession, Board b);
 
 	Board selectOneAnswerAdmin(SqlSessionTemplate sqlSession, Board b);
+
+	ArrayList<HashMap<String, Object>> selectCSlist(SqlSessionTemplate sqlSession);
+
 }
