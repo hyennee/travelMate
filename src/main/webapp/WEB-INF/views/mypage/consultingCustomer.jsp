@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>고객관리</title>
+<title>컨설턴트페이지</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -57,7 +57,6 @@ tr {
 }
 
 
-
 .section {
 	border: 1px solid #bcbcbc;
 	width: 100%;
@@ -84,26 +83,28 @@ td{
 </head>
 <body>
 	<jsp:include page="../must/header.jsp" />
+	
 	<div id="jb-container">
 		<div id="jb-header">
-			
+			<h1></h1>
 		</div>
 		<div id="jb-sidebar-left">
 			<jsp:include page="sidemenu.jsp" />
 		</div>
 		<div id="jb-content">
-			<h2>고객관리</h2>
+			<h2>나의 컨설팅 메뉴얼</h2>
 			<hr />
 			<div >
-						<p>고객관리리스트</p>
-						<table id="example-table-1"e class="table table-bordered table-hover text-center">
+			
+			<p>고객관리리스트</p>
+						<table id="example-table-1" class="table table-bordered table-hover text-center">
 								<tr>
-									<th style="width:50px" class="thstyle">컨설팅번호</th>
-									<th style="width:50px" class="thstyle">여행목적</th>
-									<th style="width:50px" class="thstyle">여행지역</th>
-									<th style="width:50px" class="thstyle">여행시작일자</th>
-									<th style="width:50px" class="thstyle">여행종료일자</th>
-									<th style="width:50px" class="thstyle">요청자 이름</th>
+									<th  class="thstyle">컨설팅번호</th>
+									<th  class="thstyle">여행목적</th>
+									<th  class="thstyle">여행지역</th>
+									<th  class="thstyle">여행시작일자</th>
+									<th  class="thstyle">여행종료일자</th>
+									<th  class="thstyle">요청자 이름</th>
 								</tr>
 								
 								<c:forEach var="size" items="${ consultingCustomer }" >
@@ -120,7 +121,7 @@ td{
 								
 								</c:forEach>
 							</table>
-
+			
 			</div>
 			<br />
 		</div>

@@ -53,15 +53,15 @@
 	</select>
 
 	<select id="boardListCount" resultType="_int">
-		SELECT COUNT(*)
+		SELECT NVL(COUNT(*), 0)
 		FROM BOARD
 	</select>
 
 	<select id="noticeListCount" resultType="_int">
-		SELECT COUNT(*)
+		SELECT NVL(COUNT(*), 0)
 		FROM
 		BOARD
-		WHERE CATEGORY = 1
+		WHERE CATEGORY = '1'
 	</select>
 
 	<select id="boardList" parameterType="BoardManage"
@@ -127,7 +127,7 @@
 	</update>
 
 	<select id="consultApplyListCount" resultType="_int">
-		SELECT COUNT(*)
+		SELECT NVL(COUNT(*), 0)
 		FROM CONSULT_APPLY CA
 	</select>
 
@@ -208,7 +208,7 @@
 		FROM BOARD B
 		JOIN MEMBER M ON
 		(M.USER_NO = B.WRITER)
-		WHERE CATEGORY = 1
+		WHERE CATEGORY = '1'
 		ORDER BY BOARD_NO DESC
 	</select>
 	

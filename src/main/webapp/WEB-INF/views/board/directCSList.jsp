@@ -23,7 +23,7 @@
 				<ul>
 					<c:forEach var="size" items="${ board }" >
 					<li>
-						<img src="${contextPath}/resources/images/profile/${size.MODIFY_NAME}.png" alt="Img" height="144" width="140">
+						<img src="${contextPath}/resources/images/profile/${size.MODIFY_NAME}.PNG" alt="Img" height="144" width="140">
 						<div>
 							<!-- <span class="time">Posted on 12/12/12</span> -->
 							<h4>${ size.TITLE }</h4>
@@ -35,7 +35,7 @@
 					</li>				
 					</c:forEach>
 				</ul>
-				<div class="pagination">
+				<!-- <div class="pagination">
 					<ul>
 						<li>
 							<a href="/test/views/others/blog.jsp" class="prev">&lt;&lt;</a>
@@ -110,7 +110,7 @@
 							<a href="/test/views/others/blog.jsp" class="next">&gt;&gt;</a>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 				<!-- /.pagination -->
 			</div>
 			<!-- /#blogs -->

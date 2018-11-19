@@ -14,7 +14,7 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<title>1:1문의내역리스트</title>
+<title>문의내역리스트</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -100,7 +100,7 @@ td{
 			<jsp:include page="sidemenu.jsp" />
 		</div>
 		<div id="jb-content">
-			<h2>1:1문의</h2>
+			<h2>문의내역</h2>
 			<hr />
 			<div >
 						<p>문의내역리스트</p>
