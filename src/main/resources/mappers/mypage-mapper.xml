@@ -127,10 +127,10 @@
 	
 	
 <!-- 	거래내역 상세보기 -->
-	<select id="selectOneTrade" parameterType="_int" resultType="com.kh.travelMate.others.model.vo.ConsultRequest">
+	<select id="selectOneTrade" parameterType="_int" resultType="com.kh.travelMate.others.model.vo.ConsultRequest2">
 	
 		SELECT CONSULT_REQUEST_NO, TRAVEL_PURPOSE, ADULT_NUM, CHILD_NUM, TRAVEL_AREA, TRAVEL_START_DATE,
-  			   TRAVEL_END_DATE, BUDGET, ETC, STATUS, REF_NO, REQUEST_USER_NO, CONSULT_USER_NO, M.NICK_NAME, M2.NICK_NAME
+  			   TRAVEL_END_DATE, BUDGET, ETC, STATUS, REQUEST_USER_NO, CONSULT_USER_NO, M.NICK_NAME, M2.NICK_NAME
 		FROM CONSULT_REQUEST CQ
 		JOIN MEMBER M ON(M.USER_NO = CQ.REQUEST_USER_NO)
 		JOIN MEMBER M2 ON(M2.USER_NO = CQ.CONSULT_USER_NO)

@@ -26,6 +26,7 @@ import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.service.mypageService;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
+import com.kh.travelMate.others.model.vo.ConsultRequest2;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.request.CancelData;
@@ -374,15 +375,15 @@ public class mypageController {
 
 		System.out.println("CONSULT_REQUEST_NO : " +CONSULT_REQUEST_NO);
 
-		ConsultRequest c = new ConsultRequest();
-		ConsultRequest result = ms.selectOneTrade(CONSULT_REQUEST_NO);
+		ConsultRequest2 result = ms.selectOneTrade(CONSULT_REQUEST_NO);
 
+		System.out.println("거래내역상세보기 : " + result);
 		if( result != null ) {
 
 
-			model.addAttribute("trade" + c);
-
-			System.out.println("c : " + c);
+			model.addAttribute("trade", result);
+			
+			System.out.println("trade_result : " + result);
 
 
 
