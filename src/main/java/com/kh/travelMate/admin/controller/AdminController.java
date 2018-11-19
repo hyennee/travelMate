@@ -52,6 +52,18 @@ public class AdminController {
 
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("page", page);
+		// 임시코드 끝
+
+		// 임시코드 시작
+		ArrayList<MemberManage> memberList;
+
+		page = Pagination.getPageInfo(currentPage, listCount);
+
+		memberList = mms.memberList(page);
+
+		model.addAttribute("memberList", memberList);
+		// 임시코드 끝
+		
 		
 		model.addAttribute("ssm", ssm);
 
