@@ -26,16 +26,16 @@
 		<div class="panel-body">
 			<table class="table table-striped">
 				<tr>
-					<td><b>가입자수</b></td>
+					<td><b>총 가입자수</b></td>
 				</tr>
 				<tr>
-					<td>35명</td>
+					<td>${ ssm.totalJoinMember }명</td>
 				</tr>
 				<tr>
-					<td><b>매출액</b></td>
+					<td><b>총 매출액</b></td>
 				</tr>
 				<tr>
-					<td>3,333,333원</td>
+					<td>${ ssm.totalPayment }원</td>
 				</tr>
 			</table>
 		</div>

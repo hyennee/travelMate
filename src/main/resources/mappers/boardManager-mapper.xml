@@ -57,6 +57,13 @@
 		FROM BOARD
 	</select>
 
+	<select id="noticeListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM
+		BOARD
+		WHERE CATEGORY = 1
+	</select>
+
 	<select id="boardList" parameterType="BoardManage"
 		resultMap="boardmanageResultSet">
 		SELECT BOARD_NO, WRITER, CATEGORY, TITLE, CONTENT,
@@ -67,8 +74,9 @@
 		FROM BOARD B
 		JOIN MEMBER M ON
 		(M.USER_NO = B.WRITER)
-		START WITH REF_NO IS NULL
-		CONNECT BY PRIOR
+		START WITH BOARD_LEVEL = 1
+		CONNECT BY NOCYCLE
+		PRIOR
 		BOARD_NO = REF_NO
 		ORDER SIBLINGS BY BOARD_NO DESC
 	</select>
@@ -83,10 +91,11 @@
 		FROM BOARD B
 		JOIN MEMBER M ON
 		(M.USER_NO = B.WRITER)
-		WHERE BOARD_NO = #{ board_no } OR REF_NO = #{ board_no }
-		START WITH REF_NO IS NULL
-		CONNECT BY PRIOR
-		BOARD_NO = REF_NO
+		WHERE BOARD_NO = #{ board_no } OR REF_NO = #{
+		board_no }
+		START WITH BOARD_LEVEL = 1
+		CONNECT BY NOCYCLE PRIOR BOARD_NO
+		= REF_NO
 		ORDER SIBLINGS BY BOARD_NO DESC
 	</select>
 
@@ -102,12 +111,20 @@
 		(M.USER_NO = B.WRITER)
 		WHERE BOARD_NO = #{ board_no }
 	</select>
-	
-	<delete id="deleteBoardAll" parameterType="_int">
-		DELETE
-		FROM BOARD
-		WHERE BOARD_NO = #{ board_no } OR REF_NO = #{ board_no }
-	</delete>
+
+	<update id="deleteBoardAll" parameterType="_int">
+		UPDATE BOARD
+		SET STATUS = 'N'
+		WHERE BOARD_NO = #{ board_no } OR (REF_NO = #{ board_no }
+		AND BOARD_LEVEL = 2)
+	</update>
+
+	<update id="revertBoardAll" parameterType="_int">
+		UPDATE BOARD
+		SET STATUS
+		= 'Y'
+		WHERE BOARD_NO = #{ board_no }
+	</update>
 
 	<select id="consultApplyListCount" resultType="_int">
 		SELECT COUNT(*)
@@ -119,9 +136,11 @@
 		SELECT *
 		FROM CONSULT_APPLY CA
 		JOIN MEMBER M ON
-		(CA.USER_NO = M.USER_NO)
+		(CA.USER_NO =
+		M.USER_NO)
 		LEFT JOIN CONSULT_OK_RECORD COR ON
-		(CA.CONSULT_APPLY_NO = COR.CONSULT_APPLY_NO)
+		(CA.CONSULT_APPLY_NO =
+		COR.CONSULT_APPLY_NO)
 		ORDER BY CA.CONSULT_APPLY_NO DESC
 	</select>
 
@@ -152,10 +171,12 @@
 		VALUES(SEQ_CONSULT_OK_RECORD_NO.NEXTVAL, #{
 		consult_Apply_No }, 'N', #{ reason }, SYSDATE)
 	</insert>
-	
+
 	<update id="updateBoardDetail" parameterType="BoardManage">
-		UPDATE BOARD SET CONTENT = #{ content }, BOARD_DATE = SYSDATE
-		WHERE BOARD_NO = #{ board_no }
+		UPDATE BOARD SET
+		CONTENT = #{ content }, BOARD_DATE = SYSDATE
+		WHERE BOARD_NO = #{
+		board_no }
 	</update>
 
 	<update id="consultApplyAcceptSuccess"
@@ -164,15 +185,36 @@
 		WHERE USER_NO =
 		#{ user_No }
 	</update>
-	
+
 	<insert id="insertBoardReply" parameterType="BoardManage">
 		INSERT INTO BOARD
-		VALUES (SEQ_BOARD_NO.NEXTVAL, #{ writer }, 2, #{ title }, #{ content }, SYSDATE, 'Y', 2, #{ ref_no })
+		VALUES (SEQ_BOARD_NO.NEXTVAL, #{ writer }, 2, #{ title }, #{ content
+		}, SYSDATE, 'Y', 2, #{ ref_no })
 	</insert>
-	
+
 	<update id="updateBoardReplyStatus" parameterType="_int">
-		UPDATE BOARD_STATUS SET STATUS = 'Y'
+		UPDATE
+		BOARD_STATUS SET STATUS = 'Y'
 		WHERE BOARD_NO = #{ ref_no }
 	</update>
+
+	<select id="noticeList" parameterType="BoardManage"
+		resultMap="boardmanageResultSet">
+		SELECT BOARD_NO, WRITER, CATEGORY, TITLE, CONTENT,
+		BOARD_DATE, STATUS,
+		BOARD_LEVEL, REF_NO, EMAIL, USER_NAME, NICK_NAME,
+		PHONE, BIRTHDAY,
+		GENDER, ENROLL_DATE
+		FROM BOARD B
+		JOIN MEMBER M ON
+		(M.USER_NO = B.WRITER)
+		WHERE CATEGORY = 1
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<insert id="insertNotice" parameterType="BoardManage">
+		INSERT INTO BOARD
+		VALUES (SEQ_BOARD_NO.NEXTVAL, #{ writer }, 1, #{ title }, #{ content }, SYSDATE, 'Y', 1, NULL)
+	</insert>
 
 </mapper>  

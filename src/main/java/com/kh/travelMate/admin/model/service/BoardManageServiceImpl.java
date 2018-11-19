@@ -93,4 +93,22 @@ public class BoardManageServiceImpl implements BoardManageService {
 		
 	}
 
+	@Override
+	public int getNoticeListCount() {
+		int listCount = bmd.getnoticeListCount(sqlSession);
+		return listCount;
+	}
+
+	@Override
+	public ArrayList<BoardManage> noticeList(PageInfo page) {
+		ArrayList<BoardManage> noticeList = bmd.noticeList(sqlSession, page);
+		return noticeList;
+	}
+
+	@Override
+	public void insertNotice(BoardManage noticeBoard) {
+		bmd.insertNotice(sqlSession, noticeBoard);
+		
+	}
+
 }

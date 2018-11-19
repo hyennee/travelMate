@@ -34,4 +34,10 @@ public interface BoardManageDao {
 
 	void insertBoardReply(SqlSessionTemplate sqlSession, BoardManage replyBoardInfo);
 
+	int getnoticeListCount(SqlSessionTemplate sqlSession);
+
+	ArrayList<BoardManage> noticeList(SqlSessionTemplate sqlSession, PageInfo page);
+
+	void insertNotice(SqlSessionTemplate sqlSession, BoardManage noticeBoard);
+
 }

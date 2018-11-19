@@ -51,14 +51,13 @@ table th {
 		</div>
 		<div class="lowerPage">
 			<h2>
-				<span class="label label-primary">게시물목록</span>
+				<span class="label label-primary">공지사항목록</span>
 			</h2>
 			<div class="table-responsive">
 				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>카테고리</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
@@ -66,7 +65,7 @@ table th {
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="row" items="${ boardList }">
+						<c:forEach var="row" items="${ noticeList }">
 							<tr>
 								<c:if test="${ row.board_level eq '1'}">
 									<td style="text-align: center;"><b>${ row.board_no }</b></td>
@@ -74,20 +73,6 @@ table th {
 								<c:if test="${ row.board_level ne '1'}">
 									<td></td>
 								</c:if>
-								<c:choose>
-									<c:when test="${ row.category eq '3'}">
-										<td>오픈 컨설팅</td>
-									</c:when>
-									<c:when test="${ row.category eq '2'}">
-										<td>1:1 상담</td>
-									</c:when>
-									<c:when test="${ row.category eq '1' }">
-										<td>공지사항</td>
-									</c:when>
-									<c:otherwise>
-										<td>기타</td>
-									</c:otherwise>
-								</c:choose>
 								<c:if test="${ row.board_level eq '1'}">
 									<td style="text-align: left;"><b><a
 											href="${ pageContext.request.contextPath }/admin/boardManageDetail.admin?board_no=${ row.board_no }">${ row.title }</a></b></td>
@@ -114,7 +99,7 @@ table th {
 				[이전] &nbsp;
 			</c:if>
 					<c:if test="${ page.currentPage > 1}">
-						<c:url var="blistBack" value="/admin/boardManage.admin">
+						<c:url var="blistBack" value="/admin/noticeManage.admin">
 							<c:param name="currentPage" value="${ page.currentPage - 1 }" />
 						</c:url>
 						<a href="${ blistBack }">[이전]</a>
@@ -125,7 +110,7 @@ table th {
 							<font color="black" size="4"><b>${ p }</b></font>
 						</c:if>
 						<c:if test="${ p ne page.currentPage }">
-							<c:url var="blistCheck" value="/admin/boardManage.admin">
+							<c:url var="blistCheck" value="/admin/noticeManage.admin">
 								<c:param name="currentPage" value="${ p }" />
 							</c:url>
 							<a href="${ blistCheck }">${ p }</a>
@@ -136,11 +121,16 @@ table th {
 				&nbsp; [다음]
 			</c:if>
 					<c:if test="${ page.currentPage < page.maxPage }">
-						<c:url var="blistEnd" value="/admin/boardManage.admin">
+						<c:url var="blistEnd" value="/admin/noticeManage.admin">
 							<c:param name="currentPage" value="${ page.currentPage + 1 }" />
 						</c:url>
 						<a href="${ blistEnd }">[다음]</a>
 					</c:if>
+				</div>
+				<div class="writeNotice">
+				<br>
+					<button type="button" class="btn btn-success" onclick="location.href='${ pageContext.request.contextPath }/admin/noticeManageWrite.admin'">공지사항 작성</button>
+				<br>
 				</div>
 				<div class="searchArea">
 					<form class="navbar-form navbar-center">
