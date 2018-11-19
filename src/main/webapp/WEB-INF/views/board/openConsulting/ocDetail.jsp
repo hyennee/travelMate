@@ -224,12 +224,14 @@
 								<!-- 질문 버튼 부분 div -->
 								<c:if test="${ selectOne.nickName ne sessionScope.loginUser.getNick_name() }">
 									<c:if test="${ selectOne.refNo eq 0 }">
-										<div id="qBottom">
-											<p style="margin-top:20px;">
-												답변을 하실 수 있습니다.
-												<button class="btnAnswer" type="submit">답변하기</button>
-											</p>
-										</div>
+										<c:if test="${ sessionScope.loginUser.getUser_type_level() eq '3' }">
+											<div id="qBottom">
+												<p style="margin-top:20px;">
+													답변을 하실 수 있습니다.
+													<button class="btnAnswer" type="submit">답변하기</button>
+												</p>
+											</div>
+										</c:if>
 									</c:if>
 									<c:if test="${ selectOne.refNo ne 0 }">
 										<div id="qBottom">
@@ -247,6 +249,11 @@
 									<div id="answercon1">
 										<h3>
 											<c:out value="${ answer.nickName }님 답변" escapeXml="false"/>
+											<c:if test="${ sessionScope.loginUser.getNick_name() ne answer.nickName}">
+												<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
+													<button id="btnList" type="button" onclick="location.href='insertDirectForm.me?USER_NO=${ answer.writer }'">컨설팅 의뢰</button>
+												</c:if>
+											</c:if>
 										</h3>
 									</div>
 									<!-- 오픈컨설팅 답변 작성자 관련 정보 div -->
