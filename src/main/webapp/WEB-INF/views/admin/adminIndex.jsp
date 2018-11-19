@@ -59,29 +59,22 @@
 						<tr>
 							<td><b>최근 1:1 상담 요청</b></td>
 						</tr>
+						<c:if test="${ not empty boardList }">
+						<c:forEach var="row" items="${ boardList }">
+						<c:if test="${ row.category eq '3' && row.board_level eq '1'}">
 						<tr>
-							<td>피자(이회원)님이 <b>페퍼로니피자 맛있나요?</b> ( 2018/11/18 22:44 )<br>
-							</td>
+							<td><b>${ row.nick_Name }(${ row.user_Name })</b>님이 <b>${ row.title }</b> 상담 신청</td>
 						</tr>
-						<tr>
-							<td>스파게티(박회원)님이 <b>도미노피자 좋나요?</b> ( 2018/11/18 22:42 )<br>
-							</td>
-						</tr>
-						<tr>
-							<td>라자냐(강회원)님이 <b>이탈리아 여행상담</b> ( 2018/11/18 22:04 )<br>
-							</td>
-						</tr>
-						<tr>
-							<td>맘스터치(김엄마)님이 <b>치킨 vs 피자</b> ( 2018/11/18 22:00 )<br>
-							</td>
-						</tr>
+						</c:if>
+						</c:forEach>
+						</c:if>
 					</tbody>
 				</table>
 			</div>
 			<div class="table-responsive">
 			<table>
 			<tr>
-				<td><b>abcdefg</b></td>
+				<td></td>
 			</tr>
 			</table>
 			</div>

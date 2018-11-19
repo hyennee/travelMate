@@ -32,4 +32,10 @@ public interface BoardManageService {
 
 	void insertBoardReply(BoardManage replyBoardInfo);
 
+	int getNoticeListCount();
+
+	ArrayList<BoardManage> noticeList(PageInfo page);
+
+	void insertNotice(BoardManage noticeBoard);
+
 }

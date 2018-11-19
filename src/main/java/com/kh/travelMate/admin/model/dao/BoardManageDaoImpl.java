@@ -104,13 +104,39 @@ public class BoardManageDaoImpl implements BoardManageDao {
 
 	@Override
 	public void deleteBoardAll(SqlSessionTemplate sqlSession, int board_no) {
-		sqlSession.delete("BoardManage.deleteBoardAll", board_no);
+		sqlSession.update("BoardManage.deleteBoardAll", board_no);
 	}
 
 	@Override
 	public void insertBoardReply(SqlSessionTemplate sqlSession, BoardManage replyBoardInfo) {
 		sqlSession.insert("BoardManage.insertBoardReply", replyBoardInfo);
 		sqlSession.update("BoardManage.updateBoardReplyStatus", replyBoardInfo.getRef_no());
+	}
+
+	@Override
+	public int getnoticeListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("BoardManage.noticeListCount");
+	}
+
+	@Override
+	public ArrayList<BoardManage> noticeList(SqlSessionTemplate sqlSession, PageInfo page) {
+		ArrayList<BoardManage> noticeList = null;
+		
+		// 몇 개의 게시물을 건너뛰고 조회할 것인지에 대한 처리
+		int offset = ((page.getCurrentPage() - 1) * page.getLimit());
+		
+		// myBatis가 제공하고 있는 RowBounds 클래스 사용
+		RowBounds rowBounds = new RowBounds(offset, page.getLimit());
+		
+		// generic을 제외하고 down-casting
+		noticeList = (ArrayList)sqlSession.selectList("BoardManage.noticeList", null, rowBounds);
+		
+		return noticeList;
+	}
+
+	@Override
+	public void insertNotice(SqlSessionTemplate sqlSession, BoardManage noticeBoard) {
+		sqlSession.insert("BoardManage.insertNotice", noticeBoard);
 	}
 
 }

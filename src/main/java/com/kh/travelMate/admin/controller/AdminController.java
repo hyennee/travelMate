@@ -12,11 +12,13 @@ import com.kh.travelMate.admin.common.Pagination;
 import com.kh.travelMate.admin.model.service.BoardManageService;
 import com.kh.travelMate.admin.model.service.MemberManageService;
 import com.kh.travelMate.admin.model.service.PaymentManageService;
+import com.kh.travelMate.admin.model.service.StatManageService;
 import com.kh.travelMate.admin.model.vo.BoardManage;
 import com.kh.travelMate.admin.model.vo.ConsultManage;
 import com.kh.travelMate.admin.model.vo.MemberManage;
 import com.kh.travelMate.admin.model.vo.PageInfo;
 import com.kh.travelMate.admin.model.vo.PaymentManage;
+import com.kh.travelMate.admin.model.vo.StatSummaryManage;
 
 @Controller
 public class AdminController {
@@ -26,9 +28,32 @@ public class AdminController {
 	private MemberManageService mms;
 	@Autowired
 	private PaymentManageService pms;
+	@Autowired
+	private StatManageService sms;
 
 	@RequestMapping("admin/admin.main")
-	public String goAdminMain() {
+	public String goAdminMain(Model model) {
+		StatSummaryManage ssm = sms.getTodayStats();
+		
+		// 임시코드 (삭제할 것)
+		ArrayList<BoardManage> boardList;
+		
+		int currentPage = 1;
+		int listCount = 0;
+
+		listCount = bms.getListCount();
+
+		// 테스트 코드
+		System.out.println("listCount: " + listCount);
+
+		PageInfo page = Pagination.getPageInfo(currentPage, listCount);
+
+		boardList = bms.boardList(page);
+
+		model.addAttribute("boardList", boardList);
+		model.addAttribute("page", page);
+		
+		model.addAttribute("ssm", ssm);
 
 		return "admin/adminIndex"; // Admin Main view forward
 	}
@@ -103,8 +128,6 @@ public class AdminController {
 	@RequestMapping("admin/consultApplyAccept.admin")
 	public String consultManageAccpetAdmin(@RequestParam(defaultValue="0") int apply_no, @RequestParam(defaultValue="0") String reason, Model model) {
 		if(apply_no == 0 || reason.equals("0")) {
-			// apply_no이나 reason이 없을 경우
-			// System.out.println("여기로 들어오면 안됨");
 			return "admin/memberManage/consultManageList";
 		}else{
 			// apply_no가 있을 경우
@@ -281,6 +304,63 @@ public class AdminController {
 
 		}
 
+	}
+	
+	@RequestMapping("admin/noticeManage.admin")
+	public String noticeManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model) {
+
+		ArrayList<BoardManage> noticeList;
+
+		int listCount = 0;
+
+		listCount = bms.getNoticeListCount();
+
+		PageInfo page = Pagination.getPageInfo(currentPage, listCount);
+
+		noticeList = bms.noticeList(page);
+
+		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("page", page);
+
+		return "admin/boardManage/noticeManageMain";
+	}
+	
+	@RequestMapping("admin/noticeManageWrite.admin")
+	public String noticeManageWriteAdmin() {
+
+		return "admin/boardManage/noticeManageWrite";
+	}
+	
+	@RequestMapping("admin/noticeManageWriteConfirm.admin")
+	public String noticeManageWriteConfirm(@RequestParam(defaultValue="0x0") String title, @RequestParam(defaultValue="0x0") String content, @RequestParam(defaultValue="0") int writer, Model model) {
+		if(title.equals("0x0") || content.equals("0x0") || writer == 0) {
+			return "admin/boardManage/noticeManageMain";
+		}else {
+			BoardManage noticeBoard = new BoardManage();
+			noticeBoard.setWriter(writer);
+			noticeBoard.setTitle(title);
+			noticeBoard.setContent(content);
+			
+			bms.insertNotice(noticeBoard);
+			
+			ArrayList<BoardManage> noticeList;
+
+			int currentPage = 1;
+			int listCount = 0;
+
+			listCount = bms.getNoticeListCount();
+
+			PageInfo page = Pagination.getPageInfo(currentPage, listCount);
+
+			noticeList = bms.noticeList(page);
+
+			model.addAttribute("noticeList", noticeList);
+			model.addAttribute("page", page);
+
+			return "admin/boardManage/noticeManageMain";
+		}
+
+		
 	}
 
 	@RequestMapping("admin/paymentManage.admin")

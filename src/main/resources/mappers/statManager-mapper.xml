@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="statManage">
+	<select id="todayBoardCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM
+		BOARD
+		WHERE TO_CHAR(BOARD_DATE, 'YY/MM/DD') = TO_CHAR(SYSDATE,
+		'YY/MM/DD')
+	</select>
+
+	<select id="yesterdayBoardCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM
+		BOARD
+		WHERE TO_CHAR(BOARD_DATE, 'YY/MM/DD') = TO_CHAR(SYSDATE-1,
+		'YY/MM/DD')
+	</select>
+
+	<select id="totalBoardCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM
+		BOARD
+	</select>
+
+	<select id="todayJoinMemberCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE TO_CHAR(ENROLL_DATE, 'YY/MM/DD') = TO_CHAR(SYSDATE,
+		'YY/MM/DD')
+	</select>
+
+	<select id="yesterdayJoinMemberCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE TO_CHAR(ENROLL_DATE, 'YY/MM/DD') = TO_CHAR(SYSDATE-1,
+		'YY/MM/DD')
+	</select>
+
+	<select id="totalJoinMemberCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+	</select>
+
+	<select id="todayPayment" resultType="_int">
+		SELECT NVL(SUM(MONEY), 0)
+		FROM PAYMENT
+		WHERE TO_CHAR(PAYMENT_DATE, 'YY/MM/DD') = TO_CHAR(SYSDATE,'YY/MM/DD')
+	</select>
+
+	<select id="yesterdayPayment" resultType="_int">
+		SELECT NVL(SUM(MONEY), 0)
+		FROM
+		PAYMENT
+		WHERE TO_CHAR(PAYMENT_DATE, 'YY/MM/DD') = TO_CHAR(SYSDATE-1,
+		'YY/MM/DD')
+	</select>
+
+	<select id="totalPayment" resultType="_int">
+		SELECT NVL(SUM(MONEY), 0)
+		FROM
+		PAYMENT
+	</select>
+
+</mapper>  

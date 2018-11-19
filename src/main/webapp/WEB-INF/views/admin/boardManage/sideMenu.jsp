@@ -30,7 +30,7 @@
 				<b><a
 					href="${ pageContext.request.contextPath }/admin/boardManage.admin">전체 게시물목록</a></b><br><br>
 				<b>오픈컨설팅</b><br><br>
-				<b>공지사항</b><br><br>
+				<b><a href="${ pageContext.request.contextPath }/admin/noticeManage.admin">공지사항</a></b><br><br>
 				<b>1:1 문의</b>
 			</div>
 		</div>

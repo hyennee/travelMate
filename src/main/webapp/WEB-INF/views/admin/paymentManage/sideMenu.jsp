@@ -29,9 +29,6 @@
 			<div class="panel-body">
 				<b><a
 					href="${ pageContext.request.contextPath }/admin/PaymentManage.admin">결제목록</a></b><br><br>
-				<b>결제 관리1</b><br><br>
-				<b>결제 관리2</b><br><br>
-				<b>결제 관리3</b>
 			</div>
 		</div>
 	</div>
