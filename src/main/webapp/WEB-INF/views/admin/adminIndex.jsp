@@ -31,7 +31,7 @@
 }
 
 .table-responsive {
-	text-align:inline-block;
+	text-align: inline-block;
 }
 </style>
 </head>
@@ -49,34 +49,48 @@
 		</div>
 		<div class="lowerPage">
 			<div class="table-responsive">
-				<table class="table" style="width: 40%;">
-					<thead>
-						<tr>
-							<th><h2>DASHBOARD</h2></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><b>최근 1:1 상담 요청</b></td>
-						</tr>
+				<h3 style="text-align: left;">
+					<b>대시보드</b>
+				</h3>
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<b>최근 1:1 상담 요청</b>
+						</h3>
+					</div>
+					<div class="panel-body">
 						<c:if test="${ not empty boardList }">
-						<c:forEach var="row" items="${ boardList }">
-						<c:if test="${ row.category eq '3' && row.board_level eq '1'}">
-						<tr>
-							<td><b>${ row.nick_Name }(${ row.user_Name })</b>님이 <b>${ row.title }</b> 상담 신청</td>
-						</tr>
+							<table class="table table-hover">
+								<c:forEach var="row" items="${ boardList }" end="10">
+									<c:if test="${ row.category eq '3' && row.board_level eq '1'}">
+										<tr>
+											<td><b>${ row.nick_Name }(${ row.user_Name })</b>님이 <b>${ row.title }</b>
+												상담 신청 (${ row.board_date })</td>
+										</tr>
+									</c:if>
+								</c:forEach>
+							</table>
 						</c:if>
-						</c:forEach>
-						</c:if>
-					</tbody>
-				</table>
+					</div>
+				</div>
 			</div>
 			<div class="table-responsive">
-			<table>
-			<tr>
-				<td></td>
-			</tr>
-			</table>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title"><b>최근 가입 회원</b></h3>
+					</div>
+					<div class="panel-body">
+						<c:if test="${ not empty memberList }">
+							<table class="table table-stripe">
+								<c:forEach var="row2" items="${ memberList }" end="5">
+									<tr>
+										<td><b>${ row2.nick_name }(${ row2.user_name })</b>님이 <b>${ row2.enroll_date }</b>에 가입하셨습니다.</td>
+									</tr>
+								</c:forEach>
+							</table>
+						</c:if>
+					</div>
+				</div>
 			</div>
 		</div>
 	</c:if>
