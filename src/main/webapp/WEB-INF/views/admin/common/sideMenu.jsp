@@ -6,8 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<style>
+.menuArea {
+	padding: 0px;
+	maring: 0px;
+	text-align: center;
+	width: 250px;
+}
+</style>
 </head>
 <body>
+	<div class="menuArea">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h2 class="panel-title">
@@ -17,13 +26,20 @@
 		<div class="panel-body">
 			<table class="table table-striped">
 				<tr>
-					<td>오늘의 가입자수</td>
+					<td><b>가입자수</b></td>
 				</tr>
 				<tr>
-					<td>오늘의 매출액</td>
+					<td>35명</td>
+				</tr>
+				<tr>
+					<td><b>매출액</b></td>
+				</tr>
+				<tr>
+					<td>3,333,333원</td>
 				</tr>
 			</table>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

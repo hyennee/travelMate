@@ -33,4 +33,10 @@ public class PaymentManageServiceImpl implements PaymentManageService {
 		return paymentList;
 	}
 
+	@Override
+	public ArrayList<PaymentManage> selectPaymentDetail(int payment_No) {
+		ArrayList<PaymentManage> paymentDetail = pmd.paymentDetail(sqlSession, payment_No);
+		return paymentDetail;
+	}
+
 }

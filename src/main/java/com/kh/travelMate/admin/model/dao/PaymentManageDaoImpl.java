@@ -36,4 +36,10 @@ public class PaymentManageDaoImpl implements PaymentManageDao{
 		return paymentList;
 	}
 
+	@Override
+	public ArrayList<PaymentManage> paymentDetail(SqlSessionTemplate sqlSession, int payment_No) {
+		ArrayList<PaymentManage> paymentDetail = (ArrayList)sqlSession.selectList("PaymentManage.selectPaymentDetail", payment_No);
+		return paymentDetail;
+	}
+
 }

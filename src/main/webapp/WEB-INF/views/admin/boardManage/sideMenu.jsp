@@ -28,10 +28,10 @@
 			</div>
 			<div class="panel-body">
 				<b><a
-					href="${ pageContext.request.contextPath }/admin/boardManage.admin">게시물목록</a></b><br><br>
-				<b>오픈컨설팅 게시물 관리</b><br><br>
-				<b>공지사항 관리</b><br><br>
-				<b>1:1 문의 관리</b>
+					href="${ pageContext.request.contextPath }/admin/boardManage.admin">전체 게시물목록</a></b><br><br>
+				<b>오픈컨설팅</b><br><br>
+				<b>공지사항</b><br><br>
+				<b>1:1 문의</b>
 			</div>
 		</div>
 	</div>

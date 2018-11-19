@@ -50,9 +50,9 @@ table th {
 			<jsp:include page="sideMenu.jsp" />
 		</div>
 		<div class="lowerPage">
-			<h1>
-				<span class="label label-info">결제목록</span>
-			</h1>
+			<h2>
+				<span class="label label-primary">결제목록</span>
+			</h2>
 			<div class="table-responsive">
 				<table class="table table-hover">
 					<thead>
@@ -71,10 +71,10 @@ table th {
 						<c:forEach var="row" items="${ paymentList }">
 							<tr>
 								<c:if test="${ row.ref_No ne '0' }">
-								<td>&nbsp;&nbsp;└─</td>
+									<td>&nbsp;&nbsp;└─</td>
 								</c:if>
 								<c:if test="${ row.ref_No eq '0' }">
-								<td>${ row.payment_No }</td>
+									<td>${ row.payment_No }</td>
 								</c:if>
 								<td>${ row.proof_No }</td>
 								<td>${ row.payment_Type }</td>
@@ -82,58 +82,61 @@ table th {
 								<td>${ row.payment_Way }</td>
 								<td>${ row.money }</td>
 								<td>${ row.payment_Date }</td>
-								<td>
-								<button type="button" class="btn btn-sm btn-success" onclick="location.href='paymentManageDetail.admin?payment_No=${ row.payment_No }'">조회</button>
-								</td>
-							</tr>								
+								<td><c:if test="${ row.ref_No ne '0' }">
+										<button type="button" class="btn btn-sm btn-success"
+											onclick="location.href='paymentManageDetail.admin?payment_No=${ row.ref_No }'">조회</button>
+									</c:if> <c:if test="${ row.ref_No eq '0' }">
+										<button type="button" class="btn btn-sm btn-success"
+											onclick="location.href='paymentManageDetail.admin?payment_No=${ row.payment_No }'">조회</button>
+									</c:if></td>
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-			</div>
-			<div class="pagingArea">
-				<c:if test="${ page.currentPage <= 1 }">
+				<div class="pagingArea">
+					<c:if test="${ page.currentPage <= 1 }">
 				[이전] &nbsp;
 			</c:if>
-				<c:if test="${ page.currentPage > 1}">
-					<c:url var="blistBack" value="/admin/paymentManage.admin">
-						<c:param name="currentPage" value="${ page.currentPage - 1 }" />
-					</c:url>
-					<a href="${ blistBack }">[이전]</a>
-				</c:if>
-				<c:forEach var="p" begin="${ page.startPage }"
-					end="${ page.endPage }">
-					<c:if test="${ p eq page.currentPage }">
-						<font color="black" size="4"><b>${ p }</b></font>
-					</c:if>
-					<c:if test="${ p ne page.currentPage }">
-						<c:url var="blistCheck" value="/admin/paymentManage.admin">
-							<c:param name="currentPage" value="${ p }" />
+					<c:if test="${ page.currentPage > 1}">
+						<c:url var="blistBack" value="/admin/paymentManage.admin">
+							<c:param name="currentPage" value="${ page.currentPage - 1 }" />
 						</c:url>
-						<a href="${ blistCheck }">${ p }</a>
+						<a href="${ blistBack }">[이전]</a>
 					</c:if>
-				</c:forEach>
+					<c:forEach var="p" begin="${ page.startPage }"
+						end="${ page.endPage }">
+						<c:if test="${ p eq page.currentPage }">
+							<font color="black" size="4"><b>${ p }</b></font>
+						</c:if>
+						<c:if test="${ p ne page.currentPage }">
+							<c:url var="blistCheck" value="/admin/paymentManage.admin">
+								<c:param name="currentPage" value="${ p }" />
+							</c:url>
+							<a href="${ blistCheck }">${ p }</a>
+						</c:if>
+					</c:forEach>
 
-				<c:if test="${ page.currentPage >= page.maxPage }">
+					<c:if test="${ page.currentPage >= page.maxPage }">
 				&nbsp; [다음]
 			</c:if>
-				<c:if test="${ page.currentPage < page.maxPage }">
-					<c:url var="blistEnd" value="/admin/paymentManage.admin">
-						<c:param name="currentPage" value="${ page.currentPage + 1 }" />
-					</c:url>
-					<a href="${ blistEnd }">[다음]</a>
-				</c:if>
+					<c:if test="${ page.currentPage < page.maxPage }">
+						<c:url var="blistEnd" value="/admin/paymentManage.admin">
+							<c:param name="currentPage" value="${ page.currentPage + 1 }" />
+						</c:url>
+						<a href="${ blistEnd }">[다음]</a>
+					</c:if>
+					<div class="searchArea">
+						<form class="navbar-form navbar-center">
+							<select id="searchCondition">
+								<option value="title">제목</option>
+								<option value="content">내용</option>
+								<option value="writer">작성자</option>
+							</select> <input type="text" class="form-control" placeholder="키워드...">
+							<button type="submit" class="btn btn-info">검색</button>
+						</form>
+					</div>
+				</div>
 			</div>
-			<div class="searchArea">
-				<form class="navbar-form navbar-center">
-					<select id="searchCondition">
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="writer">작성자</option>
-					</select> <input type="text" class="form-control" placeholder="키워드...">
-					<button type="submit" class="btn btn-success">검색</button>
-				</form>
-			</div>
-		</div>
 	</c:if>
 </body>
 </html>

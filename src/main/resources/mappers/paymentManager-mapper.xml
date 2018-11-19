@@ -39,5 +39,19 @@
 		PAYMENT_NO = REF_NO
 		ORDER SIBLINGS BY PAYMENT_NO DESC
 	</select>
+	
+	<select id="selectPaymentDetail" parameterType="_int"
+		resultMap="paymentmanageResultSet">
+		SELECT PAYMENT_NO, PROOF_NO, PAYMENT_TYPE, MONEY, PAYMENT_DATE,
+		PAYMENT_STATUS, PAYMENT_WAY, REF_NO, P.USER_NO, EMAIL, USER_NAME,
+		NICK_NAME
+		FROM PAYMENT P
+		JOIN MEMBER M ON (M.USER_NO = P.USER_NO)
+		WHERE PAYMENT_NO = #{ payment_No } OR REF_NO = #{ payment_No }
+		START WITH REF_NO IS NULL
+		CONNECT BY PRIOR
+		PAYMENT_NO = REF_NO
+		ORDER SIBLINGS BY PAYMENT_NO DESC
+	</select>
 
 </mapper>  

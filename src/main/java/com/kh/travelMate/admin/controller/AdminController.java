@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.travelMate.admin.common.Pagination;
 import com.kh.travelMate.admin.model.service.BoardManageService;
@@ -300,6 +299,22 @@ public class AdminController {
 		model.addAttribute("page", page);
 		
 		return "admin/paymentManage/paymentManageMain";
+	}
+	
+	@RequestMapping("admin/paymentManageDetail.admin")
+	public String paymentManageDetail(@RequestParam(defaultValue="0") int payment_No, Model model)
+	{
+		if(payment_No == 0) {
+
+			return "admin/paymentManage/paymentManageMain";
+		}else {
+			ArrayList<PaymentManage> paymentDetail;
+			paymentDetail = pms.selectPaymentDetail(payment_No);
+			model.addAttribute("paymentDetail", paymentDetail);
+
+			return "admin/paymentManage/paymentManageDetail";
+		}
+		
 	}
 
 	@RequestMapping("admin/statsManage.admin")

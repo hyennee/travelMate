@@ -13,4 +13,6 @@ public interface PaymentManageDao {
 
 	ArrayList<PaymentManage> paymentList(SqlSessionTemplate sqlSession, PageInfo page);
 
+	ArrayList<PaymentManage> paymentDetail(SqlSessionTemplate sqlSession, int payment_No);
+
 }
