@@ -96,11 +96,15 @@ input {
 							<tr>
 								<td id="buttonArea" colspan="2">
 								<input type="hidden" name="board_no" value='${ row.board_no }' />
-								<c:if test="${ row.category eq '2' }">
+								<c:if test="${ row.category eq '2' and row.ref_no eq '0' and row.status eq 'Y'}">
 								<button type="button" class="btn btn-sm btn-success" style="text-align: right;" onclick="location.href='${ pageContext.request.contextPath }/admin/boardManageReply.admin?board_no=${ row.board_no }'">답변</button>
 								</c:if>
+								<c:if test="${ row.writer eq sessionScope.loginUser.user_no }">
 								<button type="button" class="btn btn-sm btn-info" style="text-align: right;" onclick="location.href='${ pageContext.request.contextPath }/admin/boardManageModify.admin?board_no=${ row.board_no }'">수정</button>
+								</c:if>
+								<c:if test="${ row.status eq 'Y' }">
 								<button type="button" class="btn btn-sm btn-danger" style="text-align: right;" onclick="location.href='${ pageContext.request.contextPath }/admin/boardManageDelete.admin?board_no=${ row.board_no }'">삭제</button>
+								</c:if>
 								</td>
 							</tr>
 						</c:forEach>

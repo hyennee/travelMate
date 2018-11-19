@@ -41,6 +41,11 @@ public class MemberManageServiceImpl implements MemberManageService {
 		return memberDetail;
 	}
 
+	@Override
+	public ArrayList<MemberManage> getNewMemberList() {
+		return mmd.getNewMemberList(sqlSession);
+	}
+
 
 
 

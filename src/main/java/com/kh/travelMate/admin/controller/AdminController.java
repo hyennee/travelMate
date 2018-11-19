@@ -35,36 +35,12 @@ public class AdminController {
 	public String goAdminMain(Model model) {
 		StatSummaryManage ssm = sms.getTodayStats();
 		
-		// 임시코드 (삭제할 것)
-		ArrayList<BoardManage> boardList;
+		ArrayList<BoardManage> boardList = bms.getOTOboardList();
 		
-		int currentPage = 1;
-		int listCount = 0;
-
-		listCount = bms.getListCount();
-
-		// 테스트 코드
-		System.out.println("listCount: " + listCount);
-
-		PageInfo page = Pagination.getPageInfo(currentPage, listCount);
-
-		boardList = bms.boardList(page);
+		ArrayList<MemberManage> memberList = mms.getNewMemberList();
 
 		model.addAttribute("boardList", boardList);
-		model.addAttribute("page", page);
-		// 임시코드 끝
-
-		// 임시코드 시작
-		ArrayList<MemberManage> memberList;
-
-		page = Pagination.getPageInfo(currentPage, listCount);
-
-		memberList = mms.memberList(page);
-
 		model.addAttribute("memberList", memberList);
-		// 임시코드 끝
-		
-		
 		model.addAttribute("ssm", ssm);
 
 		return "admin/adminIndex"; // Admin Main view forward

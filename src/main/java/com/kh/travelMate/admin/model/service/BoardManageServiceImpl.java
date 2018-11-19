@@ -108,7 +108,11 @@ public class BoardManageServiceImpl implements BoardManageService {
 	@Override
 	public void insertNotice(BoardManage noticeBoard) {
 		bmd.insertNotice(sqlSession, noticeBoard);
-		
+	}
+
+	@Override
+	public ArrayList<BoardManage> getOTOboardList() {
+		return bmd.getOTOboardList(sqlSession);
 	}
 
 }

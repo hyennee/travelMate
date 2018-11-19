@@ -14,4 +14,6 @@ public interface MemberManageService {
 
 	MemberManage selectOne(int userno);
 
+	ArrayList<MemberManage> getNewMemberList();
+
 }

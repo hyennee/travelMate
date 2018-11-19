@@ -17,7 +17,7 @@
 <style>
 	.headerArea {
 		text-align:inline-block;
-		background-color:#ea8312;
+		background-color:#4682B4;
 	}
 	.logoImg {
 		width:170px;
@@ -36,7 +36,7 @@
 		text-align:right;
 	}
 	#menuBtn{
-        background-color: #6bc6b3;
+        background-color: #11264f;
         border: none;
         color: white;
         padding: 15px 30px;
@@ -46,20 +46,13 @@
 	}
 	#menuBtn:hover{
 		background-color: white;
-		color: #6bc6b3;
+		color: #11264f;
+		font-weight: bold;
 	}
 	#searchArea{
 		white-space:nowrap;
 		padding:auto;
 		text-align:inline-block;
-	}
-	#chatBtn {
-		background-color: red;
-		color: white;
-	}
-	#logoutBtn {
-		background-color: blue;
-		color: white;
 	}
 	
 </style>
@@ -77,23 +70,17 @@
 					<img class="logoImg" src="${ pageContext.request.contextPath }/resources/images/logo.png"></a>
 				</td>
 				<td id="loginArea" colspan="2">
-					<b>${ sessionScope.loginUser.user_name }</b> 님 환영합니다!
-					<button id="chatBtn" onclick="window.open('http://192.168.10.51:8008/sel.jsp','window_name','width=430,height=500,location=no,status=no,scrollbars=yes');">상담 창 열기</button>
-					<button id="logoutBtn" onclick="location.href='${ pageContext.request.contextPath }/logout.me'">Logout</button>
+					<b>${ sessionScope.loginUser.user_name }(${ sessionScope.loginUser.email })님 환영합니다!</b>
+					<button id="chatBtn" class="btn btn-xs btn-success" onclick="window.open('http://192.168.10.51:8008/sel.jsp','window_name','width=430,height=500,location=no,status=no,scrollbars=yes');">상담 창 열기</button>
+					<button id="logoutBtn" class="btn btn-xs btn-danger" onclick="location.href='${ pageContext.request.contextPath }/logout.me'">Logout</button>
 				</td>
 				</tr>
 				<tr>
 				<td id="menuArea">
-					<button id="menuBtn">기본설정</button>
 					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/memberManage.admin'">회원관리</button>
 					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/boardManage.admin'">게시물관리</button>
 					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/paymentManage.admin'">결제관리</button>
-					<button id="menuBtn">통계</button>
-				</td>
-				<td id="searchArea">	
-					<form>
-						<input type="text"></input>&nbsp;<button>검색</button>
-					</form>
+					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/statManage.admin'">통계</button>
 				</td>
 				</tr>
 		</table>

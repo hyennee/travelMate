@@ -38,4 +38,6 @@ public interface BoardManageService {
 
 	void insertNotice(BoardManage noticeBoard);
 
+	ArrayList<BoardManage> getOTOboardList();
+
 }

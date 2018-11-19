@@ -114,9 +114,11 @@
 
 	<update id="deleteBoardAll" parameterType="_int">
 		UPDATE BOARD
-		SET STATUS = 'N'
+		SET STATUS
+		= 'N'
 		WHERE BOARD_NO = #{ board_no } OR (REF_NO = #{ board_no }
-		AND BOARD_LEVEL = 2)
+		AND
+		BOARD_LEVEL = 2)
 	</update>
 
 	<update id="revertBoardAll" parameterType="_int">
@@ -127,7 +129,8 @@
 	</update>
 
 	<select id="consultApplyListCount" resultType="_int">
-		SELECT NVL(COUNT(*), 0)
+		SELECT
+		NVL(COUNT(*), 0)
 		FROM CONSULT_APPLY CA
 	</select>
 
@@ -211,10 +214,20 @@
 		WHERE CATEGORY = '1'
 		ORDER BY BOARD_NO DESC
 	</select>
-	
+
 	<insert id="insertNotice" parameterType="BoardManage">
 		INSERT INTO BOARD
-		VALUES (SEQ_BOARD_NO.NEXTVAL, #{ writer }, 1, #{ title }, #{ content }, SYSDATE, 'Y', 1, NULL)
+		VALUES
+		(SEQ_BOARD_NO.NEXTVAL, #{ writer }, 1, #{ title }, #{ content },
+		SYSDATE, 'Y', 1, NULL)
 	</insert>
+
+	<select id="getOTOboardList" resultMap="boardmanageResultSet">
+		SELECT *
+		FROM BOARD B
+		JOIN MEMBER M ON M.USER_NO = B.WRITER
+		WHERE CATEGORY = '2' AND STATUS = 'Y' AND BOARD_LEVEL = 1
+		ORDER BY BOARD_NO DESC
+	</select>
 
 </mapper>  

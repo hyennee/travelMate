@@ -139,4 +139,11 @@ public class BoardManageDaoImpl implements BoardManageDao {
 		sqlSession.insert("BoardManage.insertNotice", noticeBoard);
 	}
 
+	@Override
+	public ArrayList<BoardManage> getOTOboardList(SqlSessionTemplate sqlSession) {
+		ArrayList<BoardManage> otoBoardList = null;
+		otoBoardList = (ArrayList)sqlSession.selectList("BoardManage.getOTOboardList");
+		return otoBoardList;
+	}
+
 }

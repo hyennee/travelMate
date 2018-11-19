@@ -58,5 +58,11 @@
 		FROM MEMBER
 		WHERE USER_NO = #{ user_no }
 	</select>
+	
+	<select id="newMemberList" resultMap="membermanageResultSet">
+		SELECT *
+		FROM MEMBER
+		ORDER BY ENROLL_DATE DESC
+	</select>
 
 </mapper>  

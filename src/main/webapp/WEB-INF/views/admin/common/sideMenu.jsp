@@ -13,6 +13,10 @@
 	text-align: center;
 	width: 250px;
 }
+.panel-body td
+{
+	text-align:center;
+}
 </style>
 </head>
 <body>
@@ -26,13 +30,13 @@
 		<div class="panel-body">
 			<table class="table table-striped">
 				<tr>
-					<td><b>총 가입자수</b></td>
+					<td><b>오늘의 가입자수</b></td>
 				</tr>
 				<tr>
 					<td>${ ssm.totalJoinMember }명</td>
 				</tr>
 				<tr>
-					<td><b>총 매출액</b></td>
+					<td><b>오늘의 매출액</b></td>
 				</tr>
 				<tr>
 					<td>${ ssm.totalPayment }원</td>
