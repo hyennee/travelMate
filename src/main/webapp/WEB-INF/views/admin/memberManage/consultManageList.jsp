@@ -14,8 +14,7 @@
 }
 
 .leftMenu {
-	padding-left: 20px;
-	margin-top: 0px;
+	padding: 20px;
 	margin-right: 20px;
 	margin-bottom: 20px;
 	float: left;

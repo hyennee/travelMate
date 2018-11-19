@@ -11,4 +11,6 @@ public interface PaymentManageService {
 
 	ArrayList<PaymentManage> paymentList(PageInfo page);
 
+	ArrayList<PaymentManage> selectPaymentDetail(int payment_No);
+
 }
