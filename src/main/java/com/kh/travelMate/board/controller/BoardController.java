@@ -29,16 +29,13 @@ public class BoardController
 	@RequestMapping("selectServiceCenter.bo")
 	public String selectServiceCenter(Board b, Model model)
 	{	
-		//System.out.println("진입");
 		String notice = "1";		//공지사항 카테고리 번호
 		String question = "2";		//문의 카테고리 번호
 		
 		b.setCategory(notice);
 		ArrayList<Board> noticeList = bs.selectServiceCenterList(b);
-		/*System.out.println("noticeList : " + noticeList);*/
 		b.setCategory(question);
 		ArrayList<Board> questionList = bs.selectServiceCenterList(b);
-		/*System.out.println("questionList : " + questionList);*/
 		
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("questionList", questionList);
@@ -51,8 +48,6 @@ public class BoardController
 	{
 		Board selectOne = bs.selectOne(b);
 		model.addAttribute("selectOne", selectOne);
-		
-		System.out.println("selectOne : " + b);
 		
 		if(b.getCategory().equals("1"))
 		{
@@ -91,7 +86,6 @@ public class BoardController
 		try
 		{
 			int listCount = bs.getListCount(b);
-			System.out.println("listCount : " + listCount);
 			
 			PageInfo page = Pagination.getPageInfo(currentPage, listCount);
 			
@@ -121,7 +115,6 @@ public class BoardController
 			
 			return "must/errorPage";
 		}
-		
 		return null;
 	}
 	
@@ -134,8 +127,6 @@ public class BoardController
 	@RequestMapping("goAnswerInsertForm.bo")
 	public String showAnswerInsertForm(Board b, Model model)
 	{
-		/*System.out.println("answer : " + b);*/
-		
 		Board selectOne = bs.selectOne(b);
 		model.addAttribute("selectOne", selectOne);
 		
@@ -172,9 +163,6 @@ public class BoardController
 	{	
 		Board selectOne = bs.selectOneAnswer(b);
 		
-		System.out.println("보드 : " + b);
-		System.out.println("셀원 : " + selectOne);
-			
 		model.addAttribute("selectOneAnswer", selectOne);
 			
 		return "board/openConsulting/ocAnswerUpdateForm";
@@ -191,7 +179,6 @@ public class BoardController
 	@RequestMapping("updateAnswer.bo")
 	public String updateAnswerBoard(Board b, Model model)
 	{
-		System.out.println("보드앤서 : " + b);
 		bs.updateBoard(b);
 		
 		return "redirect:selectOne.bo?boardNo=" + b.getRefNo() + "&category=" + b.getCategory();
@@ -225,7 +212,6 @@ public class BoardController
 		try
 		{	
 			int listCount = bs.getListCountSearch(b);
-			System.out.println("listCount : " + listCount);
 			
 			PageInfo page = Pagination.getPageInfo(currentPage, listCount);
 			

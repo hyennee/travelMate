@@ -55,7 +55,12 @@
 						</div>
 						<hr style="border:1px dotted lightgray;">
 						<div class="title" style="height:20px;">
-							<span style="font-size:14px;">[이미지] 접수됨</span>
+							<c:if test="${ selectOne.boardStatus eq 'N' }">
+								<span style="font-size:14px;"><img src="/travelMate/resources/images/go_in_icon.png" style="width:16px; height:16px;">&nbsp; 접수</span>
+							</c:if>
+							<c:if test="${ selectOne.boardStatus eq 'Y' }">
+								<span style="font-size:14px;"><img src="/travelMate/resources/images/check_icon.png" style="width:16px; height:16px;">&nbsp; 답변완료</span>
+							</c:if>
 							<span>&nbsp;|&nbsp;</span>
 							<span style="font-weight:bold; font-size:14px;"><c:out value="${ selectOne.nickName }" escapeXml="false"/></span>
 							<%-- <input type="hidden" name="nickName" value="${ selectOne.nickName }"> --%>
