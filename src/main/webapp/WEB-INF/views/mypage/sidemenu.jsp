@@ -100,7 +100,7 @@ ul.sub li:hover {
 				<div class="title">서비스 관리</div>
 				<ul class="sub">
 					<li><a href="tradeHistory.me">거래내역</a></li>
-					<li><a href="oneByOneQnA.me">1:1 문의</a></li>
+					<li><a href="oneByOneQnA.me">문의내역</a></li>
 					<li><a href="Money.me">사이버머니</a></li>
 					
 				</ul>

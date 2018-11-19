@@ -29,7 +29,7 @@
 	
 	<form action="insertConsultRequest.others" method="post">
 	<input type="hidden" name="REQUEST_USER_NO" value="${ sessionScope.loginUser.user_no}"">
-	<input type="text" name="CONSULT_USER_NO" value="${user_no}"">
+	<input type="hidden" name="CONSULT_USER_NO" value="${user_no}"">
 	<div id="contents" class="full-container">
 		<div style="width: 960px; margin: auto; background: white;">
 			<br>

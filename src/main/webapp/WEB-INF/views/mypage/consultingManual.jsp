@@ -96,12 +96,10 @@ a {
 			<div >
 			<script type="text/javascript">
 				function readURL(input) {
-					 alert(input);
 				    if (input.files && input.files[0]) {
 				        var reader = new FileReader();
 				 
 				        reader.onload = function (e) {
-				        	alert(e.target.result);
 				            $('#image_section').attr('src', e.target.result);
 				        }
 				 

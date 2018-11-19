@@ -28,7 +28,7 @@
 			</div>
 			<div class="panel-body">
 				<b><a
-					href="${ pageContext.request.contextPath }/admin/PaymentManage.admin">결제목록</a></b><br><br>
+					href="${ pageContext.request.contextPath }/admin/paymentManage.admin">결제목록</a></b><br><br>
 			</div>
 		</div>
 	</div>

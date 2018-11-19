@@ -113,7 +113,7 @@ a{
 			</div>
 			<br><br><br><br><br><br><br><br>
 
-			<div class="traveltheme">
+			<!-- <div class="traveltheme">
 				<div class="mainboard">
 					<h1>추천테마여행</h1>
 					<div class="mainboardbox">
@@ -156,9 +156,9 @@ a{
 					</div>
 				</div>
 
-			</div>
+			</div> -->
 			
-			<div class="section">
+			<!-- <div class="section">
 				<div class="mainboard">
 					<h1>트레블메이트</h1>
 					<div class="mainboardbox">
@@ -201,7 +201,7 @@ a{
 					</div>
 				</div>
 
-			</div>
+			</div> -->
 	</div>
 	</div>
 
