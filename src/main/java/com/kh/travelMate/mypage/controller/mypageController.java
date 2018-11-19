@@ -280,7 +280,7 @@ public class mypageController {
 			return "common/errorPage";
 		}
 		}
-	}
+	
 
 		
 		//컨설턴트 프로필 검색
