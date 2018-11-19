@@ -21,7 +21,7 @@
 	
 	<insert id="insertAttachment" parameterType="Attachment">
 		INSERT INTO ATTACHMENT
-		VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, #{originName}, #{modifyName}, #{fileRoot}, SYSDATE, '1', 1)
+		VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, #{originName}, #{modifyName}, #{fileRoot}, SYSDATE, '1', SEQ_ATTACHMENT_NO.CURRVAL)
 	</insert>
 	
 </mapper>
