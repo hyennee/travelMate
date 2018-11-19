@@ -223,19 +223,12 @@
 								<textarea style="display:none;" name="content"><c:out value="${ selectOne.content }" escapeXml="false"/></textarea>
 								<!-- 질문 버튼 부분 div -->
 								<c:if test="${ selectOne.nickName ne sessionScope.loginUser.getNick_name() }">
-									<c:if test="${ selectOne.refNo eq 0 }">
-										<c:if test="${ sessionScope.loginUser.getUser_type_level() eq '3' }">
-											<div id="qBottom">
-												<p style="margin-top:20px;">
-													답변을 하실 수 있습니다.
-													<button class="btnAnswer" type="submit">답변하기</button>
-												</p>
-											</div>
-										</c:if>
-									</c:if>
-									<c:if test="${ selectOne.refNo ne 0 }">
+									<c:if test="${ sessionScope.loginUser.getUser_type_level() eq '3' }">
 										<div id="qBottom">
-											<p style="margin-top:20px;">채택이 완료되어 답변하실 수 없습니다.</p>
+											<p style="margin-top:20px;">
+												답변을 하실 수 있습니다.
+												<button class="btnAnswer" type="submit">답변하기</button>
+											</p>
 										</div>
 									</c:if>
 								</c:if>
