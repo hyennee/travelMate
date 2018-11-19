@@ -67,12 +67,11 @@
 							<span style="font-size:14px;"><c:out value="${ selectOne.content }" escapeXml="false"/></span>
 							<%-- <input type="hidden" name="content" value="${ selectOne.content }"> --%>
 						</div>
-						<br><br>
 						<c:if test="${ selectOne.boardStatus eq 'Y' }">
+							<br><br>
 							<c:if test="${ selectOne.boardNo eq answerBoard.refNo }">
 							<div class="answer-content">
-								<span style="font-size:14px;">[관리자가 답변했을 경우에만 표시]</span><br>
-								<span style="font-size:14px;">답변 내용입니다.</span>
+								<c:out value="${ answerBoard.content }" escapeXml="false"/>
 							</div>
 							</c:if>
 						</c:if>
