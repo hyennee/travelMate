@@ -40,4 +40,6 @@ public interface BoardManageDao {
 
 	void insertNotice(SqlSessionTemplate sqlSession, BoardManage noticeBoard);
 
+	ArrayList<BoardManage> getOTOboardList(SqlSessionTemplate sqlSession);
+
 }

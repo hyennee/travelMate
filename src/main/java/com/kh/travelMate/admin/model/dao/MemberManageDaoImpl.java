@@ -45,6 +45,12 @@ public class MemberManageDaoImpl implements MemberManageDao {
 		MemberManage memberDetail = (MemberManage)sqlSession.selectOne("MemberManage.memberDetail", user_no);
 		return memberDetail;
 	}
+	@Override
+	public ArrayList<MemberManage> getNewMemberList(SqlSessionTemplate sqlSession) {
+		ArrayList<MemberManage> newMemberList = 
+				(ArrayList)sqlSession.selectList("MemberManage.newMemberList");
+		return newMemberList;
+	}
 
 
 }
