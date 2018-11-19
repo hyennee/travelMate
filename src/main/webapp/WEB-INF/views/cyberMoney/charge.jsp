@@ -165,11 +165,6 @@ function x(){
 				</div>
 				<div >
 					<input type="radio" name="sel" value="카드" checked="checked" id="카드" onclick="test(0)"/><label for="카드">카드</label> 
-					<input type="radio" name="sel" value="현금" id="현금" onclick="test(1)"/> <label for="현금">현금</label> 
-				</div>
-				<div id="cash" style="visibility:hidden;">
-					예금주 : <input type="text" name="account_name" id="account_name">&nbsp;&nbsp;&nbsp;
-					계좌번호 : <input type="text" name="account_no" id="account_no">
 				</div>
 				<button onclick="pay()">확인</button>
 			</div>

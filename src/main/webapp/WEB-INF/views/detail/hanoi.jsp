@@ -880,11 +880,11 @@
 					var buttonMonths = parseInt(nowDate.getMonth());
 					var buttonDays = parseInt(nowDate.getDate());
 					
-					$(".dateButton1").html(buttonMonths + "/" + buttonDays);
-					$(".dateButton2").html(buttonMonths + "/" + (buttonDays+1));
-					$(".dateButton3").html(buttonMonths + "/" + (buttonDays+2));
-					$(".dateButton4").html(buttonMonths + "/" + (buttonDays+3));
-					$(".dateButton5").html(buttonMonths + "/" + (buttonDays+4));
+					$(".dateButton1").html((buttonMonths+1) + "/" + buttonDays);
+					$(".dateButton2").html((buttonMonths+1) + "/" + (buttonDays+1));
+					$(".dateButton3").html((buttonMonths+1) + "/" + (buttonDays+2));
+					$(".dateButton4").html((buttonMonths+1) + "/" + (buttonDays+3));
+					$(".dateButton5").html((buttonMonths+1) + "/" + (buttonDays+4));
 
 					for(var i=0; i<data.list.length; i++)
 					{
