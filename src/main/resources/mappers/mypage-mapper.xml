@@ -42,10 +42,13 @@
 	
 	
 	<select id="oneByOneHistory" resultType="java.util.HashMap" parameterType="_int">
-		SELECT *
-		FROM BOARD 
-		WHERE WRITER = #{user_no} 
+		SELECT b.board_no, title, nick_name, bs.status, b.board_date
+		FROM BOARD b
+        join member m on(b.writer = m.user_no)
+        join board_status bs on(b.board_no = bs.board_no)
+		WHERE WRITER = #{user_no}
 		AND CATEGORY = '2'
+        and b.status = 'Y'
 	</select>
 	
 	<select id="tradeInfoHistory" resultType="java.util.HashMap" parameterType="_int">
