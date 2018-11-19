@@ -482,6 +482,7 @@
 	opacity:0.25;
 	background:#000;
 	color:white;
+	font-weight:bold;
 }
 .selectDate:hover
 {
@@ -798,45 +799,76 @@
 			$(".weather5").css({"display":"none"});
 			
 			$(".dateButton1").click(function()
-			{
-				$(".weather1").css({"display":"table"});
-				$(".weather2").css({"display":"none"});
-				$(".weather3").css({"display":"none"});
-				$(".weather4").css({"display":"none"});
-				$(".weather5").css({"display":"none"});
-			});
-			$(".dateButton2").click(function()
-			{
-				$(".weather1").css({"display":"none"});
-				$(".weather2").css({"display":"table"});
-				$(".weather3").css({"display":"none"});
-				$(".weather4").css({"display":"none"});
-				$(".weather5").css({"display":"none"});
-			});
-			$(".dateButton3").click(function()
-			{
-				$(".weather1").css({"display":"none"});
-				$(".weather2").css({"display":"none"});
-				$(".weather3").css({"display":"table"});
-				$(".weather4").css({"display":"none"});
-				$(".weather5").css({"display":"none"});
-			});
-			$(".dateButton4").click(function()
-			{
-				$(".weather1").css({"display":"none"});
-				$(".weather2").css({"display":"none"});
-				$(".weather3").css({"display":"none"});
-				$(".weather4").css({"display":"table"});
-				$(".weather5").css({"display":"none"});
-			});
-			$(".dateButton5").click(function()
-			{
-				$(".weather1").css({"display":"none"});
-				$(".weather2").css({"display":"none"});
-				$(".weather3").css({"display":"none"});
-				$(".weather4").css({"display":"none"});
-				$(".weather5").css({"display":"table"});
-			});
+					{
+						$(".dateButton1").css({"background":"white", "color":"black", "font-weight":"bold", "opacity":"0.75"});
+						$(".dateButton2").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton3").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton4").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton5").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						
+						
+						$(".weather1").css({"display":"table"});
+						$(".weather2").css({"display":"none"});
+						$(".weather3").css({"display":"none"});
+						$(".weather4").css({"display":"none"});
+						$(".weather5").css({"display":"none"});
+					});
+					$(".dateButton2").click(function()
+					{
+						$(".dateButton1").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton2").css({"background":"white", "color":"black", "font-weight":"bold", "opacity":"0.75"});
+						$(".dateButton3").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton4").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton5").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						
+						$(".weather1").css({"display":"none"});
+						$(".weather2").css({"display":"table"});
+						$(".weather3").css({"display":"none"});
+						$(".weather4").css({"display":"none"});
+						$(".weather5").css({"display":"none"});
+					});
+					$(".dateButton3").click(function()
+					{
+						$(".dateButton1").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton2").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton3").css({"background":"white", "color":"black", "font-weight":"bold", "opacity":"0.75"});
+						$(".dateButton4").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton5").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						
+						$(".weather1").css({"display":"none"});
+						$(".weather2").css({"display":"none"});
+						$(".weather3").css({"display":"table"});
+						$(".weather4").css({"display":"none"});
+						$(".weather5").css({"display":"none"});
+					});
+					$(".dateButton4").click(function()
+					{
+						$(".dateButton1").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton2").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton3").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton4").css({"background":"white", "color":"black", "font-weight":"bold", "opacity":"0.75"});
+						$(".dateButton5").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						
+						$(".weather1").css({"display":"none"});
+						$(".weather2").css({"display":"none"});
+						$(".weather3").css({"display":"none"});
+						$(".weather4").css({"display":"table"});
+						$(".weather5").css({"display":"none"});
+					});
+					$(".dateButton5").click(function()
+					{
+						$(".dateButton1").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton2").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton3").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton4").css({"background":"#000", "color":"white", "opacity":"0.25"});
+						$(".dateButton5").css({"background":"white", "color":"black", "font-weight":"bold", "opacity":"0.75"});
+						
+						$(".weather1").css({"display":"none"});
+						$(".weather2").css({"display":"none"});
+						$(".weather3").css({"display":"none"});
+						$(".weather4").css({"display":"none"});
+						$(".weather5").css({"display":"table"});
+					});
 			
 			$.ajax(
 			{

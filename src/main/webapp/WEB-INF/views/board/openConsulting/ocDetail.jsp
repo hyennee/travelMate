@@ -262,24 +262,7 @@
 									<div id="answercon3" style="font-style: normal">
 										<input type="hidden" name="boardNo" value="${ answer.boardNo }">
 										<input type="hidden" name="category" value="${ answer.category }">
-										<c:if test="${ sessionScope.loginUser.getNick_name() ne answer.nickName }">
-											<c:if test="${ selectOne.refNo ne answer.boardNo }">
-												<p><c:out value="${fn:substring(answer.content, 0, 200)}" escapeXml="false"/></p>
-											</c:if>
-										</c:if>
-										<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
-											<c:if test="${ selectOne.refNo eq answer.boardNo }">
-												<p><c:out value="${ answer.content }" escapeXml="false"/></p>
-											</c:if>
-										</c:if>
-										<c:if test="${ sessionScope.loginUser.getNick_name() eq answer.nickName }">
-											<p><c:out value="${ answer.content }" escapeXml="false"/></p>
-										</c:if>
-										<c:if test="${ sessionScope.loginUser.getNick_name() eq selectOne.nickName }">
-											<c:if test="${ selectOne.refNo ne answer.boardNo }">
-												<button id="btnSelect" type="button" onclick="location.href='updateContent.bo?boardNo=${ selectOne.boardNo }&refNo=${ answer.boardNo }&category=${ selectOne.category }'">내용 더보기</button>
-											</c:if>
-										</c:if>
+										<p><c:out value="${ answer.content }" escapeXml="false"/></p>
 										<c:if test="${ sessionScope.loginUser.getNick_name() eq answer.nickName }">
 											<c:if test="${ selectOne.refNo eq 0 }">
 												<div style="float:right;">
