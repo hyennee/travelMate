@@ -111,10 +111,13 @@ td{
 						<label for="">날짜</label><input type="text" class="form-control date" value="${ board.boardDate }" readonly/><br />
 						<label for="">제목</label><input type="text" class="form-control oboTitle" value="${ board.title }"/><br />
 						<label for="">내용</label><br />
-						<textarea contentEditable="true" class="form-control" name="" id="" cols="30" rows="10" readonly style="cursor:default">${ board.content }</textarea>
 						
+						<div contentEditable="true" style="border: 1px solid #ccc; border-radius: 4px; width: 100%; height:30% font-family: inherit;" >
+							<span>
+								<c:out value="${ board.content }" escapeXml="false"/>
+							</span>
+						</div>
 						
-												
 
 			</div>
 			<br />

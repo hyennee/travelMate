@@ -104,21 +104,17 @@ td{
 			<div >
 						<p>상세 거래 내역</p>
 						
-						<label for="">컨설팅번호</label><input type="text" value="${ trade.CONSULT_REQUEST_NO}" readonly/><br />
-						<label for="">컨설턴트</label><input type="text" value="${ trade.CONSULT_USER_NO}" readonly /><br />
-						<label for="">여행시작일자</label><input type="text" value="${ trade.TRAVEL_START_DATE}" readonly/><br />
-						<label for="">여행종료일자</label><input type="text" value="${ trade.TRAVEL_END_DATE}"/><br />
-						<label for="">예산</label><input type="text" value="${ trade.BUDGET}"/><br />
-						<label for="">특이사항</label><input type="text" value="${ trade.ETC}"/><br />
-						<label for="">특이사항</label><input type="text" value="${ trade.consultNickName}"/><br />
+						<label for="">no</label><input type="text" class="form-control no"  value="${ trade.CONSULT_REQUEST_NO}" readonly/><br />
+						<label for="">컨설턴트</label><input type="text" class="form-control writer" value="${ trade.consultNickName}" readonly/><br />
+						<label for="">여행시작일자</label><input type="text" class="form-control date" value="${ trade.TRAVEL_START_DATE}" readonly/><br />
+						<label for="">여행종료일자</label><input type="text" class="form-control date" value="${ trade.TRAVEL_END_DATE}" readonly/><br />
+						<label for="">여행목적</label><input type="text" class="form-control oboTitle" value="${ trade.TRAVEL_PURPOSE}"/><br />
+						<label for="">어른</label><input type="text" class="form-control" width="100px" value="${ trade.ADULT_NUM}"/>&nbsp;명 &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp; 
+						<label for="">아이</label><input type="text" class="form-control " width="100px" value="${ trade.CHILD_NUM}"/>&nbsp;명<br />
+						<label for="">특이사항</label><input type="text" class="form-control " width="100px" value="${ trade.ETC}"/><br />
+						<label for="">1인당 예산</label><input type="text" class="form-control " width="100px" value="${ trade.BUDGET}"/>&nbsp;만원<br />
+						<label for="">여행지역</label><input type="text" class="form-control " width="100px" value="${ trade.TRAVEL_AREA}"/>&nbsp;<br />
 						
-						
-						
-						<label for="">no</label><input type="text" class="form-control no"  value="고쳐" readonly/><br />
-						<label for="">작성자</label><input type="text" class="form-control writer" value="고쳐" readonly/><br />
-						<label for="">답변여부</label><input type="text" class="form-control" />
-						<label for="">날짜</label><input type="text" class="form-control date" value="고쳥" readonly/><br />
-						<label for="">제목</label><input type="text" class="form-control oboTitle" value="고쳥"/><br />
 						<label for="">내용</label><br />
 						<textarea contentEditable="true" class="form-control" name="" id="" cols="30" rows="10" readonly style="cursor:default"></textarea>
 						
