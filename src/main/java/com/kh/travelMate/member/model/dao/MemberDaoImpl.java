@@ -122,6 +122,20 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.insert("Member.insertKakaoMember", m);
 	}
 
+	//DB에 저장되어있는 임시비밀번호 소유 회원의 비밀번호 조회
+	@Override
+	public String selectModifyPwd(SqlSessionTemplate sqlSession, Member m) {
+		
+		return sqlSession.selectOne("Member.selectModifyPwd", m);
+	}
+
+	//임시비밀번호를 새비밀번호로 수정
+	@Override
+	public int updateModifyPwd(SqlSessionTemplate sqlSession, Member m) {
+		
+		return sqlSession.update("Member.updateModifyPwd", m);
+	}
+
 
 
 	

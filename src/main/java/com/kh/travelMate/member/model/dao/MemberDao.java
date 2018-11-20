@@ -50,6 +50,12 @@ public interface MemberDao {
 
 	int useCyberMoney(SqlSessionTemplate sqlSession, Member answerMember);
 
+	//DB에 저장되어있는 임시비밀번호 소유 회원의 비밀번호 조회
+	String selectModifyPwd(SqlSessionTemplate sqlSession, Member m);
+
+	//임시비밀번호를 새 비밀번호로 수정
+	int updateModifyPwd(SqlSessionTemplate sqlSession, Member m);
+
 	
 
 	

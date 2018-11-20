@@ -129,7 +129,7 @@ td:first-child {
 								<button type="button" class="goSearchPwd" id="searchPwdBtn" onclick="searchPwd()" >비밀번호
 									찾기</button>
 								&nbsp;
-								<button type="reset" class="goSearchPwd" id="cancelPwd">취소</button>
+								<button type="reset" class="goSearchPwd" id="cancelPwd" onclick="location.href='loginView.me'">취소</button>
 
 							</div>
 						</form>
@@ -227,7 +227,6 @@ td:first-child {
 	
 	</script>
 	
-
 	
 	
 </body>
