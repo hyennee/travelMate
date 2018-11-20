@@ -42,6 +42,18 @@
 		<result property="status" column="STATUS"></result>
 		<result property="reason" column="REASON"></result>
 		<result property="agree_Date" column="AGREE_DATE"></result>
+		<result property="attachMent_No" column="ATTACHMENT_NO"></result>
+		<result property="origin_Name" column="ORIGIN_NAME"></result>
+	</resultMap>
+	
+	<resultMap type="AttachmentInfo" id="getFileInfoResultSet">
+		<id property="attachMent_No" column="ATTACHMENT_NO"></id>
+		<result property="origin_Name" column="ORIGIN_NAME"></result>
+		<result property="modify_Name" column="MODIFY_NAME"></result>
+		<result property="file_Root" column="FILE_ROOT"></result>
+		<result property="upload_Date" column="UPLOAD_DATE"></result>
+		<result property="type" column="TYPE"></result>
+		<result property="ref_No" column="REF_NO"></result>
 	</resultMap>
 
 	<!-- 모든 게시물 목록을 조회해 오는 쿼리문 -->
@@ -178,8 +190,9 @@
 		(CA.USER_NO = M.USER_NO)
 		LEFT JOIN CONSULT_OK_RECORD COR ON
 		(CA.CONSULT_APPLY_NO = COR.CONSULT_APPLY_NO)
-		WHERE CA.CONSULT_APPLY_NO
-		= #{ apply_no }
+		LEFT JOIN ATTACHMENT AM ON
+		(CA.CONSULT_APPLY_NO = AM.REF_NO)
+		WHERE CA.CONSULT_APPLY_NO = #{ apply_no }
 	</select>
 
 	<insert id="consultApplyAccept" parameterType="ConsultManage">
@@ -251,6 +264,12 @@
 		JOIN MEMBER M ON M.USER_NO = B.WRITER
 		WHERE CATEGORY = '2' AND STATUS = 'Y' AND BOARD_LEVEL = 1
 		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<select id="getFileInfo" parameterType="_int" resultMap="getFileInfoResultSet">
+		SELECT *
+		FROM ATTACHMENT
+		WHERE ATTACHMENT_NO = #{ attachMent_No }
 	</select>
 
 </mapper>  
