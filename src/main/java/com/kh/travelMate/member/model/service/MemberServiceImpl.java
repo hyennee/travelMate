@@ -120,6 +120,20 @@ public class MemberServiceImpl implements MemberService{
 		return md.insertKakaoMember(sqlSession, m);
 	}
 
+	//DB에 저장되어있는 임시비밀번호 소유 회원의 비밀번호 조회
+	@Override
+	public String selectModifyPwd(Member m) {
+		
+		return md.selectModifyPwd(sqlSession, m);
+	}
+
+	//임시비밀번호를 새 비밀번호로 수정
+	@Override
+	public int updateModifyPwd(Member m) {
+		// TODO Auto-generated method stub
+		return md.updateModifyPwd(sqlSession, m);
+	}
+
 
 	
 

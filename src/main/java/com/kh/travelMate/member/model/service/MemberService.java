@@ -35,6 +35,12 @@ public interface MemberService {
 	//카카오 회원가입
 	int insertKakaoMember(Member m);
 
+	//임시비밀번호 가진 유저의 비밀번호 조회
+	String selectModifyPwd(Member m);
+
+	//임시비밀번호를 새비밀번호로 수정
+	int updateModifyPwd(Member m);
+
 
 
 	

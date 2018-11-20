@@ -20,7 +20,8 @@
 		<typeAlias type="com.kh.travelMate.admin.model.vo.ConsultManage" alias="ConsultManage"/>
 		<typeAlias type="com.kh.travelMate.admin.model.vo.StatManage" alias="StatManage"/>
 		<typeAlias type="com.kh.travelMate.admin.model.vo.StatSummaryManage" alias="StatSummaryManage"/>
-		<typeAlias type="com.kh.travelMate.admin.model.vo.PaymentManage" alias="PaymentManage"/>		
+		<typeAlias type="com.kh.travelMate.admin.model.vo.PaymentManage" alias="PaymentManage"/>
+		<typeAlias type="com.kh.travelMate.admin.model.vo.AttachmentInfo" alias="AttachmentInfo"/>		
 		<typeAlias type="com.kh.travelMate.others.model.vo.ConsultApply" alias="ConsultApply"/>
 		<typeAlias type="com.kh.travelMate.others.model.vo.ConsultRequest" alias="ConsultRequest"/>
 		<typeAlias type="com.kh.travelMate.common.Attachment" alias="Attachment"/>

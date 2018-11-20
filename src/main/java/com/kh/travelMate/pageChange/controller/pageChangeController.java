@@ -178,6 +178,7 @@ public class pageChangeController {
 		return "mypage/cancelAccount";
 	}
 	
+
 	@RequestMapping("tradeOpenHistory.me")
 	public String tradeOpenHistory(Model model,HttpServletRequest request, HttpServletResponse response)
 	{
@@ -188,5 +189,14 @@ public class pageChangeController {
 		return "mypage/tradeOpenHistory";
 	}
 
+
+
+	@RequestMapping("consultingCustomerAnswer.me")
+	public String consultingCustomerAnswer(@RequestParam(value="cr")int userno, Model model) 
+	{
+		model.addAttribute("no",userno);
+		
+		return "mypage/consultingCustomerAnswer";
+	}
 
 }

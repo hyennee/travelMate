@@ -168,6 +168,7 @@ public class mypageDaoImpl implements mypageDao{
 
 	}
 
+  
 	//오픈컨설팅 리스트보기
 	@Override
 	public List<HashMap<String, Object>> openConsulting(SqlSessionTemplate sqlSession, Member loginUser) {
@@ -181,6 +182,14 @@ public class mypageDaoImpl implements mypageDao{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("Mypage.openConsultingDetail", bOARD_NO) ;
 	}
+
+	@Override
+	public int insertResponse(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Mypage.insertResponse", map);
+	}
+	
+
 	
 	
 

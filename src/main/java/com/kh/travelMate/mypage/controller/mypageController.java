@@ -417,8 +417,8 @@ public class mypageController {
 		if(result != null) {
 
 			model.addAttribute("openConsulting", result);
-
-			System.out.println("openConsultingOne : " + result);
+      
+    	System.out.println("openConsultingOne : " + result);
 			return "mypage/detailOpenConsulting";
 		}else {
 			System.out.println("에러");
@@ -428,4 +428,28 @@ public class mypageController {
 
 
 	}
+
+	@RequestMapping("insertResponse.mp")
+	public String insertResponse(Model model, HttpServletRequest request, @RequestParam(value="no")int CONSULT_REQUEST_NO, @RequestParam(value="content")String content) {
+		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
+		System.out.println("CONSULT_REQUEST_NO : " +CONSULT_REQUEST_NO);
+		System.out.println("content : " + content);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("no", CONSULT_REQUEST_NO);
+		map.put("content", content);
+		map.put("user_no", loginUser.getUser_no());
+		int result = ms.insertResponse(map);
+
+		System.out.println("거래내역상세보기 : " + result);
+		if( result > 0 ) {
+			return "redirect:consultingCustomer.me";
+		}
+		else {
+
+			System.out.println("에러");
+			return "common/errorPage";
+		}
+	}
+
+		
 }

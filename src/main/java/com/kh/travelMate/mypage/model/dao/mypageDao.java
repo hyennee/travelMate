@@ -60,10 +60,13 @@ public interface mypageDao {
 
 	ConsultRequest2 selectOneTrade(SqlSessionTemplate sqlSession, int consultNo);
 
+
 	//오픈컨설팅 내역 리스트 보기
 	List<HashMap<String, Object>> openConsulting(SqlSessionTemplate sqlSession, Member loginUser);
 
 	//오픈컨설팅 내역 상세보기
 	HashMap<String, Object> selectOneOpenTrade(SqlSessionTemplate sqlSession, int bOARD_NO);
+
+	int insertResponse(SqlSessionTemplate sqlSession, Map<String, Object> map);
 
 }

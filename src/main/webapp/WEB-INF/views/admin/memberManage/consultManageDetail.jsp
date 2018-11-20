@@ -126,6 +126,17 @@ input {
 							<td class="row-header">특이사항</td>
 							<td>${ selectApplyDetail.etc }</td>
 						</tr>
+						<tr>
+						<td  class="row-header">첨부파일</td>
+						<c:if test="${ not empty selectApplyDetail.attachMent_No }">
+						<td>
+							<a href="${ pageContext.request.contextPath }/admin/downloadAttachment.admin?attachMent_No=${ selectApplyDetail.attachMent_No }"><b>${ selectApplyDetail.origin_Name }</b></a>
+						</td>
+						</c:if>
+						<c:if test="${ empty selectApplyDetail.attachMent_No }">
+						<td><b>파일 미첨부</b></td>
+						</c:if>
+						</tr>
 					</tbody>
 				</table>
 				<c:if test='${ not empty selectApplyDetail.status }'>

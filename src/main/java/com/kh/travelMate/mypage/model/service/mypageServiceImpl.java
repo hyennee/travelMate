@@ -208,6 +208,10 @@ public class mypageServiceImpl implements mypageService{
 		
 		return md.selectOneTrade(sqlSession, consultNo);
 	}
+	@Override
+	public int insertResponse(Map<String, Object> map) {
+		return md.insertResponse(sqlSession, map);
+	}
 	
 	//오픈컨설팅 리스트 보기
 	@Override
