@@ -1,7 +1,12 @@
 package com.kh.travelMate.admin.controller;
 
+import java.io.File;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.travelMate.admin.common.Pagination;
 import com.kh.travelMate.admin.model.service.BoardManageService;
+import com.kh.travelMate.admin.model.service.DownloadAttachmentService;
 import com.kh.travelMate.admin.model.service.MemberManageService;
 import com.kh.travelMate.admin.model.service.PaymentManageService;
 import com.kh.travelMate.admin.model.service.StatManageService;
+import com.kh.travelMate.admin.model.vo.AttachmentInfo;
 import com.kh.travelMate.admin.model.vo.BoardManage;
 import com.kh.travelMate.admin.model.vo.ConsultManage;
 import com.kh.travelMate.admin.model.vo.MemberManage;
@@ -30,6 +37,8 @@ public class AdminController {
 	private PaymentManageService pms;
 	@Autowired
 	private StatManageService sms;
+	@Autowired
+	private DownloadAttachmentService das;
 
 	@RequestMapping("admin/admin.main")
 	public String goAdminMain(Model model) {
@@ -411,6 +420,33 @@ public class AdminController {
 
 		return "admin/statsManage/statsJoinMember";
 	}
-
+	
+	@RequestMapping("admin/downloadAttachment.admin")
+	public void downloadAttachment(@RequestParam(defaultValue="0") int attachMent_No, HttpServletResponse response) throws Exception {
+		if(attachMent_No == 0) {
+			
+		} else {
+			// 파일 정보 가져온 후 처리하기
+			AttachmentInfo ai = das.getFile(attachMent_No);
+			String modify_Name = ai.getModify_Name();
+			String origin_Name = ai.getOrigin_Name();
+			String file_Name_Data[] = origin_Name.split("\\.");
+			String file_Extension = file_Name_Data[file_Name_Data.length - 1];
+			String file_Root = ai.getFile_Root();
+			// 실제 파일 경로
+			String full_Path = file_Root + "\\" + modify_Name + "." + file_Extension;
+			// 파일 크기 구해오기
+			byte fileByte[] = FileUtils.readFileToByteArray(new File(full_Path));
+			
+			// response에 setting
+			response.setContentType("application/octet-stream");
+			response.setContentLength(fileByte.length);
+			response.setHeader("Content-Disposition", "attachment; fileName=\"" + origin_Name + "\";"); 
+			response.setHeader("Content-Transfer-Encoding", "binary");
+			response.getOutputStream().write(fileByte);
+			response.getOutputStream().flush();
+			response.getOutputStream().close();
+		}
+	} 
 
 }

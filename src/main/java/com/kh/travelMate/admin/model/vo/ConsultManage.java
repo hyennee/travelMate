@@ -25,13 +25,15 @@ public class ConsultManage implements Serializable {
 	private String gender;
 	private Date enroll_Date;
 	private String user_Type_Level;
+	private int attachMent_No;
+	private String origin_Name;
 	
 	public ConsultManage() {}
 
 	public ConsultManage(int consult_Apply_No, Date apply_Date, String job, String info, String travel_Exp, String idea,
 			String etc, int user_No, int consult_Ok_Record_No, String status, String reason, Date agree_Date,
 			String email, String user_Name, String nick_Name, String phone, String birthDay, String gender,
-			Date enroll_Date, String user_Type_Level) {
+			Date enroll_Date, String user_Type_Level, int attachMent_No, String origin_Name) {
 		super();
 		this.consult_Apply_No = consult_Apply_No;
 		this.apply_Date = apply_Date;
@@ -53,6 +55,8 @@ public class ConsultManage implements Serializable {
 		this.gender = gender;
 		this.enroll_Date = enroll_Date;
 		this.user_Type_Level = user_Type_Level;
+		this.attachMent_No = attachMent_No;
+		this.origin_Name = origin_Name;
 	}
 
 	public int getConsult_Apply_No() {
@@ -215,6 +219,26 @@ public class ConsultManage implements Serializable {
 		this.user_Type_Level = user_Type_Level;
 	}
 
+	public int getAttachMent_No() {
+		return attachMent_No;
+	}
+
+	public void setAttachMent_No(int attachMent_No) {
+		this.attachMent_No = attachMent_No;
+	}
+
+	public String getOrigin_Name() {
+		return origin_Name;
+	}
+
+	public void setOrigin_Name(String origin_Name) {
+		this.origin_Name = origin_Name;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
 		return "ConsultManage [consult_Apply_No=" + consult_Apply_No + ", apply_Date=" + apply_Date + ", job=" + job
@@ -222,8 +246,12 @@ public class ConsultManage implements Serializable {
 				+ user_No + ", consult_Ok_Record_No=" + consult_Ok_Record_No + ", status=" + status + ", reason="
 				+ reason + ", agree_Date=" + agree_Date + ", email=" + email + ", user_Name=" + user_Name
 				+ ", nick_Name=" + nick_Name + ", phone=" + phone + ", birthDay=" + birthDay + ", gender=" + gender
-				+ ", enroll_Date=" + enroll_Date + ", user_Type_Level=" + user_Type_Level + "]";
+				+ ", enroll_Date=" + enroll_Date + ", user_Type_Level=" + user_Type_Level + ", attachMent_No="
+				+ attachMent_No + ", origin_Name=" + origin_Name + "]";
 	}
+
+
+
 
 
 
