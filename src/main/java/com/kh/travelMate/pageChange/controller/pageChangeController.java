@@ -177,6 +177,16 @@ public class pageChangeController {
 	{
 		return "mypage/cancelAccount";
 	}
+	
+	@RequestMapping("tradeOpenHistory.me")
+	public String tradeOpenHistory(Model model,HttpServletRequest request, HttpServletResponse response)
+	{
+		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+		List<HashMap<String,Object>> openConsulting = ms.openConsulting(loginUser);
+		
+		model.addAttribute("openConsulting", openConsulting);
+		return "mypage/tradeOpenHistory";
+	}
 
 
 }

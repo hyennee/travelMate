@@ -87,6 +87,7 @@ td{
 .thstyle{
 	width : 200px;
 	background-color : lightgray;
+	text-align:center;
 }
 </style>
 </head>
@@ -108,7 +109,7 @@ td{
 						<table id="example-table-1" width="100%" class="table table-bordered table-hover text-center" >
 								<tr >
 									<th class="thstyle">no</th>
-									<th style="background-color:lightgray;">컨설팅제목</th>
+									<th class="thstyle">컨설팅제목</th>
 									<th class="thstyle">컨설턴트</th>
 									<th class="thstyle">여행시작일자</th>
 									<th class="thstyle">여행종료일자</th>

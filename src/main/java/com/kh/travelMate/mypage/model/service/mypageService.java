@@ -57,6 +57,10 @@ public interface mypageService {
 //	거래내역 상세보기
 	ConsultRequest2 selectOneTrade(int consultNo);
 
+	List<HashMap<String, Object>> openConsulting(Member loginUser);
+
+	HashMap<String, Object> selectOneOpenTrade(int bOARD_NO);
+
 
 	
 }

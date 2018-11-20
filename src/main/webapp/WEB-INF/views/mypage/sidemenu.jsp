@@ -99,10 +99,10 @@ ul.sub li:hover {
 			<li class="group">
 				<div class="title">서비스 관리</div>
 				<ul class="sub">
-					<li><a href="tradeHistory.me">거래내역</a></li>
+					<li><a href="tradeHistory.me">다이렉트 컨설팅 내역</a></li>
+					<li><a href="tradeOpenHistory.me">오픈컨설팅 내역</a></li>
 					<li><a href="oneByOneQnA.me">문의내역</a></li>
 					<li><a href="Money.me">사이버머니</a></li>
-					
 				</ul>
 			</li>
 		</ul>

@@ -179,7 +179,7 @@ a {
 							</table>
 						</td>
 						<td class="tdsection">
-							<p>거래내역</p>
+							<p>다이렉트컨설팅</p>
 							<table class="table">
 								<tr>
 									<th class="thstyle">no</th>
@@ -199,6 +199,31 @@ a {
 									</tr>
 								</c:forEach>
 							</table>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdsection">
+						<p>오픈컨설팅</p>
+							<table class="table">
+								<tr>
+									<th class="thstyle">no</th>
+									<th class="thstyle">오픈컨설팅신청제목</th>
+									<th class="thstyle">작성자</th>
+									<th class="thstyle">카테고리</th>
+									<th class="thstyle">상태</th>
+								</tr>
+								<c:forEach var="size" items="${ openConsulting }" >
+									<tr>
+										
+										<td>${ size.BOARD_NO }</td>
+										<td>${ size.TITLE }</td>
+										<td>${ size.NICK_NAME }</td>
+										<td>${ size.CATEGORY}</td>
+										<td>${ size.STATUS }</td>
+									</tr>
+								</c:forEach>
+							</table>
+						
 						</td>
 					</tr>
 				</table>
