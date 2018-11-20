@@ -144,11 +144,11 @@ table th {
 				</div>
 				<div class="searchArea">
 					<form class="navbar-form navbar-center">
-						<select id="searchCondition">
+						<select id="searchCondition" name="sel">
 							<option value="title">제목</option>
 							<option value="content">내용</option>
 							<option value="writer">작성자</option>
-						</select> <input type="text" class="form-control" placeholder="키워드...">
+						</select> <input type="text" class="form-control" placeholder="키워드..." name="val">
 						<button type="submit" class="btn btn-info">검색</button>
 					</form>
 				</div>

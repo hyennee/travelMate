@@ -38,7 +38,7 @@
 		FROM
 		MEMBER
 	</select>
-
+	
 	<select id="todayJoinMemberCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM MEMBER
@@ -63,6 +63,41 @@
 		SELECT *
 		FROM MEMBER
 		ORDER BY ENROLL_DATE DESC
+	</select>
+	
+	<select id="memberListCountSel" parameterType="java.util.HashMap" resultType="_int">
+		SELECT COUNT(*)
+		FROM
+		MEMBER
+		<where> 
+		    <if test="sel == 'name'">
+		         user_name like #{val}
+		    </if> 
+		    <if test="sel == 'email'">
+		        AND email like #{val}
+		    </if>
+		    <if test="sel == 'phone'">
+		        AND phone like #{val}
+		    </if>
+	 	</where>
+	</select>
+	
+	<select id="memberListSel" parameterType="java.util.HashMap"
+		resultMap="membermanageResultSet">
+		SELECT *
+		FROM MEMBER
+		<where> 
+		    <if test="sel == 'name'">
+		         user_name like #{val}
+		    </if> 
+		    <if test="sel == 'email'">
+		        AND email like #{val}
+		    </if>
+		    <if test="sel == 'phone'">
+		        AND phone like #{val}
+		    </if>
+	 	</where>
+		ORDER BY USER_NO DESC
 	</select>
 
 </mapper>  

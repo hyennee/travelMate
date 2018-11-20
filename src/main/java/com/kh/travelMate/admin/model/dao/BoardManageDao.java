@@ -42,4 +42,8 @@ public interface BoardManageDao {
 
 	ArrayList<BoardManage> getOTOboardList(SqlSessionTemplate sqlSession);
 
+	int getListCount(SqlSessionTemplate sqlSession, String sel, String val);
+
+	ArrayList<BoardManage> boardList(SqlSessionTemplate sqlSession, PageInfo page, String sel, String val);
+
 }

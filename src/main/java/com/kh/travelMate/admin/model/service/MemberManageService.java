@@ -16,4 +16,8 @@ public interface MemberManageService {
 
 	ArrayList<MemberManage> getNewMemberList();
 
+	int getListCount(String sel, String val);
+
+	ArrayList<MemberManage> memberList(PageInfo page, String sel, String val);
+
 }

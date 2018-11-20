@@ -1,6 +1,7 @@
 package com.kh.travelMate.admin.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.inject.Inject;
 
@@ -144,6 +145,36 @@ public class BoardManageDaoImpl implements BoardManageDao {
 		ArrayList<BoardManage> otoBoardList = null;
 		otoBoardList = (ArrayList)sqlSession.selectList("BoardManage.getOTOboardList");
 		return otoBoardList;
+	}
+
+	@Override
+	public int getListCount(SqlSessionTemplate sqlSession, String sel, String val) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("sel", sel);
+		map.put("val", val);
+		return sqlSession.selectOne("BoardManage.boardListCount", map);
+	}
+
+	@Override
+	public ArrayList<BoardManage> boardList(SqlSessionTemplate sqlSession, PageInfo page, String sel, String val) {
+		ArrayList<BoardManage> boardList = null;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("sel", sel);
+		map.put("val", val);
+		// 몇 개의 게시물을 건너뛰고 조회할 것인지에 대한 처리
+		int offset = ((page.getCurrentPage() - 1) * page.getLimit());
+		
+		System.out.println("offset: " + offset);
+		
+		// myBatis가 제공하고 있는 RowBounds 클래스 사용
+		RowBounds rowBounds = new RowBounds(offset, page.getLimit());
+		
+		System.out.println("rowBounds: " + rowBounds);
+		
+		// generic을 제외하고 down-casting
+		boardList = (ArrayList)sqlSession.selectList("BoardManage.boardList", map, rowBounds);
+		
+		return boardList;
 	}
 
 }

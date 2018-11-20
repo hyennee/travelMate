@@ -18,4 +18,8 @@ public interface MemberManageDao {
 
 	ArrayList<MemberManage> getNewMemberList(SqlSessionTemplate sqlSession);
 
+	int getListCount(SqlSessionTemplate sqlSession, String sel, String val);
+
+	ArrayList<MemberManage> memberList(SqlSessionTemplate sqlSession, PageInfo page, String sel, String val);
+
 }

@@ -124,11 +124,11 @@ table th {
 				</div>
 				<div class="searchArea">
 					<form class="navbar-form navbar-center">
-						<select id="searchCondition">
-							<option value="user_name">이름</option>
+						<select id="searchCondition" name ="sel">
+							<option value="name">이름</option>
 							<option value="email">이메일</option>
 							<option value="phone">전화번호</option>
-						</select> <input type="text" class="form-control" placeholder="키워드...">
+						</select> <input type="text" class="form-control" name="val" placeholder="키워드...">
 						<button type="submit" class="btn btn-info">검색</button>
 					</form>
 				</div>

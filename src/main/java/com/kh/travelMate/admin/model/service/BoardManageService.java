@@ -40,4 +40,8 @@ public interface BoardManageService {
 
 	ArrayList<BoardManage> getOTOboardList();
 
+	int getListCount(String sel, String string);
+
+	ArrayList<BoardManage> boardList(PageInfo page, String sel, String string);
+
 }
