@@ -38,6 +38,7 @@
 		FROM CONSULT_REQUEST cr
 		join member m on (cr.REQUEST_USER_NO = m.user_no) 
 		WHERE CONSULT_USER_NO = #{user_no}
+		and status = 'N'
 	</select> 
 	
 	
@@ -169,7 +170,10 @@
 		SET modify_Name = #{modifyName}, upload_date=SYSDATE, origin_Name=#{originName}
 		WHERE ref_no = #{refNo}
 	</update>
-
+	<insert id="insertResponse" parameterType="java.util.HashMap">
+		insert into CONSULT_RESPONSE
+		values(SEQ_CONSULT_RESPONSE_NO.nextval,#{content}, #{no}, sysdate,#{user_no})
+	</insert>
 </mapper> 
 
 

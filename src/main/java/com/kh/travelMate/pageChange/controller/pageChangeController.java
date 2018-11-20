@@ -177,6 +177,12 @@ public class pageChangeController {
 	{
 		return "mypage/cancelAccount";
 	}
-
-
+	
+	@RequestMapping("consultingCustomerAnswer.me")
+	public String consultingCustomerAnswer(@RequestParam(value="cr")int userno, Model model) 
+	{
+		model.addAttribute("no",userno);
+		
+		return "mypage/consultingCustomerAnswer";
+	}
 }

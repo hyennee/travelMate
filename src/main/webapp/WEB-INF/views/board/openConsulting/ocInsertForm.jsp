@@ -119,7 +119,6 @@
 	
 	<!-- Initialize the editor. -->
     <script>
-    	console.log($('textarea').froalaEditor());
     	
     	$('textarea').froalaEditor(
     	{   
