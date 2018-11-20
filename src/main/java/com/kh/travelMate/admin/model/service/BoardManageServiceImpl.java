@@ -115,4 +115,16 @@ public class BoardManageServiceImpl implements BoardManageService {
 		return bmd.getOTOboardList(sqlSession);
 	}
 
+	@Override
+	public int getListCount(String sel, String val) {
+		int listCount = bmd.getListCount(sqlSession, sel, val);
+		return listCount;
+	}
+
+	@Override
+	public ArrayList<BoardManage> boardList(PageInfo page, String sel, String val) {
+		ArrayList<BoardManage> boardList = bmd.boardList(sqlSession, page, sel, val);
+		return boardList;
+	}
+
 }

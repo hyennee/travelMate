@@ -46,6 +46,18 @@ public class MemberManageServiceImpl implements MemberManageService {
 		return mmd.getNewMemberList(sqlSession);
 	}
 
+	@Override
+	public int getListCount(String sel, String val) {
+		int listCount = mmd.getListCount(sqlSession, sel, val);
+		return listCount;
+	}
+
+	@Override
+	public ArrayList<MemberManage> memberList(PageInfo page, String sel, String val) {
+		ArrayList<MemberManage> memberList = mmd.memberList(sqlSession, page, sel, val);
+		return memberList;
+	}
+
 
 
 

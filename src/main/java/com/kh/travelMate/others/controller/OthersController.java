@@ -6,6 +6,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.travelMate.common.Attachment;
+import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.others.model.service.OthersService;
 import com.kh.travelMate.others.model.vo.ConsultApply;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
@@ -58,8 +60,12 @@ public class OthersController {
 	}
 	
 	@RequestMapping("insertConsultRequest.others")
-	public String insertConsultRequest(ConsultRequest cr, Model model)
+	public String insertConsultRequest(ConsultRequest cr, Model model, HttpServletRequest request)
 	{
+		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
+		
+		loginUser.setCybermoney(loginUser.getCybermoney()-2000);
+		request.getSession().setAttribute("loginUser", loginUser);
 		os.insertConsultRequest(cr);
 		
 		return "others/applyConsultComplete";

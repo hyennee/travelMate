@@ -23,11 +23,26 @@
 	
 	}
 </style>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function check(){
+		var money = ${ sessionScope.loginUser.cybermoney };
+		
+		if(money<2000){
+			alert("사이버머니 잔액이 부족합니다");
+		}else{
+			$('#myFrom') 
+			.attr('action','insertConsultRequest.others') 
+			.submit();
+		}
+	}
+
+</script>
 </head>
 <body>
 	<jsp:include page="../must/header.jsp" />
 	
-	<form action="insertConsultRequest.others" method="post">
+	<form action="insertConsultRequest.others" method="post" id="myFrom">
 	<input type="hidden" name="REQUEST_USER_NO" value="${ sessionScope.loginUser.user_no}"">
 	<input type="hidden" name="CONSULT_USER_NO" value="${user_no}"">
 	<div id="contents" class="full-container">
@@ -110,7 +125,7 @@ ex) 오로라 여행 테마를 원해요." cols="126" rows="20"></textarea>
 			</div>
 			<br>
 			<div style="width:960px; margin:auto;" align="center">
-				<button type="submit" style="background:skyblue; border:none; border-radius:5px; height:45px; color:white; font-size:16px; font-weight:bold;cursor: pointer;"><img src="${ contextPath }/resources/images/check.png" style="width:15px; height:15px;">&nbsp;접수하기</button>
+				<button type="button" onclick="check();" style="background:skyblue; border:none; border-radius:5px; height:45px; color:white; font-size:16px; font-weight:bold;cursor: pointer;"><img src="${ contextPath }/resources/images/check.png" style="width:15px; height:15px;">&nbsp;접수하기</button>
 			</div>
 			<br>
 		</div>

@@ -47,23 +47,31 @@ public class AdminController {
 	}
 
 	@RequestMapping("admin/memberManage.admin")
-	public String memberManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model) {
-
+	public String memberManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model,
+						@RequestParam(defaultValue="null")String sel, @RequestParam(defaultValue="null")String val) {
+		System.out.println(sel);
+		System.out.println(val);
 		ArrayList<MemberManage> memberList;
-
-		int listCount = mms.getListCount();
-		// 테스트 코드
+		int listCount;
+		PageInfo page;
+		if(sel.equals("null")) {
+			listCount = mms.getListCount();
+			// 테스트 코드
+			page = Pagination.getPageInfo(currentPage, listCount);
+			
+			memberList = mms.memberList(page);
+	
+		}else {
+			listCount = mms.getListCount(sel, "%" + val + "%");
+			page = Pagination.getPageInfo(currentPage, listCount);
+			
+			memberList = mms.memberList(page, sel,"%" + val + "%");
+		}
 		System.out.println("listCount: " + listCount);
-
-		PageInfo page = Pagination.getPageInfo(currentPage, listCount);
-
-		memberList = mms.memberList(page);
-
+		
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("page", page);
-
 		return "admin/memberManage/memberManageMain";
-
 	}
 
 	@RequestMapping("admin/memberManageDetail.admin")
@@ -157,20 +165,26 @@ public class AdminController {
 	}
 
 	@RequestMapping("admin/boardManage.admin")
-	public String boardManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model) {
+	public String boardManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model,
+			@RequestParam(defaultValue="null")String sel, @RequestParam(defaultValue="null")String val) {
 
 		ArrayList<BoardManage> boardList;
 
 		int listCount = 0;
+		PageInfo page;
+		if(sel.equals("null")) {
+			listCount = bms.getListCount();
+			page = Pagination.getPageInfo(currentPage, listCount);
 
-		listCount = bms.getListCount();
-
+			boardList = bms.boardList(page);
+		}else {
+			listCount = bms.getListCount(sel, "%" + val + "%");
+			page = Pagination.getPageInfo(currentPage, listCount);
+			
+			boardList = bms.boardList(page, sel,"%" + val + "%");
+		}
 		// 테스트 코드
 		System.out.println("listCount: " + listCount);
-
-		PageInfo page = Pagination.getPageInfo(currentPage, listCount);
-
-		boardList = bms.boardList(page);
 
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("page", page);

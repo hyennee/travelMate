@@ -52,9 +52,20 @@
 		JOIN MEMBER M ON (M.USER_NO = B.WRITER)
 	</select>
 
-	<select id="boardListCount" resultType="_int">
+	<select id="boardListCount" resultType="_int"  parameterType="java.util.HashMap">
 		SELECT NVL(COUNT(*), 0)
 		FROM BOARD
+		<where> 
+		    <if test="sel == 'title'">
+		         title like #{val}
+		    </if> 
+		    <if test="sel == 'content'">
+		        AND content like #{val}
+		    </if>
+		    <if test="sel == 'writer'">
+		        AND writer like #{val}
+		    </if>
+	 	</where>
 	</select>
 
 	<select id="noticeListCount" resultType="_int">
@@ -63,8 +74,8 @@
 		BOARD
 		WHERE CATEGORY = '1'
 	</select>
-
-	<select id="boardList" parameterType="BoardManage"
+	
+	<select id="boardList" parameterType="java.util.HashMap"
 		resultMap="boardmanageResultSet">
 		SELECT BOARD_NO, WRITER, CATEGORY, TITLE, CONTENT,
 		BOARD_DATE, STATUS,
@@ -74,10 +85,22 @@
 		FROM BOARD B
 		JOIN MEMBER M ON
 		(M.USER_NO = B.WRITER)
+		<where> 
+		    <if test="sel == 'title'">
+		         TITLE like #{val}
+		    </if> 
+		    <if test="sel == 'content'">
+		        AND CONTENT like #{val}
+		    </if>
+		    <if test="sel == 'writer'">
+		        AND NICK_NAME like #{val}
+		    </if>
+	 	</where>
 		START WITH BOARD_LEVEL = 1
 		CONNECT BY NOCYCLE
 		PRIOR
 		BOARD_NO = REF_NO
+		
 		ORDER SIBLINGS BY BOARD_NO DESC
 	</select>
 
