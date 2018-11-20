@@ -14,9 +14,8 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<title>문의내역리스트</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>거래내역</title>
+
 <style>
 #jb-container {
 	width: 90%;
@@ -66,6 +65,7 @@ tr {
 }
 
 
+
 .section {
 	border: 1px solid #bcbcbc;
 	width: 100%;
@@ -87,7 +87,6 @@ td{
 .thstyle{
 	width : 200px;
 	background-color : lightgray;
-	text-align:center;
 }
 </style>
 </head>
@@ -101,34 +100,40 @@ td{
 			<jsp:include page="sidemenu.jsp" />
 		</div>
 		<div id="jb-content">
-			<h2>문의내역</h2>
+			<h2>거래내역</h2>
 			<hr />
 			<div >
-						<p>문의내역리스트</p>
-						<form action="selectOneByOneBoard.bo" method="post">
-						<table id="QnAList" width="100%" class="table table-bordered table-hover text-center">
+						<p>거래내역리스트</p>
+						<form action="selectOneOpenTrade.mp" method="post">
+						<table id="example-table-1" width="100%" class="table table-bordered table-hover text-center" >
 								<tr >
 									<th class="thstyle">no</th>
-									<th class="thstyle">제목</th>
-									<th class="thstyle">작성자</th>
-									<!-- <th class="thstyle">답변여부</th> -->
-									<th class="thstyle">작성일시</th>
+									<th class="thstyle">컨설팅제목</th>
+									<th class="thstyle">게시글 레벨no</th>
+									<th class="thstyle">작성일자</th>
+									<th class="thstyle">작성자no</th>
 								</tr>
-								<c:forEach var="size" items="${ oneByOne }" >
-								<tr style="cursor:pointer;" onclick="detail('${ size.BOARD_NO}')" >
-									<td>
-										${ size.BOARD_NO}
-										<input type="hidden" name="boardNo" value="${ size.BOARD_NO}" />
-									</td>
-									<td>${ size.TITLE}</td>
-									<td>${ size.NICK_NAME}</td>
-									<%-- <td><c:if test="${ size.STATUS eq 'Y'}" >답변</c:if>
-									<c:if test="${ size.STATUS eq 'N'}" >미응답</c:if></td> --%>
-									<td>${ size.BOARD_DATE}</td>
-								</tr>
+								<c:forEach var="size" items="${ openConsulting }" >
+									<tr style="cursor:pointer;"  onclick="detail('${ size.BOARD_NO}')" >
+										
+										<td>${ size.BOARD_NO }
+											<input type="hidden" name="BOARD_NO" value="${ size.BOARD_NO}" />
+										</td>
+										<td>${ size.TITLE }</td>
+										<td>${ size.BOARD_LEVEL }</td>
+										<td>${ size.BOARD_DATE}</td>
+										<td>${ size.WRITER }</td>
+										
+									</tr>
 								</c:forEach>
 							</table>
-						</form>
+							</form>
+							<!-- 
+							<div class="col-lg-12" id="ex1_Result1" ></div> 
+							<div class="col-lg-12" id="ex1_Result2" ></div>  
+							-->
+					
+					
 			</div>
 			<br />
 		</div>
@@ -138,35 +143,15 @@ td{
 
 	</div>
 
-
+	
 	<jsp:include page="../must/footer.jsp" />
+	
 	<script>
-	
-	function detail(boardNo){
-		
-		
-		location.href="selectOneByOneBoard.bo?boardNo=" + boardNo;
-		
-		
-	}
-		
-	/* 
-	
-	$(function()
-		{
-			$("#QnAList").children().click(function(){
-						
-							var boardNo = $(this).children("input[name='boardNo']").val();
-							
-							
-							location.href="selectOneByOneBoard.bo?boardNo=" + boardNo;
-				
-// 				location.href =  "selectOneByOneBoard.bo?boardNo="+${size.board}
-				
-			})
-		}); */
-	
+		function detail(BOARD_NO){
+			location.href="selectOneOpenTrade.mp?BOARD_NO=" + BOARD_NO;
+		}
 	</script>
+
 </body>
 </html>
 

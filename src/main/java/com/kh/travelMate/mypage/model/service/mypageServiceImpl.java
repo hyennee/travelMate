@@ -213,6 +213,30 @@ public class mypageServiceImpl implements mypageService{
 		return md.insertResponse(sqlSession, map);
 	}
 	
+	//오픈컨설팅 리스트 보기
+	@Override
+	public List<HashMap<String, Object>> openConsulting(Member loginUser) {
+		List<HashMap<String, Object>> openConsulting = new ArrayList<HashMap<String, Object>>();
+	
+		openConsulting = md.openConsulting(sqlSession,loginUser);
+	
+		System.out.println("openConsulting 갔다왔니 ? : " + openConsulting);
+	
+		for(int i = 0; i < openConsulting.size(); i++) {
+		System.out.println(openConsulting.get(i).get("oneByOneHistory"));
+		}
+		
+		return openConsulting;
+	}
+	
+	//오픈컨설팅 상세보기
+	@Override
+	public HashMap<String, Object> selectOneOpenTrade(int bOARD_NO) {
+		
+		
+		return md.selectOneOpenTrade(sqlSession, bOARD_NO);
+	}
+	
 
 	
 

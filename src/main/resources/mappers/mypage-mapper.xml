@@ -170,10 +170,34 @@
 		SET modify_Name = #{modifyName}, upload_date=SYSDATE, origin_Name=#{originName}
 		WHERE ref_no = #{refNo}
 	</update>
+
+
+<!-- 	오픈컨설팅리스트 받아오기  b.category=3이고 status Y 여야함-->
+	<select id="openConsultingList" parameterType="_int" resultType="java.util.HashMap">
+		SELECT BOARD_NO,WRITER, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO, M.NICK_NAME
+		FROM BOARD B
+		JOIN MEMBER M ON(M.USER_NO = B.WRITER)
+		WHERE M.USER_NO = #{user_no}
+		AND B.CATEGORY ='3'
+		AND B.STATUS ='Y'
+	</select>
+	
+<!-- 	오픈컨설팅 상세내역 보기 -->
+	<select id="openConsultingDetail" parameterType="_int" resultType="java.util.HashMap">
+		SELECT BOARD_NO,WRITER, CATEGORY, TITLE, CONTENT, BOARD_DATE, STATUS, BOARD_LEVEL, REF_NO, M.NICK_NAME
+		FROM BOARD B
+		JOIN MEMBER M ON(M.USER_NO = B.WRITER)
+		WHERE B.BOARD_NO = #{boardNo} 
+		AND B.CATEGORY ='3'
+		AND B.STATUS ='Y'	
+	</select>
+	
+
 	<insert id="insertResponse" parameterType="java.util.HashMap">
 		insert into CONSULT_RESPONSE
 		values(SEQ_CONSULT_RESPONSE_NO.nextval,#{content}, #{no}, sysdate,#{user_no})
 	</insert>
+
 </mapper> 
 
 

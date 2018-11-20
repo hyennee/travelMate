@@ -168,12 +168,28 @@ public class mypageDaoImpl implements mypageDao{
 
 	}
 
+  
+	//오픈컨설팅 리스트보기
+	@Override
+	public List<HashMap<String, Object>> openConsulting(SqlSessionTemplate sqlSession, Member loginUser) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Mypage.openConsultingList", loginUser.getUser_no());
+	}
+
+	//오프컨설팅 상세보기
+	@Override
+	public HashMap<String, Object> selectOneOpenTrade(SqlSessionTemplate sqlSession, int bOARD_NO) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("Mypage.openConsultingDetail", bOARD_NO) ;
+	}
+
 	@Override
 	public int insertResponse(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.insert("Mypage.insertResponse", map);
 	}
 	
+
 	
 	
 

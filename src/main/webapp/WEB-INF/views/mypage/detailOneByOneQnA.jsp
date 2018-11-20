@@ -107,7 +107,7 @@ td{
 						
 						<label for="">no</label><input type="text" class="form-control no"  value="${ board.boardNo }" readonly/><br />
 						<label for="">작성자</label><input type="text" class="form-control writer" value="${ board.nickName }" readonly/><br />
-						<label for="">답변여부</label><input type="text" class="form-control" value="<c:if test="${ board.status eq 'Y'}">답변있음</c:if><c:if test="${ board.status eq 'N' }">준비중</c:if>" />
+<%-- 						<label for="">답변여부</label><input type="text" class="form-control" value="<c:if test="${ board.status eq 'Y'}">답변있음</c:if><c:if test="${ board.status eq 'N' }">준비중</c:if>" /> --%>
 						<label for="">날짜</label><input type="text" class="form-control date" value="${ board.boardDate }" readonly/><br />
 						<label for="">제목</label><input type="text" class="form-control oboTitle" value="${ board.title }"/><br />
 						<label for="">내용</label><br />

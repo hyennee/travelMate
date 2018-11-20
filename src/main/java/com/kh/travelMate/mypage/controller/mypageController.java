@@ -54,12 +54,14 @@ public class mypageController {
 		List<HashMap<String,Object>> tradeInfo = ms.tradeInfoHistory(loginUser);
 		List<HashMap<String,Object>> oneByOne = ms.oneByOneHistory(loginUser);
 		List<HashMap<String,Object>> cyberMoney = ms.cyberMoneyHistory(loginUser);
+		List<HashMap<String,Object>> openConsulting = ms.openConsulting(loginUser);
 
 		//request.setAttribute("cyberMoney", cyberMoney);
 		model.addAttribute("cyberMoney", cyberMoney);
 		model.addAttribute("oneByOne", oneByOne);
 		model.addAttribute("tradeInfo", tradeInfo);
-
+		model.addAttribute("openConsulting", openConsulting);
+		
 		return "mypage/mypagemain";
 	}
 
@@ -375,7 +377,7 @@ public class mypageController {
 
 	}
 
-	//컨설팅한 거래내역 상세보기
+	//다이렉트컨설팅한 거래내역 상세보기
 	@RequestMapping("selectOneTrade.mp")
 	public String selectOneTrade(Model model, HttpServletRequest request, @RequestParam(value="CONSULT_REQUEST_NO")int CONSULT_REQUEST_NO) {
 
@@ -403,6 +405,30 @@ public class mypageController {
 		}
 	}
 	
+	
+	//오픈컨설팅한 거래내역 상세보기
+	@RequestMapping("selectOneOpenTrade.mp")
+	public String selectOneOpenTrade(@RequestParam(value="BOARD_NO")int BOARD_NO, Model model, HttpServletRequest request) {
+
+		//ModelAndView / String 로 포워딩 한다
+		System.out.println("boardNo : " + BOARD_NO);
+		//			String boardNo=request.getParameter("boardNo");
+		HashMap<String, Object> result = ms.selectOneOpenTrade(BOARD_NO);
+		if(result != null) {
+
+			model.addAttribute("openConsulting", result);
+      
+    	System.out.println("openConsultingOne : " + result);
+			return "mypage/detailOpenConsulting";
+		}else {
+			System.out.println("에러");
+			return "common/errorPage";
+
+		}
+
+
+	}
+
 	@RequestMapping("insertResponse.mp")
 	public String insertResponse(Model model, HttpServletRequest request, @RequestParam(value="no")int CONSULT_REQUEST_NO, @RequestParam(value="content")String content) {
 		Member loginUser = (Member)(request.getSession().getAttribute("loginUser"));
@@ -425,4 +451,5 @@ public class mypageController {
 		}
 	}
 
+		
 }

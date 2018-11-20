@@ -178,6 +178,19 @@ public class pageChangeController {
 		return "mypage/cancelAccount";
 	}
 	
+
+	@RequestMapping("tradeOpenHistory.me")
+	public String tradeOpenHistory(Model model,HttpServletRequest request, HttpServletResponse response)
+	{
+		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+		List<HashMap<String,Object>> openConsulting = ms.openConsulting(loginUser);
+		
+		model.addAttribute("openConsulting", openConsulting);
+		return "mypage/tradeOpenHistory";
+	}
+
+
+
 	@RequestMapping("consultingCustomerAnswer.me")
 	public String consultingCustomerAnswer(@RequestParam(value="cr")int userno, Model model) 
 	{
@@ -185,4 +198,5 @@ public class pageChangeController {
 		
 		return "mypage/consultingCustomerAnswer";
 	}
+
 }

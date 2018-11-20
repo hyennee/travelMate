@@ -88,8 +88,7 @@
 				<div class="fr-view" style="width:800px; margin:auto;">
 					<!-- Create a tag that we will use as the editable area. -->
 				    <!-- You can use a div tag as well. -->
-				    <textarea name="content">
-				    	> 여행목적 : <br>
+				    <textarea name="content">z> 여행목적 : <br>
 				    	> 여행인원 : <br>
 				    	> 여행지역 : <br>
 				    	> 여행일자 : <br>
