@@ -54,7 +54,8 @@
 		FROM MEMBER
 		WHERE EMAIL = #{email}
 		AND PASSWORD = #{password}
-		AND JOIN_STATUS = 'T'
+		AND (JOIN_STATUS = 'T'
+		OR JOIN_STATUS = 'U')
 	</select> 
 
 	<!-- 회원가입용 쿼리문 -->
@@ -70,7 +71,8 @@
 		SELECT PASSWORD
 		FROM MEMBER
 		WHERE EMAIL = #{email}
-		AND JOIN_STATUS = 'T'
+		AND (JOIN_STATUS = 'T'
+		OR JOIN_STATUS = 'U')
 	</select>
 	
 	<!-- 암호화 후 로그인용 쿼리문 -->
@@ -78,7 +80,8 @@
 		SELECT *
 		FROM MEMBER
 		WHERE EMAIL = #{email}
-		AND JOIN_STATUS = 'T'
+		AND (JOIN_STATUS = 'T'
+		OR JOIN_STATUS = 'U')
 	</select>
 	
 	<!-- 아이디 중복체크용 메소드 -->
@@ -119,14 +122,16 @@
 		FROM MEMBER
 		WHERE USER_NAME = #{user_name} 
 		AND EMAIL = #{email}
-		AND JOIN_STATUS = 'T' 
+		AND (JOIN_STATUS = 'T' 
+		OR JOIN_STATUS = 'U')
 	
 	</select>
 	
 	<!-- 비밀번호 찾기 후 임시 비밀번호로 업데이트하는 메소드 -->
 	<select id="updatePwd" resultType="java.lang.Integer" parameterType="java.lang.String">
 		UPDATE MEMBER
-		SET PASSWORD = #{password}
+		SET PASSWORD = #{password},
+		JOIN_STATUS = 'U'
 		WHERE EMAIL = #{email}
 		AND JOIN_STATUS = 'T'
 	
@@ -163,6 +168,22 @@
 				#{nick_name}, NULL, #{birthday}, #{gender}, 
 				SYSDATE, SYSDATE, DEFAULT, NULL, 0, SYSDATE, NULL, DEFAULT, 'K')
 	</insert>
+	
+	<!-- DB에 저장되어 있는 회원의 비밀번호 가지고 오기 -->
+	<select id="selectModifyPwd" parameterType="Member" resultType="java.lang.String">
+	SELECT PASSWORD
+	FROM MEMBER
+	WHERE USER_NO = #{user_no}
+	</select>
+	
+	<select id="updateModifyPwd" resultType="java.lang.Integer" parameterType="Member">
+		UPDATE MEMBER
+		SET PASSWORD = #{password},
+		JOIN_STATUS = 'T'
+		WHERE USER_NO = #{user_no}
+		AND JOIN_STATUS = 'U'
+	
+	</select>
 
 </mapper> 
 
