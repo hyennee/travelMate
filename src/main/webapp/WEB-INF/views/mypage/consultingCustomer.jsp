@@ -110,13 +110,13 @@ td{
 								<c:forEach var="size" items="${ consultingCustomer }" >
 									
 								
-									<tr>
-										<td>${ size.CONSULT_REQUEST_NO }</th>
-										<td>${ size.TRAVEL_PURPOSE }</th>
-										<td>${ size.TRAVEL_AREA }</th>
-										<td>${ size.TRAVEL_START_DATE }</th>
-										<td>${ size.TRAVEL_END_DATE }</th>
-										<td>${ size.USER_NAME }</th>	
+									<tr onclick="location.href='consultingCustomerAnswer.me?cr=${ size.CONSULT_REQUEST_NO }'" style="cursor: pointer;">
+										<td>${ size.CONSULT_REQUEST_NO }</td>
+										<td>${ size.TRAVEL_PURPOSE }</td>
+										<td>${ size.TRAVEL_AREA }</td>
+										<td>${ size.TRAVEL_START_DATE }</td>
+										<td>${ size.TRAVEL_END_DATE }</td>
+										<td>${ size.USER_NAME }</td>	
 									</tr>
 								
 								</c:forEach>

@@ -167,6 +167,12 @@ public class mypageDaoImpl implements mypageDao{
 		return sqlSession.selectOne("Mypage.selectOneTrade", consultNo);
 
 	}
+
+	@Override
+	public int insertResponse(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Mypage.insertResponse", map);
+	}
 	
 	
 	

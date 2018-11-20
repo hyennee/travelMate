@@ -60,4 +60,6 @@ public interface mypageDao {
 
 	ConsultRequest2 selectOneTrade(SqlSessionTemplate sqlSession, int consultNo);
 
+	int insertResponse(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
 }

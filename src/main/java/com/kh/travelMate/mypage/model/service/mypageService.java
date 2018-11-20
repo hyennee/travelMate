@@ -57,6 +57,8 @@ public interface mypageService {
 //	거래내역 상세보기
 	ConsultRequest2 selectOneTrade(int consultNo);
 
+	int insertResponse(Map<String, Object> map);
+
 
 	
 }
