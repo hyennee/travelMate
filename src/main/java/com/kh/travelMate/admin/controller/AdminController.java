@@ -473,6 +473,9 @@ public class AdminController {
 
 	@RequestMapping("admin/statsManage.admin")
 	public String statsManageAdmin(Model model) {
+		// sms.getMemberSummary();
+		// sms.getPaymentSummary();
+		// sms.getBoardSummary();
 
 
 		return "admin/statsManage/statsManageMain";
@@ -510,6 +513,25 @@ public class AdminController {
 			response.getOutputStream().flush();
 			response.getOutputStream().close();
 		}
-	} 
+	}
+	
+	@RequestMapping("admin/paymentRequestManage.admin")
+	public String paymentRequestManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model,
+			@RequestParam(defaultValue="null")String sel, @RequestParam(defaultValue="null")String val){
+		
+		return "admin/paymentManage/paymentRequestManageMain";
+	}
+	
+	@RequestMapping("admin/paymentRequestApproveManage.admin")
+	public String paymentRequestApproveManage(@RequestParam(defaultValue="0") int withDraw_No, @RequestParam(defaultValue="null") String approveCode, Model model){
+		
+		return "admin/paymentManage/paymentRequestApproveManage";
+	}
+	
+	@RequestMapping("admin/paymentRequestManageDetail.admin")
+	public String paymentRequestManageDetail(@RequestParam(defaultValue="0") int withDraw_No, Model model){
+		
+		return "admin/paymentManage/paymentRequestManageDetail";
+	}
 
 }
