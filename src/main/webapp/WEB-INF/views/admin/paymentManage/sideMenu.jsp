@@ -29,6 +29,8 @@
 			<div class="panel-body">
 				<b><a
 					href="${ pageContext.request.contextPath }/admin/paymentManage.admin">결제목록</a></b><br><br>
+			<b><a
+					href="${ pageContext.request.contextPath }/admin/paymentRequestManage.admin">출금요청목록</a></b><br><br>
 			</div>
 		</div>
 	</div>

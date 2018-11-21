@@ -21,6 +21,22 @@
 		<result property="ref_No" column="REF_NO"></result>
 	</resultMap>
 
+	<resultMap type="PaymentRequest" id="paymentRequestResultSet">
+		<id property="withDraw_No" column="WITHDRAW_NO"></id>
+		<result property="status" column="STATUS"></result>
+		<result property="withDraw_Date" column="WITHDRAW_DATE"></result>
+		<result property="name" column="NAME"></result>
+		<result property="bank" column="BANK"></result>
+		<result property="bank_No" column="BANK_NO"></result>
+		<result property="user_No" column="USER_NO"></result>
+		<result property="money" column="MONEY"></result>
+		<result property="user_Name" column="USER_NAME"></result>
+		<result property="nick_Name" column="NICK_NAME"></result>
+		<result property="email" column="EMAIL"></result>
+		<result property="phone" column="PHONE"></result>
+	</resultMap>
+
+
 	<select id="paymentListCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM
@@ -29,29 +45,109 @@
 
 	<select id="paymentList" parameterType="PaymentManage"
 		resultMap="paymentmanageResultSet">
-		SELECT PAYMENT_NO, PROOF_NO, PAYMENT_TYPE, MONEY, PAYMENT_DATE,
-		PAYMENT_STATUS, PAYMENT_WAY, REF_NO, P.USER_NO, EMAIL, USER_NAME,
+		SELECT PAYMENT_NO, PROOF_NO, PAYMENT_TYPE, MONEY,
+		PAYMENT_DATE,
+		PAYMENT_STATUS, PAYMENT_WAY, REF_NO, P.USER_NO, EMAIL,
+		USER_NAME,
 		NICK_NAME
 		FROM PAYMENT P
-		JOIN MEMBER M ON (M.USER_NO = P.USER_NO)
+		JOIN MEMBER M ON (M.USER_NO =
+		P.USER_NO)
 		START WITH REF_NO IS NULL
 		CONNECT BY PRIOR
 		PAYMENT_NO = REF_NO
 		ORDER SIBLINGS BY PAYMENT_NO DESC
 	</select>
-	
+
 	<select id="selectPaymentDetail" parameterType="_int"
 		resultMap="paymentmanageResultSet">
-		SELECT PAYMENT_NO, PROOF_NO, PAYMENT_TYPE, MONEY, PAYMENT_DATE,
-		PAYMENT_STATUS, PAYMENT_WAY, REF_NO, P.USER_NO, EMAIL, USER_NAME,
+		SELECT PAYMENT_NO, PROOF_NO, PAYMENT_TYPE, MONEY,
+		PAYMENT_DATE,
+		PAYMENT_STATUS, PAYMENT_WAY, REF_NO, P.USER_NO, EMAIL,
+		USER_NAME,
 		NICK_NAME
 		FROM PAYMENT P
-		JOIN MEMBER M ON (M.USER_NO = P.USER_NO)
-		WHERE PAYMENT_NO = #{ payment_No } OR REF_NO = #{ payment_No }
+		JOIN MEMBER M ON (M.USER_NO =
+		P.USER_NO)
+		WHERE PAYMENT_NO = #{ payment_No } OR REF_NO = #{ payment_No
+		}
 		START WITH REF_NO IS NULL
 		CONNECT BY PRIOR
 		PAYMENT_NO = REF_NO
-		ORDER SIBLINGS BY PAYMENT_NO DESC
+		ORDER
+		SIBLINGS BY PAYMENT_NO DESC
 	</select>
+
+	<select id="paymentRequestListCount" resultType="_int"
+		parameterType="java.util.HashMap">
+		SELECT NVL(COUNT(*), 0)
+		FROM WITHDRAW
+		<where>
+			<if test="sel == 'bank'">
+				AND BANK like #{val}
+			</if>
+			<if test="sel == 'name'">
+				AND NAME like #{val}
+			</if>
+		</where>
+	</select>
+
+	<select id="paymentRequestList"
+		parameterType="java.util.HashMap" resultMap="paymentRequestResultSet">
+		SELECT WITHDRAW_NO, STATUS, WITHDRAW_DATE, NAME, W.BANK, W.BANK_NO,
+		W.USER_NO, MONEY, USER_NAME, NICK_NAME, EMAIL, PHONE
+		FROM WITHDRAW W
+		JOIN MEMBER M ON
+		(M.USER_NO = W.USER_NO)
+		<where>
+			<if test="sel == 'bank'">
+				AND W.BANK like #{val}
+			</if>
+			<if test="sel == 'name'">
+				AND W.NAME like #{val}
+			</if>
+		</where>
+		ORDER BY WITHDRAW_NO DESC
+	</select>
+
+	<select id="paymentRequestDetail" parameterType="_int"
+		resultMap="paymentRequestResultSet">
+		SELECT WITHDRAW_NO, STATUS, WITHDRAW_DATE, NAME, W.BANK,
+		W.BANK_NO,
+		W.USER_NO, MONEY, USER_NAME, NICK_NAME, EMAIL, PHONE
+		FROM
+		WITHDRAW W
+		JOIN MEMBER M ON
+		(M.USER_NO = W.USER_NO)
+		WHERE WITHDRAW_NO =
+		#{ request_no }
+	</select>
+
+	<update id="paymentRequestApprove" parameterType="_int">
+		UPDATE WITHDRAW
+		SET STATUS = 'Y'
+		WHERE WITHDRAW_NO = #{ request_no }
+	</update>
+
+	<update id="paymentRequestRefuse" parameterType="_int">
+		UPDATE WITHDRAW
+		SET STATUS = 'R'
+		WHERE WITHDRAW_NO = #{ request_no }
+	</update>
+
+	<update id="paymentRequestRefund" parameterType="PaymentRequest">
+		UPDATE MEMBER
+		SET CYBERMONEY = CYBERMONEY + #{ money }
+		WHERE USER_NO = #{ user_No }
+	</update>
+
+	<insert id="paymentRequestRefundRecord"
+		parameterType="PaymentRequest">
+		INSERT INTO
+		CYBERMONEY_RECORD
+		VALUES (
+		SEQ_CYBERMONEY_RECORD_NO.NEXTVAL, #{ user_No }, ('WITHDRAW'||#{ withDraw_No }), SYSDATE, #{ money }, '출금거부',
+		(SELECT CYBERMONEY FROM MEMBER M WHERE USER_NO = #{ user_No }))
+	</insert>
 
 </mapper>  
