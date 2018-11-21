@@ -45,7 +45,7 @@
 		<result property="attachMent_No" column="ATTACHMENT_NO"></result>
 		<result property="origin_Name" column="ORIGIN_NAME"></result>
 	</resultMap>
-	
+
 	<resultMap type="AttachmentInfo" id="getFileInfoResultSet">
 		<id property="attachMent_No" column="ATTACHMENT_NO"></id>
 		<result property="origin_Name" column="ORIGIN_NAME"></result>
@@ -64,20 +64,21 @@
 		JOIN MEMBER M ON (M.USER_NO = B.WRITER)
 	</select>
 
-	<select id="boardListCount" resultType="_int"  parameterType="java.util.HashMap">
+	<select id="boardListCount" resultType="_int"
+		parameterType="java.util.HashMap">
 		SELECT NVL(COUNT(*), 0)
 		FROM BOARD
-		<where> 
-		    <if test="sel == 'title'">
-		         title like #{val}
-		    </if> 
-		    <if test="sel == 'content'">
-		        AND content like #{val}
-		    </if>
-		    <if test="sel == 'writer'">
-		        AND writer like #{val}
-		    </if>
-	 	</where>
+		<where>
+			<if test="sel == 'title'">
+				title like #{val}
+			</if>
+			<if test="sel == 'content'">
+				AND content like #{val}
+			</if>
+			<if test="sel == 'writer'">
+				AND writer like #{val}
+			</if>
+		</where>
 	</select>
 
 	<select id="noticeListCount" resultType="_int">
@@ -86,7 +87,7 @@
 		BOARD
 		WHERE CATEGORY = '1'
 	</select>
-	
+
 	<select id="boardList" parameterType="java.util.HashMap"
 		resultMap="boardmanageResultSet">
 		SELECT BOARD_NO, WRITER, CATEGORY, TITLE, CONTENT,
@@ -97,22 +98,22 @@
 		FROM BOARD B
 		JOIN MEMBER M ON
 		(M.USER_NO = B.WRITER)
-		<where> 
-		    <if test="sel == 'title'">
-		         TITLE like #{val}
-		    </if> 
-		    <if test="sel == 'content'">
-		        AND CONTENT like #{val}
-		    </if>
-		    <if test="sel == 'writer'">
-		        AND NICK_NAME like #{val}
-		    </if>
-	 	</where>
+		<where>
+			<if test="sel == 'title'">
+				TITLE like #{val}
+			</if>
+			<if test="sel == 'content'">
+				AND CONTENT like #{val}
+			</if>
+			<if test="sel == 'writer'">
+				AND NICK_NAME like #{val}
+			</if>
+		</where>
 		START WITH BOARD_LEVEL = 1
 		CONNECT BY NOCYCLE
 		PRIOR
 		BOARD_NO = REF_NO
-		
+
 		ORDER SIBLINGS BY BOARD_NO DESC
 	</select>
 
@@ -192,7 +193,8 @@
 		(CA.CONSULT_APPLY_NO = COR.CONSULT_APPLY_NO)
 		LEFT JOIN ATTACHMENT AM ON
 		(CA.CONSULT_APPLY_NO = AM.REF_NO)
-		WHERE CA.CONSULT_APPLY_NO = #{ apply_no }
+		WHERE CA.CONSULT_APPLY_NO = #{
+		apply_no } AND TYPE = 1
 	</select>
 
 	<insert id="consultApplyAccept" parameterType="ConsultManage">
@@ -261,15 +263,116 @@
 	<select id="getOTOboardList" resultMap="boardmanageResultSet">
 		SELECT *
 		FROM BOARD B
-		JOIN MEMBER M ON M.USER_NO = B.WRITER
-		WHERE CATEGORY = '2' AND STATUS = 'Y' AND BOARD_LEVEL = 1
+		JOIN
+		MEMBER M ON M.USER_NO = B.WRITER
+		WHERE CATEGORY = '2' AND STATUS = 'Y'
+		AND BOARD_LEVEL = 1
 		ORDER BY BOARD_NO DESC
 	</select>
-	
-	<select id="getFileInfo" parameterType="_int" resultMap="getFileInfoResultSet">
+
+	<select id="getRecentBoardList" resultMap="boardmanageResultSet">
+		SELECT *
+		FROM BOARD B
+		JOIN MEMBER M ON M.USER_NO = B.WRITER
+		WHERE CATEGORY = '3' AND STATUS =
+		'Y' AND BOARD_LEVEL = 1
+		ORDER BY BOARD_NO DESC
+	</select>
+
+	<select id="getFileInfo" parameterType="_int"
+		resultMap="getFileInfoResultSet">
 		SELECT *
 		FROM ATTACHMENT
-		WHERE ATTACHMENT_NO = #{ attachMent_No }
+		WHERE ATTACHMENT_NO = #{
+		attachMent_No }
+	</select>
+
+	<select id="openConsultListCount" resultType="_int"
+		parameterType="java.util.HashMap">
+		SELECT NVL(COUNT(*), 0)
+		FROM BOARD
+		WHERE CATEGORY = '3'
+		<if test="sel == 'title'">
+			AND title like #{val}
+		</if>
+		<if test="sel == 'content'">
+			AND content like #{val}
+		</if>
+		<if test="sel == 'writer'">
+			AND writer like #{val}
+		</if>
+	</select>
+
+	<select id="openConsultList" parameterType="java.util.HashMap"
+		resultMap="boardmanageResultSet">
+		SELECT BOARD_NO, WRITER, CATEGORY, TITLE, CONTENT,
+		BOARD_DATE, STATUS,
+		BOARD_LEVEL, REF_NO, EMAIL, USER_NAME, NICK_NAME,
+		PHONE, BIRTHDAY,
+		GENDER, ENROLL_DATE
+		FROM BOARD B
+		JOIN MEMBER M ON
+		(M.USER_NO = B.WRITER)
+		WHERE CATEGORY = '3'
+		<if test="sel == 'title'">
+			AND TITLE like #{val}
+		</if>
+		<if test="sel == 'content'">
+			AND CONTENT like #{val}
+		</if>
+		<if test="sel == 'writer'">
+			AND NICK_NAME like #{val}
+		</if>
+		START WITH BOARD_LEVEL = 1
+		CONNECT BY NOCYCLE
+		PRIOR
+		BOARD_NO = REF_NO
+
+		ORDER SIBLINGS BY BOARD_NO DESC
+	</select>
+
+	<select id="oneToOneListCount" resultType="_int"
+		parameterType="java.util.HashMap">
+		SELECT NVL(COUNT(*), 0)
+		FROM BOARD
+		WHERE CATEGORY = '2'
+		<if test="sel == 'title'">
+			AND title like #{val}
+		</if>
+		<if test="sel == 'content'">
+			AND content like #{val}
+		</if>
+		<if test="sel == 'writer'">
+			AND writer like #{val}
+		</if>
+	</select>
+
+	<select id="oneToOneList" parameterType="java.util.HashMap"
+		resultMap="boardmanageResultSet">
+		SELECT BOARD_NO, WRITER, CATEGORY, TITLE, CONTENT,
+		BOARD_DATE, STATUS,
+		BOARD_LEVEL, REF_NO, EMAIL, USER_NAME, NICK_NAME,
+		PHONE, BIRTHDAY,
+		GENDER, ENROLL_DATE
+		FROM BOARD B
+		JOIN MEMBER M ON
+		(M.USER_NO = B.WRITER)
+		WHERE CATEGORY = '2'
+		<if test="sel == 'title'">
+			AND TITLE like #{val}
+		</if>
+		<if test="sel == 'content'">
+			AND CONTENT like #{val}
+		</if>
+		<if test="sel == 'writer'">
+			AND NICK_NAME like #{val}
+		</if>
+		START WITH BOARD_LEVEL = 1
+		CONNECT BY NOCYCLE
+		PRIOR
+		BOARD_NO = REF_NO
+
+		ORDER SIBLINGS BY BOARD_NO DESC
 	</select>
 
 </mapper>  

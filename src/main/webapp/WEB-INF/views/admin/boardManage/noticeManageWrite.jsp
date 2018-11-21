@@ -93,7 +93,7 @@ table th {
 										<textarea name="content"></textarea>
 									</div>
 									<button type="submit" class="btn btn-sm btn-info">확인</button>
-									<button type="button" class="btn btn-sm btn-danger" onclick="location.href='${ pageContext.request.contextPath }/admin/noticeManageMain.admin'">취소</button>
+									<button type="button" class="btn btn-sm btn-danger" onclick="javascript:history.back()">취소</button>
 								</td>
 							</tr>
 					</tbody>

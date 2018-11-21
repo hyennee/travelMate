@@ -127,4 +127,58 @@ public class BoardManageServiceImpl implements BoardManageService {
 		return boardList;
 	}
 
+	@Override
+	public ArrayList<BoardManage> getRecentBoardList() {
+		return bmd.getRecentBoardList(sqlSession);
+	}
+
+	@Override
+	public int getOpenConsultListCount() {
+		int listCount = bmd.getOpenConsultListCount(sqlSession);
+		return listCount;
+	}
+
+	@Override
+	public int getOpenConsultListCount(String sel, String val) {
+		int listCount = bmd.getOpenConsultListCount(sqlSession, sel, val);
+		return listCount;
+	}
+
+	@Override
+	public ArrayList<BoardManage> openConsultList(PageInfo page) {
+		ArrayList<BoardManage> openConsultList = bmd.openConsultList(sqlSession, page);
+		return openConsultList;
+	}
+
+	@Override
+	public ArrayList<BoardManage> openConsultList(PageInfo page, String sel, String val) {
+		ArrayList<BoardManage> openConsultList = bmd.openConsultList(sqlSession, page, sel, val);
+		return openConsultList;
+	}
+
+	@Override
+	public int getOneToOneListCount() {
+		int listCount = bmd.getOneToOneListCount(sqlSession);
+		return listCount;
+	}
+
+	@Override
+	public ArrayList<BoardManage> oneToOneList(PageInfo page) {
+		ArrayList<BoardManage> oneToOneList = bmd.oneToOneList(sqlSession, page);
+		return oneToOneList;
+	}
+
+	@Override
+	public int getOneToOneListCount(String sel, String val) {
+		int listCount = bmd.getOneToOneListCount(sqlSession, sel, val);
+		return listCount;
+	}
+
+	@Override
+	public ArrayList<BoardManage> oneToOneList(PageInfo page, String sel, String val) {
+		ArrayList<BoardManage> oneToOneList = bmd.oneToOneList(sqlSession, page, sel, val);
+		return oneToOneList;
+	}
+
+
 }

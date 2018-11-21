@@ -14,6 +14,10 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <style>
 	.headerArea {
 		text-align:inline-block;
@@ -80,7 +84,7 @@
 					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/memberManage.admin'">회원관리</button>
 					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/boardManage.admin'">게시물관리</button>
 					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/paymentManage.admin'">결제관리</button>
-					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/statManage.admin'">통계</button>
+					<button id="menuBtn" onclick="location.href='${ pageContext.request.contextPath }/admin/statsManage.admin'">통계</button>
 				</td>
 				</tr>
 		</table>
