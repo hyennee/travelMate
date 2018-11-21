@@ -45,10 +45,11 @@ public class AdminController {
 		StatSummaryManage ssm = sms.getTodayStats();
 		
 		ArrayList<BoardManage> boardList = bms.getOTOboardList();
-		
+		ArrayList<BoardManage> recentBoardList = bms.getRecentBoardList();
 		ArrayList<MemberManage> memberList = mms.getNewMemberList();
-
+		
 		model.addAttribute("boardList", boardList);
+		model.addAttribute("recentBoardList", recentBoardList);
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("ssm", ssm);
 
@@ -317,6 +318,37 @@ public class AdminController {
 
 	}
 	
+	@RequestMapping("admin/openConsultManage.admin")
+	public String openConsultManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model,
+			@RequestParam(defaultValue="null")String sel, @RequestParam(defaultValue="null")String val) {
+
+		ArrayList<BoardManage> openConsultList;
+
+		int listCount = 0;
+		PageInfo page;
+		
+		if(sel.equals("null")) {
+			listCount = bms.getOpenConsultListCount();
+			page = Pagination.getPageInfo(currentPage, listCount);
+
+			openConsultList = bms.openConsultList(page);
+			
+		}else {
+			listCount = bms.getOpenConsultListCount(sel, "%" + val + "%");
+			page = Pagination.getPageInfo(currentPage, listCount);
+			
+			openConsultList = bms.openConsultList(page, sel,"%" + val + "%");
+		}
+		// 테스트 코드
+		System.out.println("listCount: " + listCount);
+
+		model.addAttribute("openConsultList", openConsultList);
+		model.addAttribute("page", page);
+
+		return "admin/boardManage/openConsultManageMain";
+
+	}
+	
 	@RequestMapping("admin/noticeManage.admin")
 	public String noticeManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model) {
 
@@ -373,6 +405,37 @@ public class AdminController {
 
 		
 	}
+	
+	@RequestMapping("admin/oneToOneManage.admin")
+	public String oneToOneManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model,
+			@RequestParam(defaultValue="null")String sel, @RequestParam(defaultValue="null")String val) {
+
+		ArrayList<BoardManage> oneToOneList;
+
+		int listCount = 0;
+		PageInfo page;
+		
+		if(sel.equals("null")) {
+			listCount = bms.getOneToOneListCount();
+			page = Pagination.getPageInfo(currentPage, listCount);
+
+			oneToOneList = bms.oneToOneList(page);
+			
+		}else {
+			listCount = bms.getOneToOneListCount(sel, "%" + val + "%");
+			page = Pagination.getPageInfo(currentPage, listCount);
+			
+			oneToOneList = bms.oneToOneList(page, sel,"%" + val + "%");
+		}
+		// 테스트 코드
+		System.out.println("listCount: " + listCount);
+
+		model.addAttribute("oneToOneList", oneToOneList);
+		model.addAttribute("page", page);
+
+		return "admin/boardManage/oneToOneManageMain";
+
+	}
 
 	@RequestMapping("admin/paymentManage.admin")
 	public String paymentManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model) {
@@ -412,7 +475,7 @@ public class AdminController {
 	public String statsManageAdmin(Model model) {
 
 
-		return "admin/statsManage/statManageMain";
+		return "admin/statsManage/statsManageMain";
 	}
 
 	@RequestMapping("admin/statsJoinMemberManage.admin")

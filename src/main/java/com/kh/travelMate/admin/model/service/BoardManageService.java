@@ -44,4 +44,22 @@ public interface BoardManageService {
 
 	ArrayList<BoardManage> boardList(PageInfo page, String sel, String string);
 
+	ArrayList<BoardManage> getRecentBoardList();
+
+	int getOpenConsultListCount();
+
+	int getOpenConsultListCount(String sel, String val);
+
+	ArrayList<BoardManage> openConsultList(PageInfo page);
+
+	ArrayList<BoardManage> openConsultList(PageInfo page, String sel, String string);
+
+	int getOneToOneListCount();
+
+	ArrayList<BoardManage> oneToOneList(PageInfo page);
+
+	int getOneToOneListCount(String sel, String string);
+
+	ArrayList<BoardManage> oneToOneList(PageInfo page, String sel, String string);
+
 }

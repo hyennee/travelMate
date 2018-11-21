@@ -46,4 +46,22 @@ public interface BoardManageDao {
 
 	ArrayList<BoardManage> boardList(SqlSessionTemplate sqlSession, PageInfo page, String sel, String val);
 
+	ArrayList<BoardManage> getRecentBoardList(SqlSessionTemplate sqlSession);
+
+	int getOpenConsultListCount(SqlSessionTemplate sqlSession);
+
+	int getOpenConsultListCount(SqlSessionTemplate sqlSession, String sel, String val);
+
+	ArrayList<BoardManage> openConsultList(SqlSessionTemplate sqlSession, PageInfo page);
+
+	ArrayList<BoardManage> openConsultList(SqlSessionTemplate sqlSession, PageInfo page, String sel, String val);
+
+	int getOneToOneListCount(SqlSessionTemplate sqlSession);
+
+	int getOneToOneListCount(SqlSessionTemplate sqlSession, String sel, String val);
+
+	ArrayList<BoardManage> oneToOneList(SqlSessionTemplate sqlSession, PageInfo page);
+
+	ArrayList<BoardManage> oneToOneList(SqlSessionTemplate sqlSession, PageInfo page, String sel, String val);
+
 }

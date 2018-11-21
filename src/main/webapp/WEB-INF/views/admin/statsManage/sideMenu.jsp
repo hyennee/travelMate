@@ -23,15 +23,14 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h2 class="panel-title">
-					<b>게시물관리</b>
+					<b>통계</b>
 				</h2>
 			</div>
 			<div class="panel-body">
-				<b><a
-					href="${ pageContext.request.contextPath }/admin/boardManage.admin">전체 게시물목록</a></b><br><br>
-				<b><a href="${ pageContext.request.contextPath }/admin/openConsultManage.admin">오픈컨설팅</a></b><br><br>
-				<b><a href="${ pageContext.request.contextPath }/admin/noticeManage.admin">공지사항</a></b><br><br>
-				<b><a href="${ pageContext.request.contextPath }/admin/oneToOneManage.admin">1:1 문의</a></b><br><br>
+				<b>통계 대시보드</b><br><br>
+				<b>회원 통계</b><br><br>
+				<b>게시물 통계</b><br><br>
+				<b>매출 통계</b><br><br>
 			</div>
 		</div>
 	</div>

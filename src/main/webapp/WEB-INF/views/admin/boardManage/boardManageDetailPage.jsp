@@ -111,6 +111,7 @@ input {
 					</tbody>
 				</table>
 			</div>
+			<button type="button" class="btn btn-sm btn-success" style="text-align: center;" onclick="javascript:history.back()">목록으로</button>
 		</div>
 	</c:if>
 </body>

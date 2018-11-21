@@ -177,4 +177,122 @@ public class BoardManageDaoImpl implements BoardManageDao {
 		return boardList;
 	}
 
+	@Override
+	public ArrayList<BoardManage> getRecentBoardList(SqlSessionTemplate sqlSession) {
+		ArrayList<BoardManage> recentBoardList = null;
+		recentBoardList = (ArrayList)sqlSession.selectList("BoardManage.getRecentBoardList");
+		return recentBoardList;
+	}
+
+	@Override
+	public int getOpenConsultListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("BoardManage.openConsultListCount");
+	}
+
+	@Override
+	public int getOpenConsultListCount(SqlSessionTemplate sqlSession, String sel, String val) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("sel", sel);
+		map.put("val", val);
+		return sqlSession.selectOne("BoardManage.openConsultListCount", map);
+	}
+
+	@Override
+	public ArrayList<BoardManage> openConsultList(SqlSessionTemplate sqlSession, PageInfo page) {
+		ArrayList<BoardManage> openConsultList = null;
+		
+		// 몇 개의 게시물을 건너뛰고 조회할 것인지에 대한 처리
+		int offset = ((page.getCurrentPage() - 1) * page.getLimit());
+		
+		System.out.println("offset: " + offset);
+		
+		// myBatis가 제공하고 있는 RowBounds 클래스 사용
+		RowBounds rowBounds = new RowBounds(offset, page.getLimit());
+		
+		System.out.println("rowBounds: " + rowBounds);
+		
+		// generic을 제외하고 down-casting
+		openConsultList = (ArrayList)sqlSession.selectList("BoardManage.openConsultList", null, rowBounds);
+		
+		return openConsultList;
+	}
+
+	@Override
+	public ArrayList<BoardManage> openConsultList(SqlSessionTemplate sqlSession, PageInfo page, String sel,
+			String val) {
+		ArrayList<BoardManage> openConsultList = null;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("sel", sel);
+		map.put("val", val);
+		// 몇 개의 게시물을 건너뛰고 조회할 것인지에 대한 처리
+		int offset = ((page.getCurrentPage() - 1) * page.getLimit());
+		
+		System.out.println("offset: " + offset);
+		
+		// myBatis가 제공하고 있는 RowBounds 클래스 사용
+		RowBounds rowBounds = new RowBounds(offset, page.getLimit());
+		
+		System.out.println("rowBounds: " + rowBounds);
+		
+		// generic을 제외하고 down-casting
+		openConsultList = (ArrayList)sqlSession.selectList("BoardManage.openConsultList", map, rowBounds);
+		
+		return openConsultList;
+	}
+
+	@Override
+	public int getOneToOneListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("BoardManage.oneToOneListCount");
+	}
+
+	@Override
+	public int getOneToOneListCount(SqlSessionTemplate sqlSession, String sel, String val) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("sel", sel);
+		map.put("val", val);
+		return sqlSession.selectOne("BoardManage.oneToOneListCount", map);
+	}
+
+	@Override
+	public ArrayList<BoardManage> oneToOneList(SqlSessionTemplate sqlSession, PageInfo page) {
+		ArrayList<BoardManage> oneToOneList = null;
+		
+		// 몇 개의 게시물을 건너뛰고 조회할 것인지에 대한 처리
+		int offset = ((page.getCurrentPage() - 1) * page.getLimit());
+		
+		System.out.println("offset: " + offset);
+		
+		// myBatis가 제공하고 있는 RowBounds 클래스 사용
+		RowBounds rowBounds = new RowBounds(offset, page.getLimit());
+		
+		System.out.println("rowBounds: " + rowBounds);
+		
+		// generic을 제외하고 down-casting
+		oneToOneList = (ArrayList)sqlSession.selectList("BoardManage.oneToOneList", null, rowBounds);
+		
+		return oneToOneList;
+	}
+
+	@Override
+	public ArrayList<BoardManage> oneToOneList(SqlSessionTemplate sqlSession, PageInfo page, String sel, String val) {
+		ArrayList<BoardManage> oneToOneList = null;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("sel", sel);
+		map.put("val", val);
+		// 몇 개의 게시물을 건너뛰고 조회할 것인지에 대한 처리
+		int offset = ((page.getCurrentPage() - 1) * page.getLimit());
+		
+		System.out.println("offset: " + offset);
+		
+		// myBatis가 제공하고 있는 RowBounds 클래스 사용
+		RowBounds rowBounds = new RowBounds(offset, page.getLimit());
+		
+		System.out.println("rowBounds: " + rowBounds);
+		
+		// generic을 제외하고 down-casting
+		oneToOneList = (ArrayList)sqlSession.selectList("BoardManage.oneToOneList", map, rowBounds);
+		
+		return oneToOneList;
+	}
+
 }
