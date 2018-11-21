@@ -212,7 +212,7 @@ a {
 								<tr>
 									<th class="thstyle">no</th>
 									<th class="thstyle">컨설팅제목</th>
-									<th class="thstyle">컨설턴트</th>
+<!-- 									<th class="thstyle">컨설턴트</th> -->
 									<th class="thstyle">여행시작일자</th>
 									<th class="thstyle">여행종료일자</th>
 								</tr>
@@ -221,7 +221,7 @@ a {
 										
 										<td>${ size.CONSULT_REQUEST_NO }</td>
 										<td>${ size.TRAVEL_PURPOSE }</td>
-										<td>${ size.CONSULT_USER_NO }</td>
+<%-- 										<td>${ size.CONSULT_USER_NO }</td> --%>
 										<td>${ size.TRAVEL_START_DATE}</td>
 										<td>${ size.TRAVEL_END_DATE }</td>
 									</tr>
@@ -237,8 +237,8 @@ a {
 									<th class="thstyle">no</th>
 									<th class="thstyle">오픈컨설팅신청제목</th>
 									<th class="thstyle">작성자</th>
-									<th class="thstyle">카테고리</th>
-									<th class="thstyle">상태</th>
+<!-- 									<th class="thstyle">카테고리</th> -->
+<!-- 									<th class="thstyle">상태</th> -->
 								</tr>
 								<c:forEach var="size" items="${ openConsulting }" >
 									<tr>
@@ -246,8 +246,8 @@ a {
 										<td>${ size.BOARD_NO }</td>
 										<td>${ size.TITLE }</td>
 										<td>${ size.NICK_NAME }</td>
-										<td>${ size.CATEGORY}</td>
-										<td>${ size.STATUS }</td>
+<%-- 										<td>${ size.CATEGORY}</td> --%>
+<%-- 										<td>${ size.STATUS }</td> --%>
 									</tr>
 								</c:forEach>
 							</table>
