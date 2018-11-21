@@ -384,23 +384,28 @@ public class mypageController {
 
 		ConsultRequest2 result = ms.selectOneTrade(CONSULT_REQUEST_NO);
 
-		System.out.println("거래내역상세보기 : " + result);
+		HashMap<String, Object> responseResult = ms.selectResponse(CONSULT_REQUEST_NO);
+		
+		System.out.println("다이렉트 신청내역 : " + result);
+		System.out.println("다이렉트 답변: " +responseResult);
 		if( result != null ) {
 
 
+			model.addAttribute("response", responseResult);
 			model.addAttribute("trade", result);
 			
-			System.out.println("trade_result : " + result);
-
+			
+			System.out.println("trade_result 성공 ? : " + result);
+			System.out.println("response 성공? : " + responseResult);
 
 
 
 			return "mypage/detailTrade";
 		}
 		else {
-
+			
 			System.out.println("에러");
-			return "common/errorPage";
+			return "mypage/mypageError";
 		}
 	}
 	
@@ -413,11 +418,13 @@ public class mypageController {
 		System.out.println("boardNo : " + BOARD_NO);
 		//			String boardNo=request.getParameter("boardNo");
 		HashMap<String, Object> result = ms.selectOneOpenTrade(BOARD_NO);
+		HashMap<String, Object> result2 = ms.selectOneOpenTrade2(BOARD_NO);
 		if(result != null) {
 
 			model.addAttribute("openConsulting", result);
-      
+			model.addAttribute("openConsulting2", result2);
     	System.out.println("openConsultingOne : " + result);
+    	System.out.println("openConsultingOne : " + result2);
 			return "mypage/detailOpenConsulting";
 		}else {
 			System.out.println("에러");
@@ -458,5 +465,6 @@ public class mypageController {
 		
 		return "redirect:Money.me";
 	}
-		
+
+
 }

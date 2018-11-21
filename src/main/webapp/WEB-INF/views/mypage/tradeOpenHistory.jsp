@@ -106,15 +106,15 @@ td{
 			<h2>오픈컨설팅</h2>
 			<hr />
 			<div >
-						<p>거래내역리스트</p>
+						<p>오픈컨설팅 리스트</p>
 						<form action="selectOneOpenTrade.mp" method="post">
 						<table id="example-table-1" width="100%" class="table table-bordered table-hover text-center" >
 								<tr >
 									<th class="thstyle">no</th>
 									<th class="thstyle">컨설팅제목</th>
-									<th class="thstyle">게시글 레벨no</th>
+<!-- 									<th class="thstyle">게시글 레벨no</th> -->
 									<th class="thstyle">작성일자</th>
-									<th class="thstyle">작성자no</th>
+<!-- 									<th class="thstyle">작성자no</th> -->
 								</tr>
 								<c:forEach var="size" items="${ openConsulting }" >
 									<tr style="cursor:pointer;"  onclick="detail('${ size.BOARD_NO}')" >
@@ -123,9 +123,9 @@ td{
 											<input type="hidden" name="BOARD_NO" value="${ size.BOARD_NO}" />
 										</td>
 										<td>${ size.TITLE }</td>
-										<td><c:if test="${ size.BOARD_LEVEL  eq 1 }">의뢰</c:if><c:if test="${ size.BOARD_LEVEL eq 2 }">답변</c:if></td>
+<%-- 										<td><c:if test="${ size.BOARD_LEVEL  eq 1 }">의뢰</c:if><c:if test="${ size.BOARD_LEVEL eq 2 }">답변</c:if></td> --%>
 										<td>${ size.BOARD_DATE}</td>
-										<td>${ size.WRITER }</td>
+<%-- 										<td>${ size.WRITER }</td> --%>
 										
 									</tr>
 								</c:forEach>

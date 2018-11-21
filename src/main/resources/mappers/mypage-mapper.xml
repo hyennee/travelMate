@@ -203,6 +203,21 @@
 		insert into WITHDRAW
 		values(SEQ_WITHDRAW_NO.nextval,'N', sysdate, #{NAME},#{BANK}, #{BANK_NO}, #{USER_NO} ,#{MONEY})
 	</insert>
+	
+<!-- 다이렉트답변보기 -->
+	<select id="selectOneDirectResponse" parameterType="_int" resultType="java.util.HashMap">
+		SELECT CP.CONSULT_RESPONSE_NO, CP.SUMMARY, CP.CONSULT_REQUEST_NO, CP.RESPONSE_DATE, CP.USER_NO, M.NICK_NAME
+		FROM CONSULT_RESPONSE CP
+		JOIN MEMBER M ON(CP.USER_NO=M.USER_NO)
+		WHERE CONSULT_REQUEST_NO = #{CONSULT_REQUEST_NO}
+	</select>
+	
+	<select id="selectOneOpenTrade2" parameterType="_int" resultType="java.util.HashMap">
+		select *
+		from board b
+		join member m on(b.writer = m.user_no)
+		where ref_no = #{no}
+	</select>
 </mapper> 
 
 
