@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
+import com.kh.travelMate.mypage.model.vo.Withdraw;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
 import com.kh.travelMate.others.model.vo.ConsultRequest2;
 
@@ -63,6 +64,8 @@ public interface mypageService {
 	HashMap<String, Object> selectOneOpenTrade(int bOARD_NO);
 
 	int insertResponse(Map<String, Object> map);
+
+	int insertWithdraw(Withdraw w);
 
 
 

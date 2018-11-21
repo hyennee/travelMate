@@ -105,6 +105,15 @@ $(document).ready(function() {
 	function a(){
 		window.open("charge.mp","w","width=800, height=700, left=100, top=100, scrollbars=yes, resizable=yes, location=yes");
 	}
+	
+	function b(){
+		if(${ sessionScope.loginUser.cybermoney } > 0){
+			window.open("withdraw.mp","w","width=800, height=700, left=100, top=100, scrollbars=yes, resizable=yes, location=yes");
+		}else{
+			alert("출금 가능한 사이버머니가 없습니다.");
+		}
+	}
+	
 	function test(id,money){
  		if(${ sessionScope.loginUser.cybermoney } >= money){
 			location.href="insertCyberMoney2.me?money="+money+"&imp_uid="+id;
@@ -126,7 +135,9 @@ $(document).ready(function() {
 			<h2>사이버머니</h2>
 			<hr />
 			<div >
-						<span>-&nbsp;&nbsp;${ sessionScope.loginUser.user_name }님의 보유적립금은 ${ sessionScope.loginUser.cybermoney }원입니다. <button type="button" onclick="a()"> 충전 </button></span><br />
+						<span>-&nbsp;&nbsp;${ sessionScope.loginUser.user_name }님의 보유적립금은 ${ sessionScope.loginUser.cybermoney }원입니다. 
+						<button type="button" onclick="a()"> 충전 </button>
+						<button type="button" onclick="location.href='withdraw.mp'"> 출금 </button></span><br />
 						<span>-&nbsp;&nbsp;적립금은 컨설트 요청할 시에 사용하실 수 있습니다.</span><br /><br /><br />
 						<form action="">
 						<table id="example-table-1" width="100%" class="table table-bordered table-hover text-center">

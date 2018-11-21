@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
+import com.kh.travelMate.mypage.model.vo.Withdraw;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
 import com.kh.travelMate.others.model.vo.ConsultRequest2;
 
@@ -187,6 +188,11 @@ public class mypageDaoImpl implements mypageDao{
 	public int insertResponse(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.insert("Mypage.insertResponse", map);
+	}
+
+	@Override
+	public int insertWithdraw(SqlSessionTemplate sqlSession, Withdraw w) {
+		return sqlSession.insert("Mypage.insertWithdraw", w);
 	}
 	
 

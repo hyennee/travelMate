@@ -155,7 +155,10 @@ public class pageChangeController {
 	public String charge() {
 	return "cyberMoney/charge";
 	}
-	
+	@RequestMapping("withdraw.mp")
+	public String withdraw() {
+	return "cyberMoney/withdraw";
+	}
 	@RequestMapping("detailTrade.bo")
 	public String detailTrade()
 	{
