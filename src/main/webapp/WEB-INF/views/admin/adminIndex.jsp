@@ -25,6 +25,7 @@
 }
 
 .lowerPage {
+	width: 77%;
 	float: left;
 	display: inline-block;
 	text-align: center;
