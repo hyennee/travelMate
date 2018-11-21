@@ -1,8 +1,9 @@
 package com.kh.travelMate.admin.controller;
 
 import java.io.File;
-import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -473,11 +474,20 @@ public class AdminController {
 
 	@RequestMapping("admin/statsManage.admin")
 	public String statsManageAdmin(Model model) {
-		// sms.getMemberSummary();
-		// sms.getPaymentSummary();
-		// sms.getBoardSummary();
-
-
+		List<HashMap<String,Object>> memberRatio = sms.selectMemberRatio();
+		memberRatio.get(0).remove("TYPE");
+		memberRatio.get(0).put("TYPE","컨설턴트");
+		
+		model.addAttribute("memberRatio",memberRatio);
+		
+		List<HashMap<String,Object>> memberEnroll = sms.selectMemberEnroll();
+		System.out.println(memberEnroll);
+		model.addAttribute("memberEnroll",memberEnroll);
+		
+		List<HashMap<String,Object>> month = sms.selectMonth();
+		System.out.println(month);
+		model.addAttribute("month",month);
+		
 		return "admin/statsManage/statsManageMain";
 	}
 

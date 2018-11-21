@@ -1,5 +1,9 @@
 package com.kh.travelMate.admin.model.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +22,21 @@ public class StatManageServiceImpl implements StatManageService {
 	public StatSummaryManage getTodayStats() {
 		StatSummaryManage ssm = smd.getTodayStats(sqlSession);
 		return ssm;
+	}
+
+	@Override
+	public List<HashMap<String,Object>> selectMemberRatio() {
+		return smd.selectMemberRatio(sqlSession);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> selectMemberEnroll() {
+		return smd.selectMemberEnroll(sqlSession);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> selectMonth() {
+		return smd.selectMonth(sqlSession);
 	}
 	
 

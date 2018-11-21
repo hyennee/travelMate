@@ -1,5 +1,8 @@
 package com.kh.travelMate.admin.model.dao;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -37,6 +40,21 @@ public class StatManageDaoImpl implements StatManageDao {
 		ssm.setTotalPayment(topm);
 		
 		return ssm;
+	}
+
+	@Override
+	public List<HashMap<String,Object>> selectMemberRatio(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectList("statManage.selectMemberRatio");
+	}
+
+	@Override
+	public List<HashMap<String, Object>> selectMemberEnroll(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectList("statManage.selectMemberEnroll");
+	}
+
+	@Override
+	public List<HashMap<String, Object>> selectMonth(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectList("statManage.selectMonth");
 	}
 
 }
