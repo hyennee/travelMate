@@ -5,11 +5,12 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
 <link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
 <title>Make your own travel! - TravelMate</title>
-<scrip src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -88,6 +89,13 @@ a {
 	background-color : lightgray;
 }
 </style>
+
+<script>
+  $('#myTab a').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	})
+</script>
 </head>
 <body>
 	<jsp:include page="../must/header.jsp" />
@@ -102,6 +110,156 @@ a {
 			<h2>나의 페이지</h2>
 			<hr />
 			<div class="section">
+			
+			<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#money" aria-controls="money" role="tab" data-toggle="tab">Money</a></li>
+    <li role="presentation"><a href="#qna" aria-controls="qna" role="tab" data-toggle="tab">Q&A</a></li>
+    <li role="presentation"><a href="#consulting" aria-controls="consulting" role="tab" data-toggle="tab">Consulting</a></li>
+    <li role="presentation"><a href="#openconsulting" aria-controls="openconsulting" role="tab" data-toggle="tab">Open Consulting</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="profile">
+    <p>내계정</p>
+    <p> - 더 보시려면 좌측메뉴에서 서비스관리를 이용해주세요.</p>
+							<table class="table">
+								<tr>
+									<td class="thstyle">이름</td>
+									<td colspan="2">
+									<c:out value="${ sessionScope.loginUser.user_name }"></c:out></td>
+								</tr>
+								<tr>
+									<td class="thstyle">닉네임</td>
+									<td colspan="2">
+										<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>
+									</td>
+								</tr>
+								<tr>
+									<td class="thstyle">연락처</td>
+									<td><c:out value="${ sessionScope.loginUser.phone }"></c:out></td>
+									<td><input type="button" value="정보수정" /></td>
+								</tr>
+								<tr>
+									<td class="thstyle">가입일</td>
+									<td colspan="2"><c:out
+											value="${ sessionScope.loginUser.enroll_date }"></c:out></td>
+								</tr>
+
+								<tr>
+									<td class="thstyle">보유 적립금</td>
+									<td colspan="2"><c:out
+											value="${ sessionScope.loginUser.cybermoney }"></c:out>원</td>
+								</tr>
+		
+							</table>
+    </div>
+    
+    
+    <div role="tabpanel" class="tab-pane" id="money">
+    <p>사이버머니 내역</p>
+    <p> - 더 보시려면 좌측메뉴에서 서비스관리를 이용해주세요.</p>
+							<table class="table">
+								<tr>
+									<th class="thstyle">no</th>
+									<th class="thstyle">구분</th>
+									<th class="thstyle">금액</th>
+									<th class="thstyle">내역일시</th>
+								</tr>
+								
+								<c:forEach var="size" items="${ cyberMoney }" >
+									
+								
+									<tr>
+										<td>${ size.CYBERMONEY_RECORD_NO }</td>
+										<td>${ size.CHANGE_REASON }</td>
+										<td>${ size.CHANGE_MONEY }원</td>
+										<td>${ size.RECORD_DATE }</td>
+
+								</tr>
+								</c:forEach>
+							</table>
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="qna">
+    <p>상담문의내역</p>
+    <p> - 더 보시려면 좌측메뉴에서 서비스관리를 이용해주세요.</p><p> - 문의하시려면 상단바의 고객센터를 이용해주세요.</p>
+							<table class="table">
+								<tr>
+									<th class="thstyle">no</th>
+									<th class="thstyle">제목</th>
+									<th class="thstyle">작성일시</th>
+								</tr>
+								<c:forEach var="size" items="${ oneByOne }" >
+								<tr>
+									<td>${ size.BOARD_NO}</td>
+									<td>${ size.TITLE}</td>
+									<td>${ size.BOARD_DATE}</td>
+									
+								</tr>
+								</c:forEach>
+							</table>
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="consulting">
+    <p>다이렉트컨설팅</p>
+    <p> - 더 보시려면 좌측메뉴에서 서비스관리를 이용해주세요.</p>
+							<table class="table">
+								<tr>
+									<th class="thstyle">no</th>
+									<th class="thstyle">컨설팅제목</th>
+									<th class="thstyle">컨설턴트</th>
+									<th class="thstyle">여행시작일자</th>
+									<th class="thstyle">여행종료일자</th>
+								</tr>
+								<c:forEach var="size" items="${ tradeInfo }" >
+									<tr>
+										
+										<td>${ size.CONSULT_REQUEST_NO }</td>
+										<td>${ size.TRAVEL_PURPOSE }</td>
+										<td>${ size.CONSULT_USER_NO }</td>
+										<td>${ size.TRAVEL_START_DATE}</td>
+										<td>${ size.TRAVEL_END_DATE }</td>
+									</tr>
+								</c:forEach>
+							</table>
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="openconsulting">
+    <p>오픈컨설팅</p>
+    <p> - 더 보시려면 좌측메뉴에서 서비스관리를 이용해주세요.</p>
+							<table class="table">
+								<tr>
+									<th class="thstyle">no</th>
+									<th class="thstyle">오픈컨설팅신청제목</th>
+									<th class="thstyle">작성자</th>
+									<th class="thstyle">카테고리</th>
+									<th class="thstyle">상태</th>
+								</tr>
+								<c:forEach var="size" items="${ openConsulting }" >
+									<tr>
+										
+										<td>${ size.BOARD_NO }</td>
+										<td>${ size.TITLE }</td>
+										<td>${ size.NICK_NAME }</td>
+										<td>${ size.CATEGORY}</td>
+										<td>${ size.STATUS }</td>
+									</tr>
+								</c:forEach>
+							</table>
+						
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 				tab말고 기본으로 보여주려면 아래 소스 쓰셈 -->
+			<%-- 
 				<table class="table">
 					<tr>
 						<td class="tdsection" style="vertical-align:top; ">
@@ -229,6 +387,8 @@ a {
 						</td>
 					</tr>
 				</table>
+				
+				 --%>
 			</div>
 			<br />
 		</div>
