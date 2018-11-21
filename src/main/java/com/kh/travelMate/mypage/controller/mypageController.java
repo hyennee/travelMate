@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +24,7 @@ import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.service.mypageService;
-import com.kh.travelMate.others.model.vo.ConsultRequest;
+import com.kh.travelMate.mypage.model.vo.Withdraw;
 import com.kh.travelMate.others.model.vo.ConsultRequest2;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
@@ -450,6 +449,14 @@ public class mypageController {
 			return "common/errorPage";
 		}
 	}
-
+	
+	@RequestMapping("insertWithdraw.me")
+	public String insertWithdraw(Withdraw w) {
+		System.out.println("insertWithdraw : " + w);
+		
+		int result = ms.insertWithdraw(w);
+		
+		return "redirect:Money.me";
+	}
 		
 }

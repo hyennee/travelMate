@@ -197,7 +197,12 @@
 		insert into CONSULT_RESPONSE
 		values(SEQ_CONSULT_RESPONSE_NO.nextval,#{content}, #{no}, sysdate,#{user_no})
 	</insert>
-
+	
+	
+	<insert id="insertWithdraw" parameterType="Withdraw">
+		insert into WITHDRAW
+		values(SEQ_WITHDRAW_NO.nextval,'N', sysdate, #{NAME},#{BANK}, #{BANK_NO}, #{USER_NO} ,#{MONEY})
+	</insert>
 </mapper> 
 
 

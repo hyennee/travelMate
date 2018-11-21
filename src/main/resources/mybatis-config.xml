@@ -25,6 +25,7 @@
 		<typeAlias type="com.kh.travelMate.others.model.vo.ConsultApply" alias="ConsultApply"/>
 		<typeAlias type="com.kh.travelMate.others.model.vo.ConsultRequest" alias="ConsultRequest"/>
 		<typeAlias type="com.kh.travelMate.common.Attachment" alias="Attachment"/>
+		<typeAlias type="com.kh.travelMate.mypage.model.vo.Withdraw" alias="Withdraw"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>

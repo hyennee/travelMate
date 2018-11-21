@@ -16,6 +16,7 @@ import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.exception.LoginException;
 import com.kh.travelMate.member.model.vo.Member;
 import com.kh.travelMate.mypage.model.dao.mypageDao;
+import com.kh.travelMate.mypage.model.vo.Withdraw;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
 import com.kh.travelMate.others.model.vo.ConsultRequest2;
 
@@ -235,6 +236,10 @@ public class mypageServiceImpl implements mypageService{
 		
 		
 		return md.selectOneOpenTrade(sqlSession, bOARD_NO);
+	}
+	@Override
+	public int insertWithdraw(Withdraw w) {
+		return md.insertWithdraw(sqlSession, w);
 	}
 	
 

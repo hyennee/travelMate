@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.kh.travelMate.board.model.vo.Board;
 import com.kh.travelMate.common.Attachment;
 import com.kh.travelMate.member.model.vo.Member;
+import com.kh.travelMate.mypage.model.vo.Withdraw;
 import com.kh.travelMate.others.model.vo.ConsultRequest;
 import com.kh.travelMate.others.model.vo.ConsultRequest2;
 
@@ -68,5 +69,7 @@ public interface mypageDao {
 	HashMap<String, Object> selectOneOpenTrade(SqlSessionTemplate sqlSession, int bOARD_NO);
 
 	int insertResponse(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
+	int insertWithdraw(SqlSessionTemplate sqlSession, Withdraw w);
 
 }
