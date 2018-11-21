@@ -108,6 +108,7 @@ td{
 			<hr />
 			<div >
 						<p>문의내역리스트</p>
+						<p> - 문의하시려면 상단바의 고객센터를 이용해주세요.</p>
 						<form action="selectOneByOneBoard.bo" method="post">
 						<table id="QnAList" width="100%" class="table table-bordered table-hover text-center">
 								<tr >

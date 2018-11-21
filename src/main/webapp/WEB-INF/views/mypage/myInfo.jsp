@@ -105,21 +105,25 @@ a {
 									<td class="thstyle">이름</td>
 									<td colspan="2">
 									<c:out value="${ sessionScope.loginUser.user_name }"></c:out></td>
+									<td class="thstyle">닉네임</td>
+									<td>
+									<c:out value="${ sessionScope.loginUser.nick_name }"></c:out>
+									</td>
 								</tr>
 								<tr>
 									<td class="thstyle">연락처</td>
 									<td><c:out value="${ sessionScope.loginUser.phone }"></c:out></td>
-									<td><button onclick="modifyInfo()" class="btn btn-default  btn-sm">정보수정</button></td>
+									<td colspan="3"><button onclick="modifyInfo()" class="btn btn-default  btn-sm">정보수정</button></td>
 								</tr>
 								<tr>
 									<td class="thstyle">가입일</td>
-									<td colspan="2"><c:out
+									<td colspan="3"><c:out
 											value="${ sessionScope.loginUser.enroll_date }"></c:out></td>
 								</tr>
 
 								<tr>
 									<td class="thstyle">보유 적립금</td>
-									<td colspan="2"><c:out
+									<td colspan="4"><c:out
 											value="${ sessionScope.loginUser.cybermoney }"></c:out>원</td>
 								</tr>
 

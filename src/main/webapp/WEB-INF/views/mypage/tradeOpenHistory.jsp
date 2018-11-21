@@ -123,7 +123,7 @@ td{
 											<input type="hidden" name="BOARD_NO" value="${ size.BOARD_NO}" />
 										</td>
 										<td>${ size.TITLE }</td>
-										<td>${ size.BOARD_LEVEL }</td>
+										<td><c:if test="${ size.BOARD_LEVEL  eq 1 }">의뢰</c:if><c:if test="${ size.BOARD_LEVEL eq 2 }">답변</c:if></td>
 										<td>${ size.BOARD_DATE}</td>
 										<td>${ size.WRITER }</td>
 										
