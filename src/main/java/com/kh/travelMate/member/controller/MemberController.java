@@ -51,7 +51,7 @@ public class MemberController {
 			// 관리자일 때 관리자 페이지로 리턴
 			if (loginUser.getUser_type().equals("ADMIN")) {
 				System.out.println("loginUser" + loginUser);
-				return "admin/adminIndex";
+				return "redirect:admin/admin.main";
 			}
 
 			// 탈퇴회원 처리
