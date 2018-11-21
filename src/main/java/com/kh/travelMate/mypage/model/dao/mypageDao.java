@@ -72,4 +72,9 @@ public interface mypageDao {
 
 	int insertWithdraw(SqlSessionTemplate sqlSession, Withdraw w);
 
+	//다이렉트 답변 보기
+	HashMap<String, Object> selectResponse(SqlSessionTemplate sqlSession, int cONSULT_REQUEST_NO);
+
+	HashMap<String, Object> selectOneOpenTrade2(SqlSessionTemplate sqlSession, int bOARD_NO);
+
 }

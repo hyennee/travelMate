@@ -242,6 +242,22 @@ public class mypageServiceImpl implements mypageService{
 		return md.insertWithdraw(sqlSession, w);
 	}
 	
+	//다이렉트 답변
+	@Override
+	public HashMap<String, Object> selectResponse(int cONSULT_REQUEST_NO) {
+		
+		HashMap<String, Object> result = md.selectResponse(sqlSession, cONSULT_REQUEST_NO);
+		
+		System.out.println("md의 direct_response 받음? : " + result);
+		return result;
+	}
+	@Override
+	public HashMap<String, Object> selectOneOpenTrade2(int bOARD_NO) {
+		HashMap<String, Object> result = md.selectOneOpenTrade2(sqlSession, bOARD_NO);
+		
+		return result;
+	}
+	
 
 	
 

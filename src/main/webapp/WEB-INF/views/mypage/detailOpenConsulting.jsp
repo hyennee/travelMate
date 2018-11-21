@@ -108,9 +108,9 @@ td{
 			<div >
 						<p> 오픈컨설팅 내역</p>
 						
-						<label for="">no</label><input type="text" class="form-control no"  value="${ openConsulting.BOARD_NO }" readonly/><br />
+<%-- 						
 						<label for="">작성자</label><input type="text" class="form-control writer" value="${ openConsulting.WRITER }" readonly/><br />
-<%-- 						<label for="">답변여부</label><input type="text" class="form-control" value="<c:if test="${ board.status eq 'Y'}">답변있음</c:if><c:if test="${ board.status eq 'N' }">준비중</c:if>" /> --%>
+					<label for="">답변여부</label><input type="text" class="form-control" value="<c:if test="${ board.status eq 'Y'}">답변있음</c:if><c:if test="${ board.status eq 'N' }">준비중</c:if>" />
 						<label for="">날짜</label><input type="text" class="form-control date" value="${ openConsulting.BOARD_DATE }" readonly/><br />
 						<label for="">제목</label><input type="text" class="form-control oboTitle" value="${ openConsulting.TITLE }" readonly/><br />
 						<label for="">내용</label><br />
@@ -119,9 +119,62 @@ td{
 							<span>
 								<c:out value="${ openConsulting.CONTENT }" escapeXml="false"/>
 							</span>
-						</div>
+						</div> --%>
+						
+						<label for="">작성자 : </label>
+						<c:out  value="${ sessionScope.loginUser.nick_name}"/><br />
+						<label for="">날짜 : </label>
+						<c:out  value="${ openConsulting.BOARD_DATE }"/><br />
+						<label for="">제목 : </label>
+						<c:out  value="${ openConsulting.TITLE }"/><br />
+						<label for="">질문내용 : </label>
+						<c:out value="${ openConsulting.CONTENT }" escapeXml="false"/><br />
+						
 						
 
+			</div>
+			<div>
+				
+									
+						<c:if test="${!empty openConsulting2}">
+						<br />
+						<h1>답변이 도착했습니다</h1>
+						<br />
+						<table class="table">
+							<tr >
+								<td class="thstyle">
+									작성자 닉네임
+								</td>
+								<td>
+									<c:out value="${ openConsulting2.NICK_NAME }" escapeXml="false"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="thstyle">
+									답변내용
+								</td>
+								<td>
+								<c:out value="${ openConsulting2.CONTENT }" escapeXml="false"/>
+								</td>
+							</tr>
+							<tr>
+								<td  class="thstyle">
+									작성일자
+								</td>
+								<td>
+									<c:out value="${ openConsulting2.BOARD_DATE }" escapeXml="false"/>
+								</td>
+							</tr>
+						</table>
+						</c:if>
+						<c:if test="${empty openConsulting2}">
+							<h1>
+								답변 준비중입니다. 문의는 고객센터에 해주세요 .
+							</h1>
+						</c:if>
+												
+										
+				
 			</div>
 			<br />
 		</div>

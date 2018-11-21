@@ -106,19 +106,66 @@ td{
 			<div >
 						<p>상세 거래 내역</p>
 						
-						<label for="">no</label><input type="text" class="form-control no"  value="${ trade.CONSULT_REQUEST_NO}" readonly/><br />
-						<label for="">컨설턴트</label><input type="text" class="form-control writer" value="${ trade.consultNickName}" readonly/><br />
-						<label for="">여행시작일자</label><input type="text" class="form-control date" value="${ trade.TRAVEL_START_DATE}" readonly/><br />
-						<label for="">여행종료일자</label><input type="text" class="form-control date" value="${ trade.TRAVEL_END_DATE}" readonly/><br />
-						<label for="">여행목적</label><input type="text" class="form-control oboTitle" value="${ trade.TRAVEL_PURPOSE}"/><br />
-						<label for="">어른</label><input type="text" class="form-control" width="100px" value="${ trade.ADULT_NUM}"/>&nbsp;명 <br />
-						<label for="">아이</label><input type="text" class="form-control " width="100px" value="${ trade.CHILD_NUM}"/>&nbsp;명<br />
-						<label for="">특이사항</label><input type="text" class="form-control " width="100px" value="${ trade.ETC}"/><br />
-						<label for="">1인당 예산</label><input type="text" class="form-control " width="100px" value="${ trade.BUDGET}"/>&nbsp;만원<br />
-						<label for="">여행지역</label><input type="text" class="form-control " width="100px" value="${ trade.TRAVEL_AREA}"/>&nbsp;<br />
 						
 						
+						<label for="">여행목적 : </label>
+						<c:out  value="${ trade.TRAVEL_PURPOSE}"/><br />
+						<label for="">여행지역 : </label>
+						<c:out  value="${ trade.TRAVEL_AREA}"/><br />
+						<label for="">내가 신청한 컨설턴트 : </label>
+						<c:out  value="${ trade.CONSULT_REQUEST_NO}"/><br />
+						<label for="">여행시작일자 : </label>
+						<c:out  value="${ trade.TRAVEL_START_DATE}"/><br />
+						<label for="">여행종료일자 : </label>
+						<c:out  value="${ trade.TRAVEL_END_DATE}"/><br />
+						<label for="">여행목적 : </label>
+						<c:out  value="${ trade.TRAVEL_PURPOSE}"/><br />
+						<label for="">어른 일행 : </label>
+						<c:out  value="${ trade.ADULT_NUM}"/>명<br />
+						<label for="">아이 일행 : </label>
+						<c:out  value="${ trade.CHILD_NUM}"/>명<br />
+						<label for="">특이사항 : </label>
+						<c:out  value="${ trade.ETC}"/><br />
+						<label for="">1인당 예산 : </label>
+						<c:out  value="${ trade.BUDGET}"/>만원<br /><br />
 						
+					
+						<c:if test="${!empty response}">
+						<br />
+						<h1>답변이 도착했습니다</h1>
+						<br />
+						<table class="table">
+							<tr >
+								<td class="thstyle">
+									컨설턴트 닉네임
+								</td>
+								<td>
+									<c:out value="${ response.NICK_NAME }"></c:out>
+								</td>
+							</tr>
+							<tr>
+								<td class="thstyle">
+									작성일자
+								</td>
+								<td>
+									<c:out value="${ response.RESPONSE_DATE }"></c:out>
+								</td>
+							</tr>
+							<tr>
+								<td  class="thstyle">
+									여행 개요
+								</td>
+								<td>
+									<c:out value="${ response.SUMMARY }"></c:out>
+								</td>
+							</tr>
+						</table>
+						</c:if>
+						<c:if test="${empty response}">
+							<h1>
+								답변 준비중입니다. 문의는 고객센터에 해주세요 
+							</h1>
+						</c:if>
 												
 												
 

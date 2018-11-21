@@ -67,6 +67,11 @@ public interface mypageService {
 
 	int insertWithdraw(Withdraw w);
 
+	//다이렉트 답변
+	HashMap<String, Object> selectResponse(int cONSULT_REQUEST_NO);
+
+	HashMap<String, Object> selectOneOpenTrade2(int bOARD_NO);
+
 
 
 	

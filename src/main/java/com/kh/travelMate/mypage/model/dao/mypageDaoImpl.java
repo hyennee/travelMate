@@ -194,6 +194,18 @@ public class mypageDaoImpl implements mypageDao{
 	public int insertWithdraw(SqlSessionTemplate sqlSession, Withdraw w) {
 		return sqlSession.insert("Mypage.insertWithdraw", w);
 	}
+
+	//다이렉트 답변보기
+	@Override
+	public HashMap<String, Object> selectResponse(SqlSessionTemplate sqlSession, int cONSULT_REQUEST_NO) {
+		
+		return sqlSession.selectOne("Mypage.selectOneDirectResponse", cONSULT_REQUEST_NO);
+	}
+
+	@Override
+	public HashMap<String, Object> selectOneOpenTrade2(SqlSessionTemplate sqlSession, int bOARD_NO) {
+		return sqlSession.selectOne("Mypage.selectOneOpenTrade2", bOARD_NO);
+	}
 	
 
 	
