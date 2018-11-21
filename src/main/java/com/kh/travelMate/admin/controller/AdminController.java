@@ -25,6 +25,7 @@ import com.kh.travelMate.admin.model.vo.ConsultManage;
 import com.kh.travelMate.admin.model.vo.MemberManage;
 import com.kh.travelMate.admin.model.vo.PageInfo;
 import com.kh.travelMate.admin.model.vo.PaymentManage;
+import com.kh.travelMate.admin.model.vo.PaymentRequest;
 import com.kh.travelMate.admin.model.vo.StatSummaryManage;
 
 @Controller
@@ -518,19 +519,58 @@ public class AdminController {
 	@RequestMapping("admin/paymentRequestManage.admin")
 	public String paymentRequestManageAdmin(@RequestParam(defaultValue="1") int currentPage, Model model,
 			@RequestParam(defaultValue="null")String sel, @RequestParam(defaultValue="null")String val){
+
+		ArrayList<PaymentRequest> paymentRequestList;
+
+		int listCount = 0;
+		PageInfo page;
+		if(sel.equals("null")) {
+			listCount = pms.getPaymentRequestListCount();
+			page = Pagination.getPageInfo(currentPage, listCount);
+
+			paymentRequestList = pms.paymentRequestList(page);
+		}else {
+			listCount = pms.getPaymentRequestListCount(sel, "%" + val + "%");
+			page = Pagination.getPageInfo(currentPage, listCount);
+			
+			paymentRequestList = pms.paymentRequestList(page, sel,"%" + val + "%");
+		}
+		// 테스트 코드
+		System.out.println("listCount: " + listCount);
+
+		model.addAttribute("paymentRequestList", paymentRequestList);
+		model.addAttribute("page", page);
 		
 		return "admin/paymentManage/paymentRequestManageMain";
 	}
 	
-	@RequestMapping("admin/paymentRequestApproveManage.admin")
-	public String paymentRequestApproveManage(@RequestParam(defaultValue="0") int withDraw_No, @RequestParam(defaultValue="null") String approveCode, Model model){
-		
-		return "admin/paymentManage/paymentRequestApproveManage";
+	@RequestMapping("admin/paymentRequestManageDetail.admin")
+	public String paymentRequestManageDetail(@RequestParam(defaultValue="0") int request_no, Model model){
+		if(request_no == 0) {
+
+			return "admin/paymentManage/paymentRequestManageMain";
+		}else {
+			PaymentRequest paymentRequestDetail = pms.selectPaymentRequestDetail(request_no);
+			model.addAttribute("paymentRequestDetail", paymentRequestDetail);		
+		return "admin/paymentManage/paymentRequestManageDetail";
+		}
 	}
 	
-	@RequestMapping("admin/paymentRequestManageDetail.admin")
-	public String paymentRequestManageDetail(@RequestParam(defaultValue="0") int withDraw_No, Model model){
+	@RequestMapping("admin/paymentRequestApproveManage.admin")
+	public String paymentRequestApproveManage(@RequestParam(defaultValue="0") int request_no, Model model){
+		pms.paymentRequestProcess(request_no, "Approve");
 		
+		PaymentRequest paymentRequestDetail = pms.selectPaymentRequestDetail(request_no);
+		model.addAttribute("paymentRequestDetail", paymentRequestDetail);		
+		return "admin/paymentManage/paymentRequestManageDetail";
+	}
+	
+	@RequestMapping("admin/paymentRequestRefuseManage.admin")
+	public String paymentRequestRefuseManage(@RequestParam(defaultValue="0") int request_no, Model model){
+		pms.paymentRequestProcess(request_no, "Denided");
+		
+		PaymentRequest paymentRequestDetail = pms.selectPaymentRequestDetail(request_no);
+		model.addAttribute("paymentRequestDetail", paymentRequestDetail);		
 		return "admin/paymentManage/paymentRequestManageDetail";
 	}
 
