@@ -14,8 +14,10 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<title>거래내역</title>
-
+<link rel="icon" type="image/png" href="/travelMate/resources/images/logo.png" />
+<link rel="icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/travelMate/resources/images/logoIcon.ico" />
+<title>Make your own travel! - TravelMate</title>
 <style>
 #jb-container {
 	width: 90%;
@@ -87,6 +89,7 @@ td{
 .thstyle{
 	width : 200px;
 	background-color : lightgray;
+	text-align:center;
 }
 </style>
 </head>
@@ -100,7 +103,7 @@ td{
 			<jsp:include page="sidemenu.jsp" />
 		</div>
 		<div id="jb-content">
-			<h2>거래내역</h2>
+			<h2>오픈컨설팅</h2>
 			<hr />
 			<div >
 						<p>거래내역리스트</p>
