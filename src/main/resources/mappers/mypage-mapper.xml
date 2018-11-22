@@ -26,10 +26,9 @@
 	
 
 	<select id="cyberMoneyHistory" resultType="java.util.HashMap" parameterType="int">
-		select CYBERMONEY_RECORD_NO,v.USER_NO,CR.PROOF_NO,RECORD_DATE,CHANGE_MONEY,CHANGE_REASON,BEFORE_MONEY,COUNT
+		select CYBERMONEY_RECORD_NO,USER_NO,CR.PROOF_NO,RECORD_DATE,CHANGE_MONEY,CHANGE_REASON,BEFORE_MONEY
 		from CYBERMONEY_RECORD CR
-		join testView v on(CR.proof_no = v.proof_no)
-		WHERE v.USER_NO = #{user_no}
+		WHERE USER_NO = #{user_no}
 		order by record_date desc
 	</select> 
 	

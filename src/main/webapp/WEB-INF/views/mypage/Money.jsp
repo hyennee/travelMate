@@ -145,7 +145,6 @@ $(document).ready(function() {
 									<th class="thstyle">구분</th>
 									<th class="thstyle">금액</th>
 									<th class="thstyle">내역일시</th>
-									<th class="thstyle">비고</th>
 								</tr>
 								
 								<c:forEach var="size" items="${ cyberMoney }" >
@@ -155,13 +154,6 @@ $(document).ready(function() {
 										<td>${ size.CHANGE_REASON }</td>
 										<td>${ size.CHANGE_MONEY }원</td>
 										<td>${ size.RECORD_DATE }</td>
-										
-										<c:if test="${ size.COUNT eq 1}">
-											<td class="my"><button type="button" onclick="test('${size.PROOF_NO}','${ size.CHANGE_MONEY }')">환불</button></td>
-										</c:if>
-										<c:if test="${ size.COUNT eq 2}">
-											<td class="my"></td>
-										</c:if>
 									</tr>
 								
 								</c:forEach>

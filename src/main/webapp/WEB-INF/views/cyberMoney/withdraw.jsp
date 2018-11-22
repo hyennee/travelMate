@@ -100,6 +100,7 @@ td{
 					예금주 : <input type ="text" name="NAME"><br>
 					계좌번호 : <input type ="text" name="BANK_NO"><br>
 					금액 : <input type ="text" name="MONEY" id="money"><br>
+					*출금 수수류는 10%입니다.
 					<button type="button" onclick="a();">확인	</button>
 					<input type ="reset" value="취소">
 				</form>

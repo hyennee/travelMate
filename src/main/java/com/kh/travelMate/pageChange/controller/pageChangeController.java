@@ -95,10 +95,6 @@ public class pageChangeController {
 	{
 		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
 		List<HashMap<String,Object>> cyberMoney = ms.cyberMoneyHistory(loginUser);
-		for(int i = 0 ; i < cyberMoney.size(); i++) {
-			String temp = (String)cyberMoney.get(i).get("CHANGE_REASON");
-			cyberMoney.get(i).replace("CHANGE_REASON", "카드 " + temp);
-		}
 		
 		loginUser.setCybermoney(ms.cyberMoney(loginUser.getUser_no()));
 		model.addAttribute("loginUser", loginUser);
